@@ -2,6 +2,7 @@
 
 const signInBtn = document.querySelector("#signIn");
 const signOutBtn = document.querySelector(".signOutBtn");
+const cancelBtn = document.querySelector(".cancelBtn");
 const hi = document.querySelector("#hi");
 const userPanel = document.querySelector("#userPanel");
 const signInForm = document.querySelector("#signInForm");
@@ -27,7 +28,7 @@ function init() {
     showForNewUser();
   }
 }
-/////// form handling ///////
+/////////// form handling ///////////
 signInForm.addEventListener("submit", signIn);
 function signIn(e) {
   e.preventDefault();
@@ -41,15 +42,27 @@ function signIn(e) {
     showForOldUser();
   }
 }
-
+settingForm.addEventListener("submit", updateSetting);
+function updateSetting(e) {
+  e.preventDefault();
+  console.log("update user setting");
+}
+cancelBtn.addEventListener("click", cancelMembership);
+function cancelMembership(e) {
+  e.preventDefault();
+  console.log("cancel membership");
+}
 function signOut() {
   window.sessionStorage.removeItem("user");
   showSignInForm();
   console.log("signed out");
 }
-function signUp(e) {}
+function signUp(e) {
+  e.preventDefault();
+  console.log("sign up new user");
+}
 
-///////// display /////////
+/////////// display ///////////
 function showSignInForm() {
   userPanel.classList.remove("expand");
   signInForm.classList.remove("hide");
@@ -76,6 +89,7 @@ function showAdmin() {
   hi.textContent = `Hi admin~`;
   adminSection.classList.remove("hide");
   forNewUserSectionS.forEach(fnu => fnu.classList.add("hide"));
+  userSection.classList.add("hide");
 }
 function showForNewUser() {
   adminSection.classList.add("hide");
