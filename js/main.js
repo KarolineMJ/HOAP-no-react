@@ -55,6 +55,7 @@ function cancelMembership(e) {
 function signOut() {
   window.sessionStorage.removeItem("user");
   showSignInForm();
+  showForNewUser();
   console.log("signed out");
 }
 function signUp(e) {
