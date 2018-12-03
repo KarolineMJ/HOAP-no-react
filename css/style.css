@@ -58,7 +58,7 @@ body {
     #userPanel form fieldset,
     #userPanel form p {
       padding: 1em; }
-    #userPanel form #cancel {
+    #userPanel form .cancelBtn {
       background: red; }
     #userPanel form .hide {
       display: none; }
