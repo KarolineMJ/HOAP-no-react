@@ -1,20 +1,103 @@
 /* ----------------------
-       main things
+       general things
 -----------------------*/
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  position: relative;
+  font-family: helvetica; }
+
+body {
+  position: relative; }
 
 /* -----------------------
-        template 
+        #userPanel 
+------------------------*/
+#userPanel {
+  height: 50px;
+  width: 50%;
+  overflow: hidden; }
+  #userPanel form {
+    display: inherit;
+    background: white;
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    #userPanel form p {
+      z-index: 3; }
+    #userPanel form input,
+    #userPanel form button,
+    #userPanel form > p {
+      font-size: 19px;
+      display: block;
+      width: 100%;
+      height: 50px;
+      padding: 1em;
+      margin-bottom: 10px;
+      border: none;
+      background: #333;
+      color: white; }
+    #userPanel form input[type="submit"],
+    #userPanel form #signIn,
+    #userPanel form #hi {
+      cursor: pointer;
+      display: inline-block;
+      background: white;
+      color: #333;
+      font-weight: bold; }
+      #userPanel form input[type="submit"].hide,
+      #userPanel form #signIn.hide,
+      #userPanel form #hi.hide {
+        display: none; }
+    #userPanel form input[type="submit"] {
+      text-align: right;
+      border-left: none; }
+    #userPanel form fieldset,
+    #userPanel form p {
+      padding: 1em; }
+    #userPanel form #cancel {
+      background: red; }
+    #userPanel form .hide {
+      display: none; }
+    #userPanel form.hide {
+      display: none; }
+  #userPanel button {
+    text-align: right; }
+  #userPanel.expand {
+    overflow: visible;
+    z-index: 2; }
+
+/* -----------------------
+        #notificationPanel 
 ------------------------*/
 /* -----------------------
-        template 
+        #whoAreWe 
+------------------------*/
+#whoAreWe {
+  height: 80vh;
+  background-image: url("/assets/cats.jpg");
+  background-size: contain;
+  background-repeat: repeat-x; }
+  #whoAreWe.hide {
+    display: none; }
+
+/* -----------------------
+        #howYouHelp 
 ------------------------*/
 /* -----------------------
-        template 
+        #callToAction 
 ------------------------*/
 /* -----------------------
-        template 
+        #userSection 
 ------------------------*/
+#user.hide {
+  display: none; }
+
+/* -----------------------
+        #admin 
+------------------------*/
+#admin.hide {
+  display: none; }

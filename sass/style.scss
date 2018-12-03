@@ -1,5 +1,5 @@
 /* ----------------------
-       main things
+       general things
 -----------------------*/
 $font: helvetica;
 
@@ -7,20 +7,119 @@ $font: helvetica;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  position: relative;
+  font-family: $font;
+}
+body {
+  position: relative;
+}
+/* -----------------------
+        #userPanel 
+------------------------*/
+#userPanel {
+  height: 50px;
+  width: 50%;
+  overflow: hidden;
+  form {
+    display: inherit;
+    background: white;
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    p {
+      z-index: 3;
+    }
+    input,
+    button,
+    & > p {
+      font-size: 19px;
+      display: block;
+      width: 100%;
+      height: 50px;
+      padding: 1em;
+      margin-bottom: 10px;
+      border: none;
+      background: #333;
+      color: white;
+    }
+    input[type="submit"],
+    #signIn,
+    #hi {
+      cursor: pointer;
+      display: inline-block;
+      background: white;
+      color: #333;
+      font-weight: bold;
+      &.hide {
+        display: none;
+      }
+    }
+    input[type="submit"] {
+      text-align: right;
+      border-left: none;
+    }
+    fieldset,
+    p {
+      padding: 1em;
+    }
+    #cancel {
+      background: red;
+    }
+    .hide {
+      display: none;
+    }
+    &.hide {
+      display: none;
+    }
+  }
+  button {
+    text-align: right;
+  }
+  &.expand {
+    overflow: visible;
+    z-index: 2;
+  }
+}
+/* -----------------------
+        #notificationPanel 
+------------------------*/
+
+/* -----------------------
+        #whoAreWe 
+------------------------*/
+#whoAreWe {
+  height: 80vh;
+  background-image: url("/assets/cats.jpg");
+  background-size: contain;
+  background-repeat: repeat-x;
+  &.hide {
+    display: none;
+  }
 }
 
 /* -----------------------
-        template 
+        #howYouHelp 
 ------------------------*/
 
 /* -----------------------
-        template 
+        #callToAction 
 ------------------------*/
 
 /* -----------------------
-        template 
+        #userSection 
 ------------------------*/
-
+#user {
+  &.hide {
+    display: none;
+  }
+}
 /* -----------------------
-        template 
+        #admin 
 ------------------------*/
+#admin {
+  &.hide {
+    display: none;
+  }
+}

@@ -8,134 +8,51 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div id="animalList"></div>
+    <section id="userPanel">
+      <form id="signInForm" class="">
+          <p id="signIn">SIGN IN</p>
+          <input type="email" placeholder="email" id="email"></input>
+        <input type="password" placeholder="password" id="password"></input>
+        <input type="submit" value="&#10004;">
+      </form>
+      <form id="settingForm" class='hide'>
+        <p id="hi">hi</p>
+        <div id="sofar">
+          <p>your contribution sofar</p>
+          <p>level up?</p>
+        </div>
+        <fieldset>
+          <legend>one-time-donation</legend>
+          <p>what</p>
+          <p>deliver or pick-up</p>
+        </fieldset>
+        <fieldset>
+          <legend>whole lot of settings</legend>
+          <p>adjust monthly donation</p>
+          <p>change preference cat/dog</p>
+          <p>receive notifications of tasks or not</p>
+        </fieldset>
+        <input type="submit" value="&#10004; update my settings"></button>
+        <button class="signOutBtn showToAdmin">sign out</button>
+        <button class="cancelBtn">cancel membership</button>
 
-    <template id="animalTemp">
-      <section>
-        <img src="" alt="" />
-        <p class="petName">Name goes here</p>
-        <p class="petType">Dog or Cat</p>
-        <p class="petAge">Age: <span>0</span> y/o</p>
-        <p class="petGender">Male or female</p>
-        <p class="petRace">Race goes here</p>
-        <p class="petStory">Story goes here</p>
-        <p class="petSize">Small, medium or large</p>
-        <p class="petPregnant">Yes or no</p>
-        <p class="petPup">Yes or no</p>
-        <ul class="petActivity">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <p class="petFoodneed">Foodneed:</p>
-      </section>
-    </template>
-
-    <form id="addPetForm">
-      <div>
-        <label for="newPetName">Name</label>
-        <input type="text" name="name" id="newPetName" required />
-      </div>
-      <div>
-        <p>Type</p>
-        <label for="newCat"
-          >Cat<input type="radio" name="type" value="Cat" id="newCat"
-        /></label>
-        <label for="newDog"
-          >Dog <input type="radio" name="type" value="Dog" id="newDog" />
-        </label>
-      </div>
-
-      <div>
-        <p>Gender</p>
-        <label for="female"
-          >Female<input type="radio" name="gender" value="female"
-        /></label>
-        <label for="male"
-          >Male<input type="radio" name="gender" value="male"
-        /></label>
-      </div>
-      <div>
-        <label for="newPetRace">Breed</label>
-        <input type="text" name="race" id="newPetRace" required />
-      </div>
-      <div>
-        <label for="newPetAge">Age</label
-        ><input
-          type="number"
-          min="0"
-          max="30"
-          id="newPetAge"
-          name="age"
-          required
-        />
-      </div>
-      <div>
-        <label for="newPetStory">Story</label
-        ><textarea
-          name="story"
-          cols="30"
-          rows="10"
-          id="newPetStory"
-          required
-        ></textarea>
-      </div>
-      <div>
-        <p>Size</p>
-        <label for="newPetSmall"
-          >Small <input type="radio" name="size" value="S" id="newPetSmall" />
-        </label>
-        <label for="newPetMedium"
-          >Medium<input type="radio" name="size" value="M" id="newPetMedium"
-        /></label>
-        <label for="newPetLarge"
-          >Large<input type="radio" name="size" value="L" id="newPetLarge"
-        /></label>
-      </div>
-      <div>
-        <label for="pregnantPet"
-          >Pregnant <input type="checkbox" name="pregnant" id="pregnantPet"
-        /></label>
-      </div>
-      <div>
-        <label for="puppy"
-          >Pup <input type="checkbox" name="pup" id="puppy"
-        /></label>
-      </div>
-      <div>
-        <p>Activity need</p>
-        <label for="walkMorning">Morning</label>
-        <input
-          type="checkbox"
-          name="morning"
-          value="morning"
-          id="walkMorning"
-        />
-        <label for="walkAfternoon">Afternoon</label>
-        <input
-          type="checkbox"
-          name="afternoon"
-          value="afternoon"
-          id="walkAfternoon"
-        />
-        <label for="walkEvening">Evening</label>
-        <input
-          type="checkbox"
-          name="evening"
-          value="evening"
-          id="walkEvening"
-        />
-        <label for="extraNeeds">Extra training</label>
-        <input type="checkbox" name="extra" value="extra" id="extraNeeds" />
-      </div>
-      <div>
-        <label for="foodNeed">Food need</label>
-        <input type="number" name="foodneed" id="foodNeed" />
-      </div>
-      <button type="submit">Add Animal</button>
-    </form>
-
+      </form>    
+    </section>
+    <section id="notificationPanel">
+      <div id="logo"></div>
+    </section>
+    <section id="whoAreWe" class="forNewUser"></section>
+    <section id="howYouHelp" class="forNewUser"></section>
+    <section id="callToAction" class="forNewUser"></section>
+    <section id="admin" class="hide">
+      <div id="dashboard">dashboard</div>
+      <div id="pickPost">pick post</div>
+      <div id="postNotification">post notifications</div>
+    </section>
+    <section id="user" class="hide">
+      <div id="followedAnimals">following these</div>
+      <div id="otherAnimals">other animals</div>
+    </section>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script src="js/main.js"></script>
   </body>
