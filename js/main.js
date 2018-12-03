@@ -1,7 +1,7 @@
 "use strict";
 
 // Initialize Firebase
-var config = {
+let config = {
   apiKey: "AIzaSyBpAvUcRTsrwq5HRkRbruyxmhkhfdLbiMk",
   authDomain: "hoap-exam2018.firebaseapp.com",
   databaseURL: "https://hoap-exam2018.firebaseio.com",
