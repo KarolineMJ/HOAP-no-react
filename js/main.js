@@ -32,14 +32,13 @@ signInForm.addEventListener("submit", signIn);
 function signIn(e) {
   e.preventDefault();
   showSettingForm();
-  console.log("hhh");
   const email = document.querySelector("#email").value;
   window.sessionStorage.setItem("user", email);
   hi.textContent = `Hi ${email},`;
   if (email === "admin@admin") {
     showAdmin();
   } else if (email !== "") {
-    console.log("normal user");
+    showForOldUser();
   }
 }
 
