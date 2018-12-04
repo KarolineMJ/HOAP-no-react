@@ -66,6 +66,21 @@ function renderAnimal(doc) {
   animalList.appendChild(clone);
 }
 
+const signUpForm = document.querySelector("#signUp");
+const signInForm = document.querySelector("#signIn");
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    signInForm.style.display = "none";
+    signUpForm.style.display = "none";
+    signOutButton.style.display = "block";
+  } else {
+    signInForm.style.display = "block";
+    signUpForm.style.display = "block";
+    signOutButton.style.display = "none";
+  }
+});
+
 //const for signup
 const signUpEmail = document.querySelector("#signUp input[type='email']");
 const signUpPassword = document.querySelector("#signUp input[type='password']");
@@ -94,8 +109,41 @@ signUpButton.addEventListener("click", e => {
     });
 });
 
+//const for signin
+const signInEmail = document.querySelector("#signIn input[type='email']");
+const signInPassword = document.querySelector("#signIn input[type='password']");
+const signInButton = document.querySelector("#signIn .submit");
+
+//sign up a new user
+signInButton.addEventListener("click", e => {
+  e.preventDefault();
+
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(signInEmail.value, signInPassword.value)
+    .then(() => {
+      console.log("Succesfull signed in");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+
 //const for logout
-const logoutButton = document.querySelector("#logout");
+const signOutButton = document.querySelector("#signOut");
+
+signOutButton.addEventListener("click", e => {
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+      console.log("Succesfull logout");
+    })
+    .catch(function(error) {
+      // An error happened.
+      console.log(err);
+    });
+});
 
 //form for adding a new pet to the db
 const addPetForm = document.querySelector("#addPetForm");

@@ -6,6 +6,9 @@
   padding: 0;
   box-sizing: border-box; }
 
+#addPetForm {
+  background-color: lightblue; }
+
 /* -----------------------
         template 
 ------------------------*/
