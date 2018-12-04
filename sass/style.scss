@@ -2,6 +2,11 @@
        general things
 -----------------------*/
 $font: helvetica;
+$color-light-grey: hsla(222%, 100%, 97%, 1);
+$color-light-yellow: hsla(40%, 67%, 79%, 1);
+$color-light-pink: hsla(22%, 60%, 91%, 1);
+$color-dark-grey: hsla(260%, 6%, 30%, 1);
+$color-light-green: hsla(109%, 24%, 77%, 1);
 
 * {
   margin: 0;
@@ -85,6 +90,34 @@ body {
 /* -----------------------
         #notificationPanel 
 ------------------------*/
+#notificationPanel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 50px;
+  width: 50%;
+  overflow: hidden;
+  z-index: 2;
+  text-align: right;
+  padding: 1em;
+  #logo {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: #333;
+    position: absolute;
+    right: 1em;
+    cursor: pointer;
+  }
+  #notifications {
+    position: relative;
+    top: 50px;
+  }
+  &.expand {
+    overflow: visible;
+  }
+}
 
 /* -----------------------
         #whoAreWe 
@@ -94,6 +127,27 @@ body {
   background-image: url("/assets/cats.jpg");
   background-size: contain;
   background-repeat: repeat-x;
+  position: relative;
+  .intro {
+    height: 43%;
+    width: 50%;
+    min-width: 700px; /* temp solution */
+    background: $color-light-green;
+    opacity: 0.97;
+    position: relative;
+    left: 25%;
+    top: 41%;
+    padding: 2em 3em;
+    h1 {
+      font-size: 60px;
+      color: $color-light-grey;
+    }
+    p {
+      text-align: right;
+      font-size: 19px;
+      color: $color-light-grey;
+    }
+  }
   &.hide {
     display: none;
   }
@@ -102,7 +156,37 @@ body {
 /* -----------------------
         #howYouHelp 
 ------------------------*/
-
+#howYouHelp {
+  padding: 50px;
+  text-align: center;
+  img.icon {
+    width: 50px;
+  }
+  & > div {
+    position: relative;
+    .colorCode {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .left {
+      left: 35%;
+    }
+    .right {
+      right: 35%;
+    }
+    .color1 {
+      background: $color-light-pink;
+    }
+    .color2 {
+      background: $color-light-yellow;
+    }
+    .color3 {
+      background: $color-light-grey;
+    }
+  }
+}
 /* -----------------------
         #callToAction 
 ------------------------*/
