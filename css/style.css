@@ -166,6 +166,9 @@ body {
   #callToAction h3 {
     grid-column: 1/-1;
     text-align: center; }
+  #callToAction .actionDesc {
+    height: 50px;
+    /* temp solution */ }
   #callToAction input:not([type="checkbox"]),
   #callToAction button {
     display: block;
