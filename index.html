@@ -123,8 +123,10 @@
       <div id="postNotification">post notifications</div>
     </section>
     <section id="user" class="hide">
-      <div id="followedAnimals">following these</div>
-      <div id="otherAnimals">other animals</div>
+      <div id="followedAnimals">you are following these</div>
+      <div id="otherAnimals">
+      </div>
+      <div id="reserved"></div>
     </section>
     <footer>
       <div id="contact">
@@ -138,7 +140,38 @@
         <img src="" alt="?">
       </div>
     </footer>
+
+    <template id="animalTemp">
+      <section>
+        <div class="round"><div class="round"><div class="round"><div class="roundWrapper">
+            <img src="assets/cat1.png" alt="cat image" /></div>
+            </div></div></div>
+        <div class="animalInfo hide">
+          <h3>Info</h3>
+          <p class="petName">Name goes here</p>
+          <p class="petType">Dog or Cat</p>
+          <p class="petAge">Age: <span>0</span> y/o</p>
+          <p class="petGender">Male or female</p>
+          <p class="petRace">Race goes here</p>
+          <p class="petStory">Story goes here</p>
+          <p class="petSize">Small, medium or large</p>
+          <p class="petPregnant">Yes or no</p>
+          <p class="petPup">Yes or no</p>
+        </div>
+        <div class="animalNeeds hide">
+          <h3>Needs</h3>          
+          <ul class="petActivity">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <p class="petFoodneed">Foodneed:</p>
+</div>
+      </section>
+    </template>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/db.js"></script>
   </body>
 </html>

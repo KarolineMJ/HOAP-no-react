@@ -21,6 +21,9 @@ $color-sand: hsla(48%, 17%, 94%, 1);
 }
 body {
   position: relative;
+  & > *[id].hide {
+    display: none;
+  }
 }
 /* -----------------------
         #userPanel 
@@ -51,6 +54,7 @@ body {
       margin-bottom: 10px;
       border: none;
       color: white;
+      background: $color-dark-grey;
     }
     input[type="submit"],
     #signIn,
@@ -229,6 +233,9 @@ body {
   i {
     font-size: 0.7em;
   }
+  &.hide {
+    display: none;
+  }
 }
 /* -----------------------
         #userSection 
@@ -236,6 +243,63 @@ body {
 #user {
   &.hide {
     display: none;
+  }
+  #otherAnimals {
+    height: auto;
+    background: $color-sand;
+    padding: 10vw;
+    display: grid;
+    grid-gap: 5vw;
+    grid-template-columns: repeat(3, 23vw);
+    grid-template-rows: 23vw;
+    section {
+      display: grid;
+      grid-template-columns: 23vw 23vw;
+      grid-row-gap: 123px;
+      & > div:first-child {
+        grid-column: 1/-1;
+      }
+    }
+    .round {
+      cursor: pointer;
+      background: $color-light-orange;
+      border: 0.5vw solid transparent;
+      width: 23vw;
+      border-radius: 50%;
+      .round {
+        width: 22vw;
+        background: $color-light-yellow;
+        .round {
+          width: 21vw;
+          background: $color-light-pink;
+          .roundWrapper {
+            width: 20vw;
+            height: 20vw;
+            border-radius: 50%;
+            overflow: hidden;
+            img {
+              width: 20vw;
+              height: 20vw;
+            }
+          }
+        }
+      }
+      &.large {
+        transform: scale(1.5);
+      }
+      &.opacity {
+        opacity: 0.1;
+      }
+      &.hide {
+        display: none;
+      }
+    }
+    .hide {
+      display: none;
+    }
+  }
+  #reserved {
+    height: 200px;
   }
 }
 /* -----------------------

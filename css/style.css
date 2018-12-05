@@ -10,6 +10,8 @@
 
 body {
   position: relative; }
+  body > *[id].hide {
+    display: none; }
 
 /* -----------------------
         #userPanel 
@@ -38,7 +40,8 @@ body {
       padding: 1em;
       margin-bottom: 10px;
       border: none;
-      color: white; }
+      color: white;
+      background: #4b4851; }
     #userPanel form input[type="submit"],
     #userPanel form #signIn,
     #userPanel form #hi {
@@ -187,12 +190,60 @@ body {
     color: white; }
   #callToAction i {
     font-size: 0.7em; }
+  #callToAction.hide {
+    display: none; }
 
 /* -----------------------
         #userSection 
 ------------------------*/
 #user.hide {
   display: none; }
+
+#user #otherAnimals {
+  height: auto;
+  background: #f2f1ed;
+  padding: 10vw;
+  display: grid;
+  grid-gap: 5vw;
+  grid-template-columns: repeat(3, 23vw);
+  grid-template-rows: 23vw; }
+  #user #otherAnimals section {
+    display: grid;
+    grid-template-columns: 23vw 23vw;
+    grid-row-gap: 123px; }
+    #user #otherAnimals section > div:first-child {
+      grid-column: 1/-1; }
+  #user #otherAnimals .round {
+    cursor: pointer;
+    background: #e4a572;
+    border: 0.5vw solid transparent;
+    width: 23vw;
+    border-radius: 50%; }
+    #user #otherAnimals .round .round {
+      width: 22vw;
+      background: #edd5a6; }
+      #user #otherAnimals .round .round .round {
+        width: 21vw;
+        background: #f6e4da; }
+        #user #otherAnimals .round .round .round .roundWrapper {
+          width: 20vw;
+          height: 20vw;
+          border-radius: 50%;
+          overflow: hidden; }
+          #user #otherAnimals .round .round .round .roundWrapper img {
+            width: 20vw;
+            height: 20vw; }
+    #user #otherAnimals .round.large {
+      transform: scale(1.5); }
+    #user #otherAnimals .round.opacity {
+      opacity: 0.1; }
+    #user #otherAnimals .round.hide {
+      display: none; }
+  #user #otherAnimals .hide {
+    display: none; }
+
+#user #reserved {
+  height: 200px; }
 
 /* -----------------------
         #admin 
