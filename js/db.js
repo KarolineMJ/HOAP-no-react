@@ -15,6 +15,7 @@ const animalList = document.querySelector("#otherAnimals");
 const animalTemp = document.querySelector("#animalTemp").content;
 function renderAnimal(doc, index) {
   const clone = animalTemp.cloneNode(true);
+  clone.querySelector("section").setAttribute("data-id", doc.id);
   clone.querySelector("img").setAttribute("src", `assets/cat${index + 3}.png`);
   clone.querySelector(".petName").textContent = doc.data().name;
   clone.querySelector(".petType").textContent = doc.data().type;
@@ -92,6 +93,11 @@ db.collection("animals")
     const reservedArea = document.querySelector("#reserved");
     individualAnimal.forEach(eachAnimal =>
       eachAnimal.addEventListener("click", e => {
+        const currentUser = window.sessionStorage.getItem("user");
+        const clickedAnimal = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
+          "data-id"
+        );
+        console.log(currentUser + "clicked on " + clickedAnimal);
         reservedArea.classList.remove("hide");
         individualAnimal.forEach(other => {
           other.classList.remove("large");
