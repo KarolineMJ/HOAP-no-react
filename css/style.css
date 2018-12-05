@@ -277,8 +277,24 @@ body {
 /* -----------------------
         #admin 
 ------------------------*/
-#admin.hide {
-  display: none; }
+#admin {
+  position: relative; }
+  #admin nav {
+    position: fixed;
+    width: 10vw; }
+    #admin nav a {
+      display: block;
+      margin: 30px 0;
+      cursor: pointer; }
+  #admin .dash {
+    width: 90vw;
+    position: relative;
+    left: 10vw; }
+  #admin .dash > div {
+    height: 100vh;
+    border: 1px solid black; }
+  #admin.hide {
+    display: none; }
 
 footer {
   background: #4b4851;

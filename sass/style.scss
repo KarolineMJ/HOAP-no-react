@@ -342,6 +342,26 @@ body {
         #admin 
 ------------------------*/
 #admin {
+  position: relative;
+  nav {
+    position: fixed;
+    width: 10vw;
+    a {
+      display: block;
+      margin: 30px 0;
+      cursor: pointer;
+    }
+  }
+  .dash {
+    width: 90vw;
+    position: relative;
+    left: 10vw;
+  }
+  .dash > div {
+    height: 100vh;
+    border: 1px solid black;
+  }
+
   &.hide {
     display: none;
   }
