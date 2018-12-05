@@ -89,8 +89,10 @@ db.collection("animals")
     const individualAnimal = document.querySelectorAll(
       "#otherAnimals>section>.round"
     );
+    const reservedArea = document.querySelector("#reserved");
     individualAnimal.forEach(eachAnimal =>
       eachAnimal.addEventListener("click", e => {
+        reservedArea.classList.remove("hide");
         individualAnimal.forEach(other => {
           other.classList.remove("large");
           other.classList.add("opacity");

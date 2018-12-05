@@ -123,16 +123,35 @@
       <div id="postNotification">post notifications</div>
     </section>
     <section id="user" class="hide">
-      <div id="followedAnimals">you are following these</div>
-      <div id="otherAnimals">
+      <p>List of animals the user is following</p>
+      <div id="followedAnimals">
+        <div><img src="assets/cat1.png" alt="cat image"></div>
+        <div><img src="assets/cat2.png" alt="cat image"></div>
+        <div><img src="assets/cat6.png" alt="cat image"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="arrows">
+          <span>&lt;</span><span>&gt;</span>
+        </div>
       </div>
-      <div id="reserved"></div>
+      <p>List of other animals </p>
+      <div id="otherAnimals">
+          <div class="arrows">
+              <p><span>&lt;</span><span>&gt;</span></p>
+            </div>
+          </div>
+      <div id="reserved" class="hide"></div>
     </section>
     <footer>
       <div id="contact">
-        <p><address>addr:</address></p>
-        <p>tlf:name</p>
-        <p>location</p>
+        <h2>HOAP</h2>
+        <br>
+        <p><address>Address:</address></p>
+        <p>Contact person's name and tlf</p>
+        <p>Email</p>
+        <br>
+        <p>A drawing of map with pinned location which opens google map app on the phone</p>
       </div>
       <div id="SoMe">
         <img src="" alt="fb">
@@ -167,7 +186,7 @@
             <li></li>
           </ul>
           <p class="petFoodneed">Foodneed:</p>
-</div>
+        </div>
       </section>
     </template>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
