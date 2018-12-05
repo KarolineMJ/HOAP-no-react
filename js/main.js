@@ -14,15 +14,6 @@ firebase.initializeApp(config);
 // make a constant to the database
 const db = firebase.firestore();
 
-//get data from firebase
-db.collection("animals")
-  .get()
-  .then(anonymous => {
-    anonymous.docs.forEach(doc => {
-      renderAnimal(doc);
-    });
-  });
-
 //constant the animals will be placed in
 const animalList = document.querySelector("#animalList");
 
@@ -74,10 +65,24 @@ firebase.auth().onAuthStateChanged(function(user) {
     signInForm.style.display = "none";
     signUpForm.style.display = "none";
     signOutButton.style.display = "block";
+    //get data from firebase
+    db.collection("animals")
+      .get()
+      .then(anonymous => {
+        anonymous.docs.forEach(doc => {
+          renderAnimal(doc);
+        });
+      });
   } else {
     signInForm.style.display = "block";
     signUpForm.style.display = "block";
     signOutButton.style.display = "none";
+    animalList.innerHTML = "";
+    signInEmail.value = "";
+    signInPassword.value = "";
+    signUpEmail.value = "";
+    signUpNickname.value = "";
+    signUpPassword.value = "";
   }
 });
 
