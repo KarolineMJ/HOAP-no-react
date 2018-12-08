@@ -119,7 +119,7 @@ const signInEmail = document.querySelector("#signIn input[type='email']");
 const signInPassword = document.querySelector("#signIn input[type='password']");
 const signInButton = document.querySelector("#signIn .submit");
 
-//sign up a new user
+//sign in a new user
 signInButton.addEventListener("click", e => {
   e.preventDefault();
 

@@ -51,7 +51,7 @@
           />
           <label for="signipPassword">Your Password</label>
         </div>
-        <button type="submit">Sign up</button>
+        <button type="submit" id="signinButton">Sign up</button>
       </form>
     </div>
 
@@ -304,15 +304,18 @@
           </svg>
         </div>
       </div>
-      <div class="subscribe">
+      <div id="subscribeForm">
         <h3>Subscribe to our monthly newsletter</h3>
         <form>
-          <input type="email" placeholder="Your email" />
-          <input type="button" value="subscribe" />
+          <div class="formField">
+            <input type="email" placeholder="Your email" id="subscribeEmail" />
+            <label for="subscribeEmail">Email</label>
+          </div>
+          <button type="submit">Subscribe</button>
         </form>
       </div>
     </div>
-
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script src="js/frontpage.js"></script>
   </body>
 </html>

@@ -52,9 +52,6 @@ textarea:focus,
 button:focus {
   outline: none; }
 
-.formContent {
-  margin: auto; }
-
 #loginForm {
   display: none;
   position: fixed;
@@ -158,6 +155,61 @@ button:focus {
     #signupForm form button {
       margin: 20px 0; }
 
+#subscribeForm form {
+  display: grid; }
+  #subscribeForm form .formField {
+    display: flex;
+    flex-flow: column-reverse;
+    margin-bottom: 1em; }
+    #subscribeForm form .formField input {
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 1.5em;
+      border: 0;
+      border-bottom: 1px solid #ccc;
+      font-family: inherit;
+      -webkit-appearance: none;
+      border-radius: 0;
+      padding: 0;
+      cursor: text; }
+      #subscribeForm form .formField input:focus {
+        outline: 0;
+        border-bottom: 1px solid #74b7a5; }
+    #subscribeForm form .formField input:placeholder-shown + label {
+      cursor: text;
+      max-width: 66.66%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transform-origin: left bottom;
+      transform: translate(0, 1.5rem) scale(1.5); }
+    #subscribeForm form .formField ::-webkit-input-placeholder {
+      opacity: 0;
+      transition: inherit; }
+    #subscribeForm form .formField input:not(:placeholder-shown) + label,
+    #subscribeForm form .formField input:focus + label {
+      transition: 0.2s ease all;
+      transform: translate(0, 0) scale(1);
+      cursor: pointer; }
+    #subscribeForm form .formField input,
+    #subscribeForm form .formField label {
+      touch-action: manipulation; }
+  #subscribeForm form button {
+    font-family: "Raleway", sans-serif;
+    height: 40px;
+    justify-self: end;
+    padding: 7px;
+    width: 150px;
+    background-color: #74b7a5;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: end; }
+    #subscribeForm form button:hover {
+      background-color: #599686; }
+
 /* -----------------------
         Frontpage 
 ------------------------*/
@@ -258,15 +310,6 @@ button:focus {
     margin-bottom: 20px; }
   .footer .soMeBtn svg {
     fill: #ffffff; }
-  .footer form {
-    display: grid; }
-    .footer form input {
-      width: 200px;
-      border-radius: 0;
-      border-color: #ccc;
-      border-width: 0 0 2px 0;
-      border-style: none none solid none;
-      box-shadow: none; }
 
 .visible {
   display: block !important; }

@@ -66,9 +66,6 @@ button:focus {
   outline: none;
 }
 
-.formContent {
-  margin: auto;
-}
 #loginForm {
   display: none;
   position: fixed;
@@ -152,6 +149,73 @@ button:focus {
     input,
     button {
       margin: 20px 0;
+    }
+  }
+}
+
+#subscribeForm {
+  form {
+    display: grid;
+    .formField {
+      display: flex;
+      flex-flow: column-reverse;
+      margin-bottom: 1em;
+      input {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 1.5em;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        font-family: inherit;
+        -webkit-appearance: none;
+        border-radius: 0;
+        padding: 0;
+        cursor: text;
+        &:focus {
+          outline: 0;
+          border-bottom: 1px solid $darkbtn;
+        }
+      }
+      input:placeholder-shown + label {
+        cursor: text;
+        max-width: 66.66%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 1.5rem) scale(1.5);
+      }
+      ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit;
+      }
+      input:not(:placeholder-shown) + label,
+      input:focus + label {
+        transition: 0.2s ease all;
+        transform: translate(0, 0) scale(1);
+        cursor: pointer;
+      }
+      input,
+      label {
+        touch-action: manipulation;
+      }
+    }
+    button {
+      font-family: $font;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      width: 150px;
+      background-color: $darkbtn;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: end;
+      &:hover {
+        background-color: $btnHover;
+      }
     }
   }
 }
@@ -281,17 +345,6 @@ button:focus {
   .soMeBtn {
     svg {
       fill: #ffffff;
-    }
-  }
-  form {
-    display: grid;
-    input {
-      width: 200px;
-      border-radius: 0;
-      border-color: #ccc;
-      border-width: 0 0 2px 0;
-      border-style: none none solid none;
-      box-shadow: none;
     }
   }
 }
