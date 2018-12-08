@@ -1,17 +1,188 @@
 /* ----------------------
        main things
 -----------------------*/
+@import url("https://fonts.googleapis.com/css?family=Raleway");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
 
+body {
+  font-family: "Raleway", sans-serif; }
+
 #addPetForm {
   background-color: lightblue; }
 
 /* -----------------------
-        template 
+        Frontpage 
 ------------------------*/
+.navbar {
+  position: fixed;
+  height: 60px;
+  background-color: white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77); }
+  .navbar svg {
+    width: 150px;
+    padding: 7px;
+    fill: #74b7a5;
+    align-self: center; }
+  .navbar .darkBtn {
+    justify-self: end;
+    align-self: center;
+    margin-right: 10px; }
+    .navbar .darkBtn :hover {
+      background-color: #599686; }
+    .navbar .darkBtn a {
+      padding: 7px;
+      background-color: #74b7a5;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #ffffff; }
+
+#intro {
+  padding-top: 60px;
+  background-color: #ead8a6;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  #intro .catchphrase {
+    justify-self: center;
+    align-self: center; }
+    #intro .catchphrase p {
+      color: #ffffff;
+      font-size: 50px; }
+  #intro .introPic {
+    align-self: center; }
+    #intro .introPic img {
+      width: 40vw; }
+
+.fullsize {
+  width: 100%;
+  height: 100vh; }
+
+#aboutUs {
+  display: grid;
+  align-self: center;
+  background-color: #efefef;
+  color: #aeaeae;
+  text-align: center;
+  padding: 10vw; }
+  #aboutUs h1 {
+    align-self: center; }
+  #aboutUs .aboutCont {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 70px; }
+    #aboutUs .aboutCont h2 {
+      margin: 20px 0; }
+    #aboutUs .aboutCont .aboutImg {
+      background-color: #ffffff;
+      border-radius: 50%;
+      height: 150px;
+      width: 150px;
+      display: grid;
+      margin: 20px auto; }
+      #aboutUs .aboutCont .aboutImg svg {
+        height: 120px;
+        place-self: center; }
+
+.footer {
+  padding: 50px 10vw;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #a6bdb7; }
+  .footer h3 {
+    margin-bottom: 20px; }
+  .footer .contactInfo {
+    margin-bottom: 20px; }
+  .footer .soMeBtn svg {
+    fill: #ffffff; }
+  .footer form {
+    display: grid; }
+    .footer form input {
+      width: 200px;
+      border-radius: 0;
+      border-color: #ccc;
+      border-width: 0 0 2px 0;
+      border-style: none none solid none;
+      box-shadow: none; }
+
+#ourPets {
+  padding: 10vw;
+  background-color: #d7e8f0;
+  color: grey;
+  display: grid;
+  grid-template-rows: 20vh 1fr; }
+  #ourPets h2 {
+    text-align: center;
+    align-self: end;
+    margin: 20px 0; }
+  #ourPets #animalImage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+    #ourPets #animalImage div {
+      margin: 20px 0;
+      justify-self: center; }
+      #ourPets #animalImage div img {
+        width: 16vw;
+        border-radius: 50%; }
+
+#frontpageForms {
+  background-color: #74b7a5;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  #frontpageForms #donationForm,
+  #frontpageForms #signupForm {
+    color: grey;
+    display: grid;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
+    margin: 10vw;
+    padding: 40px; }
+    #frontpageForms #donationForm form,
+    #frontpageForms #signupForm form {
+      display: grid; }
+      #frontpageForms #donationForm form input,
+      #frontpageForms #signupForm form input {
+        font-family: "Raleway", sans-serif;
+        width: 100%;
+        border-radius: 0;
+        border-color: #ccc;
+        border-width: 0 0 2px 0;
+        border-style: none none solid none;
+        box-shadow: none; }
+        #frontpageForms #donationForm form input[type="checkbox"],
+        #frontpageForms #signupForm form input[type="checkbox"] {
+          width: 20px; }
+      #frontpageForms #donationForm form button,
+      #frontpageForms #signupForm form button {
+        font-family: "Raleway", sans-serif;
+        height: 40px;
+        justify-self: end;
+        padding: 7px;
+        width: 150px;
+        background-color: #74b7a5;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        align-self: end; }
+        #frontpageForms #donationForm form button:hover,
+        #frontpageForms #signupForm form button:hover {
+          background-color: #599686; }
+      #frontpageForms #donationForm form input,
+      #frontpageForms #donationForm form button,
+      #frontpageForms #signupForm form input,
+      #frontpageForms #signupForm form button {
+        margin: 20px 0; }
+
 /* -----------------------
         template 
 ------------------------*/
