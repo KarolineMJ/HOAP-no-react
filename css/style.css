@@ -162,10 +162,11 @@ button:focus {
     flex-flow: column-reverse;
     margin-bottom: 1em; }
     #subscribeForm form .formField input {
+      color: #ffffff;
       background-color: rgba(0, 0, 0, 0);
       font-size: 1.5em;
       border: 0;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid white;
       font-family: inherit;
       -webkit-appearance: none;
       border-radius: 0;
@@ -173,7 +174,8 @@ button:focus {
       cursor: text; }
       #subscribeForm form .formField input:focus {
         outline: 0;
-        border-bottom: 1px solid #74b7a5; }
+        transition: 0.2s ease all;
+        border-bottom: 2px solid white; }
     #subscribeForm form .formField input:placeholder-shown + label {
       cursor: text;
       max-width: 66.66%;
@@ -199,7 +201,7 @@ button:focus {
     justify-self: end;
     padding: 7px;
     width: 150px;
-    background-color: #74b7a5;
+    background-color: #759189;
     border: none;
     color: white;
     text-align: center;
@@ -208,7 +210,7 @@ button:focus {
     cursor: pointer;
     align-self: end; }
     #subscribeForm form button:hover {
-      background-color: #599686; }
+      background-color: #637e76; }
 
 /* -----------------------
         Frontpage 
