@@ -43,56 +43,120 @@ body {
       text-decoration: none;
       color: #ffffff; }
 
+/*------------------------------
+Forms
+------------------------------*/
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
   outline: none; }
 
-.loginForm {
+.formContent {
+  margin: auto; }
+
+#loginForm {
   display: none;
+  position: fixed;
   z-index: 10;
   right: 0;
-  top: 60px;
+  top: 60px; }
+
+#loginForm,
+#donationForm,
+#signupForm {
   background-color: white;
-  position: fixed;
   box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
-  width: 23vw;
-  padding: 40px; }
-  .loginForm #signinForm {
-    color: grey;
+  padding: 40px;
+  color: grey; }
+  #loginForm h2,
+  #donationForm h2,
+  #signupForm h2 {
+    margin-bottom: 20px; }
+  #loginForm form,
+  #donationForm form,
+  #signupForm form {
     display: grid; }
-    .loginForm #signinForm h2 {
-      margin-bottom: 20px; }
-    .loginForm #signinForm form {
-      display: grid; }
-      .loginForm #signinForm form input {
-        font-family: "Raleway", sans-serif;
-        width: 100%;
+    #loginForm form .formField,
+    #donationForm form .formField,
+    #signupForm form .formField {
+      display: flex;
+      flex-flow: column-reverse;
+      margin-bottom: 1em; }
+      #loginForm form .formField input,
+      #donationForm form .formField input,
+      #signupForm form .formField input {
+        font-size: 1.5em;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        font-family: inherit;
+        -webkit-appearance: none;
         border-radius: 0;
-        border-color: #ccc;
-        border-width: 0 0 2px 0;
-        border-style: none none solid none;
-        box-shadow: none; }
-      .loginForm #signinForm form button {
-        font-family: "Raleway", sans-serif;
-        height: 40px;
-        justify-self: end;
-        padding: 7px;
-        width: 150px;
-        background-color: #74b7a5;
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
-        align-self: end; }
-        .loginForm #signinForm form button:hover {
-          background-color: #599686; }
-      .loginForm #signinForm form input,
-      .loginForm #signinForm form button {
-        margin: 20px 0; }
+        padding: 0;
+        cursor: text; }
+        #loginForm form .formField input:focus,
+        #donationForm form .formField input:focus,
+        #signupForm form .formField input:focus {
+          outline: 0;
+          border-bottom: 1px solid #74b7a5; }
+      #loginForm form .formField input:placeholder-shown + label,
+      #donationForm form .formField input:placeholder-shown + label,
+      #signupForm form .formField input:placeholder-shown + label {
+        cursor: text;
+        max-width: 66.66%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 2.125rem) scale(1.5); }
+      #loginForm form .formField ::-webkit-input-placeholder,
+      #donationForm form .formField ::-webkit-input-placeholder,
+      #signupForm form .formField ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit; }
+      #loginForm form .formField input:not(:placeholder-shown) + label,
+      #loginForm form .formField input:focus + label,
+      #donationForm form .formField input:not(:placeholder-shown) + label,
+      #donationForm form .formField input:focus + label,
+      #signupForm form .formField input:not(:placeholder-shown) + label,
+      #signupForm form .formField input:focus + label {
+        transition: 0.2s ease all;
+        transform: translate(0, 0) scale(1);
+        cursor: pointer; }
+      #loginForm form .formField input,
+      #loginForm form .formField label,
+      #donationForm form .formField input,
+      #donationForm form .formField label,
+      #signupForm form .formField input,
+      #signupForm form .formField label {
+        touch-action: manipulation; }
+    #loginForm form button,
+    #donationForm form button,
+    #signupForm form button {
+      font-family: "Raleway", sans-serif;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      width: 150px;
+      background-color: #74b7a5;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: end; }
+      #loginForm form button:hover,
+      #donationForm form button:hover,
+      #signupForm form button:hover {
+        background-color: #599686; }
+    #loginForm form input,
+    #loginForm form button,
+    #donationForm form input,
+    #donationForm form button,
+    #signupForm form input,
+    #signupForm form button {
+      margin: 20px 0; }
 
 /* -----------------------
         Frontpage 
@@ -176,50 +240,8 @@ button:focus {
   grid-template-columns: 1fr 1fr; }
   #frontpageForms #donationForm,
   #frontpageForms #signupForm {
-    color: grey;
-    display: grid;
-    background-color: #ffffff;
-    box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
     margin: 10vw;
     padding: 40px; }
-    #frontpageForms #donationForm form,
-    #frontpageForms #signupForm form {
-      display: grid; }
-      #frontpageForms #donationForm form input,
-      #frontpageForms #signupForm form input {
-        font-family: "Raleway", sans-serif;
-        width: 100%;
-        border-radius: 0;
-        border-color: #ccc;
-        border-width: 0 0 2px 0;
-        border-style: none none solid none;
-        box-shadow: none; }
-        #frontpageForms #donationForm form input[type="checkbox"],
-        #frontpageForms #signupForm form input[type="checkbox"] {
-          width: 20px; }
-      #frontpageForms #donationForm form button,
-      #frontpageForms #signupForm form button {
-        font-family: "Raleway", sans-serif;
-        height: 40px;
-        justify-self: end;
-        padding: 7px;
-        width: 150px;
-        background-color: #74b7a5;
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
-        align-self: end; }
-        #frontpageForms #donationForm form button:hover,
-        #frontpageForms #signupForm form button:hover {
-          background-color: #599686; }
-      #frontpageForms #donationForm form input,
-      #frontpageForms #donationForm form button,
-      #frontpageForms #signupForm form input,
-      #frontpageForms #signupForm form button {
-        margin: 20px 0; }
 
 /* -----------------------
         footer 
@@ -247,7 +269,7 @@ button:focus {
       box-shadow: none; }
 
 .visible {
-  display: block; }
+  display: block !important; }
 
 /* -----------------------
         template 

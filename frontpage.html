@@ -36,22 +36,23 @@
         <a href="#">Already a member?</a>
       </div>
     </div>
-    <div class="loginForm">
-      <div id="signinForm">
-        <h2>Sign in</h2>
-        <form>
-          <label for="signupEmail" class="formLabel">Your email</label>
-          <input type="email" id="signupEmail" placeholder="Your email" />
-          <label for="signinPassword">Your Password</label>
-          <label for="signinPassword" class="formLabel"></label>
+    <div id="loginForm">
+      <h2>Sign in</h2>
+      <form>
+        <div class="formField">
+          <input type="email" id="signipEmail" placeholder="Your email" />
+          <label for="signipEmail" class="formLabel">Your email</label>
+        </div>
+        <div class="formField">
           <input
             type="password"
-            id="signupPassword"
+            id="signipPassword"
             placeholder="Your password"
           />
-          <button type="submit">Sign up</button>
-        </form>
-      </div>
+          <label for="signipPassword">Your Password</label>
+        </div>
+        <button type="submit">Sign up</button>
+      </form>
     </div>
 
     <div id="intro">
@@ -217,35 +218,51 @@
         </div>
       </div>
     </div>
-    <div id="frontpageForms" class="fullsize">
+    <div id="frontpageForms">
       <div id="donationForm">
         <h2>One-time donation</h2>
         <form>
-          <input type="text" placeholder="What" />
+          <div class="formField">
+            <input type="text" placeholder="What" id="donateWhat" />
+            <label for="donateWhat">Thing you want to donate</label>
+          </div>
+          <label for="donateWhat"></label>
           <div>
-            <input type="checkbox" id="pickUp" />
+            <input type="checkbox" id="pickUp" aria-placeholder="Pick up" />
             <label for="pickUp">Want us to pick it up?</label>
           </div>
           <p>And / or</p>
+          <div class="formField">
+            <input type="text" id="donateHowMuch" placeholder="How much" />
+            <label for="donateHowMuch">How much</label>
+          </div>
+          <div class="formField">
+            <input type="text" id="donateWho" placeholder="In whose name" />
+            <label for="donateWho">In whose name</label>
+          </div>
 
-          <input type="text" placeholder="How much" />
-          <input type="text" placeholder="In whose name" />
           <button type="submit">Donate</button>
         </form>
       </div>
       <div id="signupForm">
         <h2>Sign up as member</h2>
         <form>
-          <label for="signupName" class="formLabel">Your name</label>
-          <input type="text" id="signupName" placeholder="Your name" />
-          <label for="signupEmail" class="formLabel">Your email</label>
-          <input type="email" id="signupEmail" placeholder="Your email" />
-          <label for="signupPassword" class="formLabel"></label>
-          <input
-            type="password"
-            id="signupPassword"
-            placeholder="Your password"
-          />
+          <div class="formField">
+            <input type="name" id="signupName" placeholder="Your name" />
+            <label for="signupName" class="formLabel">Your name</label>
+          </div>
+          <div class="formField">
+            <input type="email" id="signupEmail" placeholder="Your email" />
+            <label for="signupEmail" class="formLabel">Your email</label>
+          </div>
+          <div class="formField">
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Your password"
+            />
+            <label for="signupPassword" class="formLabel">Password</label>
+          </div>
           <button type="submit">Sign up</button>
         </form>
       </div>
@@ -290,7 +307,8 @@
       <div class="subscribe">
         <h3>Subscribe to our monthly newsletter</h3>
         <form>
-          <input type="email" /> <input type="button" value="subscribe" />
+          <input type="email" placeholder="Your email" />
+          <input type="button" value="subscribe" />
         </form>
       </div>
     </div>
