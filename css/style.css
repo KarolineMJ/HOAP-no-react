@@ -1,17 +1,321 @@
 /* ----------------------
        main things
 -----------------------*/
+@import url("https://fonts.googleapis.com/css?family=Raleway");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
 
+body {
+  font-family: "Raleway", sans-serif; }
+
+#addPetForm {
+  background-color: lightblue; }
+
 /* -----------------------
-        template 
+        Navbar 
 ------------------------*/
+.navbar {
+  position: fixed;
+  z-index: 20;
+  height: 60px;
+  background-color: white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77); }
+  .navbar svg {
+    width: 150px;
+    padding: 7px;
+    fill: #74b7a5;
+    align-self: center; }
+  .navbar .darkBtn {
+    justify-self: end;
+    align-self: center;
+    margin-right: 10px; }
+    .navbar .darkBtn :hover {
+      background-color: #599686; }
+    .navbar .darkBtn a {
+      padding: 7px;
+      background-color: #74b7a5;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #ffffff; }
+
+/*------------------------------
+Forms
+------------------------------*/
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none; }
+
+#loginForm {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  top: 60px; }
+
+#loginForm,
+#donationForm,
+#signupForm {
+  background-color: white;
+  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
+  padding: 40px;
+  color: grey; }
+  #loginForm h2,
+  #donationForm h2,
+  #signupForm h2 {
+    margin-bottom: 20px; }
+  #loginForm form,
+  #donationForm form,
+  #signupForm form {
+    display: grid; }
+    #loginForm form .formField,
+    #donationForm form .formField,
+    #signupForm form .formField {
+      display: flex;
+      flex-flow: column-reverse;
+      margin-bottom: 1em; }
+      #loginForm form .formField input,
+      #donationForm form .formField input,
+      #signupForm form .formField input {
+        font-size: 1.5em;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        font-family: inherit;
+        -webkit-appearance: none;
+        border-radius: 0;
+        padding: 0;
+        cursor: text; }
+        #loginForm form .formField input:focus,
+        #donationForm form .formField input:focus,
+        #signupForm form .formField input:focus {
+          outline: 0;
+          border-bottom: 1px solid #74b7a5; }
+      #loginForm form .formField input:placeholder-shown + label,
+      #donationForm form .formField input:placeholder-shown + label,
+      #signupForm form .formField input:placeholder-shown + label {
+        cursor: text;
+        max-width: 66.66%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 2.125rem) scale(1.5); }
+      #loginForm form .formField ::-webkit-input-placeholder,
+      #donationForm form .formField ::-webkit-input-placeholder,
+      #signupForm form .formField ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit; }
+      #loginForm form .formField input:not(:placeholder-shown) + label,
+      #loginForm form .formField input:focus + label,
+      #donationForm form .formField input:not(:placeholder-shown) + label,
+      #donationForm form .formField input:focus + label,
+      #signupForm form .formField input:not(:placeholder-shown) + label,
+      #signupForm form .formField input:focus + label {
+        transition: 0.2s ease all;
+        transform: translate(0, 0) scale(1);
+        cursor: pointer; }
+      #loginForm form .formField input,
+      #loginForm form .formField label,
+      #donationForm form .formField input,
+      #donationForm form .formField label,
+      #signupForm form .formField input,
+      #signupForm form .formField label {
+        touch-action: manipulation; }
+    #loginForm form button,
+    #donationForm form button,
+    #signupForm form button {
+      font-family: "Raleway", sans-serif;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      width: 150px;
+      background-color: #74b7a5;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: end; }
+      #loginForm form button:hover,
+      #donationForm form button:hover,
+      #signupForm form button:hover {
+        background-color: #599686; }
+    #loginForm form input,
+    #loginForm form button,
+    #donationForm form input,
+    #donationForm form button,
+    #signupForm form input,
+    #signupForm form button {
+      margin: 20px 0; }
+
+#subscribeForm form {
+  display: grid; }
+  #subscribeForm form .formField {
+    display: flex;
+    flex-flow: column-reverse;
+    margin-bottom: 1em; }
+    #subscribeForm form .formField input {
+      color: #ffffff;
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 1.5em;
+      border: 0;
+      border-bottom: 1px solid white;
+      font-family: inherit;
+      -webkit-appearance: none;
+      border-radius: 0;
+      padding: 0;
+      cursor: text; }
+      #subscribeForm form .formField input:focus {
+        outline: 0;
+        transition: 0.2s ease all;
+        border-bottom: 2px solid white; }
+    #subscribeForm form .formField input:placeholder-shown + label {
+      cursor: text;
+      max-width: 66.66%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transform-origin: left bottom;
+      transform: translate(0, 1.5rem) scale(1.5); }
+    #subscribeForm form .formField ::-webkit-input-placeholder {
+      opacity: 0;
+      transition: inherit; }
+    #subscribeForm form .formField input:not(:placeholder-shown) + label,
+    #subscribeForm form .formField input:focus + label {
+      transition: 0.2s ease all;
+      transform: translate(0, 0) scale(1);
+      cursor: pointer; }
+    #subscribeForm form .formField input,
+    #subscribeForm form .formField label {
+      touch-action: manipulation; }
+  #subscribeForm form button {
+    font-family: "Raleway", sans-serif;
+    height: 40px;
+    justify-self: end;
+    padding: 7px;
+    width: 150px;
+    background-color: #759189;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: end; }
+    #subscribeForm form button:hover {
+      background-color: #637e76; }
+
 /* -----------------------
-        template 
+        Frontpage 
 ------------------------*/
+#intro {
+  padding-top: 60px;
+  background-color: #ead8a6;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  #intro .catchphrase {
+    justify-self: center;
+    align-self: center; }
+    #intro .catchphrase h1 {
+      color: #ffffff;
+      font-size: 76px; }
+      #intro .catchphrase h1 span {
+        font-size: 117px; }
+        #intro .catchphrase h1 span::before {
+          content: "\A";
+          white-space: pre; }
+  #intro .introPic {
+    align-self: center; }
+    #intro .introPic img {
+      width: 40vw; }
+
+.fullsize {
+  width: 100%;
+  height: 100vh; }
+
+#aboutUs {
+  display: grid;
+  align-self: center;
+  background-color: #efefef;
+  color: #aeaeae;
+  text-align: center;
+  padding: 10vw; }
+  #aboutUs h1 {
+    align-self: center; }
+  #aboutUs .aboutCont {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 70px; }
+    #aboutUs .aboutCont h2 {
+      margin: 20px 0; }
+    #aboutUs .aboutCont .aboutImg {
+      background-color: #ffffff;
+      border-radius: 50%;
+      height: 150px;
+      width: 150px;
+      display: grid;
+      margin: 20px auto; }
+      #aboutUs .aboutCont .aboutImg svg {
+        height: 120px;
+        place-self: center; }
+
+#ourPets {
+  padding: 10vw;
+  background-color: #d7e8f0;
+  color: grey;
+  display: grid;
+  grid-template-rows: 20vh 1fr; }
+  #ourPets h2 {
+    text-align: center;
+    align-self: end;
+    margin: 20px 0; }
+  #ourPets #animalImage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+    #ourPets #animalImage div {
+      margin: 20px 0;
+      justify-self: center; }
+      #ourPets #animalImage div img {
+        width: 16vw;
+        border-radius: 50%; }
+
+#frontpageForms {
+  background-color: #74b7a5;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  #frontpageForms #donationForm,
+  #frontpageForms #signupForm {
+    margin: 10vw;
+    padding: 40px; }
+
+/* -----------------------
+        footer 
+------------------------*/
+.footer {
+  padding: 50px 10vw;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #a6bdb7; }
+  .footer h3 {
+    margin-bottom: 20px; }
+  .footer .contactInfo {
+    margin-bottom: 20px; }
+  .footer .soMeBtn svg {
+    fill: #ffffff; }
+
+.visible {
+  display: block !important; }
+
 /* -----------------------
         template 
 ------------------------*/

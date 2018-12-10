@@ -11,9 +11,16 @@ let config = {
 };
 firebase.initializeApp(config);
 
+// make a constant to the database
+const db = firebase.firestore();
+
+//constant the animals will be placed in
 const animalList = document.querySelector("#animalList");
+
+//constant fot the template
 const animalTemp = document.querySelector("#animalTemp").content;
 
+//render the animals from the database into the website
 function renderAnimal(doc) {
   const clone = animalTemp.cloneNode(true);
   clone.querySelector(".petName").textContent = doc.data().name;
@@ -46,15 +53,111 @@ function renderAnimal(doc) {
 
   clone.querySelector(".petFoodneed").textContent = doc.data().foodneed + "kr";
 
+  //append the cloned content to the div
   animalList.appendChild(clone);
 }
 
+const signUpForm = document.querySelector("#signUp");
+const signInForm = document.querySelector("#signIn");
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    signInForm.style.display = "none";
+    signUpForm.style.display = "none";
+    signOutButton.style.display = "block";
+    //get data from firebase
+    db.collection("animals")
+      .get()
+      .then(anonymous => {
+        anonymous.docs.forEach(doc => {
+          renderAnimal(doc);
+        });
+      });
+  } else {
+    signInForm.style.display = "block";
+    signUpForm.style.display = "block";
+    signOutButton.style.display = "none";
+    animalList.innerHTML = "";
+    signInEmail.value = "";
+    signInPassword.value = "";
+    signUpEmail.value = "";
+    signUpNickname.value = "";
+    signUpPassword.value = "";
+  }
+});
+
+//const for signup
+const signUpEmail = document.querySelector("#signUp input[type='email']");
+const signUpPassword = document.querySelector("#signUp input[type='password']");
+const signUpNickname = document.querySelector("#signUp input[type='text']");
+
+const signUpButton = document.querySelector("#signUp .submit");
+
+//sign up a new user
+signUpButton.addEventListener("click", e => {
+  e.preventDefault();
+
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(signUpEmail.value, signUpPassword.value)
+    .then(() => {
+      console.log("Succesfull signup");
+
+      db.collection("member").add({
+        email: signUpEmail.value,
+        nickname: signUpNickname.value,
+        permission: "none"
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+
+//const for signin
+const signInEmail = document.querySelector("#signIn input[type='email']");
+const signInPassword = document.querySelector("#signIn input[type='password']");
+const signInButton = document.querySelector("#signIn .submit");
+
+//sign in a new user
+signInButton.addEventListener("click", e => {
+  e.preventDefault();
+
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(signInEmail.value, signInPassword.value)
+    .then(() => {
+      console.log("Succesfull signed in");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+
+//const for logout
+const signOutButton = document.querySelector("#signOut");
+
+signOutButton.addEventListener("click", e => {
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+      console.log("Succesfull logout");
+    })
+    .catch(function(error) {
+      // An error happened.
+      console.log(err);
+    });
+});
+
+//form for adding a new pet to the db
 const addPetForm = document.querySelector("#addPetForm");
 
-//save data to firebase
+//save data to firestore when clicking on the button
 addPetForm.addEventListener("submit", e => {
   e.preventDefault();
-  console.log(addPetForm.morning.checked);
+
+  //add to the specific collection in firestore
   db.collection("animals").add({
     name: addPetForm.name.value,
     type: addPetForm.type.value,
@@ -74,14 +177,3 @@ addPetForm.addEventListener("submit", e => {
     foodneed: addPetForm.foodneed.value
   });
 });
-
-const db = firebase.firestore();
-
-//get data from firebase
-db.collection("animals")
-  .get()
-  .then(anonymous => {
-    anonymous.docs.forEach(doc => {
-      renderAnimal(doc);
-    });
-  });
