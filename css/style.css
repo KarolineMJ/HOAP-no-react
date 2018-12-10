@@ -281,7 +281,8 @@ body {
   position: relative; }
   #admin nav {
     position: fixed;
-    width: 10vw; }
+    width: 10vw;
+    padding-left: 20px; }
     #admin nav a {
       display: block;
       margin: 30px 0;
