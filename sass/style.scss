@@ -35,11 +35,13 @@ body {
   box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
   svg {
     width: 150px;
-    padding: 7px;
-    fill: $darkbtn;
+    padding: 18px;
+    fill: #818181;
     align-self: center;
   }
   .darkBtn {
+    font-size: 13px;
+    padding: 9px;
     justify-self: end;
     align-self: center;
     margin-right: 10px;
@@ -49,7 +51,7 @@ body {
     a {
       padding: 7px;
       background-color: $darkbtn;
-      border-radius: 5px;
+      border-radius: 40px;
       text-decoration: none;
       color: #ffffff;
     }
@@ -233,26 +235,61 @@ button:focus {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  .catchphrase {
-    justify-self: center;
-
+  .introText {
+    padding-left: 10vw;
+    width: 42vw;
     align-self: center;
-    h1 {
-      color: #ffffff;
-      font-size: 76px;
-      span {
-        font-size: 117px;
-        &::before {
-          content: "\A";
-          white-space: pre;
+    .catchphrase {
+      justify-self: center;
+      padding-bottom: 30px;
+      h1 {
+        line-height: 1;
+        color: rgba($color: white, $alpha: 0.7);
+        font-size: 6vw;
+        span {
+          font-size: 9.5vw;
+          &::before {
+            content: "\A";
+            white-space: pre;
+          }
         }
       }
     }
+    p {
+      color: #c18e63;
+    }
   }
   .introPic {
-    align-self: center;
-    img {
-      width: 40vw;
+    display: grid;
+    position: relative;
+    .circle {
+      position: absolute;
+      align-self: center;
+      img {
+        width: 40vw;
+        background-color: rgba($color: white, $alpha: 0.7);
+        border-radius: 50%;
+      }
+    }
+
+    .introCat {
+      position: absolute;
+      align-self: center;
+      top: 388px;
+      left: -7vw;
+      img {
+        width: 23vw;
+      }
+    }
+
+    .introDog {
+      position: absolute;
+      align-self: center;
+      top: 238px;
+      left: 14vw;
+      img {
+        width: 31vw;
+      }
     }
   }
 }
