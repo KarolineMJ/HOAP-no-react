@@ -30,6 +30,11 @@ body {
     padding: 18px;
     fill: #818181;
     align-self: center; }
+  .navbar #sidebarBtns {
+    justify-self: end; }
+    .navbar #sidebarBtns svg {
+      width: 70px;
+      padding: 15px; }
   .navbar .darkBtn {
     font-size: 13px;
     padding: 9px;
@@ -331,7 +336,7 @@ button:focus {
 ------------------------*/
 #yourPets {
   padding: 10vw;
-  background-color: #ead8a6;
+  background-color: #efefef;
   color: grey;
   display: grid;
   grid-template-rows: 20vh 1fr; }
@@ -344,10 +349,29 @@ button:focus {
     grid-template-columns: 1fr 1fr 1fr 1fr; }
     #yourPets #animalImage div {
       margin: 20px 0;
-      justify-self: center; }
+      justify-self: center;
+      text-align: center; }
+      #yourPets #animalImage div .needsCircle {
+        width: 18px;
+        height: 18px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute; }
       #yourPets #animalImage div img {
         width: 16vw;
         border-radius: 50%; }
+      #yourPets #animalImage div .petName {
+        display: inline-block;
+        padding: 2px; }
+        #yourPets #animalImage div .petName svg {
+          width: 20px;
+          vertical-align: middle;
+          padding-right: 3px; }
+        #yourPets #animalImage div .petName h3 {
+          vertical-align: middle;
+          display: inline-block;
+          padding: 2px;
+          color: #c18e63; }
 
 /* -----------------------
         footer 
