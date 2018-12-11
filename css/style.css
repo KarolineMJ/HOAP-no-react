@@ -327,6 +327,29 @@ button:focus {
     padding: 40px; }
 
 /* -----------------------
+        signed in page
+------------------------*/
+#yourPets {
+  padding: 10vw;
+  background-color: #ead8a6;
+  color: grey;
+  display: grid;
+  grid-template-rows: 20vh 1fr; }
+  #yourPets h2 {
+    text-align: center;
+    align-self: end;
+    margin: 20px 0; }
+  #yourPets #animalImage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+    #yourPets #animalImage div {
+      margin: 20px 0;
+      justify-self: center; }
+      #yourPets #animalImage div img {
+        width: 16vw;
+        border-radius: 50%; }
+
+/* -----------------------
         footer 
 ------------------------*/
 .footer {

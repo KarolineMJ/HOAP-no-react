@@ -6,6 +6,7 @@
 $font: "Raleway", sans-serif;
 $btnHover: #599686;
 $darkbtn: #74b7a5;
+$mainColor: #ead8a6;
 
 * {
   margin: 0;
@@ -366,6 +367,36 @@ button:focus {
     padding: 40px;
   }
 }
+/* -----------------------
+        signed in page
+------------------------*/
+
+#yourPets {
+  padding: 10vw;
+  background-color: $mainColor;
+  color: grey;
+  display: grid;
+  grid-template-rows: 20vh 1fr;
+
+  h2 {
+    text-align: center;
+    align-self: end;
+    margin: 20px 0;
+  }
+  #animalImage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    div {
+      margin: 20px 0;
+      justify-self: center;
+
+      img {
+        width: 16vw;
+        border-radius: 50%;
+      }
+    }
+  }
+}
 
 /* -----------------------
         footer 
@@ -391,6 +422,7 @@ button:focus {
 .visible {
   display: block !important;
 }
+
 /* -----------------------
         template 
 ------------------------*/
