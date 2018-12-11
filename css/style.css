@@ -24,7 +24,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77); }
+  box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77); }
   .navbar svg {
     width: 150px;
     padding: 18px;
@@ -59,13 +59,13 @@ button:focus {
   position: fixed;
   z-index: 10;
   right: 0;
-  top: 60px; }
+  top: 60px;
+  box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77); }
 
 #loginForm,
 #donationForm,
 #signupForm {
   background-color: white;
-  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
   padding: 40px;
   color: grey; }
   #loginForm h2,
@@ -85,7 +85,7 @@ button:focus {
       #loginForm form .formField input,
       #donationForm form .formField input,
       #signupForm form .formField input {
-        font-size: 1.5em;
+        font-size: 1em;
         border: 0;
         border-bottom: 1px solid #ccc;
         font-family: inherit;
@@ -107,7 +107,7 @@ button:focus {
         overflow: hidden;
         text-overflow: ellipsis;
         transform-origin: left bottom;
-        transform: translate(0, 2.125rem) scale(1.5); }
+        transform: translate(0, 2.125rem) scale(1.2); }
       #loginForm form .formField ::-webkit-input-placeholder,
       #donationForm form .formField ::-webkit-input-placeholder,
       #signupForm form .formField ::-webkit-input-placeholder {
@@ -166,7 +166,7 @@ button:focus {
     #subscribeForm form .formField input {
       color: #ffffff;
       background-color: rgba(0, 0, 0, 0);
-      font-size: 1.5em;
+      font-size: 1em;
       border: 0;
       border-bottom: 1px solid white;
       font-family: inherit;
@@ -185,7 +185,7 @@ button:focus {
       overflow: hidden;
       text-overflow: ellipsis;
       transform-origin: left bottom;
-      transform: translate(0, 1.5rem) scale(1.5); }
+      transform: translate(0, 1.5rem) scale(1.2); }
     #subscribeForm form .formField ::-webkit-input-placeholder {
       opacity: 0;
       transition: inherit; }
@@ -274,8 +274,8 @@ button:focus {
 #aboutUs {
   display: grid;
   align-self: center;
-  background-color: #efefef;
-  color: #aeaeae;
+  background-color: #74b7a5;
+  color: white;
   text-align: center;
   padding: 10vw; }
   #aboutUs h1 {
@@ -297,34 +297,32 @@ button:focus {
         height: 120px;
         place-self: center; }
 
-#ourPets {
-  padding: 10vw;
-  background-color: #d7e8f0;
-  color: grey;
+#lastBox {
+  background-color: #74b7a5;
+  color: white;
   display: grid;
-  grid-template-rows: 20vh 1fr; }
-  #ourPets h2 {
+  background-color: #dcdcdc; }
+  #lastBox h2 {
     text-align: center;
     align-self: end;
     margin: 20px 0; }
-  #ourPets #animalImage {
+  #lastBox #animalImage {
+    padding: 3vw;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; }
-    #ourPets #animalImage div {
+    grid-template-columns: repeat(8, 1fr); }
+    #lastBox #animalImage div {
       margin: 20px 0;
       justify-self: center; }
-      #ourPets #animalImage div img {
-        width: 16vw;
+      #lastBox #animalImage div img {
+        width: 10vw;
         border-radius: 50%; }
-
-#frontpageForms {
-  background-color: #74b7a5;
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
-  #frontpageForms #donationForm,
-  #frontpageForms #signupForm {
-    margin: 10vw;
-    padding: 40px; }
+  #lastBox #frontpageForms {
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+    #lastBox #frontpageForms #donationForm,
+    #lastBox #frontpageForms #signupForm {
+      margin: 0 10vw 10vw 10vw;
+      padding: 40px; }
 
 /* -----------------------
         footer 
