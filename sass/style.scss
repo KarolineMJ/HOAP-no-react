@@ -426,6 +426,7 @@ button:focus {
       z-index: 2;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      visibility: hidden;
 
       h2 {
         text-align: left;

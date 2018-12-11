@@ -403,7 +403,8 @@ button:focus {
       grid-column: 1/-1;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr 1fr; }
+      grid-template-columns: 1fr 1fr;
+      visibility: hidden; }
       #yourPets #animalImage .petExpand h2 {
         text-align: left;
         padding: 10px; }

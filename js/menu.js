@@ -40,13 +40,26 @@ hideMenu();
 
 function expandInfo() {
   const petImage = document.querySelectorAll("#animalImage img");
+  const petExpand = document.querySelector(".petExpand");
 
   for (let i = 0; i < petImage.length; i++) {
     petImage[i].addEventListener("click", function() {
       console.log("clicked");
-      petImage[i].classList.toggle("done");
+
+      if (petExpand.style.visibility == "visible") {
+        petExpand.style.visibility = "hidden";
+      } else petExpand.style.visibility = "visible";
+      //petExpand.style.visibility = "visible";
+      //petExpand.classList.toggle("expandVisible");
     });
   }
 }
 
+/*
+petImage.forEach(function() {
+  petImage.addEventListener("click", function() {
+    console.log("clicked");
+  });
+});
+*/
 expandInfo();
