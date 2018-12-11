@@ -415,6 +415,18 @@ button:focus {
 #sendToUsForms {
   background-color: #ead8a6; }
 
+.signedInContainer {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  .signedInContainer .sidebar {
+    box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
+    z-index: 2;
+    height: 100vh; }
+
+.closed {
+  grid-template-columns: 1fr; }
+
 /* -----------------------
         footer 
 ------------------------*/
