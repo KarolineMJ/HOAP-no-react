@@ -120,14 +120,20 @@
 
     <div class="signedInContainer">
       <div id="yourPets" class="fullsize">
-        <div>
-          <h2>Show only hearted</h2>
-          <h2>Order by:</h2>
+        <div id="petChoices">
+          <div>
+            <input type="checkbox" id="hearted" aria-placeholder="Pick up" />
+            <label for="hearted">Show only hearted</label>
+          </div>
+          <p>Order by: Newcomers</p>
+          <p></p>
         </div>
+
         <div id="animalImage">
           <div>
             <div class="needsCircle"></div>
             <img src="img/huntingcat.jpeg" alt="" />
+
             <div class="petName">
               <svg
                 version="1.1"
@@ -155,6 +161,7 @@
               <h3>MeowMeow</h3>
             </div>
           </div>
+
           <div>
             <div class="needsCircle"></div>
             <img src="img/butterflydog.jpeg" alt="" />
@@ -247,6 +254,24 @@
               <h3>Jackie</h3>
             </div>
           </div>
+
+          <div class="petExpand">
+            <div class="expandImg"><img src="img/huntingcat.jpeg" /></div>
+            <div>
+              <h2>MeowMeow</h2>
+              <ul>
+                <li>Name: MeowMeow</li>
+                <li>Breed: Huskat</li>
+                <li>Age: 10</li>
+                <li>Gender: female</li>
+              </ul>
+              <p>
+                Story: Very sweet and gentle cat, loves hugs and is a bit of an
+                attention whore. But lovely.
+              </p>
+            </div>
+            <div></div>
+          </div>
         </div>
       </div>
       <div class="sidebar"></div>
@@ -264,7 +289,6 @@
             <input type="text" id="messageText" placeholder="Your message" />
             <label for="messageText" class="formLabel">Message</label>
           </div>
-
           <button type="submit">Send</button>
         </form>
       </div>
