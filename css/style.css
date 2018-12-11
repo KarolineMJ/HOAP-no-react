@@ -379,17 +379,21 @@ button:focus {
   color: grey;
   display: grid;
   grid-template-rows: 20vh 1fr; }
-  #yourPets h2 {
-    text-align: center;
-    align-self: end;
-    margin: 20px 0; }
+  #yourPets div {
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+    #yourPets div h2 {
+      align-self: end;
+      margin: 20px 0; }
   #yourPets #animalImage {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; }
     #yourPets #animalImage div {
       margin: 20px 0;
       justify-self: center;
-      text-align: center; }
+      text-align: center;
+      display: grid;
+      grid-template-rows: 1fr 1fr; }
       #yourPets #animalImage div .needsCircle {
         width: 18px;
         height: 18px;
@@ -397,11 +401,13 @@ button:focus {
         border-radius: 50%;
         position: absolute; }
       #yourPets #animalImage div img {
-        width: 16vw;
-        border-radius: 50%; }
+        width: 15vw;
+        border-radius: 50%;
+        align-self: center; }
       #yourPets #animalImage div .petName {
         display: inline-block;
-        padding: 2px; }
+        padding: 2px;
+        grid-row: 2; }
         #yourPets #animalImage div .petName svg {
           width: 20px;
           vertical-align: middle;

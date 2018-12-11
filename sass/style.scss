@@ -395,11 +395,16 @@ button:focus {
   display: grid;
   grid-template-rows: 20vh 1fr;
 
-  h2 {
-    text-align: center;
-    align-self: end;
-    margin: 20px 0;
+  div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    h2 {
+      align-self: end;
+      margin: 20px 0;
+    }
   }
+
   #animalImage {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -408,6 +413,8 @@ button:focus {
       margin: 20px 0;
       justify-self: center;
       text-align: center;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
 
       .needsCircle {
         width: 18px;
@@ -418,13 +425,15 @@ button:focus {
       }
 
       img {
-        width: 16vw;
+        width: 15vw;
         border-radius: 50%;
+        align-self: center;
       }
 
       .petName {
         display: inline-block;
         padding: 2px;
+        grid-row: 2;
 
         svg {
           width: 20px;
