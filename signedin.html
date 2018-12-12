@@ -119,20 +119,22 @@
     </div>
 
     <div class="signedInContainer">
-      <div id="yourPets" class="fullsize">
+      <div id="yourPets">
         <div id="petChoices">
           <div>
             <input type="checkbox" id="hearted" aria-placeholder="Pick up" />
             <label for="hearted">Show only hearted</label>
           </div>
           <p>Order by: Newcomers</p>
-          <p></p>
         </div>
 
+        <hr id="trigger" />
         <div id="animalImage">
           <div>
             <div class="needsCircle"></div>
-            <img src="img/animals/huntingcat.jpeg" alt="" />
+            <a href="#trigger"
+              ><img src="img/animals/huntingcat.jpeg" alt=""
+            /></a>
 
             <div class="petName">
               <svg
@@ -254,30 +256,27 @@
               <h3>Jackie</h3>
             </div>
           </div>
-
-          <div class="petExpand">
-            <div class="expandImg">
-              <img src="img/animals/huntingcat.jpeg" />
-            </div>
-            <div>
-              <h2>MeowMeow</h2>
-              <ul>
-                <li>Name: MeowMeow</li>
-                <li>Breed: Huskat</li>
-                <li>Age: 10</li>
-                <li>Gender: female</li>
-              </ul>
-              <p>
-                Story: Very sweet and gentle cat, loves hugs and is a bit of an
-                attention whore. But lovely.
-              </p>
-            </div>
-            <div></div>
-          </div>
         </div>
       </div>
-      <div class="sidebar"></div>
     </div>
+    <div class="petExpand">
+      <div class="expandImg"><img src="img/animals/huntingcat.jpeg" /></div>
+      <div>
+        <h2>MeowMeow</h2>
+        <ul>
+          <li>Name: MeowMeow</li>
+          <li>Breed: Huskat</li>
+          <li>Age: 10</li>
+          <li>Gender: female</li>
+        </ul>
+        <p>
+          Story: Very sweet and gentle cat, loves hugs and is a bit of an
+          attention whore. But lovely.
+        </p>
+      </div>
+    </div>
+
+    <div class="sidebar"></div>
 
     <div id="sendToUsForms" class="fullsize">
       <div id="messageForm">

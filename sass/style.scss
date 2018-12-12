@@ -13,6 +13,7 @@ $grayColor: #efefef;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 body {
   font-family: $font;
@@ -493,12 +494,17 @@ button:focus {
 ------------------------*/
 
 #yourPets {
-  padding: 10vw;
+  padding: 10px 10vw;
   background-color: $grayColor;
   color: grey;
   display: grid;
   grid-template-rows: 20vh 1fr;
-
+  position: relative;
+  hr {
+    position: relative;
+    top: -60px;
+    opacity: 0;
+  }
   #petChoices {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -521,61 +527,25 @@ button:focus {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
-    .petExpand {
-      width: 100vw;
-      height: 40vh;
-      background-color: white;
-      grid-column: 1/-1;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      visibility: hidden;
-
-      h2 {
-        text-align: left;
-        padding: 10px;
-      }
-
-      ul {
-        list-style: none;
-        padding: 10px;
-        li {
-          text-decoration: none;
-          padding: 0;
-          text-align: left;
-        }
-      }
-
-      p {
-        text-align: left;
-        padding: 10px;
-        padding-right: 70px;
-      }
-
-      .expandImg {
-        width: 20vw;
-        align-self: center;
-
-        img {
-          width: 20vw;
-        }
-      }
-    }
-
     div {
+      position: relative;
       margin: 20px 0;
       justify-self: center;
       text-align: center;
 
       .needsCircle {
-        width: 18px;
-        height: 18px;
-        background-color: red;
+        right: 3vw;
+        width: 2vw;
+        height: 2vw;
+        box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
+        background-color: #a81c1c;
         border-radius: 50%;
         position: absolute;
       }
 
       img {
+        cursor: pointer;
+
         width: 15vw;
         border-radius: 50%;
         align-self: center;
@@ -601,20 +571,60 @@ button:focus {
     }
   }
 }
+
+.petExpand {
+  width: 100vw;
+  height: 40vh;
+  background-color: white;
+  grid-column: 1/-1;
+  z-index: 2;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+
+  h2 {
+    text-align: left;
+    padding: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 10px;
+    li {
+      text-decoration: none;
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  p {
+    text-align: left;
+    padding: 10px;
+    padding-right: 70px;
+  }
+
+  .expandImg {
+    width: 20vw;
+    align-self: center;
+
+    img {
+      border-radius: 50%;
+      width: 20vw;
+    }
+  }
+}
 #sendToUsForms {
   background-color: $mainColor;
 }
-.signedInContainer {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 
-  .sidebar {
-    box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
-    z-index: 3;
-    height: 200vh;
-    background-color: white;
-  }
+.sidebar {
+  box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
+  z-index: 3;
+  height: 200vh;
+  background-color: white;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 26vw;
 }
 .closed {
   grid-template-columns: 1fr;

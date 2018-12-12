@@ -46,9 +46,9 @@ function expandInfo() {
     petImage[i].addEventListener("click", function() {
       console.log("clicked");
 
-      if (petExpand.style.visibility == "visible") {
-        petExpand.style.visibility = "hidden";
-      } else petExpand.style.visibility = "visible";
+      if (petExpand.style.display == "grid") {
+        petExpand.style.display = "none";
+      } else petExpand.style.display = "grid";
       //petExpand.style.visibility = "visible";
       //petExpand.classList.toggle("expandVisible");
     });
