@@ -548,3 +548,76 @@ button:focus {
 
 .visible {
   display: block !important; }
+
+/* -----------------------
+        admin 
+------------------------*/
+body#admin {
+  position: relative; }
+  body#admin #alreadyMemberBtn.admin a {
+    background: transparent;
+    color: #2e2f4b; }
+  body#admin aside {
+    position: fixed;
+    top: 60px;
+    width: 15%;
+    height: 100vh;
+    padding: 50px 25px;
+    background: #2e2f4b; }
+    body#admin aside li {
+      list-style: none;
+      margin-bottom: 50px; }
+      body#admin aside li a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px; }
+  body#admin main {
+    position: fixed;
+    width: 85%;
+    height: 100vh;
+    top: 60px;
+    right: 0;
+    overflow: scroll; }
+    body#admin main > .section {
+      min-height: 100vh;
+      height: auto;
+      padding: 50px;
+      border: 1px solid black;
+      position: relative; }
+      body#admin main > .section .sectionHeader {
+        width: 100%;
+        height: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); }
+        body#admin main > .section .sectionHeader span:nth-of-type(3) {
+          text-align: right; }
+      body#admin main > .section .tableWrapper {
+        width: 100%;
+        min-height: 300px;
+        /* issue */
+        overflow-x: scroll;
+        margin: 0 auto;
+        position: relative; }
+        body#admin main > .section .tableWrapper .sidebar {
+          position: absolute;
+          width: 15%;
+          height: 100%;
+          background-color: #efefef; }
+          body#admin main > .section .tableWrapper .sidebar .head {
+            height: 50px; }
+          body#admin main > .section .tableWrapper .sidebar b {
+            color: #2e2f4b; }
+          body#admin main > .section .tableWrapper .sidebar .row:not(.head) {
+            height: 100%;
+            padding-top: 20px;
+            border-bottom: 1px solid #2e2f4b; }
+        body#admin main > .section .tableWrapper .column {
+          border-right: 1px solid #2e2f4b;
+          display: grid;
+          grid-template-rows: repeat(6, 50px); }
+        body#admin main > .section .tableWrapper .columns {
+          position: absolute;
+          left: 15%;
+          display: grid;
+          grid-template-columns: repeat(11, 100px);
+          white-space: nowrap; }
