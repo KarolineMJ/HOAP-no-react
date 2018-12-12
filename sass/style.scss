@@ -656,6 +656,7 @@ button:focus {
     }
   }
 }
+
 #sendToUsForms {
   background-color: $mainColor;
 }
@@ -673,7 +674,6 @@ button:focus {
 .closed {
   grid-template-columns: 1fr;
 }
-
 
 /*-------------------------
 Preferences
@@ -706,7 +706,6 @@ Preferences
 /*-------------------------
 Keyframes for animations
 ------------------------*/
-
 
 @keyframes morphing {
   0% {
@@ -741,7 +740,7 @@ Keyframes for animations
   90% {
     border-radius: 64% 38% 51% 46% / 32% 27% 68% 35%;
   }
-}*/
+}
 
 @keyframes morph {
   100% {
