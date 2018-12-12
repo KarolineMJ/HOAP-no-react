@@ -630,6 +630,34 @@ button:focus {
   grid-template-columns: 1fr;
 }
 
+/*-------------------------
+Preferences
+------------------------*/
+.form-popup {
+  display: none;
+  height: 100vh;
+  background-color: #dee9f2;
+
+  .popup-form-container {
+    padding: 10px;
+    background-color: white;
+    width: 70%;
+    margin: auto;
+
+    .popup-form-container .btn {
+      background-color: #dee9f2;
+      color: #60748c;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100px;
+      margin-bottom: 10px;
+
+      border-radius: 40px;
+    }
+  }
+}
+
 /* -----------------------
         footer 
 ------------------------*/
