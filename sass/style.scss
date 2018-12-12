@@ -32,7 +32,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
+  box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
   svg {
     width: 150px;
     padding: 18px;
@@ -69,20 +69,40 @@ button:focus {
 }
 
 #loginForm {
+  background-color: white;
+  color: grey;
   display: none;
   position: fixed;
   z-index: 10;
   right: 0;
   top: 60px;
+  box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
+  form {
+    .formField {
+      input {
+        border-bottom: 1px solid grey;
+      }
+    }
+  }
+}
+#donationForm,
+#signupForm {
+  background-color: #ded2c3;
+  color: white;
+  form {
+    .formField {
+      input {
+        border-bottom: 1px solid grey;
+      }
+    }
+  }
 }
 
 #loginForm,
 #donationForm,
 #signupForm {
-  background-color: white;
-  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
   padding: 40px;
-  color: grey;
+
   h2 {
     margin-bottom: 20px;
   }
@@ -93,10 +113,12 @@ button:focus {
       flex-flow: column-reverse;
       margin-bottom: 1em;
       input {
-        font-size: 1.5em;
+        background: none;
+        font-size: 1em;
         border: 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid white;
         font-family: inherit;
+
         -webkit-appearance: none;
         border-radius: 0;
         padding: 0;
@@ -113,7 +135,7 @@ button:focus {
         overflow: hidden;
         text-overflow: ellipsis;
         transform-origin: left bottom;
-        transform: translate(0, 2.125rem) scale(1.5);
+        transform: translate(0, 2.125rem) scale(1.2);
       }
       ::-webkit-input-placeholder {
         opacity: 0;
@@ -136,7 +158,7 @@ button:focus {
       justify-self: end;
       padding: 7px;
       width: 150px;
-      background-color: $darkbtn;
+      background-color: #b28973;
       border: none;
       color: white;
       text-align: center;
@@ -165,7 +187,7 @@ button:focus {
       input {
         color: #ffffff;
         background-color: rgba(0, 0, 0, 0);
-        font-size: 1.5em;
+        font-size: 1em;
         border: 0;
         border-bottom: 1px solid white;
         font-family: inherit;
@@ -187,7 +209,7 @@ button:focus {
         overflow: hidden;
         text-overflow: ellipsis;
         transform-origin: left bottom;
-        transform: translate(0, 1.5rem) scale(1.5);
+        transform: translate(0, 1.5rem) scale(1.2);
       }
       ::-webkit-input-placeholder {
         opacity: 0;
@@ -302,7 +324,6 @@ button:focus {
   display: grid;
   align-self: center;
   background-color: #efefef;
-
   color: #aeaeae;
   text-align: center;
   padding: 10vw;
@@ -319,12 +340,12 @@ button:focus {
     .aboutImg {
       background-color: #ffffff;
       border-radius: 50%;
-      height: 150px;
-      width: 150px;
+      height: 200px;
+      width: 200px;
       display: grid;
       margin: 20px auto;
-      svg {
-        height: 120px;
+      img {
+        height: 175px;
         place-self: center;
       }
     }
@@ -332,38 +353,37 @@ button:focus {
 }
 
 #ourPets {
-  padding: 10vw;
-  background-color: #d7e8f0;
-  color: grey;
+}
+#lastBox {
+  color: white;
   display: grid;
-  grid-template-rows: 20vh 1fr;
   h2 {
     text-align: center;
     align-self: end;
     margin: 20px 0;
   }
   #animalImage {
+    padding: 20px 10vw;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(8, 1fr);
     div {
       margin: 20px 0;
       justify-self: center;
 
       img {
-        width: 16vw;
+        width: 8vw;
         border-radius: 50%;
       }
     }
   }
-}
-#frontpageForms {
-  background-color: $darkbtn;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  #donationForm,
-  #signupForm {
-    margin: 10vw;
-    padding: 40px;
+  #frontpageForms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    #donationForm,
+    #signupForm {
+      margin: 0 10vw 10vw 10vw;
+      padding: 40px;
+    }
   }
 }
 
