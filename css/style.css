@@ -30,6 +30,11 @@ body {
     padding: 18px;
     fill: #818181;
     align-self: center; }
+  .navbar #sidebarBtns {
+    justify-self: end; }
+    .navbar #sidebarBtns svg {
+      width: 70px;
+      padding: 15px; }
   .navbar .darkBtn {
     font-size: 13px;
     padding: 9px;
@@ -76,24 +81,41 @@ button:focus {
 
 #loginForm,
 #donationForm,
+#signupForm,
+#messageForm,
+#imageForm {
+  background-color: white;
+  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
+  padding: 40px;
+  color: grey; }
 #signupForm {
   padding: 40px; }
   #loginForm h2,
   #donationForm h2,
-  #signupForm h2 {
+  #signupForm h2,
+  #messageForm h2,
+  #imageForm h2 {
     margin-bottom: 20px; }
   #loginForm form,
   #donationForm form,
-  #signupForm form {
+  #signupForm form,
+  #messageForm form,
+  #imageForm form {
     display: grid; }
     #loginForm form .formField,
     #donationForm form .formField,
-    #signupForm form .formField {
+    #signupForm form .formField,
+    #messageForm form .formField,
+    #imageForm form .formField {
       display: flex;
       flex-flow: column-reverse;
       margin-bottom: 1em; }
       #loginForm form .formField input,
       #donationForm form .formField input,
+      #signupForm form .formField input,
+      #messageForm form .formField input,
+      #imageForm form .formField input {
+        font-size: 1.5em;
       #signupForm form .formField input {
         background: none;
         font-size: 1em;
@@ -106,12 +128,16 @@ button:focus {
         cursor: text; }
         #loginForm form .formField input:focus,
         #donationForm form .formField input:focus,
-        #signupForm form .formField input:focus {
+        #signupForm form .formField input:focus,
+        #messageForm form .formField input:focus,
+        #imageForm form .formField input:focus {
           outline: 0;
           border-bottom: 1px solid #74b7a5; }
       #loginForm form .formField input:placeholder-shown + label,
       #donationForm form .formField input:placeholder-shown + label,
-      #signupForm form .formField input:placeholder-shown + label {
+      #signupForm form .formField input:placeholder-shown + label,
+      #messageForm form .formField input:placeholder-shown + label,
+      #imageForm form .formField input:placeholder-shown + label {
         cursor: text;
         max-width: 66.66%;
         white-space: nowrap;
@@ -121,7 +147,9 @@ button:focus {
         transform: translate(0, 2.125rem) scale(1.2); }
       #loginForm form .formField ::-webkit-input-placeholder,
       #donationForm form .formField ::-webkit-input-placeholder,
-      #signupForm form .formField ::-webkit-input-placeholder {
+      #signupForm form .formField ::-webkit-input-placeholder,
+      #messageForm form .formField ::-webkit-input-placeholder,
+      #imageForm form .formField ::-webkit-input-placeholder {
         opacity: 0;
         transition: inherit; }
       #loginForm form .formField input:not(:placeholder-shown) + label,
@@ -129,7 +157,11 @@ button:focus {
       #donationForm form .formField input:not(:placeholder-shown) + label,
       #donationForm form .formField input:focus + label,
       #signupForm form .formField input:not(:placeholder-shown) + label,
-      #signupForm form .formField input:focus + label {
+      #signupForm form .formField input:focus + label,
+      #messageForm form .formField input:not(:placeholder-shown) + label,
+      #messageForm form .formField input:focus + label,
+      #imageForm form .formField input:not(:placeholder-shown) + label,
+      #imageForm form .formField input:focus + label {
         transition: 0.2s ease all;
         transform: translate(0, 0) scale(1);
         cursor: pointer; }
@@ -138,11 +170,17 @@ button:focus {
       #donationForm form .formField input,
       #donationForm form .formField label,
       #signupForm form .formField input,
-      #signupForm form .formField label {
+      #signupForm form .formField label,
+      #messageForm form .formField input,
+      #messageForm form .formField label,
+      #imageForm form .formField input,
+      #imageForm form .formField label {
         touch-action: manipulation; }
     #loginForm form button,
     #donationForm form button,
-    #signupForm form button {
+    #signupForm form button,
+    #messageForm form button,
+    #imageForm form button {
       font-family: "Raleway", sans-serif;
       height: 40px;
       justify-self: end;
@@ -158,14 +196,20 @@ button:focus {
       align-self: end; }
       #loginForm form button:hover,
       #donationForm form button:hover,
-      #signupForm form button:hover {
+      #signupForm form button:hover,
+      #messageForm form button:hover,
+      #imageForm form button:hover {
         background-color: #599686; }
     #loginForm form input,
     #loginForm form button,
     #donationForm form input,
     #donationForm form button,
     #signupForm form input,
-    #signupForm form button {
+    #signupForm form button,
+    #messageForm form input,
+    #messageForm form button,
+    #imageForm form input,
+    #imageForm form button {
       margin: 20px 0; }
 
 #subscribeForm form {
@@ -325,6 +369,24 @@ button:focus {
       #lastBox #animalImage div img {
         width: 8vw;
         border-radius: 50%; }
+
+
+#frontpageForms,
+#sendToUsForms {
+  background-color: #74b7a5;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  #frontpageForms #donationForm,
+  #frontpageForms #signupForm,
+  #frontpageForms #messageForm,
+  #frontpageForms #imageForm,
+  #sendToUsForms #donationForm,
+  #sendToUsForms #signupForm,
+  #sendToUsForms #messageForm,
+  #sendToUsForms #imageForm {
+    margin: 10vw;
+    padding: 40px; }
+
   #lastBox #frontpageForms {
     display: grid;
     grid-template-columns: 1fr 1fr; }
@@ -332,6 +394,103 @@ button:focus {
     #lastBox #frontpageForms #signupForm {
       margin: 0 10vw 10vw 10vw;
       padding: 40px; }
+
+/* -----------------------
+        signed in page
+------------------------*/
+#yourPets {
+  padding: 10vw;
+  background-color: #efefef;
+  color: grey;
+  display: grid;
+  grid-template-rows: 20vh 1fr; }
+  #yourPets #petChoices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr; }
+    #yourPets #petChoices div {
+      align-self: end; }
+      #yourPets #petChoices div input,
+      #yourPets #petChoices div label {
+        margin: 20px 0; }
+    #yourPets #petChoices p {
+      align-self: end;
+      justify-self: end;
+      margin: 20px 0; }
+  #yourPets #animalImage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+    #yourPets #animalImage .petExpand {
+      width: 100vw;
+      height: 40vh;
+      background-color: white;
+      grid-column: 1/-1;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      visibility: hidden; }
+      #yourPets #animalImage .petExpand h2 {
+        text-align: left;
+        padding: 10px; }
+      #yourPets #animalImage .petExpand ul {
+        list-style: none;
+        padding: 10px; }
+        #yourPets #animalImage .petExpand ul li {
+          text-decoration: none;
+          padding: 0;
+          text-align: left; }
+      #yourPets #animalImage .petExpand p {
+        text-align: left;
+        padding: 10px;
+        padding-right: 70px; }
+      #yourPets #animalImage .petExpand .expandImg {
+        width: 20vw;
+        align-self: center; }
+        #yourPets #animalImage .petExpand .expandImg img {
+          width: 20vw; }
+    #yourPets #animalImage div {
+      margin: 20px 0;
+      justify-self: center;
+      text-align: center; }
+      #yourPets #animalImage div .needsCircle {
+        width: 18px;
+        height: 18px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute; }
+      #yourPets #animalImage div img {
+        width: 15vw;
+        border-radius: 50%;
+        align-self: center; }
+      #yourPets #animalImage div .petName {
+        display: inline-block;
+        padding: 2px;
+        grid-row: 2; }
+        #yourPets #animalImage div .petName svg {
+          width: 20px;
+          vertical-align: middle;
+          padding-right: 3px; }
+        #yourPets #animalImage div .petName h3 {
+          vertical-align: middle;
+          display: inline-block;
+          padding: 2px;
+          color: grey; }
+
+#sendToUsForms {
+  background-color: #ead8a6; }
+
+.signedInContainer {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  .signedInContainer .sidebar {
+    box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
+    z-index: 3;
+    height: 200vh;
+    background-color: white; }
+
+.closed {
+  grid-template-columns: 1fr; }
 
 /* -----------------------
         footer 

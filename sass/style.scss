@@ -6,6 +6,8 @@
 $font: "Raleway", sans-serif;
 $btnHover: #599686;
 $darkbtn: #74b7a5;
+$mainColor: #ead8a6;
+$grayColor: #efefef;
 
 * {
   margin: 0;
@@ -39,6 +41,15 @@ body {
     fill: #818181;
     align-self: center;
   }
+  //navbar on signed in page
+  #sidebarBtns {
+    justify-self: end;
+    svg {
+      width: 70px;
+      padding: 15px;
+    }
+  }
+
   .darkBtn {
     font-size: 13px;
     padding: 9px;
@@ -97,9 +108,19 @@ button:focus {
     }
   }
 }
+#signupForm,
+#messageForm,
+#imageForm {
+  background-color: white;
+
+}
+
 
 #loginForm,
 #donationForm,
+#signupForm,
+#messageForm,
+#imageForm,
 #signupForm {
   padding: 40px;
 
@@ -376,15 +397,153 @@ button:focus {
       }
     }
   }
-  #frontpageForms {
+
+
+#frontpageForms,
+#sendToUsForms {
+  background-color: $darkbtn;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  #donationForm,
+  #signupForm,
+  #messageForm,
+  #imageForm {
+    margin: 10vw;
+    padding: 40px;
+
+  }
+}
+
+/* -----------------------
+        signed in page
+------------------------*/
+
+#yourPets {
+  padding: 10vw;
+  background-color: $grayColor;
+  color: grey;
+  display: grid;
+  grid-template-rows: 20vh 1fr;
+
+  #petChoices {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    #donationForm,
-    #signupForm {
-      margin: 0 10vw 10vw 10vw;
-      padding: 40px;
+    grid-template-rows: 1fr;
+    div {
+      align-self: end;
+      input,
+      label {
+        margin: 20px 0;
+      }
+    }
+    p {
+      align-self: end;
+      justify-self: end;
+      margin: 20px 0;
     }
   }
+
+  #animalImage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    .petExpand {
+      width: 100vw;
+      height: 40vh;
+      background-color: white;
+      grid-column: 1/-1;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      visibility: hidden;
+
+      h2 {
+        text-align: left;
+        padding: 10px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 10px;
+        li {
+          text-decoration: none;
+          padding: 0;
+          text-align: left;
+        }
+      }
+
+      p {
+        text-align: left;
+        padding: 10px;
+        padding-right: 70px;
+      }
+
+      .expandImg {
+        width: 20vw;
+        align-self: center;
+
+        img {
+          width: 20vw;
+        }
+      }
+    }
+
+    div {
+      margin: 20px 0;
+      justify-self: center;
+      text-align: center;
+
+      .needsCircle {
+        width: 18px;
+        height: 18px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      img {
+        width: 15vw;
+        border-radius: 50%;
+        align-self: center;
+      }
+
+      .petName {
+        display: inline-block;
+        padding: 2px;
+        grid-row: 2;
+
+        svg {
+          width: 20px;
+          vertical-align: middle;
+          padding-right: 3px;
+        }
+        h3 {
+          vertical-align: middle;
+          display: inline-block;
+          padding: 2px;
+          color: grey;
+        }
+      }
+    }
+  }
+}
+#sendToUsForms {
+  background-color: $mainColor;
+}
+.signedInContainer {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .sidebar {
+    box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
+    z-index: 3;
+    height: 200vh;
+    background-color: white;
+  }
+}
+.closed {
+  grid-template-columns: 1fr;
 }
 
 /* -----------------------
@@ -411,6 +570,7 @@ button:focus {
 .visible {
   display: block !important;
 }
+
 /* -----------------------
         template 
 ------------------------*/
