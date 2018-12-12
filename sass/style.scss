@@ -378,6 +378,46 @@ button:focus {
   .introPic {
     display: grid;
     position: relative;
+    .dots {
+      position: relative;
+
+      div:nth-child(1) {
+        width: 40px;
+        top: 16vh;
+        right: 10vw;
+        height: 40px;
+        background-color: rgba($color: white, $alpha: 0.6);
+        position: absolute;
+        border-radius: 70% 37% 40% 46% / 45% 48% 50% 45%;
+      }
+      div:nth-child(2) {
+        width: 20px;
+        top: 25vh;
+        right: 8vw;
+        height: 20px;
+        background-color: rgba($color: white, $alpha: 0.7);
+        position: absolute;
+        border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+      }
+      div:nth-child(3) {
+        width: 15px;
+        top: 70vh;
+        right: 12vw;
+        height: 15px;
+        background-color: rgba($color: white, $alpha: 0.7);
+        position: absolute;
+        border-radius: 27% 37% 54% 46% / 55% 48% 52% 45%;
+      }
+      div:nth-child(4) {
+        width: 20px;
+        top: 20vh;
+        left: 2vw;
+        height: 20px;
+        background-color: rgba($color: white, $alpha: 0.7);
+        position: absolute;
+        border-radius: 46% 50% 54% 46% / 55% 30% 52% 45%;
+      }
+    }
     .circle {
       position: absolute;
       align-self: center;
@@ -393,7 +433,7 @@ button:focus {
     .introCat {
       position: absolute;
       align-self: center;
-      top: 388px;
+      top: 440px;
       left: -7vw;
       img {
         width: 23vw;
