@@ -664,7 +664,7 @@ Keyframes for animations
 ------------------------*/
 body#admin {
   position: relative; }
-  body#admin #alreadyMemberBtn.admin a {
+  body#admin .hiAdminBtn a {
     background: transparent;
     color: #2e2f4b; }
   body#admin aside {
@@ -705,7 +705,8 @@ body#admin {
           grid-template-columns: 1fr 1fr auto; }
           body#admin main .section .subsection .subsectionHeader span {
             padding-top: 10px; }
-          body#admin main .section .subsection .subsectionHeader span:last-of-type {
+          body#admin main .section .subsection .subsectionHeader .adminBtn {
+            cursor: pointer;
             text-align: right;
             background: #2e2f4b;
             width: 100%;
@@ -768,3 +769,20 @@ body#admin {
             line-height: 2rem; }
             body#admin main .section .subsection .toDoListWrapper .toDoEntry input[type="checkbox"] {
               margin-right: 20px; }
+  body#admin .adminForm {
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    top: 60px;
+    width: 30%;
+    height: calc(100vh - 60px);
+    background: white;
+    border-left: 1px solid #2e2f4b;
+    padding: 50px; }
+    body#admin .adminForm.hide {
+      display: none; }
+    body#admin .adminForm .close {
+      position: absolute;
+      right: 50px;
+      top: 50px;
+      cursor: pointer; }

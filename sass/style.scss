@@ -796,7 +796,7 @@ Keyframes for animations
 ------------------------*/
 body#admin {
   position: relative;
-  #alreadyMemberBtn.admin a {
+  .hiAdminBtn a {
     background: transparent;
     color: $purpleColor;
   }
@@ -841,7 +841,8 @@ body#admin {
           span {
             padding-top: 10px;
           }
-          span:last-of-type {
+          .adminBtn {
+            cursor: pointer;
             text-align: right;
             background: $purpleColor;
             width: 100%;
@@ -919,6 +920,26 @@ body#admin {
           }
         }
       }
+    }
+  }
+  .adminForm {
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    top: 60px;
+    width: 30%;
+    height: calc(100vh - 60px);
+    background: white;
+    border-left: 1px solid $purpleColor;
+    padding: 50px;
+    &.hide {
+      display: none;
+    }
+    .close {
+      position: absolute;
+      right: 50px;
+      top: 50px;
+      cursor: pointer;
     }
   }
 }
