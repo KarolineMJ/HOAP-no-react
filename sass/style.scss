@@ -8,6 +8,7 @@ $btnHover: #599686;
 $darkbtn: #74b7a5;
 $mainColor: #ead8a6;
 $grayColor: #efefef;
+$purpleColor: #2e2f4b;
 
 * {
   margin: 0;
@@ -643,4 +644,40 @@ button:focus {
 }
 .visible {
   display: block !important;
+}
+
+/* -----------------------
+        admin 
+------------------------*/
+body#admin {
+  position: relative;
+  aside {
+    position: fixed;
+    top: 60px;
+    width: 20%;
+    height: 100vh;
+    padding: 50px 25px;
+    background: $purpleColor;
+    li {
+      list-style: none;
+      margin-bottom: 50px;
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+      }
+    }
+  }
+  main {
+    position: fixed;
+    width: 80%;
+    height: 100vh;
+    top: 60px;
+    right: 0;
+    overflow: scroll;
+    & > div {
+      min-height: 100vh;
+      border: 1px solid black;
+    }
+  }
 }

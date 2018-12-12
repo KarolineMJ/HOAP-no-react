@@ -548,3 +548,33 @@ button:focus {
 
 .visible {
   display: block !important; }
+
+/* -----------------------
+        admin 
+------------------------*/
+body#admin {
+  position: relative; }
+  body#admin aside {
+    position: fixed;
+    top: 60px;
+    width: 20%;
+    height: 100vh;
+    padding: 50px 25px;
+    background: #2e2f4b; }
+    body#admin aside li {
+      list-style: none;
+      margin-bottom: 50px; }
+      body#admin aside li a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px; }
+  body#admin main {
+    position: fixed;
+    width: 80%;
+    height: 100vh;
+    top: 60px;
+    right: 0;
+    overflow: scroll; }
+    body#admin main > div {
+      min-height: 100vh;
+      border: 1px solid black; }
