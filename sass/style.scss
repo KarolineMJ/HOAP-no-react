@@ -69,20 +69,40 @@ button:focus {
 }
 
 #loginForm {
+  background-color: white;
+  color: grey;
   display: none;
   position: fixed;
   z-index: 10;
   right: 0;
   top: 60px;
   box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
+  form {
+    .formField {
+      input {
+        border-bottom: 1px solid grey;
+      }
+    }
+  }
+}
+#donationForm,
+#signupForm {
+  background-color: #ded2c3;
+  color: white;
+  form {
+    .formField {
+      input {
+        border-bottom: 1px solid grey;
+      }
+    }
+  }
 }
 
 #loginForm,
 #donationForm,
 #signupForm {
-  background-color: white;
   padding: 40px;
-  color: grey;
+
   h2 {
     margin-bottom: 20px;
   }
@@ -93,10 +113,12 @@ button:focus {
       flex-flow: column-reverse;
       margin-bottom: 1em;
       input {
+        background: none;
         font-size: 1em;
         border: 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid white;
         font-family: inherit;
+
         -webkit-appearance: none;
         border-radius: 0;
         padding: 0;
@@ -136,7 +158,7 @@ button:focus {
       justify-self: end;
       padding: 7px;
       width: 150px;
-      background-color: $darkbtn;
+      background-color: #b28973;
       border: none;
       color: white;
       text-align: center;
@@ -301,9 +323,8 @@ button:focus {
 #aboutUs {
   display: grid;
   align-self: center;
-  background-color: $darkbtn;
-
-  color: white;
+  background-color: #efefef;
+  color: #aeaeae;
   text-align: center;
   padding: 10vw;
   h1 {
@@ -319,12 +340,12 @@ button:focus {
     .aboutImg {
       background-color: #ffffff;
       border-radius: 50%;
-      height: 150px;
-      width: 150px;
+      height: 200px;
+      width: 200px;
       display: grid;
       margin: 20px auto;
-      svg {
-        height: 120px;
+      img {
+        height: 175px;
         place-self: center;
       }
     }
@@ -334,7 +355,6 @@ button:focus {
 #ourPets {
 }
 #lastBox {
-  background-color: $darkbtn;
   color: white;
   display: grid;
   h2 {
@@ -343,7 +363,7 @@ button:focus {
     margin: 20px 0;
   }
   #animalImage {
-    padding: 3vw;
+    padding: 20px 10vw;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     div {
@@ -351,12 +371,11 @@ button:focus {
       justify-self: center;
 
       img {
-        width: 10vw;
+        width: 8vw;
         border-radius: 50%;
       }
     }
   }
-  background-color: #dcdcdc;
   #frontpageForms {
     display: grid;
     grid-template-columns: 1fr 1fr;
