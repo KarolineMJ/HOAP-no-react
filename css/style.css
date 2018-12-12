@@ -5,7 +5,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  scroll-behavior: smooth; }
 
 body {
   font-family: "Raleway", sans-serif; }
@@ -473,11 +474,16 @@ button:focus {
         signed in page
 ------------------------*/
 #yourPets {
-  padding: 10vw;
+  padding: 10px 10vw;
   background-color: #efefef;
   color: grey;
   display: grid;
-  grid-template-rows: 20vh 1fr; }
+  grid-template-rows: 20vh 1fr;
+  position: relative; }
+  #yourPets hr {
+    position: relative;
+    top: -60px;
+    opacity: 0; }
   #yourPets #petChoices {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -494,45 +500,21 @@ button:focus {
   #yourPets #animalImage {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; }
-    #yourPets #animalImage .petExpand {
-      width: 100vw;
-      height: 40vh;
-      background-color: white;
-      grid-column: 1/-1;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      visibility: hidden; }
-      #yourPets #animalImage .petExpand h2 {
-        text-align: left;
-        padding: 10px; }
-      #yourPets #animalImage .petExpand ul {
-        list-style: none;
-        padding: 10px; }
-        #yourPets #animalImage .petExpand ul li {
-          text-decoration: none;
-          padding: 0;
-          text-align: left; }
-      #yourPets #animalImage .petExpand p {
-        text-align: left;
-        padding: 10px;
-        padding-right: 70px; }
-      #yourPets #animalImage .petExpand .expandImg {
-        width: 20vw;
-        align-self: center; }
-        #yourPets #animalImage .petExpand .expandImg img {
-          width: 20vw; }
     #yourPets #animalImage div {
+      position: relative;
       margin: 20px 0;
       justify-self: center;
       text-align: center; }
       #yourPets #animalImage div .needsCircle {
-        width: 18px;
-        height: 18px;
-        background-color: red;
+        right: 3vw;
+        width: 2vw;
+        height: 2vw;
+        box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
+        background-color: #a81c1c;
         border-radius: 50%;
         position: absolute; }
       #yourPets #animalImage div img {
+        cursor: pointer;
         width: 15vw;
         border-radius: 50%;
         align-self: center; }
@@ -550,18 +532,47 @@ button:focus {
           padding: 2px;
           color: grey; }
 
+.petExpand {
+  width: 100vw;
+  height: 40vh;
+  background-color: white;
+  grid-column: 1/-1;
+  z-index: 2;
+  display: none;
+  grid-template-columns: 1fr 1fr; }
+  .petExpand h2 {
+    text-align: left;
+    padding: 10px; }
+  .petExpand ul {
+    list-style: none;
+    padding: 10px; }
+    .petExpand ul li {
+      text-decoration: none;
+      padding: 0;
+      text-align: left; }
+  .petExpand p {
+    text-align: left;
+    padding: 10px;
+    padding-right: 70px; }
+  .petExpand .expandImg {
+    width: 20vw;
+    align-self: center; }
+    .petExpand .expandImg img {
+      border-radius: 50%;
+      width: 20vw; }
+
 #sendToUsForms {
   background-color: #ead8a6; }
 
-.signedInContainer {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
-  .signedInContainer .sidebar {
-    box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
-    z-index: 3;
-    height: 200vh;
-    background-color: white; }
+.sidebar {
+  box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
+  z-index: 3;
+  height: 200vh;
+  background-color: white;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 26vw; }
 
 .closed {
   grid-template-columns: 1fr; }
