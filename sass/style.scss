@@ -108,13 +108,10 @@ button:focus {
     }
   }
 }
-#signupForm,
 #messageForm,
 #imageForm {
   background-color: white;
-
 }
-
 
 #loginForm,
 #donationForm,
@@ -373,8 +370,6 @@ button:focus {
   }
 }
 
-#ourPets {
-}
 #lastBox {
   color: white;
   display: grid;
@@ -398,22 +393,19 @@ button:focus {
     }
   }
 
-
-#frontpageForms,
-#sendToUsForms {
-  background-color: $darkbtn;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  #donationForm,
-  #signupForm,
-  #messageForm,
-  #imageForm {
-    margin: 10vw;
-    padding: 40px;
-
+  #frontpageForms,
+  #sendToUsForms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    #donationForm,
+    #signupForm,
+    #messageForm,
+    #imageForm {
+      margin: 10vw;
+      padding: 40px;
+    }
   }
 }
-
 /* -----------------------
         signed in page
 ------------------------*/
@@ -570,11 +562,3 @@ button:focus {
 .visible {
   display: block !important;
 }
-
-/* -----------------------
-        template 
-------------------------*/
-
-/* -----------------------
-        template 
-------------------------*/

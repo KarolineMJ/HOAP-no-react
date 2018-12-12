@@ -79,34 +79,37 @@ button:focus {
   #signupForm form .formField input {
     border-bottom: 1px solid grey; }
 
+#messageForm,
+#imageForm {
+  background-color: white; }
+
 #loginForm,
 #donationForm,
 #signupForm,
 #messageForm,
-#imageForm {
-  background-color: white;
-  box-shadow: 0px 3px 20px 3px rgba(156, 156, 156, 0.77);
-  padding: 40px;
-  color: grey; }
+#imageForm,
 #signupForm {
   padding: 40px; }
   #loginForm h2,
   #donationForm h2,
   #signupForm h2,
   #messageForm h2,
-  #imageForm h2 {
+  #imageForm h2,
+  #signupForm h2 {
     margin-bottom: 20px; }
   #loginForm form,
   #donationForm form,
   #signupForm form,
   #messageForm form,
-  #imageForm form {
+  #imageForm form,
+  #signupForm form {
     display: grid; }
     #loginForm form .formField,
     #donationForm form .formField,
     #signupForm form .formField,
     #messageForm form .formField,
-    #imageForm form .formField {
+    #imageForm form .formField,
+    #signupForm form .formField {
       display: flex;
       flex-flow: column-reverse;
       margin-bottom: 1em; }
@@ -114,8 +117,7 @@ button:focus {
       #donationForm form .formField input,
       #signupForm form .formField input,
       #messageForm form .formField input,
-      #imageForm form .formField input {
-        font-size: 1.5em;
+      #imageForm form .formField input,
       #signupForm form .formField input {
         background: none;
         font-size: 1em;
@@ -130,14 +132,16 @@ button:focus {
         #donationForm form .formField input:focus,
         #signupForm form .formField input:focus,
         #messageForm form .formField input:focus,
-        #imageForm form .formField input:focus {
+        #imageForm form .formField input:focus,
+        #signupForm form .formField input:focus {
           outline: 0;
           border-bottom: 1px solid #74b7a5; }
       #loginForm form .formField input:placeholder-shown + label,
       #donationForm form .formField input:placeholder-shown + label,
       #signupForm form .formField input:placeholder-shown + label,
       #messageForm form .formField input:placeholder-shown + label,
-      #imageForm form .formField input:placeholder-shown + label {
+      #imageForm form .formField input:placeholder-shown + label,
+      #signupForm form .formField input:placeholder-shown + label {
         cursor: text;
         max-width: 66.66%;
         white-space: nowrap;
@@ -149,7 +153,8 @@ button:focus {
       #donationForm form .formField ::-webkit-input-placeholder,
       #signupForm form .formField ::-webkit-input-placeholder,
       #messageForm form .formField ::-webkit-input-placeholder,
-      #imageForm form .formField ::-webkit-input-placeholder {
+      #imageForm form .formField ::-webkit-input-placeholder,
+      #signupForm form .formField ::-webkit-input-placeholder {
         opacity: 0;
         transition: inherit; }
       #loginForm form .formField input:not(:placeholder-shown) + label,
@@ -161,7 +166,9 @@ button:focus {
       #messageForm form .formField input:not(:placeholder-shown) + label,
       #messageForm form .formField input:focus + label,
       #imageForm form .formField input:not(:placeholder-shown) + label,
-      #imageForm form .formField input:focus + label {
+      #imageForm form .formField input:focus + label,
+      #signupForm form .formField input:not(:placeholder-shown) + label,
+      #signupForm form .formField input:focus + label {
         transition: 0.2s ease all;
         transform: translate(0, 0) scale(1);
         cursor: pointer; }
@@ -174,13 +181,16 @@ button:focus {
       #messageForm form .formField input,
       #messageForm form .formField label,
       #imageForm form .formField input,
-      #imageForm form .formField label {
+      #imageForm form .formField label,
+      #signupForm form .formField input,
+      #signupForm form .formField label {
         touch-action: manipulation; }
     #loginForm form button,
     #donationForm form button,
     #signupForm form button,
     #messageForm form button,
-    #imageForm form button {
+    #imageForm form button,
+    #signupForm form button {
       font-family: "Raleway", sans-serif;
       height: 40px;
       justify-self: end;
@@ -198,7 +208,8 @@ button:focus {
       #donationForm form button:hover,
       #signupForm form button:hover,
       #messageForm form button:hover,
-      #imageForm form button:hover {
+      #imageForm form button:hover,
+      #signupForm form button:hover {
         background-color: #599686; }
     #loginForm form input,
     #loginForm form button,
@@ -209,7 +220,9 @@ button:focus {
     #messageForm form input,
     #messageForm form button,
     #imageForm form input,
-    #imageForm form button {
+    #imageForm form button,
+    #signupForm form input,
+    #signupForm form button {
       margin: 20px 0; }
 
 #subscribeForm form {
@@ -369,30 +382,19 @@ button:focus {
       #lastBox #animalImage div img {
         width: 8vw;
         border-radius: 50%; }
-
-
-#frontpageForms,
-#sendToUsForms {
-  background-color: #74b7a5;
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
-  #frontpageForms #donationForm,
-  #frontpageForms #signupForm,
-  #frontpageForms #messageForm,
-  #frontpageForms #imageForm,
-  #sendToUsForms #donationForm,
-  #sendToUsForms #signupForm,
-  #sendToUsForms #messageForm,
-  #sendToUsForms #imageForm {
-    margin: 10vw;
-    padding: 40px; }
-
-  #lastBox #frontpageForms {
+  #lastBox #frontpageForms,
+  #lastBox #sendToUsForms {
     display: grid;
     grid-template-columns: 1fr 1fr; }
     #lastBox #frontpageForms #donationForm,
-    #lastBox #frontpageForms #signupForm {
-      margin: 0 10vw 10vw 10vw;
+    #lastBox #frontpageForms #signupForm,
+    #lastBox #frontpageForms #messageForm,
+    #lastBox #frontpageForms #imageForm,
+    #lastBox #sendToUsForms #donationForm,
+    #lastBox #sendToUsForms #signupForm,
+    #lastBox #sendToUsForms #messageForm,
+    #lastBox #sendToUsForms #imageForm {
+      margin: 10vw;
       padding: 40px; }
 
 /* -----------------------
@@ -510,10 +512,3 @@ button:focus {
 
 .visible {
   display: block !important; }
-
-/* -----------------------
-        template 
-------------------------*/
-/* -----------------------
-        template 
-------------------------*/
