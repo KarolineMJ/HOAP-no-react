@@ -61,7 +61,6 @@ button:focus {
 
 #loginForm {
   background-color: white;
-  color: grey;
   display: none;
   position: fixed;
   z-index: 10;
@@ -84,40 +83,115 @@ button:focus {
   background-color: white; }
 
 #loginForm,
-#donationForm,
-#signupForm,
 #messageForm,
-#imageForm,
-#signupForm {
-  padding: 40px; }
+#imageForm {
+  padding: 40px;
+  color: grey; }
   #loginForm h2,
-  #donationForm h2,
-  #signupForm h2,
   #messageForm h2,
-  #imageForm h2,
-  #signupForm h2 {
+  #imageForm h2 {
     margin-bottom: 20px; }
   #loginForm form,
-  #donationForm form,
-  #signupForm form,
   #messageForm form,
-  #imageForm form,
-  #signupForm form {
+  #imageForm form {
     display: grid; }
     #loginForm form .formField,
-    #donationForm form .formField,
-    #signupForm form .formField,
     #messageForm form .formField,
-    #imageForm form .formField,
-    #signupForm form .formField {
+    #imageForm form .formField {
       display: flex;
       flex-flow: column-reverse;
       margin-bottom: 1em; }
       #loginForm form .formField input,
-      #donationForm form .formField input,
-      #signupForm form .formField input,
       #messageForm form .formField input,
+      #imageForm form .formField input {
+        background: none;
+        font-size: 1em;
+        border: 0;
+        border-bottom: 1px solid grey;
+        font-family: inherit;
+        -webkit-appearance: none;
+        border-radius: 0;
+        padding: 0;
+        cursor: text; }
+        #loginForm form .formField input:focus,
+        #messageForm form .formField input:focus,
+        #imageForm form .formField input:focus {
+          outline: 0;
+          border-bottom: 1px solid #599686; }
+      #loginForm form .formField input:placeholder-shown + label,
+      #messageForm form .formField input:placeholder-shown + label,
+      #imageForm form .formField input:placeholder-shown + label {
+        cursor: text;
+        max-width: 66.66%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 2.125rem) scale(1.2); }
+      #loginForm form .formField ::-webkit-input-placeholder,
+      #messageForm form .formField ::-webkit-input-placeholder,
+      #imageForm form .formField ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit; }
+      #loginForm form .formField input:not(:placeholder-shown) + label,
+      #loginForm form .formField input:focus + label,
+      #messageForm form .formField input:not(:placeholder-shown) + label,
+      #messageForm form .formField input:focus + label,
+      #imageForm form .formField input:not(:placeholder-shown) + label,
+      #imageForm form .formField input:focus + label {
+        transition: 0.2s ease all;
+        transform: translate(0, 0) scale(1);
+        cursor: pointer; }
+      #loginForm form .formField input,
+      #loginForm form .formField label,
+      #messageForm form .formField input,
+      #messageForm form .formField label,
       #imageForm form .formField input,
+      #imageForm form .formField label {
+        touch-action: manipulation; }
+    #loginForm form button,
+    #messageForm form button,
+    #imageForm form button {
+      font-family: "Raleway", sans-serif;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      width: 150px;
+      background-color: #74b7a5;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: end; }
+      #loginForm form button:hover,
+      #messageForm form button:hover,
+      #imageForm form button:hover {
+        background-color: #599686; }
+    #loginForm form input,
+    #loginForm form button,
+    #messageForm form input,
+    #messageForm form button,
+    #imageForm form input,
+    #imageForm form button {
+      margin: 20px 0; }
+
+#donationForm,
+#signupForm {
+  padding: 40px; }
+  #donationForm h2,
+  #signupForm h2 {
+    margin-bottom: 20px; }
+  #donationForm form,
+  #signupForm form {
+    display: grid; }
+    #donationForm form .formField,
+    #signupForm form .formField {
+      display: flex;
+      flex-flow: column-reverse;
+      margin-bottom: 1em; }
+      #donationForm form .formField input,
       #signupForm form .formField input {
         background: none;
         font-size: 1em;
@@ -128,68 +202,38 @@ button:focus {
         border-radius: 0;
         padding: 0;
         cursor: text; }
-        #loginForm form .formField input:focus,
         #donationForm form .formField input:focus,
-        #signupForm form .formField input:focus,
-        #messageForm form .formField input:focus,
-        #imageForm form .formField input:focus,
         #signupForm form .formField input:focus {
           outline: 0;
-          border-bottom: 1px solid #74b7a5; }
-      #loginForm form .formField input:placeholder-shown + label,
+          border-bottom: 1px solid #b28973; }
       #donationForm form .formField input:placeholder-shown + label,
-      #signupForm form .formField input:placeholder-shown + label,
-      #messageForm form .formField input:placeholder-shown + label,
-      #imageForm form .formField input:placeholder-shown + label,
       #signupForm form .formField input:placeholder-shown + label {
         cursor: text;
+        color: white;
         max-width: 66.66%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         transform-origin: left bottom;
         transform: translate(0, 2.125rem) scale(1.2); }
-      #loginForm form .formField ::-webkit-input-placeholder,
       #donationForm form .formField ::-webkit-input-placeholder,
-      #signupForm form .formField ::-webkit-input-placeholder,
-      #messageForm form .formField ::-webkit-input-placeholder,
-      #imageForm form .formField ::-webkit-input-placeholder,
       #signupForm form .formField ::-webkit-input-placeholder {
         opacity: 0;
         transition: inherit; }
-      #loginForm form .formField input:not(:placeholder-shown) + label,
-      #loginForm form .formField input:focus + label,
       #donationForm form .formField input:not(:placeholder-shown) + label,
       #donationForm form .formField input:focus + label,
-      #signupForm form .formField input:not(:placeholder-shown) + label,
-      #signupForm form .formField input:focus + label,
-      #messageForm form .formField input:not(:placeholder-shown) + label,
-      #messageForm form .formField input:focus + label,
-      #imageForm form .formField input:not(:placeholder-shown) + label,
-      #imageForm form .formField input:focus + label,
       #signupForm form .formField input:not(:placeholder-shown) + label,
       #signupForm form .formField input:focus + label {
         transition: 0.2s ease all;
         transform: translate(0, 0) scale(1);
         cursor: pointer; }
-      #loginForm form .formField input,
-      #loginForm form .formField label,
       #donationForm form .formField input,
       #donationForm form .formField label,
       #signupForm form .formField input,
-      #signupForm form .formField label,
-      #messageForm form .formField input,
-      #messageForm form .formField label,
-      #imageForm form .formField input,
-      #imageForm form .formField label,
-      #signupForm form .formField input,
       #signupForm form .formField label {
+        color: white;
         touch-action: manipulation; }
-    #loginForm form button,
     #donationForm form button,
-    #signupForm form button,
-    #messageForm form button,
-    #imageForm form button,
     #signupForm form button {
       font-family: "Raleway", sans-serif;
       height: 40px;
@@ -204,23 +248,11 @@ button:focus {
       border-radius: 5px;
       cursor: pointer;
       align-self: end; }
-      #loginForm form button:hover,
       #donationForm form button:hover,
-      #signupForm form button:hover,
-      #messageForm form button:hover,
-      #imageForm form button:hover,
       #signupForm form button:hover {
-        background-color: #599686; }
-    #loginForm form input,
-    #loginForm form button,
+        background-color: #916a56; }
     #donationForm form input,
     #donationForm form button,
-    #signupForm form input,
-    #signupForm form button,
-    #messageForm form input,
-    #messageForm form button,
-    #imageForm form input,
-    #imageForm form button,
     #signupForm form input,
     #signupForm form button {
       margin: 20px 0; }
@@ -382,20 +414,24 @@ button:focus {
       #lastBox #animalImage div img {
         width: 8vw;
         border-radius: 50%; }
-  #lastBox #frontpageForms,
-  #lastBox #sendToUsForms {
-    display: grid;
-    grid-template-columns: 1fr 1fr; }
-    #lastBox #frontpageForms #donationForm,
-    #lastBox #frontpageForms #signupForm,
-    #lastBox #frontpageForms #messageForm,
-    #lastBox #frontpageForms #imageForm,
-    #lastBox #sendToUsForms #donationForm,
-    #lastBox #sendToUsForms #signupForm,
-    #lastBox #sendToUsForms #messageForm,
-    #lastBox #sendToUsForms #imageForm {
-      margin: 10vw;
-      padding: 40px; }
+
+#sendToUsForms {
+  background-color: #74b7a5; }
+
+#frontpageForms,
+#sendToUsForms {
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  #frontpageForms #donationForm,
+  #frontpageForms #signupForm,
+  #frontpageForms #messageForm,
+  #frontpageForms #imageForm,
+  #sendToUsForms #donationForm,
+  #sendToUsForms #signupForm,
+  #sendToUsForms #messageForm,
+  #sendToUsForms #imageForm {
+    margin: 10vw;
+    padding: 40px; }
 
 /* -----------------------
         signed in page

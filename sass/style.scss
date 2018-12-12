@@ -81,7 +81,7 @@ button:focus {
 
 #loginForm {
   background-color: white;
-  color: grey;
+
   display: none;
   position: fixed;
   z-index: 10;
@@ -108,19 +108,16 @@ button:focus {
     }
   }
 }
+
 #messageForm,
 #imageForm {
   background-color: white;
 }
-
 #loginForm,
-#donationForm,
-#signupForm,
 #messageForm,
-#imageForm,
-#signupForm {
+#imageForm {
   padding: 40px;
-
+  color: grey;
   h2 {
     margin-bottom: 20px;
   }
@@ -134,7 +131,7 @@ button:focus {
         background: none;
         font-size: 1em;
         border: 0;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid grey;
         font-family: inherit;
 
         -webkit-appearance: none;
@@ -143,7 +140,7 @@ button:focus {
         cursor: text;
         &:focus {
           outline: 0;
-          border-bottom: 1px solid $darkbtn;
+          border-bottom: 1px solid $btnHover;
         }
       }
       input:placeholder-shown + label {
@@ -176,7 +173,7 @@ button:focus {
       justify-self: end;
       padding: 7px;
       width: 150px;
-      background-color: #b28973;
+      background-color: $darkbtn;
       border: none;
       color: white;
       text-align: center;
@@ -186,6 +183,85 @@ button:focus {
       align-self: end;
       &:hover {
         background-color: $btnHover;
+      }
+    }
+    input,
+    button {
+      margin: 20px 0;
+    }
+  }
+}
+
+#donationForm,
+#signupForm {
+  padding: 40px;
+  h2 {
+    margin-bottom: 20px;
+  }
+  form {
+    display: grid;
+    .formField {
+      display: flex;
+      flex-flow: column-reverse;
+      margin-bottom: 1em;
+      input {
+        background: none;
+        font-size: 1em;
+        border: 0;
+        border-bottom: 1px solid white;
+        font-family: inherit;
+
+        -webkit-appearance: none;
+        border-radius: 0;
+        padding: 0;
+        cursor: text;
+        &:focus {
+          outline: 0;
+          border-bottom: 1px solid #b28973;
+        }
+      }
+      input:placeholder-shown + label {
+        cursor: text;
+        color: white;
+        max-width: 66.66%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 2.125rem) scale(1.2);
+      }
+      ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit;
+      }
+      input:not(:placeholder-shown) + label,
+      input:focus + label {
+        transition: 0.2s ease all;
+        transform: translate(0, 0) scale(1);
+        cursor: pointer;
+      }
+      input,
+      label {
+        color: white;
+        touch-action: manipulation;
+      }
+    }
+    button {
+      font-family: $font;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      width: 150px;
+      background-color: #b28973;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: end;
+      &:hover {
+        background-color: #916a56;
       }
     }
     input,
@@ -370,6 +446,8 @@ button:focus {
   }
 }
 
+#ourPets {
+}
 #lastBox {
   color: white;
   display: grid;
@@ -392,20 +470,24 @@ button:focus {
       }
     }
   }
+}
+#sendToUsForms {
+  background-color: $darkbtn;
+}
 
-  #frontpageForms,
-  #sendToUsForms {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    #donationForm,
-    #signupForm,
-    #messageForm,
-    #imageForm {
-      margin: 10vw;
-      padding: 40px;
-    }
+#frontpageForms,
+#sendToUsForms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  #donationForm,
+  #signupForm,
+  #messageForm,
+  #imageForm {
+    margin: 10vw;
+    padding: 40px;
   }
 }
+
 /* -----------------------
         signed in page
 ------------------------*/
