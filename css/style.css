@@ -753,12 +753,49 @@ body#admin {
                 border: 1px solid #2e2f4b;
                 width: 70px;
                 border-radius: 50%;
-                margin: 0 auto; }
+                margin: 0 auto;
+                cursor: pointer; }
               body#admin main .section .subsection .tableWrapper .columns .column .row {
                 padding: 20px;
                 /* temp solution, should achieve vertical align */ }
               body#admin main .section .subsection .tableWrapper .columns .column .row:not(:last-of-type):not(.head) {
                 border-bottom: 1px solid #2e2f4b; }
+        body#admin main .section .subsection .animalDetailModal {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 85vw;
+          height: 290px;
+          padding: 50px;
+          background: white;
+          border: 2px solid #2e2f4b;
+          display: grid;
+          grid-template-columns: 170px auto 170px;
+          grid-gap: 30px; }
+          body#admin main .section .subsection .animalDetailModal .animalImageBig {
+            height: 170px;
+            border-radius: 50%;
+            border: 3px solid black; }
+          body#admin main .section .subsection .animalDetailModal .animalDetails {
+            display: grid;
+            grid-template-columns: 170px auto;
+            grid-template-rows: 190px; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails .story {
+              overflow: scroll; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails h5:not(:first-of-type) {
+              margin-top: 1rem; }
+          body#admin main .section .subsection .animalDetailModal .buttons button {
+            display: block;
+            height: 40px;
+            /* need to unify button style */
+            width: 100px;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 20px;
+            background: #2e2f4b;
+            color: white; }
+          body#admin main .section .subsection .animalDetailModal.hide {
+            display: none; }
         body#admin main .section .subsection .toDoListWrapper {
           width: 70%;
           /* temp solution. Need to figure out if and how should this part be aligned to other elements */

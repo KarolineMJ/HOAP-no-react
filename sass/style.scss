@@ -897,6 +897,7 @@ body#admin {
                 width: 70px;
                 border-radius: 50%;
                 margin: 0 auto;
+                cursor: pointer;
               }
               .row {
                 padding: 20px; /* temp solution, should achieve vertical align */
@@ -905,6 +906,48 @@ body#admin {
                 border-bottom: 1px solid $purpleColor;
               }
             }
+          }
+        }
+        .animalDetailModal {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 85vw;
+          height: 290px;
+          padding: 50px;
+          background: white;
+          border: 2px solid $purpleColor;
+          display: grid;
+          grid-template-columns: 170px auto 170px;
+          grid-gap: 30px;
+          .animalImageBig {
+            height: 170px;
+            border-radius: 50%;
+            border: 3px solid black;
+          }
+          .animalDetails {
+            display: grid;
+            grid-template-columns: 170px auto;
+            grid-template-rows: 190px;
+            .story {
+              overflow: scroll;
+            }
+            h5:not(:first-of-type) {
+              margin-top: 1rem;
+            }
+          }
+          .buttons button {
+            display: block;
+            height: 40px; /* need to unify button style */
+            width: 100px;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 20px;
+            background: $purpleColor;
+            color: white;
+          }
+          &.hide {
+            display: none;
           }
         }
         .toDoListWrapper {
