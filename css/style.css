@@ -664,12 +664,12 @@ Keyframes for frontpage
 #animation #coinCat {
   width: 300px; }
   #animation #coinCat svg #head {
-    animation: moveHead 2s 0.5s forwards;
+    animation: moveHead 2s 0.5s infinite;
     transform-origin: 50%; }
   #animation #coinCat svg #coin {
-    animation: coinFall 1s ease-in-out forwards, coinSkew 1s ease-in-out forwards; }
+    animation: coinFall 2s ease-in-out infinite; }
   #animation #coinCat svg #eyes {
-    animation: moveHead 2s 0.5s forwards;
+    animation: moveHead 2s 0.5s infinite;
     transform-origin: 50%; }
 
 #animation #walkDog {
@@ -744,7 +744,7 @@ Keyframes for frontpage
   from {
     transform: translateY(0%); }
   to {
-    transform: translateY(1.5%); } }
+    transform: translateY(2%); } }
 
 @keyframes rotateWheel {
   from {
@@ -766,7 +766,7 @@ Keyframes for frontpage
 
 @keyframes boxMiddleBounce {
   from {
-    transform: translateY(-3%); }
+    transform: translateY(-4%); }
   to {
     transform: translateY(3%); } }
 
