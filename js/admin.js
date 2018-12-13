@@ -5,7 +5,6 @@ const addAnimalBtn = document.querySelector(".addAnimalBtn");
 const addToDoBtn = document.querySelector(".addToDoBtn");
 const signoutForm = document.querySelector(".signOutForm");
 const addAnimalForm = document.querySelector(".addAnimalForm");
-const addToDoForm = document.querySelector(".addToDoForm");
 const closeX = document.querySelectorAll(".close");
 const allAnimalImgS = document.querySelectorAll(".animalImage");
 const closeModalBtn = document.querySelector(".buttons .closeModal");
@@ -22,9 +21,9 @@ addAnimalBtn.addEventListener("click", showAddAnimalForm);
 function showAddAnimalForm() {
   addAnimalForm.classList.toggle("hide");
 }
-addToDoBtn.addEventListener("click", showAddToDoForm);
-function showAddToDoForm() {
-  addToDoForm.classList.toggle("hide");
+addToDoBtn.addEventListener("click", addToDo);
+function addToDo() {
+  console.log("add a to do to the list");
 }
 
 // open animal detail modal with click on animal image
