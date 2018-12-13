@@ -536,143 +536,150 @@ button:focus {
 /* -----------------------
         signed in page
 ------------------------*/
-
-#yourPets {
-  padding: 10px 10vw;
-  background-color: $grayColor;
-  color: grey;
-  display: grid;
-  grid-template-rows: 20vh 1fr;
-  position: relative;
-  hr {
-    position: relative;
-    top: -60px;
-    opacity: 0;
-  }
-  #petChoices {
+#signedInContent {
+  #yourPets {
+    padding: 10px 10vw;
+    background-color: $grayColor;
+    color: grey;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    div {
-      align-self: end;
-      input,
-      label {
+    grid-template-rows: 20vh 1fr;
+    position: relative;
+    hr {
+      position: relative;
+      top: -60px;
+      opacity: 0;
+    }
+    #petChoices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      div {
+        align-self: end;
+        input,
+        label {
+          margin: 20px 0;
+        }
+      }
+      p {
+        align-self: end;
+        justify-self: end;
         margin: 20px 0;
       }
     }
-    p {
-      align-self: end;
-      justify-self: end;
-      margin: 20px 0;
-    }
-  }
 
-  #animalImage {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    #animalImage {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
 
-    div {
-      position: relative;
-      margin: 20px 0;
-      justify-self: center;
-      text-align: center;
+      div {
+        position: relative;
+        margin: 20px 0;
+        justify-self: center;
+        text-align: center;
 
-      .needsCircle {
-        right: 3vw;
-        width: 2vw;
-        height: 2vw;
-        box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
-        background-color: #a81c1c;
-        border-radius: 50%;
-        position: absolute;
-      }
-
-      img {
-        cursor: pointer;
-
-        width: 15vw;
-        border-radius: 50%;
-        align-self: center;
-      }
-
-      .petName {
-        display: inline-block;
-        padding: 2px;
-        grid-row: 2;
-
-        svg {
-          width: 20px;
-          vertical-align: middle;
-          padding-right: 3px;
+        .needsCircle {
+          right: 3vw;
+          width: 2vw;
+          height: 2vw;
+          box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
+          background-color: #a81c1c;
+          border-radius: 50%;
+          position: absolute;
         }
-        h3 {
-          vertical-align: middle;
+
+        img {
+          cursor: pointer;
+
+          width: 15vw;
+          border-radius: 50%;
+          align-self: center;
+        }
+
+        .petName {
           display: inline-block;
           padding: 2px;
-          color: grey;
+          grid-row: 2;
+
+          svg {
+            width: 20px;
+            vertical-align: middle;
+            padding-right: 3px;
+          }
+          h3 {
+            vertical-align: middle;
+            display: inline-block;
+            padding: 2px;
+            color: grey;
+          }
         }
       }
     }
   }
-}
 
-.petExpand {
-  width: 100vw;
-  height: 40vh;
-  background-color: white;
-  grid-column: 1/-1;
-  z-index: 2;
-  display: none;
-  grid-template-columns: 1fr 1fr;
+  .petExpand {
+    width: 100vw;
+    height: 40vh;
+    background-color: white;
+    grid-column: 1/-1;
+    z-index: 2;
+    display: none;
+    grid-template-columns: 1fr 1fr;
 
-  h2 {
-    text-align: left;
-    padding: 10px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 10px;
-    li {
-      text-decoration: none;
-      padding: 0;
+    h2 {
       text-align: left;
+      padding: 10px;
     }
-  }
 
-  p {
-    text-align: left;
-    padding: 10px;
-    padding-right: 70px;
-  }
+    ul {
+      list-style: none;
+      padding: 10px;
+      li {
+        text-decoration: none;
+        padding: 0;
+        text-align: left;
+      }
+    }
 
-  .expandImg {
-    width: 20vw;
-    align-self: center;
+    p {
+      text-align: left;
+      padding: 10px;
+      padding-right: 70px;
+    }
 
-    img {
-      border-radius: 50%;
+    .expandImg {
       width: 20vw;
+      align-self: center;
+
+      img {
+        border-radius: 50%;
+        width: 20vw;
+      }
     }
   }
-}
 
-#sendToUsForms {
-  background-color: $mainColor;
-}
+  #sendToUsForms {
+    background-color: $mainColor;
+  }
 
-.sidebar {
-  box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
-  z-index: 3;
-  height: 200vh;
-  background-color: white;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 26vw;
-}
-.closed {
-  grid-template-columns: 1fr;
+  .sidebar {
+    display: none;
+    box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
+    z-index: 3;
+    height: 200vh;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 26vw;
+    #signOut {
+      position: relative;
+      top: 160px;
+      left: 92px;
+    }
+  }
+  .closed {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*-------------------------

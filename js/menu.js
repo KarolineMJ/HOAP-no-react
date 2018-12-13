@@ -12,11 +12,11 @@ function hideMenu() {
 
   settingBtn.addEventListener("click", function() {
     console.log("clicked");
-    if (sidebar.style.display == "none") {
-      sidebar.style.display = "block";
+    if (sidebar.style.display == "block") {
+      sidebar.style.display = "none";
       signedInContainer.classList.remove("closed");
     } else {
-      sidebar.style.display = "none";
+      sidebar.style.display = "block";
       signedInContainer.classList.add("closed");
     }
   });
@@ -25,11 +25,11 @@ function hideMenu() {
     "click",
     function() {
       console.log("clicked");
-      if (sidebar.style.display == "none") {
-        sidebar.style.display = "block";
+      if (sidebar.style.display == "block") {
+        sidebar.style.display = "none";
         signedInContainer.classList.remove("closed");
       } else {
-        sidebar.style.display = "none";
+        sidebar.style.display = "block";
         signedInContainer.classList.add("closed");
       }
     },

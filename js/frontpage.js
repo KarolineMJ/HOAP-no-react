@@ -39,23 +39,63 @@ signinButton.addEventListener("click", e => {
     });
 });
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-  } else {
-  }
-});
-
 /*-------------------------------------------
 Display signin form
 ------------------------------------------*/
 
-let memberBtn = document.querySelector("#alreadyMemberBtn");
+let alreadyMemberBtn = document.querySelector("#alreadyMemberBtn");
 let signinForm = document.querySelector("#loginForm");
-memberBtn.addEventListener("click", openSigninForm);
+alreadyMemberBtn.addEventListener("click", openSigninForm);
 
 function openSigninForm() {
-  signinForm.classList.toggle("visible");
+  if (signinForm.style.display == "block") {
+    signinForm.style.display = "none";
+  } else {
+    signinForm.style.display = "block";
+  }
 }
+
+/*-------------------------------------------
+Display right content if user
+------------------------------------------*/
+
+const frontpageContent = document.querySelector("#frontpageContent");
+const signedInContent = document.querySelector("#signedInContent");
+const memberBtns = document.querySelector("#sidebarBtns");
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    frontpageContent.style.display = "none";
+    signedInContent.style.display = "block";
+    signinForm.style.display = "none";
+    alreadyMemberBtn.style.display = "none";
+    memberBtns.style.display = "block";
+  } else {
+    frontpageContent.style.display = "block";
+    signedInContent.style.display = "none";
+    alreadyMemberBtn.style.display = "block";
+    memberBtns.style.display = "none";
+  }
+});
+
+/*-------------------------------------------
+Signout user
+------------------------------------------*/
+
+const signOutButton = document.querySelector("#signOut");
+
+signOutButton.addEventListener("click", e => {
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+      console.log("Succesfull logout");
+    })
+    .catch(function(error) {
+      // An error happened.
+      console.log(err);
+    });
+});
 
 /*-------------------------------------------
 Open Modal
