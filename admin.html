@@ -156,22 +156,28 @@
                     <div class="animalImageBig"></div>
                     <div class="animalDetails">
                         <div>
-                            <h5>Name of animal</h5>
-                            <h5>List of basic info</h5>
+                            <input class="animalName" type="text" value="might fetch a long name" />
                             <ul>
-                                <li>race</li>
-                                <li>age</li>
-                                <li>etc.</li>
+                                <li>
+                                    <input type="text" value="race from db, editable" />
+                                </li>
+
+                                <li>age, auto generate or allow input?</li>
+                                <li><label><input type="radio" name="gender" value="female" />Female</label><label><input type="radio" name="gender" value="male" />Male</label></li>
                             </ul>
                         </div>
-                        <div class="story">
+                        <div class="needAndStory">
+                            <h5>Needs</h5>
+                            <p><label><input type="checkbox" name="time" value="morning" />morning</label><label><input type="checkbox" name="time" value="afternoon" />afternoon</label><label><input type="checkbox" name="time" value="evening" />evening</label><label><input type="checkbox" name="more" value="training" />training</label></p>
+                            <p><label><input type="text" value="" placeholder="extra need" /></label></p>
                             <h5>Story</h5>
-                            <section>story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal </section>
+                            <section class="story">story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal </section>
                         </div>
                     </div>
                     <div class="buttons">
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button class="closeModal">X</button>
+                        <button class="editAnimal" data-action="edit">Edit</button>
+                        <button class="deleteAnimal" data-action="delete">Delete</button>
                     </div>
                 </div>               
                 <div class="adminForm addAnimalForm hide">add animal <span class="close">X</span></div>
