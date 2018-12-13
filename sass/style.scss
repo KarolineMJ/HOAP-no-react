@@ -679,7 +679,6 @@ button:focus {
         grid-template-columns: 6vw 1fr;
         img {
           place-self: center;
-
           width: 4vw;
           border-radius: 50%;
         }
@@ -1066,44 +1065,100 @@ body#admin {
 // here starts POST AND NOTIFY!!
 .postsContainer {
   display: grid;
-  grid-template-columns: 50vw 40vw;
-  .receviedPictures {
-    // border: 1px solid black;
-    border-right: 1px solid black;
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: 20vh 20vh 20vh;
-    grid-template-rows: 20vh 20vh 20vh;
-    grid-gap: 30px;
-    justify-content: center;
-    .singlePic {
+  grid-template-columns: 60% 40%;
+  margin-bottom: 60px;
+  .publishContainer {
+    position: relative;
+
+    .receviedPictures {
+      // border: 1px solid black;
+      border-right: 1px solid black;
+      width: 100%;
+      height: auto;
+      display: grid;
+      grid-template-columns: 20vh 20vh 20vh;
+      grid-template-rows: 20vh 20vh 20vh;
+      grid-gap: 30px;
+      justify-content: center;
+
+      .singlePic {
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+      }
+    }
+    .publishBtn {
+      margin: 20px;
+      position: absolute;
+      right: 0px;
+    }
+  }
+  .dragAndDropContainer {
+    position: relative;
+    input {
+      margin: auto;
+    }
+    .writeNotification {
+      height: 200px;
+      width: 300px;
+    }
+    .dragAndDrop {
       width: 150px;
       height: 150px;
       border: 1px solid black;
+      margin: auto;
     }
-  }
-  .writeNotification {
-    height: 200px;
-    width: 300px;
-    margin: auto;
-  }
-  .dragAndDrop {
-    width: 150px;
-    height: 150px;
-    border: 1px solid black;
-    margin: auto;
+    .postBtn {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+    }
   }
 }
 
+// status section
 #status {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+
   .monthsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 90px);
+    grid-template-columns: repeat(auto-fill, 75px);
+
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
     .month {
       width: 70px;
       height: 130px;
       border: 2px solid lightblue;
     }
+  }
+  .statistiOfAnimals {
+    margin-top: 20px;
+    .statisticDiagram {
+      height: 150px;
+      width: 100%;
+      border: 1px solid black;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .statisticOfMembers {
+    margin-top: 20px;
+    .membersDiagram {
+      height: 150px;
+      width: 100%;
+      border: 1px solid black;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .listOfDonations {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }

@@ -886,34 +886,76 @@ body#admin {
 
 .postsContainer {
   display: grid;
-  grid-template-columns: 50vw 40vw; }
-  .postsContainer .receviedPictures {
-    border-right: 1px solid black;
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: 20vh 20vh 20vh;
-    grid-template-rows: 20vh 20vh 20vh;
-    grid-gap: 30px;
-    justify-content: center; }
-    .postsContainer .receviedPictures .singlePic {
+  grid-template-columns: 60% 40%;
+  margin-bottom: 60px; }
+  .postsContainer .publishContainer {
+    position: relative; }
+    .postsContainer .publishContainer .receviedPictures {
+      border-right: 1px solid black;
+      width: 100%;
+      height: auto;
+      display: grid;
+      grid-template-columns: 20vh 20vh 20vh;
+      grid-template-rows: 20vh 20vh 20vh;
+      grid-gap: 30px;
+      justify-content: center; }
+      .postsContainer .publishContainer .receviedPictures .singlePic {
+        width: 150px;
+        height: 150px;
+        border: 1px solid black; }
+    .postsContainer .publishContainer .publishBtn {
+      margin: 20px;
+      position: absolute;
+      right: 0px; }
+  .postsContainer .dragAndDropContainer {
+    position: relative; }
+    .postsContainer .dragAndDropContainer input {
+      margin: auto; }
+    .postsContainer .dragAndDropContainer .writeNotification {
+      height: 200px;
+      width: 300px; }
+    .postsContainer .dragAndDropContainer .dragAndDrop {
       width: 150px;
       height: 150px;
-      border: 1px solid black; }
-  .postsContainer .writeNotification {
-    height: 200px;
-    width: 300px;
-    margin: auto; }
-  .postsContainer .dragAndDrop {
-    width: 150px;
-    height: 150px;
-    border: 1px solid black;
-    margin: auto; }
+      border: 1px solid black;
+      margin: auto; }
+    .postsContainer .dragAndDropContainer .postBtn {
+      position: absolute;
+      right: 0px;
+      bottom: 0px; }
 
-#status .monthsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 90px); }
-  #status .monthsContainer .month {
-    width: 70px;
-    height: 130px;
-    border: 2px solid lightblue; }
+#status {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px; }
+  #status .monthsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px; }
+    #status .monthsContainer .month {
+      width: 70px;
+      height: 130px;
+      border: 2px solid lightblue; }
+  #status .statistiOfAnimals {
+    margin-top: 20px; }
+    #status .statistiOfAnimals .statisticDiagram {
+      height: 150px;
+      width: 100%;
+      border: 1px solid black;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 20px; }
+  #status .statisticOfMembers {
+    margin-top: 20px; }
+    #status .statisticOfMembers .membersDiagram {
+      height: 150px;
+      width: 100%;
+      border: 1px solid black;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 20px; }
+  #status .listOfDonations {
+    margin-top: 20px;
+    margin-bottom: 20px; }
