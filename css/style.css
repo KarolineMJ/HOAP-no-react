@@ -572,12 +572,26 @@ button:focus {
   background-color: white;
   position: fixed;
   right: 0;
-  top: 0;
-  width: 26vw; }
-  #signedInContent .sidebar #signOut {
-    position: relative;
-    top: 160px;
-    left: 92px; }
+  top: 60px;
+  width: 26vw;
+  padding: 20px; }
+  #signedInContent .sidebar #userSettings {
+    display: none; }
+    #signedInContent .sidebar #userSettings .user {
+      display: grid;
+      grid-template-columns: 6vw 1fr; }
+      #signedInContent .sidebar #userSettings .user img {
+        place-self: center;
+        width: 4vw;
+        border-radius: 50%; }
+      #signedInContent .sidebar #userSettings .user p {
+        align-self: center; }
+    #signedInContent .sidebar #userSettings #signOut {
+      position: relative;
+      top: 160px;
+      left: 92px; }
+  #signedInContent .sidebar #newsFeed {
+    display: none; }
 
 #signedInContent .closed {
   grid-template-columns: 1fr; }

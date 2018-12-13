@@ -669,12 +669,32 @@ button:focus {
     background-color: white;
     position: fixed;
     right: 0;
-    top: 0;
+    top: 60px;
     width: 26vw;
-    #signOut {
-      position: relative;
-      top: 160px;
-      left: 92px;
+    padding: 20px;
+    #userSettings {
+      display: none;
+      .user {
+        display: grid;
+        grid-template-columns: 6vw 1fr;
+        img {
+          place-self: center;
+
+          width: 4vw;
+          border-radius: 50%;
+        }
+        p {
+          align-self: center;
+        }
+      }
+      #signOut {
+        position: relative;
+        top: 160px;
+        left: 92px;
+      }
+    }
+    #newsFeed {
+      display: none;
     }
   }
   .closed {

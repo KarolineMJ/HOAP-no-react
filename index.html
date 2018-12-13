@@ -478,7 +478,32 @@
         </div>
       </div>
 
-      <div class="sidebar"><button id="signOut">Sign out</button></div>
+      <div class="sidebar">
+        <div id="userSettings">
+          <div class="user">
+            <img src="img/john.jpeg" alt="person" />
+            <p>Henrik Andersen</p>
+          </div>
+          <hr />
+          <div id="currentSettings">
+            <h2>Current settings</h2>
+            <div>
+              <input type="checkbox" id="myChoiceCat" />
+              <label for="myChoiceCat">Cats</label>
+            </div>
+            <div>
+              <input type="checkbox" id="myChoiceDog" />
+              <label for="myChoiceDog">Dogs</label>
+            </div>
+            <div>
+              <input type="checkbox" id="myChoiceNoti" />
+              <label for="myChoiceNoti">Reciew Notifications</label>
+            </div>
+          </div>
+          <button id="signOut">Sign out</button>
+        </div>
+        <div id="newsFeed"></div>
+      </div>
 
       <div id="sendToUsForms" class="fullsize">
         <div id="messageForm">

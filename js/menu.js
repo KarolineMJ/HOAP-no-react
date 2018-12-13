@@ -9,6 +9,8 @@ function hideMenu() {
   const newsBtn = document.querySelector("#newsBtn");
   const sidebar = document.querySelector(".sidebar");
   const signedInContainer = document.querySelector(".signedInContainer");
+  const userSettings = document.querySelector("#userSettings");
+  const newsFeed = document.querySelector("#newsFeed");
 
   settingBtn.addEventListener("click", function() {
     console.log("clicked");
@@ -19,12 +21,24 @@ function hideMenu() {
       sidebar.style.display = "block";
       signedInContainer.classList.add("closed");
     }
+
+    if (userSettings.style.display == "block") {
+      userSettings.style.display = "none";
+    } else {
+      userSettings.style.display = "block";
+    }
   });
 
   newsBtn.addEventListener(
     "click",
     function() {
       console.log("clicked");
+      if (newsFeed.style.display == "block") {
+        newsFeed.style.display = "none";
+      } else {
+        newsFeed.style.display = "block";
+      }
+
       if (sidebar.style.display == "block") {
         sidebar.style.display = "none";
         signedInContainer.classList.remove("closed");
