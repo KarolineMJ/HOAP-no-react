@@ -695,8 +695,10 @@ body#admin {
       /* delete me later when all sections are finished */ }
       body#admin main .section .subsection {
         height: auto;
-        padding: 50px;
+        padding: 50px 50px 0 50px;
         position: relative; }
+        body#admin main .section .subsection.otherToDo {
+          padding: 50px; }
         body#admin main .section .subsection .subsectionHeader {
           width: 100%;
           height: 50px;
@@ -717,7 +719,7 @@ body#admin {
             color: white; }
         body#admin main .section .subsection .tableWrapper {
           width: 100%;
-          height: 320px;
+          height: 370px;
           margin: 0 auto;
           position: relative; }
           body#admin main .section .subsection .tableWrapper .firstColumn {
@@ -726,9 +728,9 @@ body#admin {
             height: 100%;
             background-color: #efefef;
             display: grid;
-            grid-template-rows: 70px 50px 50px 50px 50px 50px; }
+            grid-template-rows: 100px 50px 50px 50px 50px 70px; }
             body#admin main .section .subsection .tableWrapper .firstColumn .head {
-              height: 70px; }
+              height: 100px; }
             body#admin main .section .subsection .tableWrapper .firstColumn .row {
               padding: 20px; }
             body#admin main .section .subsection .tableWrapper .firstColumn .row:not(.head):not(:last-of-type) {
@@ -739,21 +741,22 @@ body#admin {
             overflow-x: scroll;
             position: absolute;
             left: 15%;
-            width: 85%;
+            width: 80%;
             display: grid;
             grid-template-columns: repeat(11, 130px);
             white-space: nowrap; }
             body#admin main .section .subsection .tableWrapper .columns .column {
               border-right: 1px solid #2e2f4b;
               display: grid;
-              grid-template-rows: 70px 50px 50px 50px 50px 50px; }
+              grid-template-rows: 100px 50px 50px 50px 50px 70px; }
               body#admin main .section .subsection .tableWrapper .columns .column:last-of-type {
                 border-right: none; }
               body#admin main .section .subsection .tableWrapper .columns .column .animalImage {
                 border: 1px solid #2e2f4b;
+                height: 70px;
                 width: 70px;
                 border-radius: 50%;
-                margin: 0 auto;
+                margin: 10px auto auto auto;
                 cursor: pointer; }
               body#admin main .section .subsection .tableWrapper .columns .column .row {
                 padding: 20px;
@@ -761,29 +764,54 @@ body#admin {
               body#admin main .section .subsection .tableWrapper .columns .column .row:not(:last-of-type):not(.head) {
                 border-bottom: 1px solid #2e2f4b; }
         body#admin main .section .subsection .animalDetailModal {
+          z-index: 3;
           position: absolute;
-          bottom: 0;
+          bottom: -170px;
           left: 0;
           width: 85vw;
-          height: 290px;
+          height: 450px;
           padding: 50px;
           background: white;
+          box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
           border: 2px solid #2e2f4b;
           display: grid;
           grid-template-columns: 170px auto 170px;
-          grid-gap: 30px; }
+          grid-gap: 50px; }
           body#admin main .section .subsection .animalDetailModal .animalImageBig {
             height: 170px;
             border-radius: 50%;
             border: 3px solid black; }
           body#admin main .section .subsection .animalDetailModal .animalDetails {
             display: grid;
-            grid-template-columns: 170px auto;
-            grid-template-rows: 190px; }
-            body#admin main .section .subsection .animalDetailModal .animalDetails .story {
-              overflow: scroll; }
-            body#admin main .section .subsection .animalDetailModal .animalDetails h5:not(:first-of-type) {
-              margin-top: 1rem; }
+            grid-template-columns: 200px auto;
+            grid-template-rows: 270px;
+            grid-gap: 20px; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails .animalName {
+              /* need to deal with the case if the name is super long? */
+              font-weight: bold;
+              font-size: 19px;
+              height: 30px;
+              margin-bottom: 20px; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails li {
+              margin-bottom: 0.5em; }
+              body#admin main .section .subsection .animalDetailModal .animalDetails li input {
+                height: 30px; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails input {
+              border: none;
+              border-bottom: 1px dashed #2e2f4b;
+              font-size: 16px; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails .needAndStory {
+              padding-top: 60px; }
+              body#admin main .section .subsection .animalDetailModal .animalDetails .needAndStory p {
+                margin-bottom: 1rem; }
+              body#admin main .section .subsection .animalDetailModal .animalDetails .needAndStory section.story {
+                overflow: scroll;
+                height: 130px; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails label {
+              margin-right: 20px; }
+            body#admin main .section .subsection .animalDetailModal .animalDetails input[type="checkbox"],
+            body#admin main .section .subsection .animalDetailModal .animalDetails input[type="radio"] {
+              margin-right: 5px; }
           body#admin main .section .subsection .animalDetailModal .buttons button {
             display: block;
             height: 40px;
@@ -793,7 +821,13 @@ body#admin {
             border: none;
             border-radius: 20px;
             background: #2e2f4b;
-            color: white; }
+            color: white;
+            cursor: pointer; }
+            body#admin main .section .subsection .animalDetailModal .buttons button.closeModal {
+              margin-bottom: 150px;
+              background: none;
+              color: #2e2f4b;
+              font-size: 24px; }
           body#admin main .section .subsection .animalDetailModal.hide {
             display: none; }
         body#admin main .section .subsection .toDoListWrapper {
