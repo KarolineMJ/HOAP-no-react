@@ -763,6 +763,23 @@ Keyframes for frontpage
 ------------------------*/
 
 #animation {
+  #errandCar {
+    svg {
+      width: 300px;
+      #leftwheel {
+        animation: rotateWheel 0.6s infinite linear reverse;
+        transform-origin: 20.2% 74.7%;
+      }
+
+      #rightwheel {
+        animation: rotateWheel 0.6s infinite linear reverse;
+        transform-origin: 74.7% 74.5%;
+      }
+      #car {
+        animation: carBounce 1s infinite alternate-reverse ease-in-out;
+      }
+    }
+  }
   #coinCat {
     width: 300px;
     svg {
@@ -790,11 +807,12 @@ Keyframes for frontpage
       }
       #eyes {
         animation: eyeBlink 5s infinite;
-        transform-origin: 50% center;
+        transform-origin: 50% 40%;
       }
       #tail {
         animation: moveTail 2s infinite;
-        transform-origin: 80% center;
+        //transform-origin: 80% center;
+        transform-origin: bottom left;
       }
     }
   }
@@ -822,7 +840,7 @@ Keyframes for frontpage
 
 /*          keyframes for dog     */
 
-@keyframes moveTail {
+/*@keyframes moveTail {
   0% {
     transform: rotate(-10deg);
   }
@@ -859,6 +877,44 @@ Keyframes for frontpage
     transform: rotate(-10deg);
   }
 }
+*/
+@keyframes moveTail {
+  0% {
+    transform: rotate(-2deg);
+  }
+  10% {
+    transform: rotate(4deg);
+  }
+  20% {
+    transform: rotate(-2deg);
+  }
+  30% {
+    transform: rotate(4deg);
+  }
+  40% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  60% {
+    transform: rotate(-2deg);
+  }
+  70% {
+    transform: rotate(4deg);
+  }
+
+  80% {
+    transform: rotate(-2deg);
+  }
+
+  90% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
 @keyframes eyeBlink {
   0% {
     transform: scaleY(0);
@@ -886,6 +942,25 @@ Keyframes for frontpage
   }
   100% {
     transform: scaleY(0);
+  }
+}
+
+/*        keyframes for car    */
+@keyframes carBounce {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(1.5%);
+  }
+}
+
+@keyframes rotateWheel {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
