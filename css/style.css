@@ -619,7 +619,7 @@ Preferences
       border-radius: 40px; }
 
 /*-------------------------
-Keyframes for animations
+Keyframes for frontpage
 ------------------------*/
 @keyframes morph {
   100% {
@@ -640,17 +640,36 @@ Keyframes for animations
 /* -----------------------
         animation page  
 ------------------------*/
+#animation #walkDog {
+  width: 300px; }
+  #animation #walkDog svg #ears {
+    transform-origin: center; }
+  #animation #walkDog svg #eyes {
+    animation: eyeBlink 5s infinite;
+    transform-origin: 50% center; }
+  #animation #walkDog svg #tail {
+    animation: moveTail 2s infinite;
+    transform-origin: 80% center; }
+
 #animation #coinCat {
   width: 300px; }
   #animation #coinCat svg #head {
-    animation: moveHead 4s 1s ease-in-out forwards;
+    animation: moveHead 4s 0.5s forwards;
     transform-origin: 50%; }
   #animation #coinCat svg #coin {
     animation: coinFall 1s ease-in-out forwards, coinSkew 1s ease-in-out forwards; }
   #animation #coinCat svg #eyes {
-    animation: moveHead 4s 1s ease-in-out forwards;
+    animation: moveHead 4s 0.5s forwards;
     transform-origin: 50%; }
 
+/*@keyframes moveEars {
+  from {
+    transform: rotateX(1deg);
+  }
+  to {
+    transform: rotateX(20deg);
+  }
+}*/
 @keyframes coinFall {
   from {
     transform: translateY(-100px); }
@@ -663,14 +682,47 @@ Keyframes for animations
   50% {
     transform: rotate(8deg); } }
 
-/*@keyframes eyeBlink {
+@keyframes moveEars {
   0% {
-    transform: scaleY(1.2);
-  }
+    transform: rotate(5deg); }
+  25% {
+    transform: rotate(2deg); }
   50% {
-    transform: scaleY(0.4);
+    transform: rotate(0deg); }
+  75% {
+    transform: rotate(-2deg); }
+  100% {
+    transform: rotate(-5deg); } }
+
+/*
+@keyframes moveTail {
+  0% {
+    transform: rotate(-5deg);
+  }
+  20% {
+    transform: rotate(5deg);
   }
 }*/
+@keyframes moveTail {
+  0% {
+    transform: rotate(-10deg); }
+  10% {
+    transform: rotate(-2deg); }
+  20% {
+    transform: rotate(-10deg); }
+  30% {
+    transform: rotate(-2deg); }
+  40% {
+    transform: rotate(-10deg); }
+  50% {
+    transform: rotate(-2deg); }
+  60% {
+    transform: rotate(-10deg); }
+  70% {
+    transform: rotate(-2deg); }
+  100% {
+    transform: rotate(-10deg); } }
+
 @keyframes eyeBlink {
   0% {
     transform: scaleY(0); }
