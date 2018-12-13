@@ -959,9 +959,11 @@ body#admin {
               p {
                 margin-bottom: 1rem;
               }
-              section.story {
-                overflow: scroll;
-                height: 130px;
+              section.story textarea {
+                width: 100%;
+                height: 170px;
+                line-height: 1.5;
+                font-size: 13px;
               }
             }
             label {
@@ -983,7 +985,7 @@ body#admin {
             color: white;
             cursor: pointer;
             &.closeModal {
-              margin-bottom: 150px;
+              margin-bottom: 190px;
               background: none;
               color: $purpleColor;
               font-size: 24px;
