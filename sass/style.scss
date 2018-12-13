@@ -1063,3 +1063,47 @@ body#admin {
     }
   }
 }
+// here starts POST AND NOTIFY!!
+.postsContainer {
+  display: grid;
+  grid-template-columns: 50vw 40vw;
+  .receviedPictures {
+    // border: 1px solid black;
+    border-right: 1px solid black;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 20vh 20vh 20vh;
+    grid-template-rows: 20vh 20vh 20vh;
+    grid-gap: 30px;
+    justify-content: center;
+    .singlePic {
+      width: 150px;
+      height: 150px;
+      border: 1px solid black;
+    }
+  }
+  .writeNotification {
+    height: 200px;
+    width: 300px;
+    margin: auto;
+  }
+  .dragAndDrop {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    margin: auto;
+  }
+}
+
+#status {
+  .monthsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 90px);
+    .month {
+      width: 70px;
+      height: 130px;
+      border: 2px solid lightblue;
+    }
+  }
+}

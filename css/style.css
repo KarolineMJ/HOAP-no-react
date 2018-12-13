@@ -883,3 +883,37 @@ body#admin {
       right: 50px;
       top: 50px;
       cursor: pointer; }
+
+.postsContainer {
+  display: grid;
+  grid-template-columns: 50vw 40vw; }
+  .postsContainer .receviedPictures {
+    border-right: 1px solid black;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 20vh 20vh 20vh;
+    grid-template-rows: 20vh 20vh 20vh;
+    grid-gap: 30px;
+    justify-content: center; }
+    .postsContainer .receviedPictures .singlePic {
+      width: 150px;
+      height: 150px;
+      border: 1px solid black; }
+  .postsContainer .writeNotification {
+    height: 200px;
+    width: 300px;
+    margin: auto; }
+  .postsContainer .dragAndDrop {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    margin: auto; }
+
+#status .monthsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 90px); }
+  #status .monthsContainer .month {
+    width: 70px;
+    height: 130px;
+    border: 2px solid lightblue; }
