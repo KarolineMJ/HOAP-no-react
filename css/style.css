@@ -621,28 +621,6 @@ Preferences
 /*-------------------------
 Keyframes for animations
 ------------------------*/
-@keyframes morphing {
-  0% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-  10% {
-    border-radius: 63% 37% 54% 46% / 55% 38% 52% 45%; }
-  20% {
-    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-  30% {
-    border-radius: 47% 50% 32% 49% / 61% 70% 62% 55%; }
-  40% {
-    border-radius: 46% 70% 55% 37% / 44% 77% 66% 33%; }
-  50% {
-    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-  60% {
-    border-radius: 78% 39% 42% 61% / 50% 28% 63% 52%; }
-  70% {
-    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-  80% {
-    border-radius: 43% 79% 34% 57% / 74% 62% 52% 65%; }
-  90% {
-    border-radius: 64% 38% 51% 46% / 32% 27% 68% 35%; } }
-
 @keyframes morph {
   100% {
     border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; }
@@ -658,6 +636,60 @@ Keyframes for animations
     border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; }
   84% {
     border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; } }
+
+/* -----------------------
+        animation page  
+------------------------*/
+#animation #coinCat {
+  width: 300px; }
+  #animation #coinCat svg #head {
+    animation: moveHead 4s 1s ease-in-out forwards;
+    transform-origin: 50%; }
+  #animation #coinCat svg #coin {
+    animation: coinFall 1s ease-in-out forwards, coinSkew 1s ease-in-out forwards; }
+  #animation #coinCat svg #eyes {
+    animation: moveHead 4s 1s ease-in-out forwards;
+    transform-origin: 50%; }
+
+@keyframes coinFall {
+  from {
+    transform: translateY(-100px); }
+  to {
+    transform: translateY(400px); } }
+
+@keyframes moveHead {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(8deg); } }
+
+/*@keyframes eyeBlink {
+  0% {
+    transform: scaleY(1.2);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+}*/
+@keyframes eyeBlink {
+  0% {
+    transform: scaleY(0); }
+  10% {
+    transform: scaleY(0); }
+  15% {
+    transform: scaleY(1); }
+  48% {
+    transform: scaleY(1); }
+  50% {
+    transform: scaleY(0); }
+  52% {
+    transform: scaleY(1); }
+  90% {
+    transform: scaleY(1); }
+  95% {
+    transform: scaleY(0); }
+  100% {
+    transform: scaleY(0); } }
 
 /* -----------------------
         footer 
