@@ -764,8 +764,8 @@ Keyframes for frontpage
 
 #animation {
   #errandCar {
+    width: 300px;
     svg {
-      width: 300px;
       #leftwheel {
         animation: rotateWheel 0.6s infinite linear reverse;
         transform-origin: 20.2% 74.7%;
@@ -778,13 +778,30 @@ Keyframes for frontpage
       #car {
         animation: carBounce 1s infinite alternate-reverse ease-in-out;
       }
+      #box3,
+      #box1 {
+        animation: boxSideBounce 1s infinite alternate-reverse ease-in-out;
+      }
+
+      #box2 {
+        animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out;
+      }
+
+      #cattree {
+        animation: catTreeBounce 1s infinite alternate-reverse ease-in-out;
+
+        #ball {
+          animation: ballSwing 1s infinite alternate-reverse ease-in-out;
+          transform-origin: 76.3% 19%;
+        }
+      }
     }
   }
   #coinCat {
     width: 300px;
     svg {
       #head {
-        animation: moveHead 4s 0.5s forwards;
+        animation: moveHead 2s 0.5s forwards;
         transform-origin: 50%;
       }
       #coin {
@@ -792,7 +809,7 @@ Keyframes for frontpage
           coinSkew 1s ease-in-out forwards;
       }
       #eyes {
-        animation: moveHead 4s 0.5s forwards;
+        animation: moveHead 2s 0.5s forwards;
         transform-origin: 50%;
       }
     }
@@ -801,17 +818,12 @@ Keyframes for frontpage
   #walkDog {
     width: 300px;
     svg {
-      #ears {
-        //animation: moveEars 2s ease-in-out infinite;
-        transform-origin: center;
-      }
       #eyes {
         animation: eyeBlink 5s infinite;
         transform-origin: 50% 40%;
       }
       #tail {
         animation: moveTail 2s infinite;
-        //transform-origin: 80% center;
         transform-origin: bottom left;
       }
     }
@@ -840,44 +852,6 @@ Keyframes for frontpage
 
 /*          keyframes for dog     */
 
-/*@keyframes moveTail {
-  0% {
-    transform: rotate(-10deg);
-  }
-  10% {
-    transform: rotate(-2deg);
-  }
-  20% {
-    transform: rotate(-10deg);
-  }
-  30% {
-    transform: rotate(-2deg);
-  }
-  40% {
-    transform: rotate(-10deg);
-  }
-  50% {
-    transform: rotate(-2deg);
-  }
-  60% {
-    transform: rotate(-10deg);
-  }
-  70% {
-    transform: rotate(-2deg);
-  }
-
-  80% {
-    transform: rotate(-10deg);
-  }
-
-  90% {
-    transform: rotate(-2deg);
-  }
-  100% {
-    transform: rotate(-10deg);
-  }
-}
-*/
 @keyframes moveTail {
   0% {
     transform: rotate(-2deg);
@@ -964,6 +938,41 @@ Keyframes for frontpage
   }
 }
 
+@keyframes catTreeBounce {
+  from {
+    transform: translateY(-1%);
+  }
+  to {
+    transform: translateY(3%);
+  }
+}
+
+@keyframes boxSideBounce {
+  from {
+    transform: translateY(-2%);
+  }
+  to {
+    transform: translateY(2%);
+  }
+}
+
+@keyframes boxMiddleBounce {
+  from {
+    transform: translateY(-3%);
+  }
+  to {
+    transform: translateY(3%);
+  }
+}
+
+@keyframes ballSwing {
+  from {
+    transform: rotate(2deg);
+  }
+  to {
+    transform: rotate(-6deg);
+  }
+}
 /* -----------------------
         footer 
 ------------------------*/
