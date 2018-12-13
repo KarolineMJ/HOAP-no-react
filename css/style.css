@@ -473,39 +473,39 @@ button:focus {
 /* -----------------------
         signed in page
 ------------------------*/
-#yourPets {
+#signedInContent #yourPets {
   padding: 10px 10vw;
   background-color: #efefef;
   color: grey;
   display: grid;
   grid-template-rows: 20vh 1fr;
   position: relative; }
-  #yourPets hr {
+  #signedInContent #yourPets hr {
     position: relative;
     top: -60px;
     opacity: 0; }
-  #yourPets #petChoices {
+  #signedInContent #yourPets #petChoices {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr; }
-    #yourPets #petChoices div {
+    #signedInContent #yourPets #petChoices div {
       align-self: end; }
-      #yourPets #petChoices div input,
-      #yourPets #petChoices div label {
+      #signedInContent #yourPets #petChoices div input,
+      #signedInContent #yourPets #petChoices div label {
         margin: 20px 0; }
-    #yourPets #petChoices p {
+    #signedInContent #yourPets #petChoices p {
       align-self: end;
       justify-self: end;
       margin: 20px 0; }
-  #yourPets #animalImage {
+  #signedInContent #yourPets #animalImage {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; }
-    #yourPets #animalImage div {
+    #signedInContent #yourPets #animalImage div {
       position: relative;
       margin: 20px 0;
       justify-self: center;
       text-align: center; }
-      #yourPets #animalImage div .needsCircle {
+      #signedInContent #yourPets #animalImage div .needsCircle {
         right: 3vw;
         width: 2vw;
         height: 2vw;
@@ -513,26 +513,26 @@ button:focus {
         background-color: #a81c1c;
         border-radius: 50%;
         position: absolute; }
-      #yourPets #animalImage div img {
+      #signedInContent #yourPets #animalImage div img {
         cursor: pointer;
         width: 15vw;
         border-radius: 50%;
         align-self: center; }
-      #yourPets #animalImage div .petName {
+      #signedInContent #yourPets #animalImage div .petName {
         display: inline-block;
         padding: 2px;
         grid-row: 2; }
-        #yourPets #animalImage div .petName svg {
+        #signedInContent #yourPets #animalImage div .petName svg {
           width: 20px;
           vertical-align: middle;
           padding-right: 3px; }
-        #yourPets #animalImage div .petName h3 {
+        #signedInContent #yourPets #animalImage div .petName h3 {
           vertical-align: middle;
           display: inline-block;
           padding: 2px;
           color: grey; }
 
-.petExpand {
+#signedInContent .petExpand {
   width: 100vw;
   height: 40vh;
   background-color: white;
@@ -540,41 +540,60 @@ button:focus {
   z-index: 2;
   display: none;
   grid-template-columns: 1fr 1fr; }
-  .petExpand h2 {
+  #signedInContent .petExpand h2 {
     text-align: left;
     padding: 10px; }
-  .petExpand ul {
+  #signedInContent .petExpand ul {
     list-style: none;
     padding: 10px; }
-    .petExpand ul li {
+    #signedInContent .petExpand ul li {
       text-decoration: none;
       padding: 0;
       text-align: left; }
-  .petExpand p {
+  #signedInContent .petExpand p {
     text-align: left;
     padding: 10px;
     padding-right: 70px; }
-  .petExpand .expandImg {
+  #signedInContent .petExpand .expandImg {
     width: 20vw;
     align-self: center; }
-    .petExpand .expandImg img {
+    #signedInContent .petExpand .expandImg img {
       border-radius: 50%;
       width: 20vw; }
 
-#sendToUsForms {
+#signedInContent #sendToUsForms {
   background-color: #ead8a6; }
 
-.sidebar {
+#signedInContent .sidebar {
+  display: none;
   box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
   z-index: 3;
   height: 200vh;
   background-color: white;
   position: fixed;
   right: 0;
-  top: 0;
-  width: 26vw; }
+  top: 60px;
+  width: 26vw;
+  padding: 20px; }
+  #signedInContent .sidebar #userSettings {
+    display: none; }
+    #signedInContent .sidebar #userSettings .user {
+      display: grid;
+      grid-template-columns: 6vw 1fr; }
+      #signedInContent .sidebar #userSettings .user img {
+        place-self: center;
+        width: 4vw;
+        border-radius: 50%; }
+      #signedInContent .sidebar #userSettings .user p {
+        align-self: center; }
+    #signedInContent .sidebar #userSettings #signOut {
+      position: relative;
+      top: 160px;
+      left: 92px; }
+  #signedInContent .sidebar #newsFeed {
+    display: none; }
 
-.closed {
+#signedInContent .closed {
   grid-template-columns: 1fr; }
 
 /*-------------------------
