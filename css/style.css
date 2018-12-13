@@ -640,17 +640,6 @@ Keyframes for frontpage
 /* -----------------------
         animation page  
 ------------------------*/
-#animation #walkDog {
-  width: 300px; }
-  #animation #walkDog svg #ears {
-    transform-origin: center; }
-  #animation #walkDog svg #eyes {
-    animation: eyeBlink 5s infinite;
-    transform-origin: 50% center; }
-  #animation #walkDog svg #tail {
-    animation: moveTail 2s infinite;
-    transform-origin: 80% center; }
-
 #animation #coinCat {
   width: 300px; }
   #animation #coinCat svg #head {
@@ -662,14 +651,18 @@ Keyframes for frontpage
     animation: moveHead 4s 0.5s forwards;
     transform-origin: 50%; }
 
-/*@keyframes moveEars {
-  from {
-    transform: rotateX(1deg);
-  }
-  to {
-    transform: rotateX(20deg);
-  }
-}*/
+#animation #walkDog {
+  width: 300px; }
+  #animation #walkDog svg #ears {
+    transform-origin: center; }
+  #animation #walkDog svg #eyes {
+    animation: eyeBlink 5s infinite;
+    transform-origin: 50% center; }
+  #animation #walkDog svg #tail {
+    animation: moveTail 2s infinite;
+    transform-origin: 80% center; }
+
+/*        keyframes for cat     */
 @keyframes coinFall {
   from {
     transform: translateY(-100px); }
@@ -682,27 +675,7 @@ Keyframes for frontpage
   50% {
     transform: rotate(8deg); } }
 
-@keyframes moveEars {
-  0% {
-    transform: rotate(5deg); }
-  25% {
-    transform: rotate(2deg); }
-  50% {
-    transform: rotate(0deg); }
-  75% {
-    transform: rotate(-2deg); }
-  100% {
-    transform: rotate(-5deg); } }
-
-/*
-@keyframes moveTail {
-  0% {
-    transform: rotate(-5deg);
-  }
-  20% {
-    transform: rotate(5deg);
-  }
-}*/
+/*          keyframes for dog     */
 @keyframes moveTail {
   0% {
     transform: rotate(-10deg); }
@@ -719,6 +692,10 @@ Keyframes for frontpage
   60% {
     transform: rotate(-10deg); }
   70% {
+    transform: rotate(-2deg); }
+  80% {
+    transform: rotate(-10deg); }
+  90% {
     transform: rotate(-2deg); }
   100% {
     transform: rotate(-10deg); } }
