@@ -689,7 +689,7 @@ body#admin {
     right: 0;
     overflow-y: scroll; }
     body#admin main .section {
-      border-bottom: 1px solid black;
+      border-bottom: 7px dotted #2e2f4b;
       height: auto;
       min-height: 300px;
       /* delete me later when all sections are finished */ }
@@ -702,14 +702,19 @@ body#admin {
         body#admin main .section .subsection .subsectionHeader {
           width: 100%;
           height: 50px;
-          margin-bottom: 1rem;
           display: grid;
-          grid-template-columns: 1fr 1fr auto; }
+          grid-template-columns: 190px auto 150px; }
           body#admin main .section .subsection .subsectionHeader span {
             padding-top: 10px; }
+            body#admin main .section .subsection .subsectionHeader span input {
+              width: 95%;
+              /* temp solution */
+              font-size: 16px;
+              border: none;
+              border-bottom: 1px solid #2e2f4b; }
           body#admin main .section .subsection .subsectionHeader .adminBtn {
             cursor: pointer;
-            text-align: right;
+            text-align: center;
             background: #2e2f4b;
             width: 100%;
             height: 40px;
@@ -841,7 +846,7 @@ body#admin {
           body#admin main .section .subsection .toDoListWrapper .toDoEntry {
             line-height: 2rem; }
             body#admin main .section .subsection .toDoListWrapper .toDoEntry input[type="checkbox"] {
-              margin-right: 20px; }
+              margin-right: 5px; }
   body#admin .adminForm {
     position: fixed;
     z-index: 2;
