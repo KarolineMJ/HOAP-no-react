@@ -804,9 +804,11 @@ body#admin {
               padding-top: 60px; }
               body#admin main .section .subsection .animalDetailModal .animalDetails .needAndStory p {
                 margin-bottom: 1rem; }
-              body#admin main .section .subsection .animalDetailModal .animalDetails .needAndStory section.story {
-                overflow: scroll;
-                height: 130px; }
+              body#admin main .section .subsection .animalDetailModal .animalDetails .needAndStory section.story textarea {
+                width: 100%;
+                height: 170px;
+                line-height: 1.5;
+                font-size: 13px; }
             body#admin main .section .subsection .animalDetailModal .animalDetails label {
               margin-right: 20px; }
             body#admin main .section .subsection .animalDetailModal .animalDetails input[type="checkbox"],
@@ -824,7 +826,7 @@ body#admin {
             color: white;
             cursor: pointer; }
             body#admin main .section .subsection .animalDetailModal .buttons button.closeModal {
-              margin-bottom: 150px;
+              margin-bottom: 190px;
               background: none;
               color: #2e2f4b;
               font-size: 24px; }
