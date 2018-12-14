@@ -87,7 +87,7 @@ Display right content if user
         .get()
         .then(showTasks => {
           showTasks.docs.forEach(doc => {
-            renderTask(doc);
+            //renderTask(doc);
           });
         });
     } else if (user) {
@@ -107,35 +107,6 @@ Display right content if user
       signoutAdminBtn.style.display = "none";
     }
   });
-
-  /*-------------------------------------------
-Render tasks from database into website 
---------------------------------------------*/
-
-  function renderTask(doc) {
-    let taskList = document.querySelector(".toDoListWrapper");
-    let taskDiv = document.createElement("div");
-    let task = document.createElement("span");
-    let taskCheckbox = document.createElement("input");
-    taskCheckbox.type = "checkbox";
-
-    taskDiv.setAttribute("data-id", doc.id);
-    task.textContent = doc.data().task;
-
-    taskDiv.appendChild(taskCheckbox);
-    taskDiv.appendChild(task);
-    taskList.appendChild(taskDiv);
-
-    //deleting/completing tasks
-
-    taskCheckbox.addEventListener("click", e => {
-      e.stopPropagation();
-      let id = e.target.parentElement.getAttribute("data-id");
-      db.collection("toDoList")
-        .doc(id)
-        .delete();
-    });
-  }
 
   /*-------------------------------------------
 Signout user
@@ -188,6 +159,35 @@ Sign up user
   });
 
   /*-------------------------------------------
+Render tasks from database into website 
+--------------------------------------------*/
+  let taskList = document.querySelector(".toDoListWrapper");
+
+  function renderTask(doc) {
+    let taskDiv = document.createElement("div");
+    let task = document.createElement("span");
+    let taskCheckbox = document.createElement("input");
+    taskCheckbox.type = "checkbox";
+
+    taskDiv.setAttribute("data-id", doc.id);
+    task.textContent = doc.data().task;
+
+    taskDiv.appendChild(taskCheckbox);
+    taskDiv.appendChild(task);
+    taskList.appendChild(taskDiv);
+
+    //deleting/completing tasks
+
+    taskCheckbox.addEventListener("click", e => {
+      e.stopPropagation();
+      let id = e.target.parentElement.getAttribute("data-id");
+      db.collection("toDoList")
+        .doc(id)
+        .delete();
+    });
+  }
+
+  /*-------------------------------------------
                 Add to do task
 ------------------------------------------*/
 
@@ -203,6 +203,23 @@ Sign up user
       type: "To Do"
     });
     toDoInput.value = "";
+  });
+
+  /*-------------------------------------------
+               live updates
+------------------------------------------*/
+  db.collection("toDoList").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    //console.log(changes);
+    changes.forEach(change => {
+      console.log(change.doc.data());
+      if (change.type == "added") {
+        renderTask(change.doc);
+      } else if (change.type == "removed") {
+        let taskDiv = taskList.querySelector("[data-id=" + change.doc.id + "]");
+        taskList.removeChild(taskDiv);
+      }
+    });
   });
 
   /*-------------------------------------------
