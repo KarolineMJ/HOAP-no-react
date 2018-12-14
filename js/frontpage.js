@@ -237,6 +237,56 @@ Animation - Intersection Observer
   });
 
   observer.observe(animatedSection);
+  /*-------------------------------------------
+Upload an image to database
+------------------------------------------*/
+
+  //get elements
+  const uploader = document.querySelector("#uploader");
+  const fileButton = document.querySelector("#fileButton");
+
+  //listen for file selection
+
+  fileButton.addEventListener("change", function(e) {
+    //get file
+    let file = e.target.files[0];
+
+    //create a storage ret
+    let storageRef = firebase.storage().ref("animals/" + file.name);
+
+    //upload file
+    let task = storageRef.put(file);
+
+    // update progress bar
+    task.on(
+      "state_changed",
+      function progress(snapshot) {
+        let percentage =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      },
+      function error(err) {},
+      function complete() {
+        console.log("picture is uploaded");
+      }
+    );
+  });
+
+  //create a reference with an initial file path and name
+  /*let storage = firebase.storage();
+  let storageReference = storage.ref();
+  let childRef = storageReference.child("animals/dog-cute-pet.jpg");
+
+  childRef
+    .getDownloadURL()
+    .then(function(url) {
+      let testImage = url;
+      document.querySelector("#testImage img").src = testImage;
+    })
+    .catch(function(error) {
+      // Handle any errors
+    });
+
+    */
 
   /*-------------------------------------------
 Open Modal
