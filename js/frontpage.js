@@ -1,28 +1,28 @@
 "use strict";
 
 window.addEventListener("DOMContentLoaded", init);
+/*-------------------------------------------
+Initialize Firebase
+------------------------------------------*/
+let config = {
+  apiKey: "AIzaSyBpAvUcRTsrwq5HRkRbruyxmhkhfdLbiMk",
+  authDomain: "hoap-exam2018.firebaseapp.com",
+  databaseURL: "https://hoap-exam2018.firebaseio.com",
+  projectId: "hoap-exam2018",
+  storageBucket: "hoap-exam2018.appspot.com",
+  messagingSenderId: "287614156735"
+};
+firebase.initializeApp(config);
+
+// make a constant to the database
+const db = firebase.firestore();
+const settings = {
+  timestampsInSnapshots: true
+};
+db.settings(settings);
 
 function init() {
   const adminSection = document.querySelector("#admin");
-  /*-------------------------------------------
-Initialize Firebase
-------------------------------------------*/
-  let config = {
-    apiKey: "AIzaSyBpAvUcRTsrwq5HRkRbruyxmhkhfdLbiMk",
-    authDomain: "hoap-exam2018.firebaseapp.com",
-    databaseURL: "https://hoap-exam2018.firebaseio.com",
-    projectId: "hoap-exam2018",
-    storageBucket: "hoap-exam2018.appspot.com",
-    messagingSenderId: "287614156735"
-  };
-  firebase.initializeApp(config);
-
-  // make a constant to the database
-  const db = firebase.firestore();
-  const settings = {
-    timestampsInSnapshots: true
-  };
-  db.settings(settings);
 
   /*------------------------------------------
 sign in user
@@ -83,6 +83,13 @@ Display right content if user
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "block";
       footer.style.display = "none";
+      db.collection("toDoList")
+        .get()
+        .then(showTasks => {
+          showTasks.docs.forEach(doc => {
+            //renderTask(doc);
+          });
+        });
     } else if (user) {
       adminSection.style.display = "none";
       frontpageContent.style.display = "none";
@@ -149,6 +156,70 @@ Sign up user
       .catch(function(error) {
         console.log(error);
       });
+  });
+
+  /*-------------------------------------------
+Render tasks from database into website 
+--------------------------------------------*/
+  let taskList = document.querySelector(".toDoListWrapper");
+
+  function renderTask(doc) {
+    let taskDiv = document.createElement("div");
+    let task = document.createElement("span");
+    let taskCheckbox = document.createElement("input");
+    taskCheckbox.type = "checkbox";
+
+    taskDiv.setAttribute("data-id", doc.id);
+    task.textContent = doc.data().task;
+
+    taskDiv.appendChild(taskCheckbox);
+    taskDiv.appendChild(task);
+    taskList.appendChild(taskDiv);
+
+    //deleting/completing tasks
+
+    taskCheckbox.addEventListener("click", e => {
+      e.stopPropagation();
+      let id = e.target.parentElement.getAttribute("data-id");
+      db.collection("toDoList")
+        .doc(id)
+        .delete();
+    });
+  }
+
+  /*-------------------------------------------
+                Add to do task
+------------------------------------------*/
+
+  const toDoBtn = document.querySelector(".addToDoBtn");
+  const toDoInput = document.querySelector(".subsectionHeader span input");
+
+  toDoBtn.addEventListener("click", e => {
+    console.log("hello");
+    e.preventDefault();
+    db.collection("toDoList").add({
+      task: toDoInput.value,
+      writer: "admin",
+      type: "To Do"
+    });
+    toDoInput.value = "";
+  });
+
+  /*-------------------------------------------
+               live updates
+------------------------------------------*/
+  db.collection("toDoList").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    //console.log(changes);
+    changes.forEach(change => {
+      console.log(change.doc.data());
+      if (change.type == "added") {
+        renderTask(change.doc);
+      } else if (change.type == "removed") {
+        let taskDiv = taskList.querySelector("[data-id=" + change.doc.id + "]");
+        taskList.removeChild(taskDiv);
+      }
+    });
   });
 
   /*-------------------------------------------
