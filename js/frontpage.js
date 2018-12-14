@@ -216,7 +216,9 @@ Render tasks from database into website
       if (change.type == "added") {
         renderTask(change.doc);
       } else if (change.type == "removed") {
-        let taskDiv = taskList.querySelector("[data-id=" + change.doc.id + "]");
+        let taskDiv = taskList.querySelector(
+          "[data-id='" + change.doc.id + "']"
+        );
         taskList.removeChild(taskDiv);
       }
     });
