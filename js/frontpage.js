@@ -212,11 +212,13 @@ Render tasks from database into website
     let changes = snapshot.docChanges();
     //console.log(changes);
     changes.forEach(change => {
-      console.log(change.doc.data());
+      //      console.log(change.doc.data());
       if (change.type == "added") {
         renderTask(change.doc);
       } else if (change.type == "removed") {
-        let taskDiv = taskList.querySelector("[data-id=" + change.doc.id + "]");
+        let taskDiv = taskList.querySelector(
+          "[data-id='" + change.doc.id + "']"
+        );
         taskList.removeChild(taskDiv);
       }
     });

@@ -980,6 +980,7 @@ Keyframes for frontpage
               color: #2e2f4b; }
           #admin main .section .subsection .tableWrapper .columns {
             overflow-x: scroll;
+            overflow-y: hidden;
             position: absolute;
             left: 15%;
             width: 80%;
