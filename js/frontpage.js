@@ -1,5 +1,6 @@
 "use strict";
 
+const adminSection = document.querySelector("#admin");
 /*-------------------------------------------
 Initialize Firebase
 ------------------------------------------*/
@@ -66,19 +67,34 @@ Display right content if user
 const frontpageContent = document.querySelector("#frontpageContent");
 const signedInContent = document.querySelector("#signedInContent");
 const memberBtns = document.querySelector("#sidebarBtns");
+const signoutAdminBtn = document.querySelector("#signoutAdmin");
+const footer = document.querySelector("#footer");
 
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+  if (user && user.email === "admin@admin.com") {
+    adminSection.style.display = "block";
+    frontpageContent.style.display = "none";
+    signedInContent.style.display = "none";
+    signinForm.style.display = "none";
+    alreadyMemberBtn.style.display = "none";
+    memberBtns.style.display = "none";
+    signoutAdminBtn.style.display = "block";
+    footer.style.display = "none";
+  } else if (user) {
+    adminSection.style.display = "none";
     frontpageContent.style.display = "none";
     signedInContent.style.display = "block";
     signinForm.style.display = "none";
     alreadyMemberBtn.style.display = "none";
     memberBtns.style.display = "block";
+    signoutAdminBtn.style.display = "none";
   } else {
+    adminSection.style.display = "none";
     frontpageContent.style.display = "block";
     signedInContent.style.display = "none";
     alreadyMemberBtn.style.display = "block";
     memberBtns.style.display = "none";
+    signoutAdminBtn.style.display = "none";
   }
 });
 
@@ -87,8 +103,9 @@ Signout user
 ------------------------------------------*/
 
 const signOutButton = document.querySelector("#signOut");
-
-signOutButton.addEventListener("click", e => {
+signoutAdminBtn.addEventListener("click", signout);
+signOutButton.addEventListener("click", signout);
+function signout() {
   firebase
     .auth()
     .signOut()
@@ -99,7 +116,7 @@ signOutButton.addEventListener("click", e => {
       // An error happened.
       console.log(err);
     });
-});
+}
 
 /*-------------------------------------------
 Sign up user
@@ -111,6 +128,8 @@ const signupBtn = document.querySelector("#signupBtn");
 
 signupBtn.addEventListener("click", e => {
   e.preventDefault();
+
+  //go to preferences page
 
   firebase
     .auth()

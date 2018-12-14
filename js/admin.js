@@ -14,27 +14,28 @@ const deleteAnimalBtn = document.querySelector(".deleteAnimal");
 const animalDetailModal = document.querySelector(".animalDetailModal");
 
 // db setup
-const config = {
-  apiKey: "AIzaSyBHWNmZGfId2xH3qKJMWdGyqRcIdn_FgCU",
-  authDomain: "hoap-122b3.firebaseapp.com",
-  databaseURL: "https://hoap-122b3.firebaseio.com",
-  projectId: "hoap-122b3",
-  storageBucket: "hoap-122b3.appspot.com",
-  messagingSenderId: "25488209964"
-};
-firebase.initializeApp(config);
-const database = firebase.firestore();
+// const config2 = {
+//   apiKey: "AIzaSyBHWNmZGfId2xH3qKJMWdGyqRcIdn_FgCU",
+//   authDomain: "hoap-122b3.firebaseapp.com",
+//   databaseURL: "https://hoap-122b3.firebaseio.com",
+//   projectId: "hoap-122b3",
+//   storageBucket: "hoap-122b3.appspot.com",
+//   messagingSenderId: "25488209964"
+// };
+// firebase.initializeApp(config2);
+// const database = firebase.firestore();
 // get animal data from firebase
-database
-  .collection("animals")
+db.collection("animals")
   .get()
   .then(res => {
     res.docs.forEach(doc => {
-      buildAnimalList(doc);
+      console.log(doc);
+      //      buildAnimalList(doc);
     });
   });
 // build column of each animal
 function buildAnimalList(entry) {
+  alert("mmmm");
   const animalName = entry.data().name;
   const animalImageFile = entry.data().image[0];
   const columns = document.querySelector(".tableWrapper .columns");
@@ -186,10 +187,22 @@ function buildAnimalList(entry) {
 }
 
 // show forms panel with button trigger
-hiAdminBtn.addEventListener("click", showSignOutForm);
-function showSignOutForm() {
-  signoutForm.classList.toggle("hide");
+hiAdminBtn.addEventListener("click", signoutAdmin);
+function signoutAdmin(user) {
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+      console.log("Succesfull logout");
+      console.log(user);
+      //      window.location = "index.html";
+    })
+    .catch(function(error) {
+      // An error happened.
+      console.log(err);
+    });
 }
+
 addAnimalBtn.addEventListener("click", showAddAnimalForm);
 function showAddAnimalForm() {
   addAnimalForm.classList.toggle("hide");
