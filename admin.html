@@ -32,11 +32,11 @@
         />
       </svg>
 
-      <div class="darkBtn admin hiAdminBtn">
-        <a href="#">Hi admin,</a>
-      </div>
+      <div class="darkBtn admin hiAdminBtn"><button>Sign out</button></div>
     </div>
-    <div class="adminForm signOutForm hide">sign out <span class="close">X</span></div>
+    <div class="adminForm signOutForm hide">
+      sign out <span class="close">X</span>
+    </div>
 
     <aside>
       <ul>
@@ -47,146 +47,186 @@
     </aside>
     <main>
       <div class="section" id="dailyTasks">
-          <div class="subsection animalTasks">
-                <div class="subsectionHeader">
-                    <span>Date</span> <span>filters: aCat | aDog | someFilter</span
-                    ><span class="adminBtn addAnimalBtn">Add animal</span>
-                </div>
-                <div class="tableWrapper">
-                    <div class="firstColumn column">
-                        <div class="row head"><b>Animals</b></div>
-                        <div class="row">morning</div>
-                        <div class="row">afternoon</div>
-                        <div class="row">evening</div>
-                        <div class="row">+ training</div>
-                        <div class="row">++ extra</div>
-                    </div>
-                    <div class="columns">
-                    </div>
-                </div>
-                <div class="animalDetailModal hide">
-                    <div class="animalImageBig"></div>
-                    <div class="animalDetails">
-                        <div>
-                            <input class="animalName" type="text" value="might fetch a long name" />
-                            <ul>
-                                <li>
-                                    <input type="text" value="race from db, editable" />
-                                </li>
+        <div class="subsection animalTasks">
+          <div class="subsectionHeader">
+            <span>Date</span> <span>filters: aCat | aDog | someFilter</span
+            ><span class="adminBtn addAnimalBtn">Add animal</span>
+          </div>
+          <div class="tableWrapper">
+            <div class="firstColumn column">
+              <div class="row head"><b>Animals</b></div>
+              <div class="row">morning</div>
+              <div class="row">afternoon</div>
+              <div class="row">evening</div>
+              <div class="row">+ training</div>
+              <div class="row">++ extra</div>
+            </div>
+            <div class="columns"></div>
+          </div>
+          <div class="animalDetailModal hide">
+            <div class="animalImageBig"></div>
+            <div class="animalDetails">
+              <div>
+                <input
+                  class="animalName"
+                  type="text"
+                  value="might fetch a long name"
+                />
+                <ul>
+                  <li><input type="text" value="race from db, editable" /></li>
 
-                                <li>age, auto generate or allow input?</li>
-                                <li><label><input type="radio" name="gender" value="female" />Female</label><label><input type="radio" name="gender" value="male" />Male</label></li>
-                            </ul>
-                        </div>
-                        <div class="needAndStory">
-                            <h5>Needs</h5>
-                            <p><label><input type="checkbox" name="time" value="morning" />morning</label><label><input type="checkbox" name="time" value="afternoon" />afternoon</label><label><input type="checkbox" name="time" value="evening" />evening</label><label><input type="checkbox" name="more" value="training" />training</label></p>
-                            <p><label><input type="text" value="" placeholder="extra need" /></label></p>
-                            <h5>Story</h5>
-                            <section class="story">
-                                <textarea>story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal</textarea>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <button class="closeModal">X</button>
-                        <button class="editAnimal" data-action="edit">Edit</button>
-                        <button class="deleteAnimal" data-action="delete">Delete</button>
-                    </div>
-                </div>               
-                <div class="adminForm addAnimalForm hide">add animal <span class="close">X</span></div>
+                  <li>age, auto generate or allow input?</li>
+                  <li>
+                    <label
+                      ><input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                      />Female</label
+                    ><label
+                      ><input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                      />Male</label
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="needAndStory">
+                <h5>Needs</h5>
+                <p>
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="time"
+                      value="morning"
+                    />morning</label
+                  ><label
+                    ><input
+                      type="checkbox"
+                      name="time"
+                      value="afternoon"
+                    />afternoon</label
+                  ><label
+                    ><input
+                      type="checkbox"
+                      name="time"
+                      value="evening"
+                    />evening</label
+                  ><label
+                    ><input
+                      type="checkbox"
+                      name="more"
+                      value="training"
+                    />training</label
+                  >
+                </p>
+                <p>
+                  <label
+                    ><input type="text" value="" placeholder="extra need"
+                  /></label>
+                </p>
+                <h5>Story</h5>
+                <section class="story">
+                  <textarea>story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal</textarea>
+                </section>
+              </div>
+            </div>
+            <div class="buttons">
+              <button class="closeModal">X</button>
+              <button class="editAnimal" data-action="edit">Edit</button>
+              <button class="deleteAnimal" data-action="delete">Delete</button>
+            </div>
           </div>
-          <div class="subsection otherToDo">
-                <div class="subsectionHeader">
-                  <span>Check these out</span>
-                  <span><input type="text" placeholder="Any new task?"/></span>
-                  <span  class="adminBtn addToDoBtn">Add a to-do</span>
-                </div>
-                <div class="toDoListWrapper">
-                    <div class="toDoEntry"><input type="checkbox">heggoba</div>
-                    <div class="toDoEntry"><input type="checkbox">heggoba</div>
-                    <div class="toDoEntry"><input type="checkbox">heggoba</div>
-                    <div class="toDoEntry"><input type="checkbox">heggoba</div>
-                    <div class="toDoEntry"><input type="checkbox">heggoba</div>
-                    <div class="toDoEntry"><input type="checkbox">heggoba</div>
-                    <div class="toDoEntry"><input type="checkbox">heggoba</div>
-                </div>
+          <div class="adminForm addAnimalForm hide">
+            add animal <span class="close">X</span>
           </div>
-    </div>
+        </div>
+        <div class="subsection otherToDo">
+          <div class="subsectionHeader">
+            <span>Check these out</span>
+            <span><input type="text" placeholder="Any new task?"/></span>
+            <span class="adminBtn addToDoBtn">Add a to-do</span>
+          </div>
+          <div class="toDoListWrapper">
+            <div class="toDoEntry"><input type="checkbox" />heggoba</div>
+            <div class="toDoEntry"><input type="checkbox" />heggoba</div>
+            <div class="toDoEntry"><input type="checkbox" />heggoba</div>
+            <div class="toDoEntry"><input type="checkbox" />heggoba</div>
+            <div class="toDoEntry"><input type="checkbox" />heggoba</div>
+            <div class="toDoEntry"><input type="checkbox" />heggoba</div>
+            <div class="toDoEntry"><input type="checkbox" />heggoba</div>
+          </div>
+        </div>
       </div>
       <div class="section post" id="postAndNotify">
         <h3>Post and notify</h3>
-      
-
-          <div class="postsContainer">
-              <div class="publishContainer">
-                  <p>Choose which image to be published</p>
-              <div class="receviedPictures">
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-              </div>
-              <button class="publishBtn">publish</button>
-              </div>
-
-              <div class="dragAndDropContainer">
-                 <p>Write a notification</p>
-                 <form action="">
-                    <input class="writeNotification" type="text" name="post" value=""><br>
-                   
-                   </form>
-          <div class="dragAndDrop">
-              <p>Drag and Drop here</p>
+        <div class="postsContainer">
+          <div class="publishContainer">
+            <p>Choose which image to be published</p>
+            <div class="receviedPictures">
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+              <div class="singlePic"></div>
+            </div>
+            <button class="publishBtn">publish</button>
           </div>
-          <button class="postBtn">post</button>
-              </div>
+          <div class="dragAndDropContainer">
+            <p>Write a notification</p>
+            <form action="">
+              <input
+                class="writeNotification"
+                type="text"
+                name="post"
+                value=""
+              />
+            </form>
+            <div class="dragAndDrop"><p>Drag and Drop here</p></div>
+            <button class="postBtn">post</button>
+          </div>
+        </div>
       </div>
-    </div>
 
+      <div class="section" id="status">
+        Status (including members)
+        <h3>Budget</h3>
+        <div class="monthsContainer">
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+          <div class="month"></div>
+        </div>
+        <hr />
 
-      <div class="section" id="status">Status (including members)
-<h3> Budget</h3>
-<div class="monthsContainer">
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-  <div class="month"></div>
-</div>
-<hr>
+        <div class="statistiOfAnimals">
+          <h3>Statistic of animals</h3>
+          <div class="statisticDiagram"></div>
+        </div>
+        <hr />
+        <div class="statisticOfMembers">
+          <h3>Statistic of members</h3>
+          <div class="membersDiagram"></div>
 
-<div  class="statistiOfAnimals">
-    <h3> Statistic of animals</h3>
-<div class="statisticDiagram"></div>
-</div>
-<hr>
- <div class="statisticOfMembers">
-    <h3> Statistic of members</h3>
-    <div class="membersDiagram"></div>
-
-    <div class="listOfDonations">
-      <h3>Donations including who donated</h3>
-
-
-    </div>
- </div>
-
-
+          <div class="listOfDonations">
+            <h3>Donations including who donated</h3>
+          </div>
+        </div>
       </div>
-      <div></div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
     <script src="js/admin.js"></script>

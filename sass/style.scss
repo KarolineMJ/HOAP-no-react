@@ -69,6 +69,10 @@ body {
       text-decoration: none;
       color: #ffffff;
     }
+    &#signoutAdmin a {
+      background-color: white;
+      color: $purpleColor;
+    }
   }
 }
 
@@ -993,7 +997,7 @@ Keyframes for frontpage
 /* -----------------------
         footer 
 ------------------------*/
-.footer {
+#footer {
   padding: 50px 10vw;
   color: #ffffff;
   display: grid;
@@ -1018,7 +1022,7 @@ Keyframes for frontpage
 /* -----------------------
         admin 
 ------------------------*/
-body#admin {
+#admin {
   position: relative;
   .hiAdminBtn a {
     background: transparent;
