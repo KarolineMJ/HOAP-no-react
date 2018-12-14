@@ -1,28 +1,28 @@
 "use strict";
 
 window.addEventListener("DOMContentLoaded", init);
+/*-------------------------------------------
+Initialize Firebase
+------------------------------------------*/
+let config = {
+  apiKey: "AIzaSyBpAvUcRTsrwq5HRkRbruyxmhkhfdLbiMk",
+  authDomain: "hoap-exam2018.firebaseapp.com",
+  databaseURL: "https://hoap-exam2018.firebaseio.com",
+  projectId: "hoap-exam2018",
+  storageBucket: "hoap-exam2018.appspot.com",
+  messagingSenderId: "287614156735"
+};
+firebase.initializeApp(config);
+
+// make a constant to the database
+const db = firebase.firestore();
+const settings = {
+  timestampsInSnapshots: true
+};
+db.settings(settings);
 
 function init() {
   const adminSection = document.querySelector("#admin");
-  /*-------------------------------------------
-Initialize Firebase
-------------------------------------------*/
-  let config = {
-    apiKey: "AIzaSyBpAvUcRTsrwq5HRkRbruyxmhkhfdLbiMk",
-    authDomain: "hoap-exam2018.firebaseapp.com",
-    databaseURL: "https://hoap-exam2018.firebaseio.com",
-    projectId: "hoap-exam2018",
-    storageBucket: "hoap-exam2018.appspot.com",
-    messagingSenderId: "287614156735"
-  };
-  firebase.initializeApp(config);
-
-  // make a constant to the database
-  const db = firebase.firestore();
-  const settings = {
-    timestampsInSnapshots: true
-  };
-  db.settings(settings);
 
   /*------------------------------------------
 sign in user
@@ -83,6 +83,13 @@ Display right content if user
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "block";
       footer.style.display = "none";
+      db.collection("toDoList")
+        .get()
+        .then(showTasks => {
+          showTasks.docs.forEach(doc => {
+            renderTask(doc);
+          });
+        });
     } else if (user) {
       adminSection.style.display = "none";
       frontpageContent.style.display = "none";
@@ -100,6 +107,26 @@ Display right content if user
       signoutAdminBtn.style.display = "none";
     }
   });
+
+  /*-------------------------------------------
+Render tasks from database into website 
+--------------------------------------------*/
+
+  function renderTask(doc) {
+    let taskList = document.querySelector(".toDoListWrapper");
+    let taskDiv = document.createElement("div");
+    let task = document.createElement("span");
+    let taskCheckbox = document.createElement("input");
+    taskCheckbox.type = "checkbox";
+
+    taskDiv.setAttribute("data-id", doc.id);
+    task.textContent = doc.data().task;
+
+    taskDiv.appendChild(taskCheckbox);
+    taskDiv.appendChild(task);
+    taskList.appendChild(taskDiv);
+  }
+  //renderTask(doc);
 
   /*-------------------------------------------
 Signout user
@@ -149,6 +176,24 @@ Sign up user
       .catch(function(error) {
         console.log(error);
       });
+  });
+
+  /*-------------------------------------------
+                Add to do task
+------------------------------------------*/
+
+  const toDoBtn = document.querySelector(".addToDoBtn");
+  const toDoInput = document.querySelector(".subsectionHeader span input");
+
+  toDoBtn.addEventListener("click", e => {
+    console.log("hello");
+    e.preventDefault();
+    db.collection("toDoList").add({
+      task: toDoInput.value,
+      writer: "admin",
+      type: "To Do"
+    });
+    toDoInput.value = "";
   });
 
   /*-------------------------------------------
