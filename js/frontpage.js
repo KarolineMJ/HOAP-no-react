@@ -125,8 +125,17 @@ Render tasks from database into website
     taskDiv.appendChild(taskCheckbox);
     taskDiv.appendChild(task);
     taskList.appendChild(taskDiv);
+
+    //deleting/completing tasks
+
+    taskCheckbox.addEventListener("click", e => {
+      e.stopPropagation();
+      let id = e.target.parentElement.getAttribute("data-id");
+      db.collection("toDoList")
+        .doc(id)
+        .delete();
+    });
   }
-  //renderTask(doc);
 
   /*-------------------------------------------
 Signout user
