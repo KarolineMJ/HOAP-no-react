@@ -150,30 +150,30 @@ signOutButton.addEventListener("click", e => {
     });
 });
 
-//form for adding a new pet to the db
-const addPetForm = document.querySelector("#addPetForm");
+// //form for adding a new pet to the db
+// const addPetForm = document.querySelector("#addPetForm");
 
-//save data to firestore when clicking on the button
-addPetForm.addEventListener("submit", e => {
-  e.preventDefault();
+// //save data to firestore when clicking on the button
+// addPetForm.addEventListener("submit", e => {
+//   e.preventDefault();
 
-  //add to the specific collection in firestore
-  db.collection("animals").add({
-    name: addPetForm.name.value,
-    type: addPetForm.type.value,
-    gender: addPetForm.gender.value,
-    age: addPetForm.age.value,
-    race: addPetForm.race.value,
-    story: addPetForm.story.value,
-    size: addPetForm.size.value,
-    pregnant: addPetForm.pregnant.checked,
-    pup: addPetForm.pup.checked,
-    activity: [
-      { morning: addPetForm.morning.checked },
-      { afternoon: addPetForm.afternoon.checked },
-      { evening: addPetForm.evening.checked },
-      { extratraining: addPetForm.extra.checked }
-    ],
-    foodneed: addPetForm.foodneed.value
-  });
-});
+//   //add to the specific collection in firestore
+//   db.collection("animals").add({
+//     name: addPetForm.name.value,
+//     type: addPetForm.type.value,
+//     gender: addPetForm.gender.value,
+//     age: addPetForm.age.value,
+//     race: addPetForm.race.value,
+//     story: addPetForm.story.value,
+//     size: addPetForm.size.value,
+//     pregnant: addPetForm.pregnant.checked,
+//     pup: addPetForm.pup.checked,
+//     activity: [
+//       { morning: addPetForm.morning.checked },
+//       { afternoon: addPetForm.afternoon.checked },
+//       { evening: addPetForm.evening.checked },
+//       { extratraining: addPetForm.extra.checked }
+//     ],
+//     foodneed: addPetForm.foodneed.value
+//   });
+// });
