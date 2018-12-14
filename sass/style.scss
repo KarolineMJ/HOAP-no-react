@@ -750,43 +750,8 @@ Preferences
 }
 
 /*-------------------------
-Keyframes for animations
+Keyframes for frontpage
 ------------------------*/
-
-@keyframes morphing {
-  0% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  }
-  10% {
-    border-radius: 63% 37% 54% 46% / 55% 38% 52% 45%;
-  }
-  20% {
-    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
-  }
-  30% {
-    border-radius: 47% 50% 32% 49% / 61% 70% 62% 55%;
-  }
-
-  40% {
-    border-radius: 46% 70% 55% 37% / 44% 77% 66% 33%;
-  }
-  50% {
-    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
-  }
-
-  60% {
-    border-radius: 78% 39% 42% 61% / 50% 28% 63% 52%;
-  }
-  70% {
-    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
-  }
-  80% {
-    border-radius: 43% 79% 34% 57% / 74% 62% 52% 65%;
-  }
-  90% {
-    border-radius: 64% 38% 51% 46% / 32% 27% 68% 35%;
-  }
-}
 
 @keyframes morph {
   100% {
@@ -812,6 +777,220 @@ Keyframes for animations
   }
 }
 
+/* -----------------------
+        animation page  
+------------------------*/
+
+#animation {
+  #errandCar {
+    width: 300px;
+    svg {
+      #leftwheel {
+        animation: rotateWheel 0.6s infinite linear reverse;
+        transform-origin: 20.2% 74.7%;
+      }
+
+      #rightwheel {
+        animation: rotateWheel 0.6s infinite linear reverse;
+        transform-origin: 74.7% 74.5%;
+      }
+      #car {
+        animation: carBounce 1s infinite alternate-reverse ease-in-out;
+      }
+      #box3,
+      #box1 {
+        animation: boxSideBounce 1s infinite alternate-reverse ease-in-out;
+      }
+
+      #box2 {
+        animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out;
+      }
+
+      #cattree {
+        animation: catTreeBounce 1s infinite alternate-reverse ease-in-out;
+
+        #ball {
+          animation: ballSwing 1s infinite alternate-reverse ease-in-out;
+          transform-origin: 76.3% 19%;
+        }
+      }
+    }
+  }
+  #coinCat {
+    width: 300px;
+    svg {
+      #head {
+        animation: moveHead 2s 0.5s infinite;
+        transform-origin: 50%;
+      }
+      #coin {
+        animation: coinFall 2s ease-in-out infinite;
+      }
+      #eyes {
+        animation: moveHead 2s 0.5s infinite;
+        transform-origin: 50%;
+      }
+    }
+  }
+
+  #walkDog {
+    width: 300px;
+    svg {
+      #eyes {
+        animation: eyeBlink 5s infinite;
+        transform-origin: 50% 40%;
+      }
+      #tail {
+        animation: moveTail 2s infinite;
+        transform-origin: bottom left;
+      }
+    }
+  }
+}
+
+/*        keyframes for cat     */
+@keyframes coinFall {
+  from {
+    transform: translateY(-100px);
+  }
+
+  to {
+    transform: translateY(400px);
+  }
+}
+
+@keyframes moveHead {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+/*          keyframes for dog     */
+
+@keyframes moveTail {
+  0% {
+    transform: rotate(-2deg);
+  }
+  10% {
+    transform: rotate(4deg);
+  }
+  20% {
+    transform: rotate(-2deg);
+  }
+  30% {
+    transform: rotate(4deg);
+  }
+  40% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  60% {
+    transform: rotate(-2deg);
+  }
+  70% {
+    transform: rotate(4deg);
+  }
+
+  80% {
+    transform: rotate(-2deg);
+  }
+
+  90% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes eyeBlink {
+  0% {
+    transform: scaleY(0);
+  }
+  10% {
+    transform: scaleY(0);
+  }
+  15% {
+    transform: scaleY(1);
+  }
+  48% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  52% {
+    transform: scaleY(1);
+  }
+  90% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+/*        keyframes for car    */
+@keyframes carBounce {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(2%);
+  }
+}
+
+@keyframes rotateWheel {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes catTreeBounce {
+  from {
+    transform: translateY(-1%);
+  }
+  to {
+    transform: translateY(3%);
+  }
+}
+
+@keyframes boxSideBounce {
+  from {
+    transform: translateY(-2%);
+  }
+  to {
+    transform: translateY(2%);
+  }
+}
+
+@keyframes boxMiddleBounce {
+  from {
+    transform: translateY(-4%);
+  }
+  to {
+    transform: translateY(3%);
+  }
+}
+
+@keyframes ballSwing {
+  from {
+    transform: rotate(2deg);
+  }
+  to {
+    transform: rotate(-6deg);
+  }
+}
 /* -----------------------
         footer 
 ------------------------*/
