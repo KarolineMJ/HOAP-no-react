@@ -74,6 +74,9 @@ body {
       color: $purpleColor;
     }
   }
+  #signoutAdmin {
+    display: none;
+  }
 }
 
 /*------------------------------
@@ -1100,6 +1103,7 @@ Keyframes for frontpage
         admin 
 ------------------------*/
 #admin {
+  display: none;
   position: relative;
   .hiAdminBtn a {
     background: transparent;

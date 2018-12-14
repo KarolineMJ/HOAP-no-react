@@ -54,6 +54,8 @@ body {
     .navbar .darkBtn#signoutAdmin a {
       background-color: white;
       color: #2e2f4b; }
+  .navbar #signoutAdmin {
+    display: none; }
 
 /*------------------------------
 Forms
@@ -896,6 +898,7 @@ Keyframes for frontpage
         admin 
 ------------------------*/
 #admin {
+  display: none;
   position: relative; }
   #admin .hiAdminBtn a {
     background: transparent;
