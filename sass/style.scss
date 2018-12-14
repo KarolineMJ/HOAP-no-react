@@ -471,6 +471,84 @@ button:focus {
   color: #aeaeae;
   text-align: center;
   padding: 10vw;
+
+  #walkDog,
+  #errandCar,
+  #coinCat {
+    background-color: #ffffff;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    display: grid;
+    margin: 20px auto;
+
+    svg {
+      width: 180px;
+      place-self: center;
+    }
+  }
+  #walkDog {
+    height: 200px;
+    width: 200px;
+    display: grid;
+    margin: 20px auto;
+
+    #eyes {
+      animation: eyeBlink 5s infinite;
+      transform-origin: 50% 40%;
+    }
+    #tail {
+      animation: moveTail 2s infinite;
+      transform-origin: bottom left;
+    }
+  }
+
+  #errandCar {
+    #leftwheel {
+      animation: rotateWheel 0.6s infinite linear reverse;
+      transform-origin: 20.2% 74.7%;
+    }
+
+    #rightwheel {
+      animation: rotateWheel 0.6s infinite linear reverse;
+      transform-origin: 74.7% 74.5%;
+    }
+    #car {
+      animation: carBounce 1s infinite alternate-reverse ease-in-out;
+    }
+    #box3,
+    #box1 {
+      animation: boxSideBounce 1s infinite alternate-reverse ease-in-out;
+    }
+
+    #box2 {
+      animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out;
+    }
+
+    #cattree {
+      animation: catTreeBounce 1s infinite alternate-reverse ease-in-out;
+
+      #ball {
+        animation: ballSwing 1s infinite alternate-reverse ease-in-out;
+        transform-origin: 76.3% 19%;
+      }
+    }
+  }
+
+  #coinCat {
+    #head {
+      animation: moveHead 2s 0.5s infinite;
+      transform-origin: 50%;
+    }
+    #coin {
+      animation: coinFall 2s ease-in-out infinite;
+    }
+    #eyes {
+      animation: moveHead 2s 0.5s infinite;
+      transform-origin: 50%;
+    }
+  }
+
   h1 {
     align-self: center;
   }
@@ -490,14 +568,12 @@ button:focus {
       margin: 20px auto;
       img {
         height: 175px;
-        place-self: center;
+        align-self: center;
       }
     }
   }
 }
 
-#ourPets {
-}
 #lastBox {
   color: white;
   display: grid;
@@ -784,7 +860,7 @@ Keyframes for frontpage
         animation page  
 ------------------------*/
 
-#animation {
+/*#animation {
   #errandCar {
     width: 300px;
     svg {
@@ -850,8 +926,9 @@ Keyframes for frontpage
     }
   }
 }
-
+*/
 /*        keyframes for cat     */
+
 @keyframes coinFall {
   from {
     transform: translateY(-100px);

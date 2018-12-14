@@ -419,6 +419,57 @@ button:focus {
   color: #aeaeae;
   text-align: center;
   padding: 10vw; }
+  #aboutUs #walkDog,
+  #aboutUs #errandCar,
+  #aboutUs #coinCat {
+    background-color: #ffffff;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    display: grid;
+    margin: 20px auto; }
+    #aboutUs #walkDog svg,
+    #aboutUs #errandCar svg,
+    #aboutUs #coinCat svg {
+      width: 180px;
+      place-self: center; }
+  #aboutUs #walkDog {
+    height: 200px;
+    width: 200px;
+    display: grid;
+    margin: 20px auto; }
+    #aboutUs #walkDog #eyes {
+      animation: eyeBlink 5s infinite;
+      transform-origin: 50% 40%; }
+    #aboutUs #walkDog #tail {
+      animation: moveTail 2s infinite;
+      transform-origin: bottom left; }
+  #aboutUs #errandCar #leftwheel {
+    animation: rotateWheel 0.6s infinite linear reverse;
+    transform-origin: 20.2% 74.7%; }
+  #aboutUs #errandCar #rightwheel {
+    animation: rotateWheel 0.6s infinite linear reverse;
+    transform-origin: 74.7% 74.5%; }
+  #aboutUs #errandCar #car {
+    animation: carBounce 1s infinite alternate-reverse ease-in-out; }
+  #aboutUs #errandCar #box3,
+  #aboutUs #errandCar #box1 {
+    animation: boxSideBounce 1s infinite alternate-reverse ease-in-out; }
+  #aboutUs #errandCar #box2 {
+    animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out; }
+  #aboutUs #errandCar #cattree {
+    animation: catTreeBounce 1s infinite alternate-reverse ease-in-out; }
+    #aboutUs #errandCar #cattree #ball {
+      animation: ballSwing 1s infinite alternate-reverse ease-in-out;
+      transform-origin: 76.3% 19%; }
+  #aboutUs #coinCat #head {
+    animation: moveHead 2s 0.5s infinite;
+    transform-origin: 50%; }
+  #aboutUs #coinCat #coin {
+    animation: coinFall 2s ease-in-out infinite; }
+  #aboutUs #coinCat #eyes {
+    animation: moveHead 2s 0.5s infinite;
+    transform-origin: 50%; }
   #aboutUs h1 {
     align-self: center; }
   #aboutUs .aboutCont {
@@ -436,7 +487,7 @@ button:focus {
       margin: 20px auto; }
       #aboutUs .aboutCont .aboutImg img {
         height: 175px;
-        place-self: center; }
+        align-self: center; }
 
 #lastBox {
   color: white;
@@ -660,47 +711,73 @@ Keyframes for frontpage
 /* -----------------------
         animation page  
 ------------------------*/
-#animation #errandCar {
-  width: 300px; }
-  #animation #errandCar svg #leftwheel {
-    animation: rotateWheel 0.6s infinite linear reverse;
-    transform-origin: 20.2% 74.7%; }
-  #animation #errandCar svg #rightwheel {
-    animation: rotateWheel 0.6s infinite linear reverse;
-    transform-origin: 74.7% 74.5%; }
-  #animation #errandCar svg #car {
-    animation: carBounce 1s infinite alternate-reverse ease-in-out; }
-  #animation #errandCar svg #box3,
-  #animation #errandCar svg #box1 {
-    animation: boxSideBounce 1s infinite alternate-reverse ease-in-out; }
-  #animation #errandCar svg #box2 {
-    animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out; }
-  #animation #errandCar svg #cattree {
-    animation: catTreeBounce 1s infinite alternate-reverse ease-in-out; }
-    #animation #errandCar svg #cattree #ball {
-      animation: ballSwing 1s infinite alternate-reverse ease-in-out;
-      transform-origin: 76.3% 19%; }
+/*#animation {
+  #errandCar {
+    width: 300px;
+    svg {
+      #leftwheel {
+        animation: rotateWheel 0.6s infinite linear reverse;
+        transform-origin: 20.2% 74.7%;
+      }
 
-#animation #coinCat {
-  width: 300px; }
-  #animation #coinCat svg #head {
-    animation: moveHead 2s 0.5s infinite;
-    transform-origin: 50%; }
-  #animation #coinCat svg #coin {
-    animation: coinFall 2s ease-in-out infinite; }
-  #animation #coinCat svg #eyes {
-    animation: moveHead 2s 0.5s infinite;
-    transform-origin: 50%; }
+      #rightwheel {
+        animation: rotateWheel 0.6s infinite linear reverse;
+        transform-origin: 74.7% 74.5%;
+      }
+      #car {
+        animation: carBounce 1s infinite alternate-reverse ease-in-out;
+      }
+      #box3,
+      #box1 {
+        animation: boxSideBounce 1s infinite alternate-reverse ease-in-out;
+      }
 
-#animation #walkDog {
-  width: 300px; }
-  #animation #walkDog svg #eyes {
-    animation: eyeBlink 5s infinite;
-    transform-origin: 50% 40%; }
-  #animation #walkDog svg #tail {
-    animation: moveTail 2s infinite;
-    transform-origin: bottom left; }
+      #box2 {
+        animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out;
+      }
 
+      #cattree {
+        animation: catTreeBounce 1s infinite alternate-reverse ease-in-out;
+
+        #ball {
+          animation: ballSwing 1s infinite alternate-reverse ease-in-out;
+          transform-origin: 76.3% 19%;
+        }
+      }
+    }
+  }
+  #coinCat {
+    width: 300px;
+    svg {
+      #head {
+        animation: moveHead 2s 0.5s infinite;
+        transform-origin: 50%;
+      }
+      #coin {
+        animation: coinFall 2s ease-in-out infinite;
+      }
+      #eyes {
+        animation: moveHead 2s 0.5s infinite;
+        transform-origin: 50%;
+      }
+    }
+  }
+
+  #walkDog {
+    width: 300px;
+    svg {
+      #eyes {
+        animation: eyeBlink 5s infinite;
+        transform-origin: 50% 40%;
+      }
+      #tail {
+        animation: moveTail 2s infinite;
+        transform-origin: bottom left;
+      }
+    }
+  }
+}
+*/
 /*        keyframes for cat     */
 @keyframes coinFall {
   from {
