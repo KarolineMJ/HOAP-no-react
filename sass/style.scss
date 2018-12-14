@@ -45,6 +45,7 @@ body {
   }
   //navbar on signed in page
   #sidebarBtns {
+    display: none;
     justify-self: end;
     svg {
       width: 70px;
@@ -180,7 +181,7 @@ button:focus {
       color: white;
       text-align: center;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 40px;
       cursor: pointer;
       align-self: end;
       &:hover {
@@ -259,7 +260,7 @@ button:focus {
       color: white;
       text-align: center;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 40px;
       cursor: pointer;
       align-self: end;
       &:hover {
@@ -305,7 +306,7 @@ button:focus {
         overflow: hidden;
         text-overflow: ellipsis;
         transform-origin: left bottom;
-        transform: translate(0, 1.5rem) scale(1.2);
+        transform: translate(0, 1.1rem) scale(1.2);
       }
       ::-webkit-input-placeholder {
         opacity: 0;
@@ -333,7 +334,7 @@ button:focus {
       color: white;
       text-align: center;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 40px;
       cursor: pointer;
       align-self: end;
       &:hover {
@@ -691,6 +692,24 @@ button:focus {
         position: relative;
         top: 160px;
         left: 92px;
+      }
+      button {
+        font-family: $font;
+        height: 40px;
+        justify-self: end;
+        padding: 7px;
+        width: 150px;
+        background-color: $darkbtn;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 40px;
+        cursor: pointer;
+        align-self: end;
+        &:hover {
+          background-color: $btnHover;
+        }
       }
     }
     #newsFeed {

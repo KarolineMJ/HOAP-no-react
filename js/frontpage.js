@@ -15,6 +15,10 @@ firebase.initializeApp(config);
 
 // make a constant to the database
 const db = firebase.firestore();
+const settings = {
+  timestampsInSnapshots: true
+};
+db.settings(settings);
 
 /*------------------------------------------
 sign in user
@@ -96,6 +100,50 @@ signOutButton.addEventListener("click", e => {
       console.log(err);
     });
 });
+
+/*-------------------------------------------
+Sign up user
+------------------------------------------*/
+const signupName = document.querySelector("#signupName");
+const signupPassword = document.querySelector("#signupPassword");
+const signupEmail = document.querySelector("#signupEmail");
+const signupBtn = document.querySelector("#signupBtn");
+
+signupBtn.addEventListener("click", e => {
+  e.preventDefault();
+
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(signupEmail.value, signupPassword.value)
+    .then(() => {
+      console.log("Succesfull signup");
+
+      db.collection("member").add({
+        email: signupEmail.value,
+        nickname: signupName.value,
+        permission: "none"
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+
+/*-------------------------------------------
+Animation - Intersection Observer
+------------------------------------------*/
+
+const animatedSection = document.querySelector("#aboutUs");
+
+let observer = new IntersectionObserver(entry => {
+  if (entry.intersectionRatio > 0) {
+    console.log("in view");
+  } else {
+    console.log("out of view");
+  }
+});
+
+observer.observe(animatedSection);
 
 /*-------------------------------------------
 Open Modal
