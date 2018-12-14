@@ -37,6 +37,7 @@ function displayAnimals() {
     .then(res => {
       res.docs.forEach(doc => {
         if (animalArray.indexOf(doc.id) < 0) {
+          // only add animal column when it's not already displayed
           buildAnimalList(doc);
         }
       });
@@ -142,7 +143,7 @@ function buildAnimalList(entry) {
             columns.appendChild(column);
           }
           /////////////////////////////
-          if (doc.data().traning === false) {
+          if (doc.data().training === false) {
             let row = document.createElement("div");
             row.classList.add("row");
             let noTaskImage = document.createElement("img");
@@ -239,12 +240,6 @@ addAnimalForm.addEventListener("submit", e => {
       pregnant: addAnimalForm.pregnant.checked ? true : false,
       money: addAnimalForm.money.value,
       story: addAnimalForm.story.value
-      //   activity: [
-      //     { morning: addAnimalForm.morning.checked },
-      //     { afternoon: addAnimalForm.afternoon.checked },
-      //     { evening: addAnimalForm.evening.checked },
-      //     { extratraining: addAnimalForm.extra.checked }
-      //   ],
     })
     .then(docRef => {
       const newlyAddedAnimalID = docRef.id;
@@ -260,6 +255,7 @@ addAnimalForm.addEventListener("submit", e => {
         extra: addAnimalForm.extra.value
       });
       resetForm(addAnimalForm);
+      // re run displayAnimals to update columns
       displayAnimals();
     });
 });
@@ -295,9 +291,7 @@ function closeModal() {
 }
 // update animal list
 function updateAnimalList() {
-  console.log(
-    "re-generate animal list, remove deleted animal / update to editted info "
-  );
+  console.log("update to the edited values ");
 }
 // get animal info
 function getAnimalInfo() {
