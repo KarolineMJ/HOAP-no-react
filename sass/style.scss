@@ -1115,7 +1115,7 @@ body#admin {
             left: 15%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, 130px);
+            grid-template-columns: repeat(11, 170px);
             white-space: nowrap;
             .column {
               border-right: 1px solid $purpleColor;
@@ -1125,15 +1125,30 @@ body#admin {
                 border-right: none;
               }
               .animalImage {
-                border: 1px solid $purpleColor;
                 height: 70px;
                 width: 70px;
                 border-radius: 50%;
                 margin: 10px auto auto auto;
                 cursor: pointer;
+                img {
+                  width: 70px;
+                  height: 70px;
+                  border-radius: 35px;
+                }
               }
               .row {
                 padding: 20px; /* temp solution, should achieve vertical align */
+                img {
+                  width: calc(100% + 40px);
+                  height: calc(100% + 40px);
+                  position: relative;
+                  left: -20px;
+                  top: -20px;
+                }
+                .memberName {
+                  font-size: 13px;
+                  margin-left: 5px; /* temp setting */
+                }
               }
               .row:not(:last-of-type):not(.head) {
                 border-bottom: 1px solid $purpleColor;
