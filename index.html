@@ -138,7 +138,7 @@
           />
           <label for="signipPassword">Your Password</label>
         </div>
-        <button type="submit" id="signinButton">Sign up</button>
+        <button type="submit" id="signinButton">Sign in</button>
       </form>
     </div>
 
@@ -1293,6 +1293,73 @@
         </div>
       </div>
     </template>
+    
+    <div id="preferencesModal" class="modal">
+      <div class="modalContent">
+          <span id="closeModalBtn">&times;</span>
+        <h1>Welcome to the family</h1>
+        <p>First you have to choose your preferences of the kinds animals you want to help - after you will be able to choose who to help and how</p> <br>
+        <h2>Choose your preferences</h2>
+        <form>
+            <h3>Which type of animals would you like to follow?</h3>
+            <div>
+              <input type="checkbox" id="preferenceCat" />
+              <label for="preferenceCat">Cats</label>
+            </div>
+            <div>
+              <input type="checkbox" id="preferenceDog" />
+              <label for="preferenceDog">Dogs</label>
+            </div>
+            <h3>Which gender of animals?</h3>
+            <div>
+              <input type="checkbox" id="preferenceMale" />
+              <label for="preferenceMale">Male</label>
+            </div>
+            <div>
+              <input type="checkbox" id="preferenceFemale" />
+              <label for="preferenceFemale">Female</label>
+            </div>
+            <h3>Which size of animals?</h3>
+            <div>
+              <input type="checkbox" id="preferenceSizeSmall" />
+              <label for="preferenceSizeSmall">Small</label>
+            </div>
+            <div>
+              <input type="checkbox" id="preferenceSizeMedium" />
+              <label for="preferenceSizeMedium">Medium</label>
+            </div>
+            <div>
+              <input type="checkbox" id="preferenceSizeLarge" />
+              <label for="preferenceSizeLarge">Large</label>
+            </div>
+            <h3>Do you have a special interest in pups?</h3>
+            <div>
+              <input type="checkbox" id="preferencePups" />
+              <label for="preferencePups">Pups</label>
+            </div>
+            <h3>Pregnant?</h3>
+            <div>
+              <input type="checkbox" id="preferencePregnant" />
+              <label for="preferencePregnant">Pregnant</label>
+            </div>
+
+            
+            <h3>Notifications</h3>
+            <div>
+              <input type="checkbox" id="preferenceNotificationsErrands" />
+              <label for="preferenceNotificationsErrands">Receive notifications about errands</label>
+            </div>     
+            <div>
+                <input type="checkbox" id="preferenceNotificationsAnimals" />
+                <label for="preferenceNotificationsAnimals">Receive notifications about new animals</label>
+              </div>
+            <h3>* The preferences can be changed if you decide otherwise later.</h3>
+            <button type="submit" id="choosePrefBtn">Choose Preferences</button>
+          </form>
+
+      </div>
+
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script src="js/menu.js"></script>

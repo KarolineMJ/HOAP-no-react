@@ -37,44 +37,9 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   const adminSection = document.querySelector("#admin");
 
-  /*------------------------------------------
-sign in user
-------------------------------------------*/
-  //const for signin
-  const signipEmail = document.querySelector("#signipEmail");
-  const signipPassword = document.querySelector("#signipPassword");
-  const signinButton = document.querySelector("#signinButton");
-
-  //sign in a new user
-  signinButton.addEventListener("click", e => {
-    e.preventDefault();
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(signipEmail.value, signipPassword.value)
-      .then(() => {
-        console.log("Succesfull signed in");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  });
-
-  /*-------------------------------------------
-Display signin form
-------------------------------------------*/
-
-  let alreadyMemberBtn = document.querySelector("#alreadyMemberBtn");
-  let signinForm = document.querySelector("#loginForm");
+  signinButton.addEventListener("click", signinUser);
+  signupBtn.addEventListener("click", signupUser);
   alreadyMemberBtn.addEventListener("click", openSigninForm);
-
-  function openSigninForm() {
-    if (signinForm.style.display == "block") {
-      signinForm.style.display = "none";
-    } else {
-      signinForm.style.display = "block";
-    }
-  }
 
   /*-------------------------------------------
 Display right content if user
@@ -84,6 +49,7 @@ Display right content if user
   const signedInContent = document.querySelector("#signedInContent");
   const memberBtns = document.querySelector("#sidebarBtns");
   const signoutAdminBtn = document.querySelector("#signoutAdmin");
+  const signOutButton = document.querySelector("#signOut");
   const footer = document.querySelector("#footer");
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -123,56 +89,8 @@ Display right content if user
     }
   });
 
-  /*-------------------------------------------
-Signout user
-------------------------------------------*/
-
-  const signOutButton = document.querySelector("#signOut");
   signoutAdminBtn.addEventListener("click", signout);
   signOutButton.addEventListener("click", signout);
-  function signout() {
-    firebase
-      .auth()
-      .signOut()
-      .then(function() {
-        console.log("Succesfull logout");
-      })
-      .catch(function(error) {
-        // An error happened.
-        console.log(err);
-      });
-  }
-
-  /*-------------------------------------------
-Sign up user
-------------------------------------------*/
-  const signupName = document.querySelector("#signupName");
-  const signupPassword = document.querySelector("#signupPassword");
-  const signupEmail = document.querySelector("#signupEmail");
-  const signupBtn = document.querySelector("#signupBtn");
-
-  signupBtn.addEventListener("click", e => {
-    e.preventDefault();
-
-    //go to preferences page
-
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(signupEmail.value, signupPassword.value)
-      .then(() => {
-        console.log("Succesfull signup");
-        openPreferenceModal();
-
-        db.collection("member").add({
-          email: signupEmail.value,
-          nickname: signupName.value,
-          permission: "none"
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  });
 
   /*-------------------------------------------
 Render tasks from database into website 
@@ -238,61 +156,135 @@ Render tasks from database into website
       }
     });
   });
-
-  /*-------------------------------------------
-Animation - Intersection Observer
+}
+/*-------------------------------------------
+Display signin form
 ------------------------------------------*/
 
-  const animatedSection = document.querySelector("#aboutUs");
+let alreadyMemberBtn = document.querySelector("#alreadyMemberBtn");
+let signinForm = document.querySelector("#loginForm");
 
-  let observer = new IntersectionObserver(entry => {
-    if (entry.intersectionRatio > 0) {
-      console.log("in view");
-    } else {
-      console.log("out of view");
-    }
-  });
+function openSigninForm() {
+  if (signinForm.style.display == "block") {
+    signinForm.style.display = "none";
+  } else {
+    signinForm.style.display = "block";
+  }
+}
 
-  observer.observe(animatedSection);
-  /*-------------------------------------------
+/*------------------------------------------
+sign in user
+------------------------------------------*/
+
+//const for signin
+const signipEmail = document.querySelector("#signipEmail");
+const signipPassword = document.querySelector("#signipPassword");
+const signinButton = document.querySelector("#signinButton");
+
+//sign in a new user
+
+function signinUser(e) {
+  e.preventDefault();
+
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(signipEmail.value, signipPassword.value)
+    .then(() => {
+      console.log("Succesfull signed in");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+/*-------------------------------------------
+Sign up user
+------------------------------------------*/
+const signupName = document.querySelector("#signupName");
+const signupPassword = document.querySelector("#signupPassword");
+const signupEmail = document.querySelector("#signupEmail");
+const signupBtn = document.querySelector("#signupBtn");
+
+function signupUser(e) {
+  e.preventDefault();
+
+  //go to preferences page
+
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(signupEmail.value, signupPassword.value)
+    .then(() => {
+      console.log("Succesfull signup");
+      openPreferenceModal();
+
+      db.collection("member").add({
+        email: signupEmail.value,
+        nickname: signupName.value,
+        permission: "none"
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+
+/*-------------------------------------------
+Signout user
+------------------------------------------*/
+
+function signout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+      console.log("Succesfull logout");
+    })
+    .catch(function(error) {
+      // An error happened.
+      console.log(err);
+    });
+}
+
+/*-------------------------------------------
 Upload an image to database
 ------------------------------------------*/
 
-  //get elements
-  const uploader = document.querySelector("#uploader");
-  const fileButton = document.querySelector("#fileButton");
+//get elements
+const uploader = document.querySelector("#uploader");
+const fileButton = document.querySelector("#fileButton");
 
-  //listen for file selection
+//listen for file selection
 
-  fileButton.addEventListener("change", function(e) {
-    //get file
-    let file = e.target.files[0];
+fileButton.addEventListener("change", function(e) {
+  //get file
+  let file = e.target.files[0];
 
-    // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
-    //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
+  // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
+  //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
 
-    //create a storage ret
-    let storageRef = firebase.storage().ref("member/" + file.name);
+  //create a storage ret
+  let storageRef = firebase.storage().ref("member/" + file.name);
 
-    //upload file
-    let task = storageRef.put(file);
+  //upload file
+  let task = storageRef.put(file);
 
-    // update progress bar
-    task.on(
-      "state_changed",
-      function progress(snapshot) {
-        let percentage =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      },
-      function error(err) {},
-      function complete() {
-        console.log("picture is uploaded");
-      }
-    );
-  });
-}
+  // update progress bar
+  task.on(
+    "state_changed",
+    function progress(snapshot) {
+      let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    },
+    function error(err) {},
+    function complete() {
+      console.log("picture is uploaded");
+    }
+  );
+});
 
 let fileUrl;
+
+/*--------------------------------------
+Get animal list from database to user
+-------------------------------------*/
 
 function buildAnimalListOnLoggedinPage() {
   animalListOnLoggedIn.innerHTML = "";
@@ -345,10 +337,10 @@ function buildAnimalListOnLoggedinPage() {
     });
 }
 
-function openAnimalInfo(e) {
-  alert();
-  console.log(e.target.dataset.id);
-}
+/*--------------------------------------
+Add data to expand & open expands
+-------------------------------------*/
+
 function cloneAnimalInfo(data) {
   petExpand.innerHTML = "";
   const clone = detailedAnimalTemp.cloneNode(true);
@@ -376,8 +368,26 @@ function cloneAnimalInfo(data) {
   });
 }
 
+/*--------------------------------------
+Open preference modal
+-------------------------------------*/
 function openPreferenceModal() {
   //open modal
+  const prefModal = document.querySelector("#preferencesModal");
+  const closeModalBtn = document.querySelector("#closeModalBtn");
+  const choosePrefBtn = document.querySelector("#choosePrefBtn");
 
-  console.log("you have now logged in");
+  choosePrefBtn.addEventListener("click", sendPreferenceToDatabase);
+
+  prefModal.style.display = "block";
+
+  closeModalBtn.addEventListener("click", () => {
+    prefModal.style.display = "none";
+  });
+
+  window.addEventListener("click", e => {
+    if (e.target == prefModal) {
+      prefModal.style.display = "none";
+    }
+  });
 }
