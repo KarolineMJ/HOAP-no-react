@@ -15,6 +15,8 @@ const deleteAnimalBtn = document.querySelector(".deleteAnimal");
 const animalDetailModal = document.querySelector(".animalDetailModal");
 const animalDetailForm = document.querySelector(".animalDetails");
 const date = document.querySelector(".date");
+const animalListOnLoggedIn = document.querySelector("#animalList");
+
 // date related
 const today = new Date();
 const year = today.getFullYear();
@@ -209,6 +211,7 @@ function buildAnimalColumn(entry) {
     }
   });
   columns.appendChild(column);
+  animalListOnLoggedIn.appendChild(column);
 }
 
 // show add animal panel
