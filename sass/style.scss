@@ -20,6 +20,11 @@ $breakpoint-desktop: 1100px;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+body::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: $font;
 }
@@ -1107,7 +1112,7 @@ Keyframes for frontpage
   main {
     position: absolute;
     width: 85%;
-    height: 100vh;
+    height: calc(100vh - 60px);
     top: 60px;
     right: 0;
     overflow-y: scroll;

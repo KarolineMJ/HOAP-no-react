@@ -8,6 +8,10 @@
   box-sizing: border-box;
   scroll-behavior: smooth; }
 
+body::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  display: none; }
+
 body {
   font-family: "Raleway", sans-serif; }
 
@@ -907,7 +911,7 @@ Keyframes for frontpage
   #admin main {
     position: absolute;
     width: 85%;
-    height: 100vh;
+    height: calc(100vh - 60px);
     top: 60px;
     right: 0;
     overflow-y: scroll; }
