@@ -376,4 +376,9 @@ function cloneAnimalInfo(data) {
   clone.querySelector(".name").textContent = data.name;
 
   petExpand.appendChild(clone);
+  const closeExpandBtn = document.querySelector(".closeExpandBtn");
+
+  closeExpandBtn.addEventListener("click", () => {
+    petExpand.style.display = "none";
+  });
 }
