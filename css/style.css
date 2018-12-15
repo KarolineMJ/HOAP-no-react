@@ -1108,7 +1108,7 @@ Keyframes for frontpage
     height: calc(100vh - 60px);
     background: white;
     border-left: 1px solid #2e2f4b;
-    padding: 50px; }
+    padding: 40px; }
     #admin .adminForm.hide {
       display: none; }
     #admin .adminForm .close {
@@ -1121,8 +1121,21 @@ Keyframes for frontpage
 .addAnimalForm p:nth-child(11),
 .addAnimalForm p:nth-child(13),
 .addAnimalForm p:nth-child(18) {
-  font-size: 1.3em;
-  padding: 12px 0px; }
+  font-size: 1.2em; }
+
+.addAnimalForm p {
+  padding: 10px 0px; }
+  .addAnimalForm p label {
+    padding-left: 5px; }
+
+.addAnimalForm input[type="text"],
+.addAnimalForm input[type="number"],
+.addAnimalForm textarea {
+  padding: 6px;
+  border: 1px solid #999;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none; }
 
 .addAnimalForm .addAnimalToDB {
   background-color: #2e2f4b;
