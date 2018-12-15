@@ -1118,9 +1118,9 @@ Keyframes for frontpage
       cursor: pointer; }
 
 .addAnimalForm p:nth-child(1),
-.addAnimalForm p:nth-child(11),
+.addAnimalForm p:nth-child(10),
 .addAnimalForm p:nth-child(13),
-.addAnimalForm p:nth-child(18) {
+.addAnimalForm p:nth-child(19) {
   font-size: 1.2em; }
 
 .addAnimalForm p {
