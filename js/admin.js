@@ -295,17 +295,32 @@ editAnimalBtn.addEventListener("click", e => {
       young: animalDetailForm.young.checked ? true : false,
       pregnant: animalDetailForm.pregnant.checked ? true : false
     });
-  ////////////////////// need to update dailytasks as well ////////////////////////
-  // update displayed column
+  // update dailytasks db
+  db.collection("dailyTasks")
+    .where("animalID", "==", id)
+    .get()
+    .then(res => {
+      res.forEach(doc => {
+        const docID = doc.id;
+        db.collection("dailyTasks")
+          .doc(docID)
+          .update({
+            morning: animalDetailForm.morning.checked ? true : false,
+            afternoon: animalDetailForm.afternoon.checked ? true : false,
+            evening: animalDetailForm.evening.checked ? true : false,
+            training: animalDetailForm.training.checked ? true : false,
+            extra: animalDetailForm.extra.value
+          });
+      });
+    });
+  // delete currently displayed column and add a new column with updated info
   document.querySelector(`.column[data-id='${id}']`).remove();
-  // update displayed column
   db.collection("animals")
     .doc(id)
     .get()
     .then(updatedInfo => {
       buildAnimalColumn(updatedInfo);
     });
-
   closeModal();
 });
 
