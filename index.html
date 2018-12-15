@@ -1084,24 +1084,46 @@
               <span class="close">X</span>
               <form>
                 <p>Basic info</p>
-                <p><input type="text" placeholder="name of animal" name="animalName" required></p>
-                <p><label>cat<input type="radio" name="type" value="cat"></label><label>dog<input type="radio" name="type" value="dog"></label></p>
-                <p><label>age<input type="number" min="0" name="age"></label></p>
-                <p><label>male<input type="radio" name="gender" value="male"></label><label>female<input type="radio" name="gender" value="female"></label></p>
-                <p><label><input type="text" placeholder="breed" name="breed"></label></p>
-                <p><label>small<input type="radio" name="size" value="S"></label>
-                <label>medium<input type="radio" name="size" value="M"></label><label>large<input type="radio" name="size" value="L"></label></p>
-                <p><label>young animal<input type="checkbox" name="young"></label></p>
-                <p><label>pregnant <input type="checkbox" name="pregnant"></label></p>
-                <label>Money need per month<input type="number" placeholder="kr." name="money"></label>
+                <hr>
+                <p><input type="text" placeholder="Name of animal" name="animalName" required></p>
+
+                <p><input type="radio" id="chooseCat"name="type" value="cat"><label for="chooseCat">Cat</label>
+                  
+                <input type="radio" id="chooseDog" name="type" value="dog"><label for="chooseDog">Dog</label></p>
+
+                <p><input type="number" id="chooseAge" min="0" name="age" placeholder="Age of animal"></p>
+
+                <p><input type="radio" id="chooseMale" name="gender" value="male"><label for="chooseMale">Male</label>
+                  
+                  <input type="radio" name="gender" id="chooseFemale"value="female"><label for="chooseFemale">Female</label></p>
+
+
+                <p><input type="text" placeholder="Breed" name="breed"></p>
+
+                <p><input type="radio" id="chooseSmall" name="size" value="S"><label for="chooseSmall">Small</label>
+
+                  <input type="radio" id="chooseMedium" name="size" value="M"><label for="chooseMedium">Medium</label>
+                  
+                  
+                  <input type="radio" id="chooseLarge" name="size" value="L"><label for="chooseLarge">Large</label></p>
+                
+                <p><label>Money need per month<input type="number" placeholder="kr." name="money"></label></p>
+                
                 <p>Story</p>
-                <p><label><textarea placeholder="story" name="story"></textarea></label></p>
+                <hr>
+                <p><textarea placeholder="story" name="story"></textarea></p>
+                
                 <p>Needed exercises</p>
-                <p><label>Morning<input type="checkbox" name="morning" value="morning"></label></p>
-                <p><label>Afternoon<input type="checkbox" name="afternoon" value="afternoon"></label></p>
-                <p><label>Evening<input type="checkbox" name="evening" value="evening"></label></p>
-                <p><label>Training<input type="checkbox" name="training" value="training"></label></p>
+                <hr>
+                <p><input type="checkbox" name="morning" value="morning"><label>Morning</label></p>
+                <p><input type="checkbox" name="afternoon" value="afternoon"><label>Afternoon</label></p>
+                <p><input type="checkbox" name="evening" value="evening"><label>Evening</label></p>
+                <p><input type="checkbox" name="training" value="training"><label>Training</label></p>
+                
                 <p>Special need</p>
+                <hr>
+                <p><input type="checkbox" name="young"><label>Young animal</label></p>
+                <p><input type="checkbox" name="pregnant"><label>Pregnant </label></p>
                 <p><label><input type="text" placeholder="extra attention" name="extra"></label></p>
                 <div><input type="file" value="upload" id="uploadBtnAdmin"></div>
                 <button class="addAnimalToDB">Add Animal</button>
