@@ -15,6 +15,7 @@ const deleteAnimalBtn = document.querySelector(".deleteAnimal");
 const animalDetailModal = document.querySelector(".animalDetailModal");
 const animalDetailForm = document.querySelector(".animalDetails");
 const date = document.querySelector(".date");
+const uploadBtnAdmin = document.querySelector("#uploadBtnAdmin");
 
 // date related
 const today = new Date();
@@ -23,7 +24,10 @@ const month = today.getMonth() + 1;
 const day = today.getDate();
 const timestamp = today.getTime();
 date.textContent = `${year}-${month}-${day}`;
+
 // custom variables
+let filename;
+let file;
 // displayed animal array, use this for update animal list without re-render the whole list AND without using firebases's built-in onchange function
 let animalArray = [];
 
@@ -60,7 +64,22 @@ function buildAnimalColumn(entry) {
   let animalImageDiv = document.createElement("div");
   animalImageDiv.classList.add("animalImage");
   let animalImage = document.createElement("img");
-  //  animalImage.setAttribute("src", animalImageFile);
+  if (entry.data().file !== undefined && entry.data().file !== "") {
+    let animalImageName = entry.data().file;
+    let storage = firebase.storage();
+    let storageReference = storage.ref();
+    let childRef = storageReference.child(`admin/${animalImageName}`);
+    console.log(animalImageName);
+    childRef
+      .getDownloadURL()
+      .then(function(url) {
+        console.log(url);
+        animalImage.src = url;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   animalImage.setAttribute("title", animalName);
   animalImageDiv.appendChild(animalImage);
   column.appendChild(animalImageDiv);
@@ -222,9 +241,18 @@ function showAddAnimalForm() {
 //   console.log("add a to do to the list");
 // }
 
-// add animal to db
+// get image file
+uploadBtnAdmin.addEventListener("change", getFilename);
+function getFilename(evt) {
+  filename = evt.target.value.split(/(\\|\/)/g).pop();
+  file = evt.target.files[0];
+  console.log(filename);
+}
+
+// add animal to db, including image file
 addAnimalForm.addEventListener("submit", e => {
   e.preventDefault();
+
   //add to the specific collection in firestore
   db.collection("animals")
     .add({
@@ -238,7 +266,8 @@ addAnimalForm.addEventListener("submit", e => {
       young: addAnimalForm.young.checked ? true : false,
       pregnant: addAnimalForm.pregnant.checked ? true : false,
       money: addAnimalForm.money.value,
-      story: addAnimalForm.story.value
+      story: addAnimalForm.story.value,
+      file: filename
     })
     .then(docRef => {
       const newlyAddedAnimalID = docRef.id;
@@ -256,6 +285,10 @@ addAnimalForm.addEventListener("submit", e => {
       resetForm(addAnimalForm);
       // re run displayAnimals to update columns
       displayAnimals();
+      // upload file to the firebase storage
+      let storageRef = firebase.storage().ref("admin/" + filename);
+      //upload file
+      let task = storageRef.put(file);
     });
 });
 // get animal info and display in animal detail modal
