@@ -44,17 +44,6 @@ function displayAnimals() {
           buildAnimalColumn(doc);
         }
       });
-      // get triggers in the newly built animal list and open animal detail modal with click on animal image
-      //   const allAnimalImgS = document.querySelectorAll(".animalImage");
-      //   allAnimalImgS.forEach(a => {
-      //     a.addEventListener("click", e => {
-      //       const clickedID = e.target.parentElement.dataset.id;
-      //       getAnimalInfo(clickedID);
-      //       if (animalDetailModal.classList.contains("hide")) {
-      //         animalDetailModal.classList.remove("hide");
-      //       }
-      //     });
-      //   });
     });
 }
 

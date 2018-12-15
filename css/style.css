@@ -621,7 +621,8 @@ button:focus {
 #signedInContent #sendToUsForms {
   background-color: #ead8a6; }
 
-#signedInContent .sidebar {
+#signedInContent #userSettings,
+#signedInContent #newsFeed {
   display: none;
   box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
   z-index: 3;
@@ -632,42 +633,41 @@ button:focus {
   top: 60px;
   width: 26vw;
   padding: 20px; }
-  #signedInContent .sidebar #userSettings {
-    display: none; }
-    #signedInContent .sidebar #userSettings .user {
-      display: grid;
-      grid-template-columns: 6vw 1fr; }
-      #signedInContent .sidebar #userSettings .user img {
-        place-self: center;
-        width: 4vw;
-        border-radius: 50%; }
-      #signedInContent .sidebar #userSettings .user p {
-        align-self: center; }
-    #signedInContent .sidebar #userSettings #signOut {
-      position: relative;
-      top: 160px;
-      left: 92px; }
-    #signedInContent .sidebar #userSettings button {
-      font-family: "Raleway", sans-serif;
-      height: 40px;
-      justify-self: end;
-      padding: 7px;
-      width: 150px;
-      background-color: #74b7a5;
-      border: none;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 40px;
-      cursor: pointer;
-      align-self: end; }
-      #signedInContent .sidebar #userSettings button:hover {
-        background-color: #599686; }
-  #signedInContent .sidebar #newsFeed {
-    display: none; }
-
-#signedInContent .closed {
-  grid-template-columns: 1fr; }
+  #signedInContent #userSettings .user,
+  #signedInContent #newsFeed .user {
+    display: grid;
+    grid-template-columns: 6vw 1fr; }
+    #signedInContent #userSettings .user img,
+    #signedInContent #newsFeed .user img {
+      place-self: center;
+      width: 4vw;
+      border-radius: 50%; }
+    #signedInContent #userSettings .user p,
+    #signedInContent #newsFeed .user p {
+      align-self: center; }
+  #signedInContent #userSettings #signOut,
+  #signedInContent #newsFeed #signOut {
+    position: relative;
+    top: 160px;
+    left: 92px; }
+  #signedInContent #userSettings button,
+  #signedInContent #newsFeed button {
+    font-family: "Raleway", sans-serif;
+    height: 40px;
+    justify-self: end;
+    padding: 7px;
+    width: 150px;
+    background-color: #74b7a5;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 40px;
+    cursor: pointer;
+    align-self: end; }
+    #signedInContent #userSettings button:hover,
+    #signedInContent #newsFeed button:hover {
+      background-color: #599686; }
 
 /*-------------------------
 Preferences
