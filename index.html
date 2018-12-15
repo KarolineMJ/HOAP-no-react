@@ -1120,13 +1120,10 @@
                     class="animalName"
                     type="text"
                     value=""
+                    name="name"
                   />
                   <ul>
-                    <li>Breed: 
-                      <input class="breed" type="text" value="" />
-                    </li>
-
-                    <li>Age: <input class="age" type="text" value="" /></li>
+                    <li>Age: <input class="age" type="text" value="" name="age" /></li>
                     <li>
                       <label
                         ><input
@@ -1142,6 +1139,9 @@
                         />Male</label
                       >
                     </li>
+                    <li>Breed: 
+                        <input class="breed" type="text" value="" name="breed" />
+                      </li>
                     <li>
                         <label
                           ><input
@@ -1161,9 +1161,11 @@
                             type="radio"
                             name="size"
                             value="L"
-                          />L</label
-                        >
+                          />L</label>
                       </li>
+                      <li><label>young animal<input type="checkbox" name="young"></label></li>
+                      <li><label>pregnant <input type="checkbox" name="pregnant"></label></li>          
+                      <li>Money: <input name="money" class="money" type="number" value="" /> Kr. per month</li>
                     </ul>
                 </div>
                 <div class="needAndStory">
@@ -1198,12 +1200,12 @@
                   <p>Extra: </p> 
                     <p>
                     <label
-                      ><input class="extra" type="text" value="" placeholder="extra need"
+                      ><input class="extra" type="text" value="" placeholder="extra need" name="extra"
                     /></label>
                   </p>
                   <h5>Story</h5>
                   <section class="story">
-                    <textarea class="story-textarea">story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal</textarea>
+                    <textarea name="story" class="story-textarea">story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal</textarea>
                   </section>
                 </div>
               </form>
