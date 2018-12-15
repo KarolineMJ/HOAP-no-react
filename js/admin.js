@@ -41,25 +41,25 @@ function displayAnimals() {
       res.docs.forEach(doc => {
         if (animalArray.indexOf(doc.id) < 0) {
           // only add animal column when it's not already displayed
-          buildAnimalList(doc);
+          buildAnimalColumn(doc);
         }
       });
       // get triggers in the newly built animal list and open animal detail modal with click on animal image
-      const allAnimalImgS = document.querySelectorAll(".animalImage");
-      allAnimalImgS.forEach(a => {
-        a.addEventListener("click", e => {
-          const clickedID = e.target.parentElement.dataset.id;
-          getAnimalInfo(clickedID);
-          if (animalDetailModal.classList.contains("hide")) {
-            animalDetailModal.classList.remove("hide");
-          }
-        });
-      });
+      //   const allAnimalImgS = document.querySelectorAll(".animalImage");
+      //   allAnimalImgS.forEach(a => {
+      //     a.addEventListener("click", e => {
+      //       const clickedID = e.target.parentElement.dataset.id;
+      //       getAnimalInfo(clickedID);
+      //       if (animalDetailModal.classList.contains("hide")) {
+      //         animalDetailModal.classList.remove("hide");
+      //       }
+      //     });
+      //   });
     });
 }
 
 // build column of each animal
-function buildAnimalList(entry) {
+function buildAnimalColumn(entry) {
   const animalName = entry.data().name;
   const animalID = entry.id;
   //  const animalImageFile = entry.data().image[0];
@@ -211,10 +211,18 @@ function buildAnimalList(entry) {
         }
       });
     });
+  // add listener to newly built column
+  column.addEventListener("click", e => {
+    const clickedID = e.target.parentElement.dataset.id;
+    getAnimalInfo(clickedID);
+    if (animalDetailModal.classList.contains("hide")) {
+      animalDetailModal.classList.remove("hide");
+    }
+  });
   columns.appendChild(column);
 }
 
-// add animal
+// show add animal panel
 addAnimalBtn.addEventListener("click", showAddAnimalForm);
 function showAddAnimalForm() {
   addAnimalPanel.classList.toggle("hide");
@@ -260,7 +268,7 @@ addAnimalForm.addEventListener("submit", e => {
       displayAnimals();
     });
 });
-// get animal info
+// get animal info and display in animal detail modal
 function getAnimalInfo(id) {
   db.collection("animals")
     .doc(id)
@@ -271,12 +279,36 @@ function getAnimalInfo(id) {
 }
 
 // edit animal detail
-editAnimalBtn.addEventListener("click", editAnimal);
-function editAnimal() {
-  console.log("edit animal, write to db");
+editAnimalBtn.addEventListener("click", e => {
+  e.stopPropagation();
+  let id = e.target.parentElement.parentElement.getAttribute("data-id");
+  db.collection("animals")
+    .doc(id)
+    .update({
+      name: animalDetailForm.name.value,
+      breed: animalDetailForm.breed.value,
+      age: animalDetailForm.age.value,
+      story: animalDetailForm.story.value,
+      gender: animalDetailForm.gender.value,
+      size: animalDetailForm.size.value,
+      money: animalDetailForm.money.value,
+      young: animalDetailForm.young.checked ? true : false,
+      pregnant: animalDetailForm.pregnant.checked ? true : false
+    });
+  ////////////////////// need to update dailytasks as well ////////////////////////
+  // update displayed column
+  document.querySelector(`.column[data-id='${id}']`).remove();
+  // update displayed column
+  db.collection("animals")
+    .doc(id)
+    .get()
+    .then(updatedInfo => {
+      buildAnimalColumn(updatedInfo);
+    });
+
   closeModal();
-  updateAnimalList();
-}
+});
+
 // delete animal
 deleteAnimalBtn.addEventListener("click", e => {
   e.stopPropagation();
@@ -285,7 +317,7 @@ deleteAnimalBtn.addEventListener("click", e => {
     .doc(id)
     .delete();
   closeModal();
-  document.querySelector(`.column[data-id=${id}]`).remove();
+  document.querySelector(`.column[data-id='${id}']`).remove();
 });
 
 /********************
@@ -325,8 +357,17 @@ function showAnimalDetail(data, id, elem, editableBol) {
   elem.querySelector(".animalName").value = data.name;
   elem.querySelector(".breed").value = data.breed;
   elem.querySelector(".age").value = data.age;
-  elem.querySelector(`input[value='male']`).removeAttribute("checked");
-  elem.querySelector(`input[value='female']`).removeAttribute("checked");
+  elem.querySelector(".money").value = data.money;
+  if (data.young) {
+    elem
+      .querySelector(`input[name='young']`)
+      .setAttribute("checked", "checked");
+  }
+  if (data.pregnant) {
+    elem
+      .querySelector(`input[name='pregnant']`)
+      .setAttribute("checked", "checked");
+  }
   elem
     .querySelector(`input[value='${data.gender}']`)
     .setAttribute("checked", "checked");
@@ -381,8 +422,3 @@ closeModalBtn.addEventListener("click", () => {
 function closeModal() {
   animalDetailModal.classList.add("hide");
 }
-
-// update animal list
-// function updateAnimalList() {
-//   console.log("update to the edited values ");
-// }
