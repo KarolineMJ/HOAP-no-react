@@ -1320,6 +1320,9 @@ Keyframes for frontpage
               color: $purpleColor;
               font-size: 24px;
             }
+            &.deleteAnimal:hover {
+              background: red;
+            }
           }
           &.hide {
             display: none;
