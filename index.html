@@ -866,6 +866,10 @@
           </div>
 
           <hr id="trigger" />
+          <div id="animalList">
+
+          </div>
+
           <div id="animalImage">
             <div>
               <div class="needsCircle"></div>
@@ -996,21 +1000,7 @@
           </div>
         </div>
       </div>
-      <div class="petExpand">
-        <div class="expandImg"><img src="img/animals/huntingcat.jpeg" /></div>
-        <div>
-          <h2>MeowMeow</h2>
-          <ul>
-            <li>Name: MeowMeow</li>
-            <li>Breed: Huskat</li>
-            <li>Age: 10</li>
-            <li>Gender: female</li>
-          </ul>
-          <p>
-            Story: Very sweet and gentle cat, loves hugs and is a bit of an
-            attention whore. But lovely.
-          </p>
-        </div>
+      <div id="petExpand">
       </div>
 
         <div id="userSettings">
@@ -1372,6 +1362,39 @@
         </form>
       </div>
     </div>
+
+    <template id="eachAnimalTemp">
+      <div class="eachAnimal">
+        <img src="" alt="" class="eachAnimalImage">
+        <div class="animalHeart"></div>
+        <div class="animalName">
+        </div>
+        <div class="statusCircle"></div>
+      </div>
+    </template>
+
+    <template id="detailedAnimalTemp">
+      <div class="close">x</div>
+      <div class="bigAnimalImage">
+        <img src="" alt="">
+      </div>
+      <div class="bigAnimalInfo">
+        <div class="bigAnimalBasicInfo">
+          <p>Name: <span class="animalName"></span></p>
+          <p>Breed: <span class="animalBreed"></span></p>
+          <p>Age: <span class="animalAge"></span></p>
+          <p>Gender: <span class="animalGender"></span></p>
+          <p>Size: <span class="animalSize"></span></p>
+          <p class="animalPregnant">* pregnant</p>
+          <p class="animalPup">* this is a baby</p>
+          <p class="animalStory">Story: <span></span></p>
+          <p class="needs"><span class="name">Animal name</span> needs <span class="money"> money </span> kr. every month</p>
+        </div>
+        <div class="bigAnimalNeeds">
+
+        </div>
+      </div>
+    </template>
 
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script src="js/menu.js"></script>

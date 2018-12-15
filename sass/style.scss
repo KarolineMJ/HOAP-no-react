@@ -650,6 +650,16 @@ button:focus {
         margin: 20px 0;
       }
     }
+    #animalList {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      .eachAnimal {
+        cursor: pointer;
+        * {
+          pointer-events: none;
+        }
+      }
+    }
 
     #animalImage {
       display: grid;
@@ -700,7 +710,7 @@ button:focus {
     }
   }
 
-  .petExpand {
+  #petExpand {
     width: 100vw;
     height: 40vh;
     background-color: white;

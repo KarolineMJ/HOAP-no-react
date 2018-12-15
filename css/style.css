@@ -554,6 +554,13 @@ button:focus {
       align-self: end;
       justify-self: end;
       margin: 20px 0; }
+  #signedInContent #yourPets #animalList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); }
+    #signedInContent #yourPets #animalList .eachAnimal {
+      cursor: pointer; }
+      #signedInContent #yourPets #animalList .eachAnimal * {
+        pointer-events: none; }
   #signedInContent #yourPets #animalImage {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; }
@@ -589,7 +596,7 @@ button:focus {
           padding: 2px;
           color: grey; }
 
-#signedInContent .petExpand {
+#signedInContent #petExpand {
   width: 100vw;
   height: 40vh;
   background-color: white;
@@ -597,24 +604,24 @@ button:focus {
   z-index: 2;
   display: none;
   grid-template-columns: 1fr 1fr; }
-  #signedInContent .petExpand h2 {
+  #signedInContent #petExpand h2 {
     text-align: left;
     padding: 10px; }
-  #signedInContent .petExpand ul {
+  #signedInContent #petExpand ul {
     list-style: none;
     padding: 10px; }
-    #signedInContent .petExpand ul li {
+    #signedInContent #petExpand ul li {
       text-decoration: none;
       padding: 0;
       text-align: left; }
-  #signedInContent .petExpand p {
+  #signedInContent #petExpand p {
     text-align: left;
     padding: 10px;
     padding-right: 70px; }
-  #signedInContent .petExpand .expandImg {
+  #signedInContent #petExpand .expandImg {
     width: 20vw;
     align-self: center; }
-    #signedInContent .petExpand .expandImg img {
+    #signedInContent #petExpand .expandImg img {
       border-radius: 50%;
       width: 20vw; }
 
