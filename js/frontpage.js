@@ -254,6 +254,7 @@ Upload an image to database
     let file = e.target.files[0];
 
     // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
+    //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
 
     //create a storage ret
     let storageRef = firebase.storage().ref("animals/" + file.name);
