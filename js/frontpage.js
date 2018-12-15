@@ -8,7 +8,6 @@ const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
-
 /*-------------------------------------------
 Initialize Firebase
 ------------------------------------------*/
@@ -162,6 +161,7 @@ Sign up user
       .createUserWithEmailAndPassword(signupEmail.value, signupPassword.value)
       .then(() => {
         console.log("Succesfull signup");
+        openPreferenceModal();
 
         db.collection("member").add({
           email: signupEmail.value,
@@ -272,7 +272,7 @@ Upload an image to database
     //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
 
     //create a storage ret
-    let storageRef = firebase.storage().ref("animals/" + file.name);
+    let storageRef = firebase.storage().ref("member/" + file.name);
 
     //upload file
     let task = storageRef.put(file);
@@ -290,40 +290,12 @@ Upload an image to database
       }
     );
   });
-
-  //create a reference with an initial file path and name
-  /* let storage = firebase.storage();
-  let storageReference = storage.ref();
-  let childRef = storageReference.child("animals/dog-cute-pet.jpg");
-
-  childRef
-    .getDownloadURL()
-    .then(function(url) {
-      let testImage = url;
-      document.querySelector("#testImage img").src = testImage;
-    })
-    .catch(function(error) {
-      // Handle any errors
-    });
-*/
-  /*-------------------------------------------
-Open Modal
-------------------------------------------*/
-  /*let inputfield = document.querySelectorAll("input");
-let label = document.querySelectorAll("label");
-
-inputfield.forEach(inputfield => {
-  if (inputfield.placeholder !== "") {
-    console.log("there is something");
-  } else {
-    console.log("there is nothing");
-  }
-});
-
-*/
 }
 
+let fileUrl;
+
 function buildAnimalListOnLoggedinPage() {
+  animalListOnLoggedIn.innerHTML = "";
   db.collection("animals")
     .get()
     .then(res => {
@@ -332,6 +304,27 @@ function buildAnimalListOnLoggedinPage() {
 
         clone.querySelector(".animalName").textContent = doc.data().name;
         clone.querySelector(".eachAnimal").setAttribute("data-id", doc.id);
+
+        if (doc.data().file !== undefined && doc.data().file !== "") {
+          let animalImage2 = document.createElement("img");
+          let animalImageName = doc.data().file;
+          let storage = firebase.storage();
+          let storageReference = storage.ref();
+          let childRef = storageReference.child(`admin/${animalImageName}`);
+          console.log(animalImageName);
+          childRef
+            .getDownloadURL()
+            .then(function(url) {
+              animalImage2.setAttribute("src", url);
+              //clone.querySelector(".eachAnimalImage").setAttribute("src", url);
+              animalListOnLoggedIn
+                .querySelector(".eachAnimal")
+                .appendChild(animalImage2);
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        }
 
         animalListOnLoggedIn.appendChild(clone);
       });
@@ -381,4 +374,10 @@ function cloneAnimalInfo(data) {
   closeExpandBtn.addEventListener("click", () => {
     petExpand.style.display = "none";
   });
+}
+
+function openPreferenceModal() {
+  //open modal
+
+  console.log("you have now logged in");
 }
