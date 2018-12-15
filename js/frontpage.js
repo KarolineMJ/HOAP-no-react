@@ -1,6 +1,5 @@
 "use strict";
 
-window.addEventListener("DOMContentLoaded", init);
 /*-------------------------------------------
 Initialize Firebase
 ------------------------------------------*/
@@ -20,6 +19,12 @@ const settings = {
   timestampsInSnapshots: true
 };
 db.settings(settings);
+
+/*-------------------------------------------
+Run init function
+------------------------------------------*/
+
+window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   const adminSection = document.querySelector("#admin");
