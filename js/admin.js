@@ -1,7 +1,6 @@
 "use strict";
 
 // html elements
-const signoutAdminBtn = document.querySelector(".signoutAdmin");
 const addAnimalBtn = document.querySelector(".addAnimalBtn");
 const addAnimalToDbBtn = document.querySelector(".addAnimalToDB");
 const addToDoBtn = document.querySelector(".addToDoBtn");

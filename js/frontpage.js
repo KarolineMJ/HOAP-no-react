@@ -375,9 +375,26 @@ function cloneAnimalInfo(data) {
     petExpand.style.display = "none";
   });
 }
-
+/*--------------------------------------
+Open preference modal
+-------------------------------------*/
 function openPreferenceModal() {
   //open modal
+  const prefModal = document.querySelector("#preferencesModal");
+  const closeModalBtn = document.querySelector("#closeModalBtn");
+  const choosePrefBtn = document.querySelector("#choosePrefBtn");
 
-  console.log("you have now logged in");
+  choosePrefBtn.addEventListener("click", sendPreferenceToDatabase);
+
+  prefModal.style.display = "block";
+
+  closeModalBtn.addEventListener("click", () => {
+    prefModal.style.display = "none";
+  });
+
+  window.addEventListener("click", e => {
+    if (e.target == prefModal) {
+      prefModal.style.display = "none";
+    }
+  });
 }

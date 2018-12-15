@@ -177,3 +177,19 @@ signOutButton.addEventListener("click", e => {
 //     foodneed: addPetForm.foodneed.value
 //   });
 // });
+
+/*-------------------------------------------
+Animation - Intersection Observer
+------------------------------------------*/
+
+const animatedSection = document.querySelector("#aboutUs");
+
+let observer = new IntersectionObserver(entry => {
+  if (entry.intersectionRatio > 0) {
+    console.log("in view");
+  } else {
+    console.log("out of view");
+  }
+});
+
+observer.observe(animatedSection);
