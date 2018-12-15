@@ -1276,8 +1276,7 @@ Keyframes for frontpage
       font-size: 15px; }
   #lastBox {
     display: grid;
-    margin: auto;
-    width: 90%; }
+    margin: auto; }
     #lastBox h2 {
       text-align: center;
       align-self: end;
@@ -1460,6 +1459,7 @@ Keyframes for frontpage
           width: 70px;
           border-radius: 50%; }
   #frontpageForms {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr; }
     #frontpageForms #signupForm {
@@ -1477,7 +1477,7 @@ Keyframes for frontpage
         margin-bottom: 0;
         padding: 0; }
         #frontpageForms #signupForm .formField input {
-          font-size: 0.8em;
+          font-size: 0.7em;
           margin: 19px 0px; }
         #frontpageForms #signupForm .formField label {
           font-size: 15px; }
