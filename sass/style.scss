@@ -1188,6 +1188,7 @@ Keyframes for frontpage
           }
           .columns {
             overflow-x: scroll;
+            overflow-y: hidden;
             position: absolute;
             left: 15%;
             width: 80%;
@@ -1310,6 +1311,9 @@ Keyframes for frontpage
               background: none;
               color: $purpleColor;
               font-size: 24px;
+            }
+            &.deleteAnimal:hover {
+              background: red;
             }
           }
           &.hide {

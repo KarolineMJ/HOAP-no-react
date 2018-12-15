@@ -1098,7 +1098,7 @@
         <div class="section" id="dailyTasks">
           <div class="subsection animalTasks">
             <div class="subsectionHeader">
-              <span>Date</span> <span>filters: aCat | aDog | someFilter</span
+              <span class="date"></span> <span>filters: aCat | aDog | someFilter</span
               ><span class="adminBtn addAnimalBtn">Add animal</span>
             </div>
             <div class="tableWrapper">
@@ -1114,19 +1114,16 @@
             </div>
             <div class="animalDetailModal hide">
               <div class="animalImageBig"></div>
-              <div class="animalDetails">
+              <form class="animalDetails">
                 <div>
                   <input
                     class="animalName"
                     type="text"
-                    value="might fetch a long name"
+                    value=""
+                    name="name"
                   />
                   <ul>
-                    <li>
-                      <input type="text" value="race from db, editable" />
-                    </li>
-
-                    <li>age, auto generate or allow input?</li>
+                    <li>Age: <input class="age" type="text" value="" name="age" /></li>
                     <li>
                       <label
                         ><input
@@ -1142,7 +1139,34 @@
                         />Male</label
                       >
                     </li>
-                  </ul>
+                    <li>Breed: 
+                        <input class="breed" type="text" value="" name="breed" />
+                      </li>
+                    <li>
+                        <label
+                          ><input
+                            type="radio"
+                            name="size"
+                            value="S"
+                          />S</label
+                        ><label
+                          ><input
+                            type="radio"
+                            name="size"
+                            value="M"
+                          />M</label
+                        >
+                        <label
+                          ><input
+                            type="radio"
+                            name="size"
+                            value="L"
+                          />L</label>
+                      </li>
+                      <li><label>young animal<input type="checkbox" name="young"></label></li>
+                      <li><label>pregnant <input type="checkbox" name="pregnant"></label></li>          
+                      <li>Money: <input name="money" class="money" type="number" value="" /> Kr. per month</li>
+                    </ul>
                 </div>
                 <div class="needAndStory">
                   <h5>Needs</h5>
@@ -1150,40 +1174,41 @@
                     <label
                       ><input
                         type="checkbox"
-                        name="time"
+                        name="morning"
                         value="morning"
                       />morning</label
                     ><label
                       ><input
                         type="checkbox"
-                        name="time"
+                        name="afternoon"
                         value="afternoon"
                       />afternoon</label
                     ><label
                       ><input
                         type="checkbox"
-                        name="time"
+                        name="evening"
                         value="evening"
                       />evening</label
                     ><label
                       ><input
                         type="checkbox"
-                        name="more"
+                        name="training"
                         value="training"
                       />training</label
                     >
                   </p>
-                  <p>
+                  <p>Extra: </p> 
+                    <p>
                     <label
-                      ><input type="text" value="" placeholder="extra need"
+                      ><input class="extra" type="text" value="" placeholder="extra need" name="extra"
                     /></label>
                   </p>
                   <h5>Story</h5>
                   <section class="story">
-                    <textarea>story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal</textarea>
+                    <textarea name="story" class="story-textarea">story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal story of animal</textarea>
                   </section>
                 </div>
-              </div>
+              </form>
               <div class="buttons">
                 <button class="closeModal">X</button>
                 <button class="editAnimal" data-action="edit">Edit</button>
@@ -1193,7 +1218,31 @@
               </div>
             </div>
             <div class="adminForm addAnimalForm hide">
-              add animal <span class="close">X</span>
+              <span class="close">X</span>
+              <form>
+                <p>Basic info</p>
+                <p><input type="text" placeholder="name of animal" name="animalName" required></p>
+                <p><label>cat<input type="radio" name="type" value="cat"></label><label>dog<input type="radio" name="type" value="dog"></label></p>
+                <p><label>age<input type="number" min="0" name="age"></label></p>
+                <p><label>male<input type="radio" name="gender" value="male"></label><label>female<input type="radio" name="gender" value="female"></label></p>
+                <p><label><input type="text" placeholder="breed" name="breed"></label></p>
+                <p><label>small<input type="radio" name="size" value="S"></label>
+                <label>medium<input type="radio" name="size" value="M"></label><label>large<input type="radio" name="size" value="L"></label></p>
+                <p><label>young animal<input type="checkbox" name="young"></label></p>
+                <p><label>pregnant <input type="checkbox" name="pregnant"></label></p>
+                <label>Money need per month<input type="number" placeholder="kr." name="money"></label>
+                <p>Story</p>
+                <p><label><textarea placeholder="story" name="story"></textarea></label></p>
+                <p>Needed exercises</p>
+                <p><label>Morning<input type="checkbox" name="morning" value="morning"></label></p>
+                <p><label>Afternoon<input type="checkbox" name="afternoon" value="afternoon"></label></p>
+                <p><label>Evening<input type="checkbox" name="evening" value="evening"></label></p>
+                <p><label>Training<input type="checkbox" name="training" value="training"></label></p>
+                <p>Special need</p>
+                <p><label><input type="text" placeholder="extra attention" name="extra"></label></p>
+                <div><img alt=""></div>
+                <button class="addAnimalToDB">Add Animal</button>
+              </form>
             </div>
           </div>
           <div class="subsection otherToDo">
@@ -1203,13 +1252,6 @@
               <span class="adminBtn addToDoBtn">Add a to-do</span>
             </div>
             <div class="toDoListWrapper">
-              <!--<div class="toDoEntry"><input type="checkbox" />heggoba</div>
-              <div class="toDoEntry"><input type="checkbox" />heggoba</div>
-              <div class="toDoEntry"><input type="checkbox" />heggoba</div>
-              <div class="toDoEntry"><input type="checkbox" />heggoba</div>
-              <div class="toDoEntry"><input type="checkbox" />heggoba</div>
-              <div class="toDoEntry"><input type="checkbox" />heggoba</div>
-              <div class="toDoEntry"><input type="checkbox" />heggoba</div>-->
             </div>
           </div>
         </div>
