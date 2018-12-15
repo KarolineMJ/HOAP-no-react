@@ -73,7 +73,6 @@ function buildAnimalColumn(entry) {
     childRef
       .getDownloadURL()
       .then(function(url) {
-        console.log(url);
         animalImage.src = url;
       })
       .catch(function(error) {
