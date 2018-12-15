@@ -15,17 +15,19 @@ const deleteAnimalBtn = document.querySelector(".deleteAnimal");
 const animalDetailModal = document.querySelector(".animalDetailModal");
 const animalDetailForm = document.querySelector(".animalDetails");
 const date = document.querySelector(".date");
-// date
+// date related
 const today = new Date();
 const year = today.getFullYear();
 const month = today.getMonth() + 1;
 const day = today.getDate();
 const timestamp = today.getTime();
 date.textContent = `${year}-${month}-${day}`;
-// displayed animal array
+// custom variables
+// displayed animal array, use this for update animal list without re-render the whole list AND without using firebases's built-in onchange function
 let animalArray = [];
 
 window.addEventListener("DOMContentLoaded", displayAnimals);
+
 // GET animals from db and generate animal columns
 function displayAnimals() {
   const displayedAnimal = document.querySelectorAll(".columns .column");
@@ -209,7 +211,6 @@ function buildAnimalList(entry) {
         }
       });
     });
-  //   if (entry.data().morning) clone.querySelector(".morning");
   columns.appendChild(column);
 }
 
@@ -259,6 +260,16 @@ addAnimalForm.addEventListener("submit", e => {
       displayAnimals();
     });
 });
+// get animal info
+function getAnimalInfo(id) {
+  db.collection("animals")
+    .doc(id)
+    .get()
+    .then(res => {
+      showAnimalDetail(res.data(), id, animalDetailModal, true);
+    });
+}
+
 // edit animal detail
 editAnimalBtn.addEventListener("click", editAnimal);
 function editAnimal() {
@@ -267,43 +278,20 @@ function editAnimal() {
   updateAnimalList();
 }
 // delete animal
-deleteAnimalBtn.addEventListener("click", deleteAnimal);
-function deleteAnimal() {
-  console.log("delete animal, write to db");
-  closeModal();
-  updateAnimalList();
-}
-// close modal with button click
-closeModalBtn.addEventListener("click", () => {
-  closeModal();
-});
-
-// general functions
-// close panal with click on X
-closeX.forEach(closePanel);
-function closePanel(x) {
-  x.addEventListener("click", e => {
-    e.target.parentElement.classList.add("hide");
-  });
-}
-// click animal detail modal
-function closeModal() {
-  animalDetailModal.classList.add("hide");
-}
-// update animal list
-function updateAnimalList() {
-  console.log("update to the edited values ");
-}
-// get animal info
-function getAnimalInfo(id) {
-  console.log(id);
+deleteAnimalBtn.addEventListener("click", e => {
+  e.stopPropagation();
+  let id = e.target.parentElement.parentElement.getAttribute("data-id");
   db.collection("animals")
     .doc(id)
-    .get()
-    .then(res => {
-      showAnimalDetail(res.data(), id);
-    });
-}
+    .delete();
+  closeModal();
+  document.querySelector(`.column[data-id=${id}]`).remove();
+});
+
+/********************
+ * shared functions
+ ********************/
+
 // reset form
 function resetForm(form) {
   const allFormELements = form.querySelectorAll("*");
@@ -313,11 +301,12 @@ function resetForm(form) {
       e.checked = false;
     }
   });
-  console.log("form reset");
 }
+
 // display animal details
-function showAnimalDetail(data, id) {
+function showAnimalDetail(data, id, elem, editableBol) {
   const currentAnimal = id;
+  elem.dataset.id = id;
   // clear previous values
   const previousKeys = [
     "male",
@@ -328,53 +317,72 @@ function showAnimalDetail(data, id) {
     "training"
   ];
   previousKeys.forEach(key => {
-    animalDetailModal
-      .querySelector(`input[value='${key}']`)
-      .removeAttribute("checked");
+    elem.querySelector(`input[value='${key}']`).removeAttribute("checked");
   });
+  if (editableBol === true) {
+  }
   // display newly fetched values
-  animalDetailModal.querySelector(".animalName").value = data.name;
-  animalDetailModal.querySelector(".breed").value = data.breed;
-  animalDetailModal.querySelector(".age").value = data.age;
-  animalDetailModal
-    .querySelector(`input[value='male']`)
-    .removeAttribute("checked");
-  animalDetailModal
-    .querySelector(`input[value='female']`)
-    .removeAttribute("checked");
-  animalDetailModal
+  elem.querySelector(".animalName").value = data.name;
+  elem.querySelector(".breed").value = data.breed;
+  elem.querySelector(".age").value = data.age;
+  elem.querySelector(`input[value='male']`).removeAttribute("checked");
+  elem.querySelector(`input[value='female']`).removeAttribute("checked");
+  elem
     .querySelector(`input[value='${data.gender}']`)
     .setAttribute("checked", "checked");
-  animalDetailModal
+  elem
     .querySelector(`input[value='${data.size}']`)
     .setAttribute("checked", "checked");
-  animalDetailModal.querySelector(".story-textarea").value = data.story;
+  elem.querySelector(".story-textarea").value = data.story;
   db.collection("dailyTasks")
     .where("animalID", "==", id)
     .get()
     .then(res => {
       res.docs.forEach(doc => {
         if (doc.data().morning) {
-          animalDetailModal
+          elem
             .querySelector(`input[value='morning']`)
             .setAttribute("checked", "checked");
         }
         if (doc.data().afternoon) {
-          animalDetailModal
+          elem
             .querySelector(`input[value='afternoon']`)
             .setAttribute("checked", "checked");
         }
         if (doc.data().evening) {
-          animalDetailModal
+          elem
             .querySelector(`input[value='evening']`)
             .setAttribute("checked", "checked");
         }
         if (doc.data().traning) {
-          animalDetailModal
+          elem
             .querySelector(`input[value='training']`)
             .setAttribute("checked", "checked");
         }
-        animalDetailModal.querySelector(".extra").value = doc.data().extra;
+        elem.querySelector(".extra").value = doc.data().extra;
       });
     });
 }
+
+// close panal with click on X
+closeX.forEach(closePanel);
+function closePanel(x) {
+  x.addEventListener("click", e => {
+    e.target.parentElement.classList.add("hide");
+  });
+}
+
+// close modal with button click
+closeModalBtn.addEventListener("click", () => {
+  closeModal();
+});
+
+// click animal detail modal
+function closeModal() {
+  animalDetailModal.classList.add("hide");
+}
+
+// update animal list
+// function updateAnimalList() {
+//   console.log("update to the edited values ");
+// }

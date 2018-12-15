@@ -1085,6 +1085,8 @@ Keyframes for frontpage
               background: none;
               color: #2e2f4b;
               font-size: 24px; }
+            #admin main .section .subsection .animalDetailModal .buttons button.deleteAnimal:hover {
+              background: red; }
           #admin main .section .subsection .animalDetailModal.hide {
             display: none; }
         #admin main .section .subsection .toDoListWrapper {
