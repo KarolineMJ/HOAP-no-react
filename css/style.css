@@ -1169,6 +1169,15 @@ Keyframes for frontpage
   border-radius: 25px;
   color: white; }
 
+.addAnimalForm div {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  padding: 10px 30px;
+  border: 2px solid #2e2f4b;
+  border-radius: 25px;
+  color: white; }
+
 .postsContainer {
   display: grid;
   grid-template-columns: 60% 40%;

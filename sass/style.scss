@@ -1421,6 +1421,16 @@ Keyframes for frontpage
     border-radius: 25px;
     color: white;
   }
+
+  div {
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px 30px;
+    border: 2px solid $purpleColor;
+    border-radius: 25px;
+    color: white;
+  }
 }
 // here starts POST AND NOTIFY!!
 .postsContainer {
