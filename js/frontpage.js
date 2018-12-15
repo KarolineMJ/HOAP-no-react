@@ -105,6 +105,7 @@ Display right content if user
       alreadyMemberBtn.style.display = "block";
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "none";
+      footer.style.display = "grid";
     }
   });
 
@@ -251,6 +252,8 @@ Upload an image to database
     //get file
     let file = e.target.files[0];
 
+    // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
+
     //create a storage ret
     let storageRef = firebase.storage().ref("animals/" + file.name);
 
@@ -272,7 +275,7 @@ Upload an image to database
   });
 
   //create a reference with an initial file path and name
-  /*let storage = firebase.storage();
+  /* let storage = firebase.storage();
   let storageReference = storage.ref();
   let childRef = storageReference.child("animals/dog-cute-pet.jpg");
 
@@ -285,9 +288,7 @@ Upload an image to database
     .catch(function(error) {
       // Handle any errors
     });
-
-    */
-
+*/
   /*-------------------------------------------
 Open Modal
 ------------------------------------------*/
