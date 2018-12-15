@@ -297,7 +297,7 @@ editAnimalBtn.addEventListener("click", e => {
     });
   ////////////////////// need to update dailytasks as well ////////////////////////
   // update displayed column
-  document.querySelector(`.column[data-id=${id}]`).remove();
+  document.querySelector(`.column[data-id='${id}']`).remove();
   // update displayed column
   db.collection("animals")
     .doc(id)
@@ -317,7 +317,7 @@ deleteAnimalBtn.addEventListener("click", e => {
     .doc(id)
     .delete();
   closeModal();
-  document.querySelector(`.column[data-id=${id}]`).remove();
+  document.querySelector(`.column[data-id='${id}']`).remove();
 });
 
 /********************
