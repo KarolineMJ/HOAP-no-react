@@ -554,6 +554,9 @@ button:focus {
       align-self: end;
       justify-self: end;
       margin: 20px 0; }
+  #signedInContent #yourPets #animalList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); }
   #signedInContent #yourPets #animalImage {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; }
