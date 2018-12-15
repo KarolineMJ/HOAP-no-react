@@ -318,9 +318,30 @@ function resetForm(form) {
 // display animal details
 function showAnimalDetail(data, id) {
   const currentAnimal = id;
+  // clear previous values
+  const previousKeys = [
+    "male",
+    "female",
+    "morning",
+    "afternoon",
+    "evening",
+    "training"
+  ];
+  previousKeys.forEach(key => {
+    animalDetailModal
+      .querySelector(`input[value='${key}']`)
+      .removeAttribute("checked");
+  });
+  // display newly fetched values
   animalDetailModal.querySelector(".animalName").value = data.name;
   animalDetailModal.querySelector(".breed").value = data.breed;
   animalDetailModal.querySelector(".age").value = data.age;
+  animalDetailModal
+    .querySelector(`input[value='male']`)
+    .removeAttribute("checked");
+  animalDetailModal
+    .querySelector(`input[value='female']`)
+    .removeAttribute("checked");
   animalDetailModal
     .querySelector(`input[value='${data.gender}']`)
     .setAttribute("checked", "checked");
