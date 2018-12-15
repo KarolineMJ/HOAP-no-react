@@ -650,6 +650,10 @@ button:focus {
         margin: 20px 0;
       }
     }
+    #animalList {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
 
     #animalImage {
       display: grid;
