@@ -1364,6 +1364,13 @@ Keyframes for frontpage
   p:nth-child(19) {
     font-size: 1.2em;
   }
+
+  p:nth-child(9) {
+    label {
+      padding: 0;
+    }
+  }
+
   p {
     padding: 10px 0px;
     label {

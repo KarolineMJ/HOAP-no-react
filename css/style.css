@@ -1123,6 +1123,9 @@ Keyframes for frontpage
 .addAnimalForm p:nth-child(19) {
   font-size: 1.2em; }
 
+.addAnimalForm p:nth-child(9) label {
+  padding: 0; }
+
 .addAnimalForm p {
   padding: 10px 0px; }
   .addAnimalForm p label {
