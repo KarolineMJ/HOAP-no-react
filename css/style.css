@@ -1087,6 +1087,7 @@ Keyframes for frontpage
             #admin main .section .subsection .toDoListWrapper .toDoEntry input[type="checkbox"] {
               margin-right: 5px; }
   #admin .adminForm {
+    overflow-y: scroll;
     position: fixed;
     z-index: 2;
     right: 0;

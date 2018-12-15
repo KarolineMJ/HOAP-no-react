@@ -1322,6 +1322,7 @@ Keyframes for frontpage
     }
   }
   .adminForm {
+    overflow-y: scroll;
     position: fixed;
     z-index: 2;
     right: 0;
