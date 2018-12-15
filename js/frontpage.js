@@ -5,6 +5,9 @@ Elements for HTML
 ----------------------------------------*/
 const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
+const petExpand = document.querySelector("#petExpand");
+const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
+  .content;
 
 /*-------------------------------------------
 Initialize Firebase
@@ -332,5 +335,45 @@ function buildAnimalListOnLoggedinPage() {
 
         animalListOnLoggedIn.appendChild(clone);
       });
+      const allIndividualAnimalS = document.querySelectorAll(".eachAnimal");
+      allIndividualAnimalS.forEach(a => {
+        a.addEventListener("click", e => {
+          const clickedAnimalID = e.target.dataset.id;
+          db.collection("animals")
+            .doc(clickedAnimalID)
+            .get()
+            .then(res => {
+              petExpand.style.display = "block";
+              cloneAnimalInfo(res.data());
+              console.log(res.data().name);
+            });
+        });
+      });
     });
+}
+
+function openAnimalInfo(e) {
+  alert();
+  console.log(e.target.dataset.id);
+}
+function cloneAnimalInfo(data) {
+  petExpand.innerHTML = "";
+  const clone = detailedAnimalTemp.cloneNode(true);
+
+  clone.querySelector(".animalName").textContent = data.name;
+  clone.querySelector(".animalBreed").textContent = data.breed;
+  clone.querySelector(".animalAge").textContent = data.age;
+  clone.querySelector(".animalGender").textContent = data.gender;
+  clone.querySelector(".animalSize").textContent = data.size;
+  if (!data.young) {
+    clone.querySelector(".animalPup").style.display = "none";
+  }
+  if (!data.pregnant) {
+    clone.querySelector(".animalPregnant").style.display = "none";
+  }
+  clone.querySelector(".animalStory").textContent = data.story;
+  clone.querySelector(".money").textContent = data.money;
+  clone.querySelector(".name").textContent = data.name;
+
+  petExpand.appendChild(clone);
 }

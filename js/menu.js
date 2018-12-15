@@ -23,10 +23,10 @@ function hideMenu() {
   });
 }
 hideMenu();
-
+/*
 function expandInfo() {
   const petImage = document.querySelectorAll("#animalImage img");
-  const petExpand = document.querySelector(".petExpand");
+  const petExpand = document.querySelector("#petExpand");
 
   for (let i = 0; i < petImage.length; i++) {
     petImage[i].addEventListener("click", function() {
@@ -41,11 +41,11 @@ function expandInfo() {
   }
 }
 
-/*
 petImage.forEach(function() {
   petImage.addEventListener("click", function() {
     console.log("clicked");
   });
 });
-*/
+
 expandInfo();
+*/
