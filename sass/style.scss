@@ -1354,17 +1354,27 @@ Keyframes for frontpage
       top: 50px;
       cursor: pointer;
     }
+  }
+}
 
-    .addAnimalToDB {
-      background-color: $purpleColor;
-      cursor: pointer;
-      text-align: center;
-      width: 100%;
-      height: 40px;
-      padding: 10px 30px;
-      border-radius: 25px;
-      color: white;
-    }
+.addAnimalForm {
+  p:nth-child(1),
+  p:nth-child(11),
+  p:nth-child(13),
+  p:nth-child(18) {
+    font-size: 1.3em;
+    padding: 12px 0px;
+  }
+
+  .addAnimalToDB {
+    background-color: $purpleColor;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: white;
   }
 }
 // here starts POST AND NOTIFY!!
