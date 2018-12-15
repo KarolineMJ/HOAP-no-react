@@ -1222,12 +1222,26 @@
               <form>
                 <p>Basic info</p>
                 <p><input type="text" placeholder="name of animal" name="animalName" required></p>
-                <p><label for="chooseCat">cat<input type="radio" id="chooseCat"name="type" value="cat"></label><label for="chooseDog">dog<input type="radio" id="chooseDog" name="type" value="dog"></label></p>
+
+                <p><input type="radio" id="chooseCat"name="type" value="cat"><label for="chooseCat">cat</label>
+                  
+                <input type="radio" id="chooseDog" name="type" value="dog"><label for="chooseDog">dog</label></p>
+
                 <p><label for="chooseAge">age<input type="number" id="chooseAge" min="0" name="age"></label></p>
-                <p><label for="chooseMale">male<input type="radio" id="chooseMale" name="gender" value="male"></label><label for="chooseFemale">female<input type="radio" name="gender" id="chooseFemale"value="female"></label></p>
+
+                <p><input type="radio" id="chooseMale" name="gender" value="male"><label for="chooseMale">male</label>
+                  
+                  <input type="radio" name="gender" id="chooseFemale"value="female"><label for="chooseFemale">female</label></p>
+
+
                 <p><label><input type="text" placeholder="breed" name="breed"></label></p>
-                <p><label>small<input type="radio" name="size" value="S"></label>
-                <label>medium<input type="radio" name="size" value="M"></label><label>large<input type="radio" name="size" value="L"></label></p>
+
+                <p><input type="radio" id="chooseSmall" name="size" value="S"><label for="chooseSmall">small</label>
+
+                  <input type="radio" id="chooseMedium" name="size" value="M"><label for="chooseMedium">medium</label>
+                  
+                  
+                  <input type="radio" id="chooseLarge" name="size" value="L"><label for="chooseLarge">large</label></p>
                 <p><label>young animal<input type="checkbox" name="young"></label></p>
                 <p><label>pregnant <input type="checkbox" name="pregnant"></label></p>
                 <label>Money need per month<input type="number" placeholder="kr." name="money"></label>
