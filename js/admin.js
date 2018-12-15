@@ -45,16 +45,16 @@ function displayAnimals() {
         }
       });
       // get triggers in the newly built animal list and open animal detail modal with click on animal image
-      const allAnimalImgS = document.querySelectorAll(".animalImage");
-      allAnimalImgS.forEach(a => {
-        a.addEventListener("click", e => {
-          const clickedID = e.target.parentElement.dataset.id;
-          getAnimalInfo(clickedID);
-          if (animalDetailModal.classList.contains("hide")) {
-            animalDetailModal.classList.remove("hide");
-          }
-        });
-      });
+      //   const allAnimalImgS = document.querySelectorAll(".animalImage");
+      //   allAnimalImgS.forEach(a => {
+      //     a.addEventListener("click", e => {
+      //       const clickedID = e.target.parentElement.dataset.id;
+      //       getAnimalInfo(clickedID);
+      //       if (animalDetailModal.classList.contains("hide")) {
+      //         animalDetailModal.classList.remove("hide");
+      //       }
+      //     });
+      //   });
     });
 }
 
@@ -211,6 +211,14 @@ function buildAnimalColumn(entry) {
         }
       });
     });
+  // add listener to newly built column
+  column.addEventListener("click", e => {
+    const clickedID = e.target.parentElement.dataset.id;
+    getAnimalInfo(clickedID);
+    if (animalDetailModal.classList.contains("hide")) {
+      animalDetailModal.classList.remove("hide");
+    }
+  });
   columns.appendChild(column);
 }
 
@@ -288,13 +296,16 @@ editAnimalBtn.addEventListener("click", e => {
       pregnant: animalDetailForm.pregnant.checked ? true : false
     });
   ////////////////////// need to update dailytasks as well ////////////////////////
-  // remove old column
+  // update displayed column
   document.querySelector(`.column[data-id=${id}]`).remove();
   // update displayed column
   db.collection("animals")
     .doc(id)
     .get()
-    .then(updatedInfo => buildAnimalColumn(updatedInfo));
+    .then(updatedInfo => {
+      buildAnimalColumn(updatedInfo);
+    });
+
   closeModal();
 });
 
