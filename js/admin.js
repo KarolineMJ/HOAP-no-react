@@ -29,7 +29,7 @@ db.collection("animals")
   .get()
   .then(res => {
     res.docs.forEach(doc => {
-      console.log(doc);
+      //console.log(doc);
       //      buildAnimalList(doc);
     });
   });

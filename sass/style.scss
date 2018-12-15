@@ -745,7 +745,8 @@ button:focus {
     background-color: $mainColor;
   }
 
-  .sidebar {
+  #userSettings,
+  #newsFeed {
     display: none;
     box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
     z-index: 3;
@@ -756,50 +757,41 @@ button:focus {
     top: 60px;
     width: 26vw;
     padding: 20px;
-    #userSettings {
-      display: none;
-      .user {
-        display: grid;
-        grid-template-columns: 6vw 1fr;
-        img {
-          place-self: center;
-          width: 4vw;
-          border-radius: 50%;
-        }
-        p {
-          align-self: center;
-        }
+    .user {
+      display: grid;
+      grid-template-columns: 6vw 1fr;
+      img {
+        place-self: center;
+        width: 4vw;
+        border-radius: 50%;
       }
-      #signOut {
-        position: relative;
-        top: 160px;
-        left: 92px;
-      }
-      button {
-        font-family: $font;
-        height: 40px;
-        justify-self: end;
-        padding: 7px;
-        width: 150px;
-        background-color: $darkbtn;
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 40px;
-        cursor: pointer;
-        align-self: end;
-        &:hover {
-          background-color: $btnHover;
-        }
+      p {
+        align-self: center;
       }
     }
-    #newsFeed {
-      display: none;
+    #signOut {
+      position: relative;
+      top: 160px;
+      left: 92px;
     }
-  }
-  .closed {
-    grid-template-columns: 1fr;
+    button {
+      font-family: $font;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      width: 150px;
+      background-color: $darkbtn;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 40px;
+      cursor: pointer;
+      align-self: end;
+      &:hover {
+        background-color: $btnHover;
+      }
+    }
   }
 }
 
