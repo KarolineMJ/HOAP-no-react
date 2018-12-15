@@ -1194,11 +1194,12 @@ Keyframes for frontpage
           #intro .introText .catchphrase h1 span {
             font-size: 15vw; }
       #intro .introText p {
-        text-align: center; }
+        text-align: center;
+        padding-bottom: 22px; }
     #intro .introPic {
       grid-row-start: 1;
       height: 200px;
-      width: 100vw; }
+      width: 100%; }
       #intro .introPic .circle {
         position: relative;
         margin: auto; }
@@ -1237,13 +1238,17 @@ Keyframes for frontpage
     display: block;
     height: auto; }
     #aboutUs h1 {
-      font-size: 24px; }
+      font-size: 24px;
+      padding-top: 10px; }
     #aboutUs h2 {
-      font-size: 20px; }
+      font-size: 20px;
+      margin: 5px 0;
+      padding-top: 22px; }
     #aboutUs .aboutCont {
       display: block;
       margin: auto;
-      padding: 5vw; }
+      padding: 5vw;
+      padding-top: 0; }
       #aboutUs .aboutCont #walkDog,
       #aboutUs .aboutCont #errandCar,
       #aboutUs .aboutCont #coinCat {
@@ -1263,7 +1268,8 @@ Keyframes for frontpage
       align-self: end;
       margin: 20px 0; }
     #lastBox #animalImage {
-      padding: 10px 5px;
+      padding: 0px 5px;
+      padding-top: 5px;
       display: grid;
       grid-template-columns: repeat(4, 1fr); }
       #lastBox #animalImage div {
@@ -1276,38 +1282,60 @@ Keyframes for frontpage
     display: grid;
     grid-template-columns: 1fr; }
     #frontpageForms #signupForm {
-      grid-row-start: 1; }
+      grid-row-start: 1;
+      margin: 34px;
+      padding: 30px;
+      margin-bottom: 0; }
       #frontpageForms #signupForm h2 {
-        font-size: 20px; }
+        font-size: 20px;
+        margin-top: 0px; }
       #frontpageForms #signupForm form button {
-        margin: 19px 0px; }
+        margin-top: 19px;
+        margin-bottom: 0px; }
       #frontpageForms #signupForm .formField {
         margin-bottom: 0;
         padding: 0; }
         #frontpageForms #signupForm .formField input {
           font-size: 0.8em;
           margin: 19px 0px; }
-    #frontpageForms #donationForm h2 {
-      font-size: 20px; }
-    #frontpageForms #donationForm form button {
-      margin: 19px 0px; }
-    #frontpageForms #donationForm .formField {
-      margin-bottom: 0;
-      padding: 0; }
-      #frontpageForms #donationForm .formField input {
-        font-size: 0.8em;
+        #frontpageForms #signupForm .formField label {
+          font-size: 15px; }
+    #frontpageForms #donationForm {
+      margin: 34px;
+      padding: 30px; }
+      #frontpageForms #donationForm h2 {
+        font-size: 20px;
+        margin-top: 0px; }
+      #frontpageForms #donationForm form button {
         margin: 19px 0px; }
+      #frontpageForms #donationForm form .formField {
+        margin-bottom: 0;
+        padding: 0; }
+        #frontpageForms #donationForm form .formField input {
+          font-size: 0.8em;
+          margin: 19px 0px; }
+        #frontpageForms #donationForm form .formField label {
+          font-size: 14px; }
   #footer {
+    padding: 30px;
     grid-template-columns: 1fr; }
     #footer #subscribeForm {
       grid-row-start: 1; }
       #footer #subscribeForm h3 {
         margin-bottom: 10px;
-        font-size: 18px; }
-    #footer .contactBox h3 {
-      margin-bottom: 10px;
-      margin-top: 10px;
-      font-size: 18px; }
-    #footer .contactBox svg {
-      width: 50px;
-      height: 50px; } }
+        font-size: 15px; }
+      #footer #subscribeForm label {
+        font-size: 13px; }
+      #footer #subscribeForm button {
+        height: 30px; }
+    #footer .contactBox {
+      padding-top: 15px; }
+      #footer .contactBox h3 {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 15px; }
+      #footer .contactBox p {
+        font-size: 14px; }
+      #footer .contactBox svg {
+        width: 50px;
+        height: 50px; } }
