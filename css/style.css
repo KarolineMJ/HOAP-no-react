@@ -1177,6 +1177,14 @@ Keyframes for frontpage
   border: 2px solid #2e2f4b;
   border-radius: 25px;
   color: white; }
+  .addAnimalForm div #uploadBtnAdmin {
+    pointer-events: none;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute; }
+  .addAnimalForm div label {
+    cursor: pointer;
+    color: #2e2f4b; }
 
 .postsContainer {
   display: grid;

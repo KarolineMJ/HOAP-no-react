@@ -1430,6 +1430,16 @@ Keyframes for frontpage
     border: 2px solid $purpleColor;
     border-radius: 25px;
     color: white;
+    #uploadBtnAdmin {
+      pointer-events: none;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+    }
+    label {
+      cursor: pointer;
+      color: $purpleColor;
+    }
   }
 }
 // here starts POST AND NOTIFY!!
