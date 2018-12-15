@@ -657,57 +657,27 @@ button:focus {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       .eachAnimal {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        border-radius: 50%;
+        .eachAnimalImage {
+        }
         cursor: pointer;
         * {
           pointer-events: none;
         }
-      }
-    }
-
-    #animalImage {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-
-      div {
-        position: relative;
-        margin: 20px 0;
-        justify-self: center;
-        text-align: center;
-
-        .needsCircle {
-          right: 3vw;
-          width: 2vw;
-          height: 2vw;
+        .animalHeart {
+          img {
+            width: 20px;
+          }
+        }
+        .statusCircle {
+          width: 1vw;
+          height: 1vw;
           box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
           background-color: #a81c1c;
           border-radius: 50%;
-          position: absolute;
-        }
-
-        img {
-          cursor: pointer;
-
-          width: 15vw;
-          border-radius: 50%;
-          align-self: center;
-        }
-
-        .petName {
-          display: inline-block;
-          padding: 2px;
-          grid-row: 2;
-
-          svg {
-            width: 20px;
-            vertical-align: middle;
-            padding-right: 3px;
-          }
-          h3 {
-            vertical-align: middle;
-            display: inline-block;
-            padding: 2px;
-            color: grey;
-          }
         }
       }
     }
@@ -721,7 +691,9 @@ button:focus {
     z-index: 2;
     display: none;
     grid-template-columns: 1fr 1fr;
-
+    .closeExpandBtn {
+      cursor: pointer;
+    }
     h2 {
       text-align: left;
       padding: 10px;
