@@ -1,5 +1,11 @@
 "use strict";
 
+/*-----------------------------------------
+Elements for HTML 
+----------------------------------------*/
+const animalListOnLoggedIn = document.querySelector("#animalList");
+const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
+
 /*-------------------------------------------
 Initialize Firebase
 ------------------------------------------*/
@@ -103,6 +109,7 @@ Display right content if user
       alreadyMemberBtn.style.display = "none";
       memberBtns.style.display = "block";
       signoutAdminBtn.style.display = "none";
+      buildAnimalListOnLoggedinPage();
     } else {
       adminSection.style.display = "none";
       frontpageContent.style.display = "block";
@@ -311,4 +318,19 @@ inputfield.forEach(inputfield => {
 });
 
 */
+}
+
+function buildAnimalListOnLoggedinPage() {
+  db.collection("animals")
+    .get()
+    .then(res => {
+      res.docs.forEach(doc => {
+        const clone = eachAnimalTemp.cloneNode(true);
+
+        clone.querySelector(".animalName").textContent = doc.data().name;
+        clone.querySelector(".eachAnimal").setAttribute("data-id", doc.id);
+
+        animalListOnLoggedIn.appendChild(clone);
+      });
+    });
 }
