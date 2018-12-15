@@ -9,6 +9,9 @@ $darkbtn: #74b7a5;
 $mainColor: #ead8a6;
 $grayColor: #efefef;
 $purpleColor: #2e2f4b;
+$breakpoint-mobile: 450px;
+$breakpoint-tablet: 750px;
+$breakpoint-desktop: 1100px;
 
 * {
   margin: 0;
@@ -443,7 +446,7 @@ button:focus {
     .introCat {
       position: absolute;
       align-self: center;
-      top: 440px;
+      top: 400px;
       left: -7vw;
       img {
         width: 23vw;
@@ -1462,5 +1465,196 @@ Keyframes for frontpage
   .listOfDonations {
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+}
+@media (max-width: $breakpoint-tablet) {
+}
+@media (max-width: $breakpoint-mobile) {
+  #intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 100px;
+
+    .introText {
+      width: 90vw;
+      .catchphrase {
+        text-align: center;
+        h1 {
+          font-size: 10vw;
+          span {
+            font-size: 15vw;
+          }
+        }
+      }
+      p {
+        text-align: center;
+      }
+    }
+    .introPic {
+      grid-row-start: 1;
+      height: 200px;
+      width: 100vw;
+      .circle {
+        position: relative;
+        margin: auto;
+
+        img {
+          width: 250px;
+          height: auto;
+          margin: auto;
+        }
+      }
+      .introCat {
+        top: 152px;
+        left: 4vw;
+        img {
+          width: 40vw;
+        }
+      }
+      .dots {
+        position: relative;
+
+        div:nth-child(1) {
+          width: 30px;
+          top: 6vh;
+          right: 10vw;
+          height: 30px;
+        }
+        div:nth-child(2) {
+          width: 15px;
+          top: 15vh;
+          right: 8vw;
+          height: 15px;
+        }
+        div:nth-child(3) {
+          width: 13px;
+          top: 30vh;
+          right: 12vw;
+          height: 13px;
+        }
+        div:nth-child(4) {
+          width: 15px;
+          top: 20vh;
+          left: 2vw;
+          height: 15px;
+        }
+      }
+    }
+  }
+  #aboutUs {
+    display: block;
+    height: auto;
+
+    h1 {
+      font-size: 24px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    .aboutCont {
+      display: block;
+      margin: auto;
+      padding: 5vw;
+      #walkDog,
+      #errandCar,
+      #coinCat {
+        width: 150px;
+        height: 150px;
+
+        svg {
+          width: 150px;
+        }
+      }
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  #lastBox {
+    color: white;
+    display: grid;
+    h2 {
+      text-align: center;
+      align-self: end;
+      margin: 20px 0;
+    }
+    #animalImage {
+      padding: 10px 5px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      div {
+        margin: 20px 0;
+        justify-self: center;
+
+        img {
+          width: 70px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  #frontpageForms {
+    display: grid;
+    grid-template-columns: 1fr;
+    #signupForm {
+      grid-row-start: 1;
+      h2 {
+        font-size: 20px;
+      }
+      form {
+        button {
+          margin: 19px 0px;
+        }
+      }
+      .formField {
+        margin-bottom: 0;
+        padding: 0;
+        input {
+          font-size: 0.8em;
+          margin: 19px 0px;
+        }
+      }
+    }
+    #donationForm {
+      h2 {
+        font-size: 20px;
+      }
+      form {
+        button {
+          margin: 19px 0px;
+        }
+      }
+      .formField {
+        margin-bottom: 0;
+        padding: 0;
+        input {
+          font-size: 0.8em;
+          margin: 19px 0px;
+        }
+      }
+    }
+  }
+  // here comes the footer
+  #footer {
+    grid-template-columns: 1fr;
+
+    #subscribeForm {
+      grid-row-start: 1;
+      h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+    }
+    .contactBox {
+      h3 {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 18px;
+      }
+      svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
   }
 }
