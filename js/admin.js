@@ -41,7 +41,7 @@ function displayAnimals() {
       res.docs.forEach(doc => {
         if (animalArray.indexOf(doc.id) < 0) {
           // only add animal column when it's not already displayed
-          buildAnimalList(doc);
+          buildAnimalColumn(doc);
         }
       });
       // get triggers in the newly built animal list and open animal detail modal with click on animal image
@@ -59,7 +59,7 @@ function displayAnimals() {
 }
 
 // build column of each animal
-function buildAnimalList(entry) {
+function buildAnimalColumn(entry) {
   const animalName = entry.data().name;
   const animalID = entry.id;
   //  const animalImageFile = entry.data().image[0];
@@ -286,8 +286,15 @@ editAnimalBtn.addEventListener("click", e => {
       money: animalDetailForm.money.value,
       young: animalDetailForm.young.checked ? true : false,
       pregnant: animalDetailForm.pregnant.checked ? true : false
-      ////////////////////// need to update dailytasks as well ////////////////////////
     });
+  ////////////////////// need to update dailytasks as well ////////////////////////
+  // remove old column
+  document.querySelector(`.column[data-id=${id}]`).remove();
+  // update displayed column
+  db.collection("animals")
+    .doc(id)
+    .get()
+    .then(updatedInfo => buildAnimalColumn(updatedInfo));
   closeModal();
 });
 
