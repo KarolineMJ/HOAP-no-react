@@ -629,6 +629,10 @@ button:focus {
 /* -----------------------
         signed in page
 ------------------------*/
+
+#mobileMenu {
+  display: none;
+}
 #signedInContent {
   #yourPets {
     padding: 10px 10vw;
@@ -1929,7 +1933,73 @@ Keyframes for frontpage
   }
 }
 
+/* ----------------------
+      Mobile version
+-----------------------*/
+
 @media (max-width: $breakpoint-mobile) {
+  /* ----------------------
+        Signed in page
+-----------------------*/
+
+  #newsBtn,
+  #settingBtn {
+    display: none;
+  }
+
+  #mobileMenu {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
+    position: sticky;
+    bottom: 0%;
+    width: 100%;
+    height: 60px;
+
+    svg {
+      width: 25px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    div {
+      justify-self: center;
+      align-self: center;
+    }
+  }
+  #signedInContent {
+    #yourPets {
+      #petChoices {
+        grid-template-columns: 1fr;
+
+        div {
+          justify-self: center;
+        }
+        p {
+          //grid-row: 1;
+          justify-self: center;
+          margin-top: 0;
+          margin-bottom: 10px;
+        }
+      }
+      #animalList {
+        grid-template-columns: 1fr;
+        align-self: center;
+        justify-self: center;
+
+        .eachAnimal {
+          width: 200px;
+          height: 200px;
+          margin: 20px;
+        }
+      }
+    }
+  }
+  /* ----------------------
+        Frontpage
+-----------------------*/
+
   #intro {
     display: grid;
     grid-template-columns: 1fr;
@@ -2059,11 +2129,13 @@ Keyframes for frontpage
       }
     }
   }
-  #frontpageForms {
+  #frontpageForms,
+  #sendToUsForms {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    #signupForm {
+    #signupForm,
+    #messageForm {
       grid-row-start: 1;
       margin: 34px;
       padding: 30px;
@@ -2090,7 +2162,8 @@ Keyframes for frontpage
         }
       }
     }
-    #donationForm {
+    #donationForm,
+    #imageForm {
       margin: 34px;
       padding: 30px;
 
