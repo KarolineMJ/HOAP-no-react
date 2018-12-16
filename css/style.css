@@ -1483,6 +1483,16 @@ Keyframes for frontpage
     #mobileMenu div {
       justify-self: center;
       align-self: center; }
+  #signedInContent #yourPets #petChoices {
+    grid-template-columns: 1fr; }
+    #signedInContent #yourPets #petChoices div {
+      justify-self: center; }
+    #signedInContent #yourPets #petChoices p {
+      justify-self: center; }
+  #signedInContent #yourPets #animalList {
+    grid-template-columns: 1fr;
+    align-self: center;
+    justify-self: center; }
   /* ----------------------
         Frontpage
 -----------------------*/

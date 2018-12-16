@@ -1941,6 +1941,7 @@ Keyframes for frontpage
   /* ----------------------
         Signed in page
 -----------------------*/
+
   #newsBtn,
   #settingBtn {
     display: none;
@@ -1960,7 +1961,26 @@ Keyframes for frontpage
       align-self: center;
     }
   }
+  #signedInContent {
+    #yourPets {
+      #petChoices {
+        grid-template-columns: 1fr;
 
+        div {
+          justify-self: center;
+        }
+        p {
+          //grid-row: 1;
+          justify-self: center;
+        }
+      }
+      #animalList {
+        grid-template-columns: 1fr;
+        align-self: center;
+        justify-self: center;
+      }
+    }
+  }
   /* ----------------------
         Frontpage
 -----------------------*/
