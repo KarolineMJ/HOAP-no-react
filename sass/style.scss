@@ -1960,6 +1960,7 @@ Keyframes for frontpage
     svg {
       width: 25px;
       margin-right: 8px;
+      vertical-align: middle;
     }
 
     div {
@@ -1978,12 +1979,20 @@ Keyframes for frontpage
         p {
           //grid-row: 1;
           justify-self: center;
+          margin-top: 0;
+          margin-bottom: 10px;
         }
       }
       #animalList {
         grid-template-columns: 1fr;
         align-self: center;
         justify-self: center;
+
+        .eachAnimal {
+          width: 200px;
+          height: 200px;
+          margin: 20px;
+        }
       }
     }
   }

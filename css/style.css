@@ -1483,7 +1483,8 @@ Keyframes for frontpage
     height: 60px; }
     #mobileMenu svg {
       width: 25px;
-      margin-right: 8px; }
+      margin-right: 8px;
+      vertical-align: middle; }
     #mobileMenu div {
       justify-self: center;
       align-self: center; }
@@ -1492,11 +1493,17 @@ Keyframes for frontpage
     #signedInContent #yourPets #petChoices div {
       justify-self: center; }
     #signedInContent #yourPets #petChoices p {
-      justify-self: center; }
+      justify-self: center;
+      margin-top: 0;
+      margin-bottom: 10px; }
   #signedInContent #yourPets #animalList {
     grid-template-columns: 1fr;
     align-self: center;
     justify-self: center; }
+    #signedInContent #yourPets #animalList .eachAnimal {
+      width: 200px;
+      height: 200px;
+      margin: 20px; }
   /* ----------------------
         Frontpage
 -----------------------*/
