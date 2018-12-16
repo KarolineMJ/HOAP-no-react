@@ -1193,26 +1193,149 @@ Keyframes for frontpage
     margin-top: 20px;
     margin-bottom: 20px; }
 
+@media only screen and (min-width: 650px) and (max-width: 900px) {
+  #intro {
+    height: 95vh; }
+    #intro .introPic .dots {
+      position: relative; }
+      #intro .introPic .dots div:nth-child(1) {
+        width: 40px;
+        top: 19vh;
+        right: 10vw;
+        height: 40px; }
+      #intro .introPic .dots div:nth-child(2) {
+        width: 20px;
+        top: 30vh;
+        right: 8vw;
+        height: 20px; }
+      #intro .introPic .dots div:nth-child(3) {
+        width: 15px;
+        top: 60vh;
+        right: 12vw;
+        height: 15px; }
+      #intro .introPic .dots div:nth-child(4) {
+        width: 20px;
+        top: 20vh;
+        left: 5vw;
+        height: 20px; }
+    #intro .introPic .introCat {
+      top: 320px;
+      left: -10vw; }
+      #intro .introPic .introCat img {
+        width: 25vw; }
+  #aboutUs {
+    display: block;
+    height: auto;
+    padding: 25px; }
+    #aboutUs h1 {
+      font-size: 26px;
+      padding: 10px; }
+    #aboutUs h2 {
+      font-size: 22px;
+      margin: 5px 0;
+      padding-top: 22px; }
+    #aboutUs .aboutCont {
+      padding: 3vw;
+      padding-top: 0; }
+      #aboutUs .aboutCont #walkDog,
+      #aboutUs .aboutCont #errandCar,
+      #aboutUs .aboutCont #coinCat {
+        width: 150px;
+        height: 150px; }
+        #aboutUs .aboutCont #walkDog svg,
+        #aboutUs .aboutCont #errandCar svg,
+        #aboutUs .aboutCont #coinCat svg {
+          width: 150px; }
+    #aboutUs p {
+      font-size: 15px; }
+  #lastBox {
+    display: grid;
+    margin: auto; }
+    #lastBox h2 {
+      text-align: center;
+      align-self: end;
+      margin: 20px 0; }
+    #lastBox #animalImage {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); }
+      #lastBox #animalImage div {
+        margin: 20px 0;
+        justify-self: center; }
+        #lastBox #animalImage div img {
+          width: 95px; }
+  #frontpageForms {
+    width: 98%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto; }
+    #frontpageForms #signupForm {
+      margin: 30px;
+      padding: 30px; }
+      #frontpageForms #signupForm h2 {
+        font-size: 18px;
+        margin-top: 0px; }
+      #frontpageForms #signupForm form button {
+        margin-top: 19px;
+        margin-bottom: 0px; }
+      #frontpageForms #signupForm .formField {
+        margin-bottom: 0;
+        padding: 0; }
+        #frontpageForms #signupForm .formField input {
+          font-size: 0.8em;
+          margin: 19px 0px; }
+        #frontpageForms #signupForm .formField label {
+          font-size: 13px; }
+    #frontpageForms #donationForm {
+      margin: 20px;
+      padding: 30px; }
+      #frontpageForms #donationForm h2 {
+        font-size: 18px;
+        margin-top: 0px; }
+      #frontpageForms #donationForm form button {
+        margin: 19px 0px; }
+      #frontpageForms #donationForm form .formField {
+        margin-bottom: 0;
+        padding: 0; }
+        #frontpageForms #donationForm form .formField input {
+          font-size: 0.6em;
+          margin: 19px 0px; }
+        #frontpageForms #donationForm form .formField label {
+          font-size: 13px;
+          padding-bottom: 3px; }
+  #footer .contactBox h3 {
+    font-size: 16px; }
+  #footer .contactBox p {
+    font-size: 14.5px; }
+  #footer .contactBox svg {
+    width: 50px;
+    height: 50px; }
+  #footer #subscribeForm h3 {
+    font-size: 16px; }
+  #footer #subscribeForm label {
+    font-size: 13px; } }
+
 @media (max-width: 650px) {
   #intro {
     display: grid;
     grid-template-columns: 1fr;
-    padding-top: 100px; }
+    padding-top: 100px;
+    height: auto; }
     #intro .introText {
       width: 90vw; }
       #intro .introText .catchphrase {
         text-align: center; }
         #intro .introText .catchphrase h1 {
-          padding-top: 50px;
-          font-size: 10vw; }
+          padding-top: 30px;
+          font-size: 8vw; }
           #intro .introText .catchphrase h1 span {
-            font-size: 15vw; }
+            font-size: 12vw; }
       #intro .introText p {
         text-align: center;
-        padding-bottom: 35px; }
+        padding-bottom: 45px; }
     #intro .introPic {
       grid-row-start: 1;
-      height: 200px;
+      height: 250px;
       width: 100%; }
       #intro .introPic .circle {
         position: relative;
@@ -1223,31 +1346,29 @@ Keyframes for frontpage
           margin: auto; }
       #intro .introPic .introCat {
         top: 130px;
-        left: 4vw; }
+        left: 10vw; }
         #intro .introPic .introCat img {
-          width: 40vw; }
-      #intro .introPic .dots {
-        position: relative; }
-        #intro .introPic .dots div:nth-child(1) {
-          width: 30px;
-          top: 6vh;
-          right: 10vw;
-          height: 30px; }
-        #intro .introPic .dots div:nth-child(2) {
-          width: 15px;
-          top: 15vh;
-          right: 8vw;
-          height: 15px; }
-        #intro .introPic .dots div:nth-child(3) {
-          width: 13px;
-          top: 30vh;
-          right: 12vw;
-          height: 13px; }
-        #intro .introPic .dots div:nth-child(4) {
-          width: 15px;
-          top: 20vh;
-          left: 2vw;
-          height: 15px; }
+          width: 30vw; }
+      #intro .introPic .dots div:nth-child(1) {
+        width: 30px;
+        top: 6vh;
+        right: 17vw;
+        height: 30px; }
+      #intro .introPic .dots div:nth-child(2) {
+        width: 15px;
+        top: 15vh;
+        right: 15vw;
+        height: 15px; }
+      #intro .introPic .dots div:nth-child(3) {
+        width: 13px;
+        top: 30vh;
+        right: 19vw;
+        height: 13px; }
+      #intro .introPic .dots div:nth-child(4) {
+        width: 15px;
+        top: 20vh;
+        left: 20vw;
+        height: 15px; }
   #aboutUs {
     display: block;
     height: auto; }
@@ -1292,7 +1413,7 @@ Keyframes for frontpage
         #lastBox #animalImage div img {
           width: 80px; }
   #frontpageForms {
-    width: 85%;
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr;
     margin: auto; }
@@ -1496,7 +1617,7 @@ Keyframes for frontpage
           font-size: 0.8em;
           margin: 19px 0px; }
         #frontpageForms #donationForm form .formField label {
-          font-size: 14px; }
+          font-size: 13px; }
   #footer {
     padding: 30px;
     grid-template-columns: 1fr; }
