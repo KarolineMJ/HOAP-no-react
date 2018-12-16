@@ -764,6 +764,13 @@ button:focus {
     }
     div {
       padding: 5px 0px;
+
+      label {
+        font-size: 0.8em;
+        input[type="checkbox"] {
+          margin-right: 10px;
+        }
+      }
     }
 
     hr {
@@ -773,7 +780,7 @@ button:focus {
     h3,
     h5 {
       padding: 10px 0px;
-      font-weight: 200;
+      font-weight: 300;
     }
 
     h5 {

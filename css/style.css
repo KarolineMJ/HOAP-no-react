@@ -639,6 +639,12 @@ button:focus {
   #signedInContent #userSettings div,
   #signedInContent #newsFeed div {
     padding: 5px 0px; }
+    #signedInContent #userSettings div label,
+    #signedInContent #newsFeed div label {
+      font-size: 0.8em; }
+      #signedInContent #userSettings div label input[type="checkbox"],
+      #signedInContent #newsFeed div label input[type="checkbox"] {
+        margin-right: 10px; }
   #signedInContent #userSettings hr,
   #signedInContent #newsFeed hr {
     margin-bottom: 10px; }
@@ -647,7 +653,7 @@ button:focus {
   #signedInContent #newsFeed h3,
   #signedInContent #newsFeed h5 {
     padding: 10px 0px;
-    font-weight: 200; }
+    font-weight: 300; }
   #signedInContent #userSettings h5,
   #signedInContent #newsFeed h5 {
     font-size: 1em; }
