@@ -1,0 +1,23 @@
+/******* issues:
+preference not poping up after sign up
+
+*/
+
+/******* need to add:
+add user's news setting to the member table in db
+
+add hint with feedback from db, such as too weak password and user already exists
+
+add if user has a preference setting in which type of animal to see and user wants to receive notification about new animals, only notify that chosen type 
+
+*/
+
+/*******  would be nice:
+make all close button X the same class and style
+
+
+*/
+
+/******* need to discuss
+
+*/

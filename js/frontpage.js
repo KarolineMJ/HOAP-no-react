@@ -6,6 +6,10 @@ Elements for HTML
 const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
+const userSettingPanel = document.querySelector("#userSettings");
+const newsFeedPanel = document.querySelector("#newsFeed");
+const prefModal = document.querySelector("#preferencesModal");
+
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
 /*-------------------------------------------
@@ -213,14 +217,11 @@ function signupUser(e) {
     .auth()
     .createUserWithEmailAndPassword(signupEmail.value, signupPassword.value)
     .then(() => {
-      console.log("Succesfull signup");
-      openPreferenceModal();
-
-      db.collection("member").add({
-        email: signupEmail.value,
-        nickname: signupName.value,
-        permission: "none"
-      });
+      // show preference popup and hide other panels
+      showElement(prefModal);
+      hideElement(userSettingPanel);
+      hideElement(newsFeedPanel);
+      preferenceSetting();
     })
     .catch(function(error) {
       console.log(error);
@@ -371,23 +372,51 @@ function cloneAnimalInfo(data) {
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
-function openPreferenceModal() {
-  //open modal
-  const prefModal = document.querySelector("#preferencesModal");
+function preferenceSetting() {
   const closeModalBtn = document.querySelector("#closeModalBtn");
   const choosePrefBtn = document.querySelector("#choosePrefBtn");
-
+  console.log(closeModalBtn);
   choosePrefBtn.addEventListener("click", sendPreferenceToDatabase);
-
-  prefModal.style.display = "block";
-
-  closeModalBtn.addEventListener("click", () => {
-    prefModal.style.display = "none";
+  closeModalBtn.addEventListener("click", e => {
+    hideElement(prefModal);
   });
+  function sendPreferenceToDatabase(e) {
+    e.preventDefault();
+    /**
+     * get values from preference form
+     */
+    // add user to db with settings
+    db.collection("member").add({
+      email: signupEmail.value,
+      nickname: signupName.value,
+      permission: "none",
+      acceptNews: newsBol,
+      acceptCats: catsBol,
+      acceptDogs: dogBol
+    });
+    hideElement(prefModal);
+  }
+  // window.addEventListener("click", e => {
+  //   if (e.target == prefModal) {
+  //     prefModal.style.display = "none";
+  //   }
+  // });
+}
 
-  window.addEventListener("click", e => {
-    if (e.target == prefModal) {
-      prefModal.style.display = "none";
-    }
-  });
+/**
+ * display related functions, reusable
+ */
+
+function showElement(ele) {
+  ele.style.display = "inherit";
+  ele.classList.add("visible");
+}
+
+function hideElement(ele) {
+  ele.style.display = "none";
+  ele.classList.remove("visible");
+}
+
+function toggleElememnt(ele) {
+  ele.classList.toggle("visible");
 }
