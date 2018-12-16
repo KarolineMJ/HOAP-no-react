@@ -127,16 +127,16 @@
       <h2>Sign in</h2>
       <form>
         <div class="formField">
-          <input type="email" id="signipEmail" placeholder="Your email" />
-          <label for="signipEmail" class="formLabel">Your email</label>
+          <input type="email" id="signinEmail" placeholder="Your email" />
+          <label for="signinEmail" class="formLabel">Your email</label>
         </div>
         <div class="formField">
           <input
             type="password"
-            id="signipPassword"
+            id="signinPassword"
             placeholder="Your password"
           />
-          <label for="signipPassword">Your Password</label>
+          <label for="signinPassword">Your Password</label>
         </div>
         <button type="submit" id="signinButton">Sign in</button>
       </form>
@@ -880,15 +880,19 @@
           <div class="user">
             <p>Hi <span class="userName"></span></p>
             <img src="img/john.jpeg" alt="person" />
+           
           </div>
+      
           <div id="donationStatus">
-            <h2>You current donation status</h2>
+            <h2>Current donation status</h2>
+            <hr>
             <p>..............................</p>
             <p>... whole lot of data here, haha ...</p>
             <p>..............................</p>
           </div>
           <div id="currentSettings">
             <h2>Current settings</h2>
+            <hr>
             <form>
                 <h5>Which kind of animals? You can choose both of course ~</h5>
                 <div>
@@ -916,19 +920,19 @@
                 </div>
                 <h5>Special interests?</h5>
                 <div>
-                  <label><input type="checkbox" name="pup" />kittens/puppies</label>
+                  <label><input type="checkbox" name="pup" />Kittens/puppies</label>
                 </div>
                 <div>
                   <label><input type="checkbox" name="pregnant" />Pregnant</label>
                 </div>
-                <h3>Do you want to receive some notifications from us?</h3>
+                <h5>Do you want to receive some notifications from us?</h5>
                 <div>
                   <label><input type="checkbox" name= "errand" />Notify me about errands</label>
                 </div>     
                 <div>
                     <label><input type="checkbox" name= "newComming" />Notify me when new animal arrives</label>
                 </div>
-                <h3>Change your monthly donation? </h3>
+                <h5>Change your monthly donation? </h5>
                 <div>
                   <input type="range" min="0" max="" value="0" step="5" name="monthlyDonation" />
                 </div>
@@ -937,7 +941,7 @@
             </form>
           </div>
           <button id="signOut">Sign out</button>
-          <button id="cancelMembership">cancel membership</button>
+          <button id="cancelMembership">Cancel membership</button>
         </div>
       <div id="newsFeed">
         
@@ -1302,7 +1306,7 @@
           <h1>Welcome to the family</h1>
           <form>
               <h3>How should we call you?</h3>
-              <p><input type="text" placeholder="pick a nickname" name="nickname" required></p>
+              <p><input type="text" placeholder="pick a nickname" name="nickname"></p>
               <h3>What do you want to see on the site?</h3>
                   <h5>Which kind of animals? You can choose both of course ~</h5>
               <div>
@@ -1405,8 +1409,8 @@
     
     
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
-    <script src="js/menu.js"></script>
     <script src="js/frontpage.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/admin.js"></script>
   </body>
 </html>
