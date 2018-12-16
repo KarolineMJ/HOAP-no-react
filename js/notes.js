@@ -6,6 +6,8 @@ typo: errand should be errands, both in html and when writing to db
 
 /******* need to add:
 
+doesn't run admin functions unless logged in as admin
+
 deal with cancal membership requires recent sign in 
 
 limit how many notification to get

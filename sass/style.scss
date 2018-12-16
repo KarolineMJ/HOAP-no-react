@@ -666,32 +666,41 @@ button:focus {
     #animalList {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
+      grid-row-gap: 70px;
       .eachAnimal {
-        width: 100px;
-        height: 100px;
-        background-color: black;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
-        > img {
-          width: 100px;
-          height: 100px;
+        position: relative;
+        > * {
+          position: absolute;
         }
-        .eachAnimalImage {
+        > p {
+          width: 100%;
+          text-align: center;
+          bottom: -15%;
+        }
+        > img:not(.heart) {
+          width: 100%;
+          height: 100%;
+        }
+        .heart {
+          width: 15%;
+          left: 10%;
+          bottom: -15%;
+        }
+        .statusCircle {
+          width: 10px;
+          height: 10px;
+          right: 10%;
+          top: 10%;
+          box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
+          background-color: #a81c1c;
+          border-radius: 50%;
         }
         cursor: pointer;
         * {
           pointer-events: none;
-        }
-        .animalHeart {
-          img {
-            width: 20px;
-          }
-        }
-        .statusCircle {
-          width: 1vw;
-          height: 1vw;
-          box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
-          background-color: #a81c1c;
-          border-radius: 50%;
         }
       }
     }
