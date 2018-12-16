@@ -501,6 +501,14 @@ function cancelMembership() {
     .catch(function(error) {
       console.log(error);
     });
+  db.collection("member")
+    .where("email", "==", currentUser.email)
+    .get()
+    .then(res =>
+      res.forEach(doc => {
+        doc.ref.delete();
+      })
+    );
 }
 
 /**************************************

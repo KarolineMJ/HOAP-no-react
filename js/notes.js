@@ -8,7 +8,7 @@ typo: errand should be errands, both in html and when writing to db
 
 deal with cancal membership requires recent sign in 
 
-cancel member should also delete entry in the member collection
+limit how many notification to get
 
 add hint with feedback from db, such as too weak password and user already exists
 
@@ -61,6 +61,7 @@ cancel membership button
 
 styling in form fields
 
+cancel member should also delete entry in the member collection
 
 
 */
