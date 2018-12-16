@@ -1053,6 +1053,8 @@ Keyframes for frontpage
               border-right: 1px solid #2e2f4b;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px; }
+              #admin main .section .subsection .tableWrapper .columns .column *:not(.animalImage) {
+                pointer-events: none; }
               #admin main .section .subsection .tableWrapper .columns .column:last-of-type {
                 border-right: none; }
               #admin main .section .subsection .tableWrapper .columns .column .animalImage {
@@ -1083,10 +1085,10 @@ Keyframes for frontpage
         #admin main .section .subsection .animalDetailModal {
           z-index: 3;
           position: absolute;
-          bottom: -170px;
+          bottom: -260px;
           left: 0;
           width: 85vw;
-          height: 450px;
+          height: 550px;
           padding: 50px;
           background: white;
           box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);

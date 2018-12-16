@@ -1270,6 +1270,9 @@ Keyframes for frontpage
               border-right: 1px solid $purpleColor;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px;
+              *:not(.animalImage) {
+                pointer-events: none;
+              }
               &:last-of-type {
                 border-right: none;
               }
@@ -1308,10 +1311,10 @@ Keyframes for frontpage
         .animalDetailModal {
           z-index: 3;
           position: absolute;
-          bottom: -170px; // cover up the "add to do" button and most of the list to avoid confusion
+          bottom: -260px; // temp solution
           left: 0;
           width: 85vw;
-          height: 450px;
+          height: 550px;
           padding: 50px;
           background: white;
           box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);

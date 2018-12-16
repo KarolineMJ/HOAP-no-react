@@ -1,6 +1,6 @@
 /******* issues:
 typo: errand should be errands, both in html and when writing to db
-
+admin page animal image title doesn't show up anymore. add animal name?
 
 */
 
