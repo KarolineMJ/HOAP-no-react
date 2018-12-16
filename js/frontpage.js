@@ -56,6 +56,13 @@ Display right content if user
   const signOutButton = document.querySelector("#signOut");
   const footer = document.querySelector("#footer");
 
+  // check if a user session already exist, if yes, show content that matches this user
+  // use as medium to pass info with page reload, since there's no AuthStateChange, the current code using onAuthStateChanged won't fire with page reload and therefore will lose the current user info
+  if (window.sessionStorage.getItem("userEmail")) {
+    const currentUser = window.sessionStorage.getItem("userEmail");
+    updateUserSettingPanel(currentUser);
+  }
+  // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.email === "admin@admin.com") {
       adminSection.style.display = "block";
@@ -194,7 +201,10 @@ function signinUser(e) {
     .auth()
     .signInWithEmailAndPassword(signipEmail.value, signipPassword.value)
     .then(() => {
-      console.log("Succesfull signed in");
+      // keep current user in browser session so that the user is kept with page reload
+      window.sessionStorage.setItem("userEmail", signipEmail.value);
+      const currentUser = window.sessionStorage.getItem("userEmail");
+      updateUserSettingPanel(currentUser);
     })
     .catch(function(error) {
       console.log(error);
@@ -415,8 +425,9 @@ function preferenceSetting(email) {
       notifyNewcoming: newcomingBol,
       monthlyDonation: monthlyDonation
     });
+    // next steps
     hideElement(prefModal);
-    updateSettingPanel();
+    updateUserSettingPanel(signupEmail.value);
   }
   // window.addEventListener("click", e => {
   //   if (e.target == prefModal) {
@@ -428,8 +439,17 @@ function preferenceSetting(email) {
 /**
  * content display functions, reusable
  */
-function updateSettingPanel() {
+function updateUserSettingPanel(userEmail) {
   console.log("fetch user setting from db and update user setting panel");
+  db.collection("member")
+    .where("email", "==", userEmail)
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        const data = entry.data();
+        userSettingPanel.querySelector(".userName").textContent = data.nickname;
+      });
+    });
 }
 
 /**
