@@ -7,6 +7,7 @@ const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
 const userSettingPanel = document.querySelector("#userSettings");
+const userSettingForm = userSettingPanel.querySelector("form");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
 const preferenceForm = document.querySelector("#preferencesModal form");
@@ -60,8 +61,9 @@ Display right content if user
   // check if a user session already exist, if yes, show content that matches this user
   // use as medium to pass info with page reload, since there's no AuthStateChange, the current code using onAuthStateChanged won't fire with page reload and therefore will lose the current user info
   if (window.sessionStorage.getItem("userEmail")) {
-    const currentUser = window.sessionStorage.getItem("userEmail");
-    updateUserSettingPanel(currentUser);
+    const currentUserEmail = window.sessionStorage.getItem("userEmail");
+    getUserSetting(currentUserEmail);
+    getUserAnimals(currentUserEmail);
   }
   // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
@@ -203,8 +205,10 @@ function signinUser(e) {
     .then(() => {
       // keep current user in browser session so that the user is kept with page reload
       window.sessionStorage.setItem("userEmail", signipEmail.value);
-      const currentUser = window.sessionStorage.getItem("userEmail");
-      updateUserSettingPanel(currentUser);
+      const currentUserEmail = window.sessionStorage.getItem("userEmail");
+      resetForm(userSettingForm);
+      getUserSetting(currentUserEmail);
+      getUserAnimals(currentUserEmail);
     })
     .catch(function(error) {
       console.log(error);
@@ -434,7 +438,7 @@ function preferenceSetting(email) {
         monthlyDonation: monthlyDonation
       })
       .then(() => {
-        updateUserSettingPanel(signupEmail.value);
+        getUserSetting(signupEmail.value);
       });
     // hide modal without waiting for db success
     hideElement(prefModal);
@@ -449,8 +453,9 @@ function preferenceSetting(email) {
 /**
  * content display functions, reusable
  */
-function updateUserSettingPanel(userEmail) {
+function getUserSetting(userEmail) {
   resetForm(preferenceForm);
+  // get current setting
   db.collection("member")
     .where("email", "==", userEmail)
     .get()
@@ -496,10 +501,15 @@ function updateUserSettingPanel(userEmail) {
         updatePrefForm.monthlyDonation.value = data.monthlyDonation;
         updatePrefForm.querySelector(".donationNr").textContent =
           data.monthlyDonation;
+        document.querySelector(".userName").textContent = data.nickname;
       });
     });
 }
-
+function getUserAnimals(userEmail) {
+  console.log(
+    "use the current user email to query user settings, than fetch animal based on the settings"
+  );
+}
 /**
  * general display functions, reusable
  */

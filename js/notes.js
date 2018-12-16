@@ -1,8 +1,13 @@
 /******* issues:
 typo: errand should be errands, both in html and when writing to db
+nickname can still be empty even though it's required
+
+
 */
 
 /******* need to add:
+
+preference modal: skip for now should still write to db, only with empty values
 
 add hint with feedback from db, such as too weak password and user already exists
 
