@@ -727,15 +727,6 @@ function appendEachAnimal(array, userEmail) {
             heart.setAttribute("alt", "empty heart icon");
           }
         });
-        // res.forEach(entry => {
-        //   if (entry.data().following.contains(entry.id)) {
-        //     heart.setAttribute("src", "img/icons/filledheart.png");
-        //     heart.setAttribute("alt", "filled heart icon");
-        //   } else {
-        //     heart.setAttribute("src", "img/icons/emptyheart.png");
-        //     heart.setAttribute("alt", "empty heart icon");
-        //   }
-        // });
       });
     let statusCircle = document.createElement("div");
     statusCircle.classList.add("statusCircle");
