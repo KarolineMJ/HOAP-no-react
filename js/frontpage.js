@@ -401,59 +401,63 @@ function preferenceSetting(email) {
 
   submitPrefBtn.addEventListener("click", sendPreferenceToDatabase);
   skipPrefBtn.addEventListener("click", () => {
-    alert();
     sendPreferenceToDatabase();
     hideElement(prefModal);
   });
-
-  function sendPreferenceToDatabase() {
-    //    e.preventDefault();
-    // get values from preference form
-    const nickname = preferenceForm.nickname.value;
-    const catBol = preferenceForm.cat.checked ? true : false;
-    const dogBol = preferenceForm.dog.checked ? true : false;
-    const maleBol = preferenceForm.male.checked ? true : false;
-    const femaleBol = preferenceForm.female.checked ? true : false;
-    const smallBol = preferenceForm.small.checked ? true : false;
-    const mediumBol = preferenceForm.medium.checked ? true : false;
-    const largeBol = preferenceForm.large.checked ? true : false;
-    const pupBol = preferenceForm.pup.checked ? true : false;
-    const pregnantBol = preferenceForm.pregnant.checked ? true : false;
-    const errandBol = preferenceForm.errand.checked ? true : false;
-    const newcomingBol = preferenceForm.newComming.checked ? true : false;
-    const monthlyDonation = preferenceForm.monthlyDonation.value;
-
-    // add user to db with the values and the email passed from the "signup" step
-    db.collection("member")
-      .add({
-        email: email,
-        nickname: nickname,
-        permission: "none",
-        seeCat: catBol,
-        seeDog: dogBol,
-        seeMale: maleBol,
-        seeFemale: femaleBol,
-        seeSmall: smallBol,
-        seeMedium: mediumBol,
-        seeLarge: largeBol,
-        seePup: pupBol,
-        seePregnant: pregnantBol,
-        notifyErrand: errandBol,
-        notifyNewcoming: newcomingBol,
-        monthlyDonation: monthlyDonation
-      })
-      .then(() => {
-        getUserSetting(signupEmail.value);
-      });
-    // hide modal without waiting for db success
-    hideElement(prefModal);
-  }
-  // window.addEventListener("click", e => {
-  //   if (e.target == prefModal) {
-  //     prefModal.style.display = "none";
-  //   }
-  // });
 }
+
+/**
+ * functions that communicate with database
+ * */
+
+function sendPreferenceToDatabase() {
+  // get current user email
+  let email = window.sessionStorage.getItem("userEmail");
+  // get values from preference form
+  const nickname = preferenceForm.nickname.value;
+  const catBol = preferenceForm.cat.checked ? true : false;
+  const dogBol = preferenceForm.dog.checked ? true : false;
+  const maleBol = preferenceForm.male.checked ? true : false;
+  const femaleBol = preferenceForm.female.checked ? true : false;
+  const smallBol = preferenceForm.small.checked ? true : false;
+  const mediumBol = preferenceForm.medium.checked ? true : false;
+  const largeBol = preferenceForm.large.checked ? true : false;
+  const pupBol = preferenceForm.pup.checked ? true : false;
+  const pregnantBol = preferenceForm.pregnant.checked ? true : false;
+  const errandBol = preferenceForm.errand.checked ? true : false;
+  const newcomingBol = preferenceForm.newComming.checked ? true : false;
+  const monthlyDonation = preferenceForm.monthlyDonation.value;
+
+  // add user to db with the values
+  db.collection("member")
+    .add({
+      email: email,
+      nickname: nickname,
+      permission: "none",
+      seeCat: catBol,
+      seeDog: dogBol,
+      seeMale: maleBol,
+      seeFemale: femaleBol,
+      seeSmall: smallBol,
+      seeMedium: mediumBol,
+      seeLarge: largeBol,
+      seePup: pupBol,
+      seePregnant: pregnantBol,
+      notifyErrand: errandBol,
+      notifyNewcoming: newcomingBol,
+      monthlyDonation: monthlyDonation
+    })
+    .then(() => {
+      getUserSetting(email);
+    });
+  // hide modal without waiting for db success
+  hideElement(prefModal);
+}
+// window.addEventListener("click", e => {
+//   if (e.target == prefModal) {
+//     prefModal.style.display = "none";
+//   }
+// });
 
 /**
  * content display functions, reusable

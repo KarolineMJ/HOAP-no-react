@@ -7,7 +7,6 @@ nickname can still be empty even though it's required
 
 /******* need to add:
 
-preference modal: skip for now should still write to db, only with empty values
 
 add hint with feedback from db, such as too weak password and user already exists
 
@@ -44,5 +43,8 @@ add user's news setting to the member table in db
 show monthly donation nr, instead of just a range bar. Or change to number input, don't use input type range anymore.  
 
 clear form at each re-render
+
+preference modal: skip for now should still write to db, only with empty values
+
 
 */
