@@ -666,32 +666,41 @@ button:focus {
     #animalList {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
+      grid-row-gap: 70px;
       .eachAnimal {
         width: 100px;
         height: 100px;
-        background-color: black;
         border-radius: 50%;
-        > img {
+        position: relative;
+        > * {
+          position: absolute;
+        }
+        > p {
+          width: 100%;
+          bottom: -20px;
+          left: 30px;
+        }
+        > img:not(.heart) {
           width: 100px;
           height: 100px;
         }
-        .eachAnimalImage {
-        }
-        cursor: pointer;
-        * {
-          pointer-events: none;
-        }
-        .animalHeart {
-          img {
-            width: 20px;
-          }
+        .heart {
+          width: 20px;
+          left: 0;
+          bottom: -20px;
         }
         .statusCircle {
           width: 1vw;
           height: 1vw;
+          right: 10px;
+          top: 10px;
           box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
           background-color: #a81c1c;
           border-radius: 50%;
+        }
+        cursor: pointer;
+        * {
+          pointer-events: none;
         }
       }
     }

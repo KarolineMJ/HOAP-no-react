@@ -563,26 +563,37 @@ button:focus {
       margin: 20px 0; }
   #signedInContent #yourPets #animalList {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); }
+    grid-template-columns: repeat(5, 1fr);
+    grid-row-gap: 70px; }
     #signedInContent #yourPets #animalList .eachAnimal {
       width: 100px;
       height: 100px;
-      background-color: black;
       border-radius: 50%;
+      position: relative;
       cursor: pointer; }
-      #signedInContent #yourPets #animalList .eachAnimal > img {
+      #signedInContent #yourPets #animalList .eachAnimal > * {
+        position: absolute; }
+      #signedInContent #yourPets #animalList .eachAnimal > p {
+        width: 100%;
+        bottom: -20px;
+        left: 30px; }
+      #signedInContent #yourPets #animalList .eachAnimal > img:not(.heart) {
         width: 100px;
         height: 100px; }
-      #signedInContent #yourPets #animalList .eachAnimal * {
-        pointer-events: none; }
-      #signedInContent #yourPets #animalList .eachAnimal .animalHeart img {
-        width: 20px; }
+      #signedInContent #yourPets #animalList .eachAnimal .heart {
+        width: 20px;
+        left: 0;
+        bottom: -20px; }
       #signedInContent #yourPets #animalList .eachAnimal .statusCircle {
         width: 1vw;
         height: 1vw;
+        right: 10px;
+        top: 10px;
         box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
         background-color: #a81c1c;
         border-radius: 50%; }
+      #signedInContent #yourPets #animalList .eachAnimal * {
+        pointer-events: none; }
 
 #signedInContent #petExpand {
   width: 100vw;

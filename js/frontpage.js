@@ -30,12 +30,16 @@ let config = {
 };
 firebase.initializeApp(config);
 
-// make a constant to the database
+// config database in firestore
 const db = firebase.firestore();
 const settings = {
   timestampsInSnapshots: true
 };
 db.settings(settings);
+
+// reference to storage in firebase
+let storage = firebase.storage();
+let storageReference = storage.ref();
 
 /*-------------------------------------------
 Start
@@ -480,7 +484,6 @@ function sendPreferenceToDatabase(e) {
       monthlyDonation: monthlyDonation
     })
     .then(() => {
-      console.log("add new");
       getUserSetting(email);
       getUserNotifications(email);
       getUserAnimals(email);
@@ -650,39 +653,39 @@ function getUserAnimals(userEmail) {
     .then(res => {
       res.forEach(entry => {
         if (entry.data().seeCat && entry.data().seeDog === false) {
-          showCats();
+          showCats(userEmail);
         } else if (entry.data().seeDog && entry.data().seeCat === false) {
-          showDogs();
+          showDogs(userEmail);
         } else {
-          showAllAnimal();
+          showAllAnimal(userEmail);
         }
       });
     });
 }
-function showCats() {
+function showCats(userEmail) {
   db.collection("animals")
     .where("type", "==", "cat")
     .get()
     .then(res => {
-      appendEachAnimal(res);
+      appendEachAnimal(res, userEmail);
     });
 }
-function showDogs() {
+function showDogs(userEmail) {
   db.collection("animals")
     .where("type", "==", "Dog")
     .get()
     .then(res => {
-      appendEachAnimal(res);
+      appendEachAnimal(res, userEmail);
     });
 }
-function showAllAnimal() {
+function showAllAnimal(userEmail) {
   db.collection("animals")
     .get()
     .then(res => {
-      appendEachAnimal(res);
+      appendEachAnimal(res, userEmail);
     });
 }
-function appendEachAnimal(array) {
+function appendEachAnimal(array, userEmail) {
   animalListOnLoggedIn.innerHTML = "";
   array.forEach(entry => {
     const data = entry.data();
@@ -691,7 +694,55 @@ function appendEachAnimal(array) {
     animalDiv.dataset.id = entry.id;
     let animalName = document.createElement("p");
     animalName.textContent = data.name;
+    let animalImg = document.createElement("img");
+    if (data.file !== undefined && data.file !== "") {
+      let fileName = data.file;
+      let animalImgRef = storageReference.child(`admin/${fileName}`);
+      animalImgRef
+        .getDownloadURL()
+        .then(function(url) {
+          console.log(url);
+          animalImg.setAttribute("src", url);
+        })
+        .catch(function(error) {
+          console.log(error);
+          animalImg.setAttribute("src", "img/animals/default.png");
+        });
+    } else {
+      animalImg.setAttribute("src", "img/animals/newcomer.png");
+    }
+    let heart = document.createElement("img");
+    heart.classList.add("heart");
+    // check if user follows this animal
+    db.collection("member")
+      .where("email", "==", userEmail)
+      .get()
+      .then(res => {
+        res.forEach(user => {
+          if (user.data().following.indexOf(entry.id) > -1) {
+            heart.setAttribute("src", "img/icons/filledheart.png");
+            heart.setAttribute("alt", "filled heart icon");
+          } else {
+            heart.setAttribute("src", "img/icons/emptyheart.png");
+            heart.setAttribute("alt", "empty heart icon");
+          }
+        });
+        // res.forEach(entry => {
+        //   if (entry.data().following.contains(entry.id)) {
+        //     heart.setAttribute("src", "img/icons/filledheart.png");
+        //     heart.setAttribute("alt", "filled heart icon");
+        //   } else {
+        //     heart.setAttribute("src", "img/icons/emptyheart.png");
+        //     heart.setAttribute("alt", "empty heart icon");
+        //   }
+        // });
+      });
+    let statusCircle = document.createElement("div");
+    statusCircle.classList.add("statusCircle");
     animalDiv.appendChild(animalName);
+    animalDiv.appendChild(animalImg);
+    animalDiv.appendChild(heart);
+    animalDiv.appendChild(statusCircle);
     animalListOnLoggedIn.appendChild(animalDiv);
   });
 }
