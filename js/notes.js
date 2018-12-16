@@ -19,5 +19,5 @@ make all close button X the same class and style
 */
 
 /******* need to discuss
-
+user need to check all sizes/genders/types if he really want to see all? Should we add a option of "all"?
 */

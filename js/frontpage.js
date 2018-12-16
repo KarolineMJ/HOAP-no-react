@@ -221,7 +221,7 @@ function signupUser(e) {
       showElement(prefModal);
       hideElement(userSettingPanel);
       hideElement(newsFeedPanel);
-      preferenceSetting();
+      preferenceSetting(signupEmail.value);
     })
     .catch(function(error) {
       console.log(error);
@@ -280,8 +280,6 @@ fileButton.addEventListener("change", function(e) {
     }
   );
 });
-
-let fileUrl;
 
 /*--------------------------------------
 Get animal list from database to user
@@ -372,29 +370,53 @@ function cloneAnimalInfo(data) {
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
-function preferenceSetting() {
+function preferenceSetting(email) {
+  const preferenceForm = document.querySelector("#preferencesModal form");
   const closeModalBtn = document.querySelector("#closeModalBtn");
   const choosePrefBtn = document.querySelector("#choosePrefBtn");
-  console.log(closeModalBtn);
-  choosePrefBtn.addEventListener("click", sendPreferenceToDatabase);
-  closeModalBtn.addEventListener("click", e => {
+
+  preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
+  closeModalBtn.addEventListener("click", () => {
     hideElement(prefModal);
   });
+
   function sendPreferenceToDatabase(e) {
     e.preventDefault();
-    /**
-     * get values from preference form
-     */
-    // add user to db with settings
+    // get values from preference form
+    const nickname = preferenceForm.nickname.value;
+    const catBol = preferenceForm.cat.checked ? true : false;
+    const dogBol = preferenceForm.dog.checked ? true : false;
+    const maleBol = preferenceForm.male.checked ? true : false;
+    const femaleBol = preferenceForm.female.checked ? true : false;
+    const smallBol = preferenceForm.small.checked ? true : false;
+    const mediumBol = preferenceForm.medium.checked ? true : false;
+    const largeBol = preferenceForm.large.checked ? true : false;
+    const pupBol = preferenceForm.pup.checked ? true : false;
+    const pregnantBol = preferenceForm.pregnant.checked ? true : false;
+    const errandBol = preferenceForm.errand.checked ? true : false;
+    const newcomingBol = preferenceForm.newComming.checked ? true : false;
+    const monthlyDonation = preferenceForm.monthlyDonation.value;
+
+    // add user to db with the values and the email passed from the "signup" step
     db.collection("member").add({
-      email: signupEmail.value,
-      nickname: signupName.value,
+      email: email,
+      nickname: nickname,
       permission: "none",
-      acceptNews: newsBol,
-      acceptCats: catsBol,
-      acceptDogs: dogBol
+      seeCat: catBol,
+      seeDog: dogBol,
+      seeMale: maleBol,
+      seeFemale: femaleBol,
+      seeSmall: smallBol,
+      seeMedium: mediumBol,
+      seeLarge: largeBol,
+      seePup: pupBol,
+      seePregnant: pregnantBol,
+      notifyErrand: errandBol,
+      notifyNewcoming: newcomingBol,
+      monthlyDonation: monthlyDonation
     });
     hideElement(prefModal);
+    updateSettingPanel();
   }
   // window.addEventListener("click", e => {
   //   if (e.target == prefModal) {
@@ -404,7 +426,14 @@ function preferenceSetting() {
 }
 
 /**
- * display related functions, reusable
+ * content display functions, reusable
+ */
+function updateSettingPanel() {
+  console.log("fetch user setting from db and update user setting panel");
+}
+
+/**
+ * general display functions, reusable
  */
 
 function showElement(ele) {
