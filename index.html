@@ -1195,13 +1195,20 @@
             </div>
             <div class="dragAndDropContainer">
               <p>Write a notification</p>
-              <form action="">
+              <form id="nofiticationAdmin">
                 <input
                   class="writeNotification"
                   type="text"
                   name="post"
                   value=""
                 />
+                <p>type of notification</p>
+                <p>
+                  <label><input type="radio" name="type" value="newComming">new animal</label>
+                  <label><input type="radio" name="type" value="errands">errands</label>
+                  <label><input type="radio" name="type" value="urgent">urgent</label>
+                  <label><input type="radio" name="type" value="other" checked="checked">normal notification</label>
+                </p>
               </form>
               <div class="dragAndDrop"><p>Drag and Drop here</p></div>
               <button class="postBtn">post</button>
