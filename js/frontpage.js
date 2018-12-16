@@ -736,8 +736,21 @@ function appendEachAnimal(array, userEmail) {
     animalDiv.appendChild(animalImg);
     animalDiv.appendChild(heart);
     animalDiv.appendChild(statusCircle);
+    animalDiv.addEventListener("click", e => {
+      showAnimalModal(entry.id);
+    });
     animalListOnLoggedIn.appendChild(animalDiv);
   });
+}
+
+function showAnimalModal(animalId) {
+  db.collection("animals")
+    .doc(animalId)
+    .get()
+    .then(res => {
+      petExpand.style.display = "block";
+      cloneAnimalInfo(res.data());
+    });
 }
 
 /**************************************
