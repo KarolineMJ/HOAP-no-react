@@ -172,6 +172,23 @@ Render tasks from database into website
     });
   });
 }
+
+/*-------------------------------------------
+Post message from admin to notifications panel
+------------------------------------------*/
+
+const adminPostBtn = document.querySelector(".postBtn");
+const adminPostInput = document.querySelector(".writeNotification");
+
+adminPostBtn.addEventListener("click", e => {
+  console.log("message posted");
+  e.preventDefault();
+  db.collection("notifications").add({
+    text: adminPostInput.value,
+    image: ""
+  });
+  adminPostInput.value = "";
+});
 /*-------------------------------------------
 Display signin form
 ------------------------------------------*/
