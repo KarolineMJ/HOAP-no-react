@@ -682,9 +682,7 @@ Preferences
   overflow: auto;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4); }
-  #preferencesModal #closeModalBtn {
-    font-size: 40px;
-    /* temp solution */
+  #preferencesModal #skipPrefBtn {
     cursor: pointer; }
   #preferencesModal .modalContent {
     background-color: #fefefe;

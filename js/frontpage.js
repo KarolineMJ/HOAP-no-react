@@ -235,7 +235,9 @@ function signupUser(e) {
       showElement(prefModal);
       hideElement(userSettingPanel);
       hideElement(newsFeedPanel);
-      preferenceSetting(signupEmail.value);
+      window.sessionStorage.setItem("userEmail", signipEmail.value);
+      const currentUserEmail = window.sessionStorage.getItem("userEmail");
+      preferenceSetting(currentUserEmail);
     })
     .catch(function(error) {
       console.log(error);
@@ -386,7 +388,8 @@ Open preference modal
 -------------------------------------*/
 function preferenceSetting(email) {
   const donationNr = preferenceForm.querySelector(".donationNr");
-  const closeModalBtn = document.querySelector("#closeModalBtn");
+  const skipPrefBtn = document.querySelector("#skipPrefBtn");
+  const submitPrefBtn = document.querySelector("#submitPrefBtn");
 
   // sync donation value text with range bar value
   donationNr.textContent = preferenceForm.monthlyDonation.value;
@@ -396,13 +399,15 @@ function preferenceSetting(email) {
       donationNr.textContent = e.target.value;
     });
 
-  preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
-  closeModalBtn.addEventListener("click", () => {
+  submitPrefBtn.addEventListener("click", sendPreferenceToDatabase);
+  skipPrefBtn.addEventListener("click", () => {
+    alert();
+    sendPreferenceToDatabase();
     hideElement(prefModal);
   });
 
-  function sendPreferenceToDatabase(e) {
-    e.preventDefault();
+  function sendPreferenceToDatabase() {
+    //    e.preventDefault();
     // get values from preference form
     const nickname = preferenceForm.nickname.value;
     const catBol = preferenceForm.cat.checked ? true : false;
