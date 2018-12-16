@@ -62,12 +62,11 @@ Display right content if user
   const footer = document.querySelector("#footer");
 
   // check if a user session already exist, if yes, show content that matches this user
-  // use as medium to pass info with page reload, since there's no AuthStateChange, the current code using onAuthStateChanged won't fire with page reload and therefore will lose the current user info
+  // use as medium to pass info with page reload, since there's no AuthStateChange, the current code using onAuthStateChanged won't fire with page reload and therefore will lose the current user info which affects the user setting panel and the notifications
   if (window.sessionStorage.getItem("userEmail")) {
     const currentUserEmail = window.sessionStorage.getItem("userEmail");
     getUserSetting(currentUserEmail);
     getUserNotifications(currentUserEmail);
-    getUserAnimals(currentUserEmail);
   }
   // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
@@ -95,7 +94,10 @@ Display right content if user
       alreadyMemberBtn.style.display = "none";
       memberBtns.style.display = "block";
       signoutAdminBtn.style.display = "none";
-      buildAnimalListOnLoggedinPage();
+      //      buildAnimalListOnLoggedinPage();
+      getUserAnimals(user.email);
+      getUserSetting(user.email);
+      getUserNotifications(user.email);
     } else {
       adminSection.style.display = "none";
       frontpageContent.style.display = "block";
@@ -481,6 +483,7 @@ function sendPreferenceToDatabase(e) {
       console.log("add new");
       getUserSetting(email);
       getUserNotifications(email);
+      getUserAnimals(email);
     });
   // hide modal without waiting for db success
   hideElement(prefModal);
@@ -566,6 +569,7 @@ function getUserSetting(userEmail) {
       });
     });
 }
+
 function getUserNotifications(userEmail) {
   newsFeedPanel.innerHTML = "";
   // check user preferences regarding notifications
@@ -585,7 +589,6 @@ function getUserNotifications(userEmail) {
       });
     });
 }
-
 function getErrands() {
   db.collection("notifications")
     .where("type", "==", "errands")
@@ -599,7 +602,6 @@ function getErrands() {
       });
     });
 }
-
 function getNewcoming() {
   db.collection("notifications")
     .where("type", "==", "newComing")
@@ -613,21 +615,6 @@ function getNewcoming() {
       });
     });
 }
-
-function getErrands() {
-  db.collection("notifications")
-    .where("type", "==", "errands")
-    .get()
-    .then(res => {
-      res.forEach(entry => {
-        let p = document.createElement("p");
-        p.classList.add("errandsNotification");
-        p.textContent = entry.data().text;
-        newsFeedPanel.appendChild(p);
-      });
-    });
-}
-
 function getUrgent() {
   db.collection("notifications")
     .where("type", "==", "urgent")
@@ -641,7 +628,6 @@ function getUrgent() {
       });
     });
 }
-
 function getOtherNotification() {
   db.collection("notifications")
     .where("type", "==", "other")
@@ -657,9 +643,57 @@ function getOtherNotification() {
 }
 
 function getUserAnimals(userEmail) {
-  console.log(
-    "use the current user email to query user settings, than fetch animal based on the settings"
-  );
+  // check user preferences regarding notifications
+  db.collection("member")
+    .where("email", "==", userEmail)
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        if (entry.data().seeCat && entry.data().seeDog === false) {
+          showCats();
+        } else if (entry.data().seeDog && entry.data().seeCat === false) {
+          showDogs();
+        } else {
+          showAllAnimal();
+        }
+      });
+    });
+}
+function showCats() {
+  db.collection("animals")
+    .where("type", "==", "cat")
+    .get()
+    .then(res => {
+      appendEachAnimal(res);
+    });
+}
+function showDogs() {
+  db.collection("animals")
+    .where("type", "==", "Dog")
+    .get()
+    .then(res => {
+      appendEachAnimal(res);
+    });
+}
+function showAllAnimal() {
+  db.collection("animals")
+    .get()
+    .then(res => {
+      appendEachAnimal(res);
+    });
+}
+function appendEachAnimal(array) {
+  animalListOnLoggedIn.innerHTML = "";
+  array.forEach(entry => {
+    const data = entry.data();
+    let animalDiv = document.createElement("div");
+    animalDiv.classList.add("eachAnimal");
+    animalDiv.dataset.id = entry.id;
+    let animalName = document.createElement("p");
+    animalName.textContent = data.name;
+    animalDiv.appendChild(animalName);
+    animalListOnLoggedIn.appendChild(animalDiv);
+  });
 }
 
 /**************************************
