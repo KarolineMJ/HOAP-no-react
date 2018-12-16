@@ -481,7 +481,8 @@ function sendPreferenceToDatabase(e) {
       seePregnant: pregnantBol,
       notifyErrand: errandBol,
       notifyNewcoming: newcomingBol,
-      monthlyDonation: monthlyDonation
+      monthlyDonation: monthlyDonation,
+      following: []
     })
     .then(() => {
       getUserSetting(email);
@@ -503,18 +504,18 @@ function cancelMembership() {
     .then(function() {
       console.log("Thanks for being with us~ Hope we can see you again.");
       signout();
+      db.collection("member")
+        .where("email", "==", currentUser.email)
+        .get()
+        .then(res =>
+          res.forEach(doc => {
+            doc.ref.delete();
+          })
+        );
     })
     .catch(function(error) {
       console.log(error);
     });
-  db.collection("member")
-    .where("email", "==", currentUser.email)
-    .get()
-    .then(res =>
-      res.forEach(doc => {
-        doc.ref.delete();
-      })
-    );
 }
 
 /**************************************
