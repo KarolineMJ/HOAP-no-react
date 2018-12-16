@@ -1,7 +1,9 @@
 /******* issues:
 typo: errand should be errands, both in html and when writing to db
+
 admin page animal image title doesn't show up anymore. add animal name?
 
+admin page is only hidden from browser, but still accessble in inspector, not secure
 */
 
 /******* need to add:

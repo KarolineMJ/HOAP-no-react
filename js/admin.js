@@ -30,7 +30,7 @@ let file;
 // displayed animal array, use this for update animal list without re-render the whole list AND without using firebases's built-in onchange function
 let animalArray = [];
 
-window.addEventListener("DOMContentLoaded", displayAnimals);
+//window.addEventListener("DOMContentLoaded", displayAnimals);
 
 // GET animals from db and generate animal columns
 function displayAnimals() {
