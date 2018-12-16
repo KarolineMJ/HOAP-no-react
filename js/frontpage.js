@@ -518,7 +518,7 @@ function cancelMembership() {
 }
 
 /**************************************
- * functions that get data from database and display them
+ * functions that GET data from database and display them
  *************************************/
 function getUserSetting(userEmail) {
   resetForm(preferenceForm);
