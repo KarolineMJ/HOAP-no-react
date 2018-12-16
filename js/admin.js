@@ -360,16 +360,16 @@ deleteAnimalBtn.addEventListener("click", e => {
  * shared functions
  ********************/
 
-// reset form
-function resetForm(form) {
-  const allFormELements = form.querySelectorAll("*");
-  allFormELements.forEach(e => {
-    e.value = "";
-    if (e.checked) {
-      e.checked = false;
-    }
-  });
-}
+// reset form, moved to frontpage.js
+// function resetForm(form) {
+//   const allFormELements = form.querySelectorAll("*");
+//   allFormELements.forEach(e => {
+//     e.value = "";
+//     if (e.checked) {
+//       e.checked = false;
+//     }
+//   });
+// }
 
 // display animal details
 function showAnimalDetail(data, id, elem, editableBol) {

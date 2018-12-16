@@ -745,16 +745,20 @@ button:focus {
     display: none;
     box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
     z-index: 3;
-    height: 200vh;
+    height: calc(100vh - 60px);
+    overflow: scroll;
     background-color: white;
     position: fixed;
     right: 0;
     top: 60px;
     width: 26vw;
     padding: 20px;
+    & > * {
+      margin-bottom: 1rem;
+    }
     .user {
       display: grid;
-      grid-template-columns: 6vw 1fr;
+      grid-template-columns: 1fr 6vw;
       img {
         place-self: center;
         width: 4vw;
@@ -763,11 +767,6 @@ button:focus {
       p {
         align-self: center;
       }
-    }
-    #signOut {
-      position: relative;
-      top: 160px;
-      left: 92px;
     }
     button {
       font-family: $font;
@@ -785,6 +784,11 @@ button:focus {
       align-self: end;
       &:hover {
         background-color: $btnHover;
+      }
+      &#calcelMembership {
+        &:hover {
+          background: red;
+        }
       }
     }
   }
@@ -805,8 +809,7 @@ Preferences
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-  #closeModalBtn {
-    font-size: 40px; /* temp solution */
+  #skipPrefBtn {
     cursor: pointer;
   }
   .modalContent {

@@ -7,8 +7,11 @@ const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
 const userSettingPanel = document.querySelector("#userSettings");
+const userSettingForm = userSettingPanel.querySelector("form");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
+const preferenceForm = document.querySelector("#preferencesModal form");
+const cancelMembershipBtn = document.querySelector("#cancelMembership");
 
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
@@ -56,6 +59,14 @@ Display right content if user
   const signOutButton = document.querySelector("#signOut");
   const footer = document.querySelector("#footer");
 
+  // check if a user session already exist, if yes, show content that matches this user
+  // use as medium to pass info with page reload, since there's no AuthStateChange, the current code using onAuthStateChanged won't fire with page reload and therefore will lose the current user info
+  if (window.sessionStorage.getItem("userEmail")) {
+    const currentUserEmail = window.sessionStorage.getItem("userEmail");
+    getUserSetting(currentUserEmail);
+    getUserAnimals(currentUserEmail);
+  }
+  // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.email === "admin@admin.com") {
       adminSection.style.display = "block";
@@ -189,12 +200,16 @@ const signinButton = document.querySelector("#signinButton");
 
 function signinUser(e) {
   e.preventDefault();
-
   firebase
     .auth()
     .signInWithEmailAndPassword(signipEmail.value, signipPassword.value)
     .then(() => {
-      console.log("Succesfull signed in");
+      // keep current user in browser session so that the user is kept with page reload
+      window.sessionStorage.setItem("userEmail", signipEmail.value);
+      const currentUserEmail = window.sessionStorage.getItem("userEmail");
+      resetForm(userSettingForm);
+      getUserSetting(currentUserEmail);
+      getUserAnimals(currentUserEmail);
     })
     .catch(function(error) {
       console.log(error);
@@ -221,7 +236,9 @@ function signupUser(e) {
       showElement(prefModal);
       hideElement(userSettingPanel);
       hideElement(newsFeedPanel);
-      preferenceSetting(signupEmail.value);
+      window.sessionStorage.setItem("userEmail", signipEmail.value);
+      const currentUserEmail = window.sessionStorage.getItem("userEmail");
+      preferenceSetting(currentUserEmail);
     })
     .catch(function(error) {
       console.log(error);
@@ -238,6 +255,7 @@ function signout() {
     .signOut()
     .then(function() {
       console.log("Succesfull logout");
+      window.sessionStorage.removeItem("userEmail");
     })
     .catch(function(error) {
       // An error happened.
@@ -316,7 +334,6 @@ function buildAnimalListOnLoggedinPage() {
               console.log(error);
             });
         }
-
         animalListOnLoggedIn.appendChild(clone);
       });
       const allIndividualAnimalS = document.querySelectorAll(".eachAnimal");
@@ -367,38 +384,60 @@ function cloneAnimalInfo(data) {
   });
 }
 
+/** 
+/** 
+/** 
+/** 
+ * cleared up from here
+**/
+
+/*************************************
+ * user interaction
+ *************************************/
+cancelMembershipBtn.addEventListener("click", cancelMembership);
+
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
 function preferenceSetting(email) {
-  const preferenceForm = document.querySelector("#preferencesModal form");
-  const closeModalBtn = document.querySelector("#closeModalBtn");
-  const choosePrefBtn = document.querySelector("#choosePrefBtn");
+  // sync donation value text when user adjust range bar
+  syncNrWithRange(preferenceForm, preferenceForm.querySelector(".donationNr"));
 
-  preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
-  closeModalBtn.addEventListener("click", () => {
+  // submit form in 2 ways
+  const submitPrefBtn = document.querySelector("#submitPrefBtn");
+  const skipPrefBtn = document.querySelector("#skipPrefBtn");
+  submitPrefBtn.addEventListener("click", sendPreferenceToDatabase);
+  skipPrefBtn.addEventListener("click", () => {
+    sendPreferenceToDatabase();
     hideElement(prefModal);
   });
+}
 
-  function sendPreferenceToDatabase(e) {
-    e.preventDefault();
-    // get values from preference form
-    const nickname = preferenceForm.nickname.value;
-    const catBol = preferenceForm.cat.checked ? true : false;
-    const dogBol = preferenceForm.dog.checked ? true : false;
-    const maleBol = preferenceForm.male.checked ? true : false;
-    const femaleBol = preferenceForm.female.checked ? true : false;
-    const smallBol = preferenceForm.small.checked ? true : false;
-    const mediumBol = preferenceForm.medium.checked ? true : false;
-    const largeBol = preferenceForm.large.checked ? true : false;
-    const pupBol = preferenceForm.pup.checked ? true : false;
-    const pregnantBol = preferenceForm.pregnant.checked ? true : false;
-    const errandBol = preferenceForm.errand.checked ? true : false;
-    const newcomingBol = preferenceForm.newComming.checked ? true : false;
-    const monthlyDonation = preferenceForm.monthlyDonation.value;
+/*************************************
+ * functions that write(POST,UPDATE,DELETE) to database
+ *************************************/
 
-    // add user to db with the values and the email passed from the "signup" step
-    db.collection("member").add({
+function sendPreferenceToDatabase() {
+  // get current user email
+  let email = window.sessionStorage.getItem("userEmail");
+  // get values from preference form
+  const nickname = preferenceForm.nickname.value;
+  const catBol = preferenceForm.cat.checked ? true : false;
+  const dogBol = preferenceForm.dog.checked ? true : false;
+  const maleBol = preferenceForm.male.checked ? true : false;
+  const femaleBol = preferenceForm.female.checked ? true : false;
+  const smallBol = preferenceForm.small.checked ? true : false;
+  const mediumBol = preferenceForm.medium.checked ? true : false;
+  const largeBol = preferenceForm.large.checked ? true : false;
+  const pupBol = preferenceForm.pup.checked ? true : false;
+  const pregnantBol = preferenceForm.pregnant.checked ? true : false;
+  const errandBol = preferenceForm.errand.checked ? true : false;
+  const newcomingBol = preferenceForm.newComming.checked ? true : false;
+  const monthlyDonation = preferenceForm.monthlyDonation.value;
+
+  // add user to db with the values
+  db.collection("member")
+    .add({
       email: email,
       nickname: nickname,
       permission: "none",
@@ -414,27 +453,100 @@ function preferenceSetting(email) {
       notifyErrand: errandBol,
       notifyNewcoming: newcomingBol,
       monthlyDonation: monthlyDonation
+    })
+    .then(() => {
+      getUserSetting(email);
     });
-    hideElement(prefModal);
-    updateSettingPanel();
-  }
-  // window.addEventListener("click", e => {
-  //   if (e.target == prefModal) {
-  //     prefModal.style.display = "none";
-  //   }
-  // });
+  // hide modal without waiting for db success
+  hideElement(prefModal);
 }
 
-/**
- * content display functions, reusable
- */
-function updateSettingPanel() {
-  console.log("fetch user setting from db and update user setting panel");
+function updatePreferenceToDatabase() {
+  console.log("update user preferences");
 }
 
-/**
+function cancelMembership() {
+  var currentUser = firebase.auth().currentUser;
+  currentUser
+    .delete()
+    .then(function() {
+      console.log("Thanks for being with us~ Hope we can see you again.");
+      signout();
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+// window.addEventListener("click", e => {
+//   if (e.target == prefModal) {
+//     prefModal.style.display = "none";
+//   }
+// });
+
+/**************************************
+ * functions that get data from database and display them
+ *************************************/
+function getUserSetting(userEmail) {
+  resetForm(preferenceForm);
+  // get current setting
+  db.collection("member")
+    .where("email", "==", userEmail)
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        const data = entry.data();
+        userSettingPanel.querySelector(".userName").textContent = data.nickname;
+        const updatePrefForm = document.querySelector("#userSettings form");
+        // not DRY from this point on, probably no time to change it before hand in
+        if (data.seeCat) {
+          updatePrefForm.cat.checked = true;
+        }
+        if (data.seeDog) {
+          updatePrefForm.dog.checked = true;
+        }
+        if (data.seeFemale) {
+          updatePrefForm.female.checked = true;
+        }
+        if (data.seeMale) {
+          updatePrefForm.male.checked = true;
+        }
+        if (data.seeSmall) {
+          updatePrefForm.small.checked = true;
+        }
+        if (data.seeMedium) {
+          updatePrefForm.medium.checked = true;
+        }
+        if (data.seeLarge) {
+          updatePrefForm.large.checked = true;
+        }
+        if (data.seePup) {
+          updatePrefForm.pup.checked = true;
+        }
+        if (data.seePregnang) {
+          updatePrefForm.pregnant.checked = true;
+        }
+        if (data.notifyErrand) {
+          updatePrefForm.errand.checked = true;
+        }
+        if (data.notifyNewcoming) {
+          updatePrefForm.newComming.checked = true;
+        }
+        updatePrefForm.monthlyDonation.value = data.monthlyDonation;
+        updatePrefForm.querySelector(".donationNr").textContent =
+          data.monthlyDonation;
+        document.querySelector(".userName").textContent = data.nickname;
+      });
+    });
+}
+function getUserAnimals(userEmail) {
+  console.log(
+    "use the current user email to query user settings, than fetch animal based on the settings"
+  );
+}
+
+/**************************************
  * general display functions, reusable
- */
+ **************************************/
 
 function showElement(ele) {
   ele.style.display = "inherit";
@@ -448,4 +560,23 @@ function hideElement(ele) {
 
 function toggleElememnt(ele) {
   ele.classList.toggle("visible");
+}
+
+function resetForm(form) {
+  const allFormELements = form.querySelectorAll("*");
+  allFormELements.forEach(e => {
+    e.value = "";
+    if (e.checked) {
+      e.checked = false;
+    }
+  });
+}
+
+function syncNrWithRange(form, element) {
+  alert();
+  const donationNr = form.querySelector(".donationNr");
+  element.textContent = preferenceForm.monthlyDonation.value;
+  form.querySelector('input[type="range"').addEventListener("change", e => {
+    element.textContent = e.target.value;
+  });
 }

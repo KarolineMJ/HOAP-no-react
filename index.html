@@ -878,36 +878,66 @@
 
         <div id="userSettings">
           <div class="user">
+            <p>Hi <span class="userName"></span></p>
             <img src="img/john.jpeg" alt="person" />
-            <p>Henrik Andersen</p>
           </div>
-          <hr />
+          <div id="donationStatus">
+            <h2>You current donation status</h2>
+            <p>..............................</p>
+            <p>... whole lot of data here, haha ...</p>
+            <p>..............................</p>
+          </div>
           <div id="currentSettings">
             <h2>Current settings</h2>
-            <div>
-              <input type="checkbox" id="myChoiceCat" />
-              <label for="myChoiceCat">Cats</label>
-            </div>
-            <div>
-              <input type="checkbox" id="myChoiceDog" />
-              <label for="myChoiceDog">Dogs</label>
-            </div>
-            <div>
-              <input type="checkbox" id="myChoiceNoti" />
-              <label for="myChoiceNoti">Reciew Notifications</label>
-            </div>
-            <hr />
-            <div id="donationStatus">
-              <h2>You current donation status</h2>
-              <p>
-                Sponsored <span>xx</span> number of animals Spent time with
-                <span>xx</span> number of animals Ran <span>xx</span> number of
-                errands Spent <span>xx</span> amount of money
-              </p>
-            </div>
-            <hr />
+            <form>
+                <h5>Which kind of animals? You can choose both of course ~</h5>
+                <div>
+                  <label><input type="checkbox" name="cat" />Cats</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" name="dog" />Dogs</label>
+                </div>
+                <h5>Which gender of animals?</h5>
+                <div>
+                  <label><input type="checkbox" name="male" />Male</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" name="female" />Female</label>
+                </div>
+                <h5>Which size of animals? (might need to remove this)</h5>
+                <div>
+                  <label><input type="checkbox" name="small" />Small</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" name="medium" />Medium</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" name="large" />Large</label>
+                </div>
+                <h5>Special interests?</h5>
+                <div>
+                  <label><input type="checkbox" name="pup" />kittens/puppies</label>
+                </div>
+                <div>
+                  <label><input type="checkbox" name="pregnant" />Pregnant</label>
+                </div>
+                <h3>Do you want to receive some notifications from us?</h3>
+                <div>
+                  <label><input type="checkbox" name= "errand" />Notify me about errands</label>
+                </div>     
+                <div>
+                    <label><input type="checkbox" name= "newComming" />Notify me when new animal arrives</label>
+                </div>
+                <h3>Change your monthly donation? </h3>
+                <div>
+                  <input type="range" min="0" max="" value="0" step="5" name="monthlyDonation" />
+                </div>
+                <p class="donationNr"></p>
+                <button type="submit" id="updatePrefBtn">Update Preferences</button>
+            </form>
           </div>
           <button id="signOut">Sign out</button>
+          <button id="cancelMembership">cancel membership</button>
         </div>
       <div id="newsFeed">
         
@@ -1259,7 +1289,78 @@
       </div>
     </div>
 
-    <template id="eachAnimalTemp">
+    <div id="preferencesModal" class="modal">
+        <div class="modalContent">
+            <span id="skipPrefBtn">X skip for now</span>
+          <h1>Welcome to the family</h1>
+          <form>
+              <h3>How should we call you?</h3>
+              <p><input type="text" placeholder="pick a nickname" name="nickname" required></p>
+              <h3>What do you want to see on the site?</h3>
+                  <h5>Which kind of animals? You can choose both of course ~</h5>
+              <div>
+                <input type="checkbox" id="preferenceCat" name="cat" />
+                <label for="preferenceCat">Cats</label>
+              </div>
+              <div>
+                <input type="checkbox" id="preferenceDog" name="dog" />
+                <label for="preferenceDog">Dogs</label>
+              </div>
+              <h5>Which gender of animals?</h5>
+              <div>
+                <input type="checkbox" id="preferenceMale" name="male" />
+                <label for="preferenceMale">Male</label>
+              </div>
+              <div>
+                <input type="checkbox" id="preferenceFemale" name="female" />
+                <label for="preferenceFemale">Female</label>
+              </div>
+              <h5>Which size of animals? (might need to remove this)</h5>
+              <div>
+                <input type="checkbox" id="preferenceSizeSmall" name="small" />
+                <label for="preferenceSizeSmall">Small</label>
+              </div>
+              <div>
+                <input type="checkbox" id="preferenceSizeMedium" name="medium" />
+                <label for="preferenceSizeMedium">Medium</label>
+              </div>
+              <div>
+                <input type="checkbox" id="preferenceSizeLarge" name="large" />
+                <label for="preferenceSizeLarge">Large</label>
+              </div>
+              <h5>Do you have a special interest in kittens and puppies?</h5>
+              <div>
+                <input type="checkbox" id="preferencePups" name="pup" />
+                <label for="preferencePups">Yes!</label>
+              </div>
+              <h5>Pregnant? (might need to remove this, and show "pregnant" in the extra section)</h5>
+              <div>
+                <input type="checkbox" id="preferencePregnant" name="pregnant" />
+                <label for="preferencePregnant">Pregnant</label>
+              </div>
+              <h3>Do you want to receive some notifications from us?</h3>
+              <div>
+                <input type="checkbox" id="preferenceNotificationsErrands" name= "errand" />
+                <label for="preferenceNotificationsErrands">Notify me about errands, I might be able to help</label>
+              </div>     
+              <div>
+                  <input type="checkbox" id="preferenceNotificationsAnimals" name= "newComming" />
+                  <label for="preferenceNotificationsAnimals">Notify me when new animal arrives</label>
+              </div>
+              <h3>Do you want to make a monthly donation? (Need to give a max? )</h3>
+              <div>
+                <input type="range" min="0" max="" value="" step="5" name="monthlyDonation" />
+              </div>
+              <p class="donationNr"></p>
+              <h3><i>* These preferences can be changed anytime in the user panel. </i></h3>
+              <button type="" id="submitPrefBtn">Set Preferences</button>
+            </form>
+  
+        </div>
+  
+      </div>
+  
+      <template id="eachAnimalTemp">
       <div class="eachAnimal">
         <img src="" alt="" class="eachAnimalImage">
         <div class="animalHeart">
@@ -1295,77 +1396,7 @@
       </div>
     </template>
     
-    <div id="preferencesModal" class="modal">
-      <div class="modalContent">
-          <span id="closeModalBtn">&times;</span>
-        <h1>Welcome to the family</h1>
-        <form>
-            <h3>How should we call you?</h3>
-            <p><input type="text" placeholder="pick a nickname" name="nickname" required></p>
-            <h3>What do you want to see on the site?</h3>
-                <h5>Which kind of animals? You can choose both of course ~</h5>
-            <div>
-              <input type="checkbox" id="preferenceCat" name="cat" />
-              <label for="preferenceCat">Cats</label>
-            </div>
-            <div>
-              <input type="checkbox" id="preferenceDog" name="dog" />
-              <label for="preferenceDog">Dogs</label>
-            </div>
-            <h5>Which gender of animals?</h5>
-            <div>
-              <input type="checkbox" id="preferenceMale" name="male" />
-              <label for="preferenceMale">Male</label>
-            </div>
-            <div>
-              <input type="checkbox" id="preferenceFemale" name="female" />
-              <label for="preferenceFemale">Female</label>
-            </div>
-            <h5>Which size of animals? (might need to remove this)</h5>
-            <div>
-              <input type="checkbox" id="preferenceSizeSmall" name="small" />
-              <label for="preferenceSizeSmall">Small</label>
-            </div>
-            <div>
-              <input type="checkbox" id="preferenceSizeMedium" name="medium" />
-              <label for="preferenceSizeMedium">Medium</label>
-            </div>
-            <div>
-              <input type="checkbox" id="preferenceSizeLarge" name="large" />
-              <label for="preferenceSizeLarge">Large</label>
-            </div>
-            <h5>Do you have a special interest in kittens and puppies?</h5>
-            <div>
-              <input type="checkbox" id="preferencePups" name="pup" />
-              <label for="preferencePups">Yes!</label>
-            </div>
-            <h5>Pregnant? (might need to remove this, and show "pregnant" in the extra section)</h5>
-            <div>
-              <input type="checkbox" id="preferencePregnant" name="pregnant" />
-              <label for="preferencePregnant">Pregnant</label>
-            </div>
-            <h3>Do you want to receive some notifications from us?</h3>
-            <div>
-              <input type="checkbox" id="preferenceNotificationsErrands" name= "errand" />
-              <label for="preferenceNotificationsErrands">Notify me about errands, I might be able to help</label>
-            </div>     
-            <div>
-                <input type="checkbox" id="preferenceNotificationsAnimals" name= "newComming" />
-                <label for="preferenceNotificationsAnimals">Notify me when new animal arrives</label>
-            </div>
-            <h3>Do you want to make a monthly donation? (Need to give a max? Need to show current value when user slide on the range)</h3>
-            <div>
-              <input type="range" min="0" max="" value="0" step="10" name="monthlyDonation" />
-            </div>
-
-            <h3><i>* These preferences can be changed anytime in the user panel. </i></h3>
-            <button type="submit" id="choosePrefBtn">Choose Preferences</button>
-          </form>
-
-      </div>
-
-    </div>
-
+    
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/frontpage.js"></script>

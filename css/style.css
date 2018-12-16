@@ -620,17 +620,21 @@ button:focus {
   display: none;
   box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
   z-index: 3;
-  height: 200vh;
+  height: calc(100vh - 60px);
+  overflow: scroll;
   background-color: white;
   position: fixed;
   right: 0;
   top: 60px;
   width: 26vw;
   padding: 20px; }
+  #signedInContent #userSettings > *,
+  #signedInContent #newsFeed > * {
+    margin-bottom: 1rem; }
   #signedInContent #userSettings .user,
   #signedInContent #newsFeed .user {
     display: grid;
-    grid-template-columns: 6vw 1fr; }
+    grid-template-columns: 1fr 6vw; }
     #signedInContent #userSettings .user img,
     #signedInContent #newsFeed .user img {
       place-self: center;
@@ -639,11 +643,6 @@ button:focus {
     #signedInContent #userSettings .user p,
     #signedInContent #newsFeed .user p {
       align-self: center; }
-  #signedInContent #userSettings #signOut,
-  #signedInContent #newsFeed #signOut {
-    position: relative;
-    top: 160px;
-    left: 92px; }
   #signedInContent #userSettings button,
   #signedInContent #newsFeed button {
     font-family: "Raleway", sans-serif;
@@ -662,6 +661,9 @@ button:focus {
     #signedInContent #userSettings button:hover,
     #signedInContent #newsFeed button:hover {
       background-color: #599686; }
+    #signedInContent #userSettings button#calcelMembership:hover,
+    #signedInContent #newsFeed button#calcelMembership:hover {
+      background: red; }
 
 /*-------------------------
 Preferences
@@ -678,9 +680,7 @@ Preferences
   overflow: auto;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4); }
-  #preferencesModal #closeModalBtn {
-    font-size: 40px;
-    /* temp solution */
+  #preferencesModal #skipPrefBtn {
     cursor: pointer; }
   #preferencesModal .modalContent {
     background-color: #fefefe;
