@@ -19,7 +19,10 @@ styling in form fields
 */
 
 /*******  would be nice:
-make all close button X the same class and style
+Make all close button X the same class and style
+
+Change window session to currentUser with auth() 
+https://firebase.google.com/docs/auth/web/manage-users
 
 
 */

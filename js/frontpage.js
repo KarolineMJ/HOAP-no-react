@@ -11,7 +11,7 @@ const userSettingForm = userSettingPanel.querySelector("form");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
 const preferenceForm = document.querySelector("#preferencesModal form");
-const calcelMembershipBtn = document.querySelector("#calcelMembership");
+const cancelMembershipBtn = document.querySelector("#cancelMembership");
 
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
@@ -384,6 +384,18 @@ function cloneAnimalInfo(data) {
   });
 }
 
+/** 
+/** 
+/** 
+/** 
+ * cleared up from here
+**/
+
+/*************************************
+ * user interaction
+ *************************************/
+cancelMembershipBtn.addEventListener("click", cancelMembership);
+
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
@@ -401,9 +413,9 @@ function preferenceSetting(email) {
   });
 }
 
-/**
- * functions that communicate with database
- * */
+/*************************************
+ * functions that write(POST,UPDATE,DELETE) to database
+ *************************************/
 
 function sendPreferenceToDatabase() {
   // get current user email
@@ -448,15 +460,32 @@ function sendPreferenceToDatabase() {
   // hide modal without waiting for db success
   hideElement(prefModal);
 }
+
+function updatePreferenceToDatabase() {
+  console.log("update user preferences");
+}
+
+function cancelMembership() {
+  var currentUser = firebase.auth().currentUser;
+  currentUser
+    .delete()
+    .then(function() {
+      console.log("Thanks for being with us~ Hope we can see you again.");
+      signout();
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
 // window.addEventListener("click", e => {
 //   if (e.target == prefModal) {
 //     prefModal.style.display = "none";
 //   }
 // });
 
-/**
- * content display functions, reusable
- */
+/**************************************
+ * functions that get data from database and display them
+ *************************************/
 function getUserSetting(userEmail) {
   resetForm(preferenceForm);
   // get current setting
@@ -514,9 +543,10 @@ function getUserAnimals(userEmail) {
     "use the current user email to query user settings, than fetch animal based on the settings"
   );
 }
-/**
+
+/**************************************
  * general display functions, reusable
- */
+ **************************************/
 
 function showElement(ele) {
   ele.style.display = "inherit";
