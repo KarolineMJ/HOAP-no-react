@@ -179,12 +179,13 @@ Post message from admin to notifications panel
 
 const adminPostBtn = document.querySelector(".postBtn");
 const adminPostInput = document.querySelector(".writeNotification");
-
+const notificationForm = document.querySelector("#nofiticationAdmin");
 adminPostBtn.addEventListener("click", e => {
   console.log("message posted");
   e.preventDefault();
   db.collection("notifications").add({
     text: adminPostInput.value,
+    type: notificationForm.type.value,
     image: ""
   });
   adminPostInput.value = "";
@@ -590,7 +591,6 @@ function resetForm(form) {
 }
 
 function syncNrWithRange(form, element) {
-  alert();
   const donationNr = form.querySelector(".donationNr");
   element.textContent = preferenceForm.monthlyDonation.value;
   form.querySelector('input[type="range"').addEventListener("change", e => {

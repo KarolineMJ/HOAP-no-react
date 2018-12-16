@@ -1,6 +1,5 @@
 /******* issues:
 typo: errand should be errands, both in html and when writing to db
-nickname can still be empty even though it's required
 
 
 */
@@ -12,9 +11,6 @@ add hint with feedback from db, such as too weak password and user already exist
 
 add if user has a preference setting in which type of animal to see and user wants to receive notification about new animals, only notify that chosen type 
 
-cancel membership button 
-
-styling in form fields
 
 */
 
@@ -51,5 +47,10 @@ clear form at each re-render
 
 preference modal: skip for now should still write to db, only with empty values
 
+nickname can still be empty even though it's required
+
+cancel membership button 
+
+styling in form fields
 
 */
