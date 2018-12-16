@@ -762,6 +762,15 @@ button:focus {
       font-weight: 100;
       font-size: 1.3em;
     }
+    h3,
+    h5 {
+      padding: 10px 0px;
+      font-weight: 300;
+    }
+
+    h5 {
+      font-size: 1em;
+    }
     div {
       padding: 5px 0px;
 
@@ -772,19 +781,8 @@ button:focus {
         }
       }
     }
-
     hr {
       margin-bottom: 10px;
-    }
-
-    h3,
-    h5 {
-      padding: 10px 0px;
-      font-weight: 300;
-    }
-
-    h5 {
-      font-size: 1em;
     }
 
     .user {
