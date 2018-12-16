@@ -1466,8 +1466,9 @@ Keyframes for frontpage
   /* ----------------------
         Signed in page
 -----------------------*/
-  #animalList {
-    grid-template-columns: repeat(2, 1fr); }
+  #newsBtn,
+  #settingBtn {
+    display: none; }
   /* ----------------------
         Frontpage
 -----------------------*/
