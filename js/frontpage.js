@@ -6,6 +6,10 @@ Elements for HTML
 const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
+const userSettingPanel = document.querySelector("#userSettings");
+const newsFeedPanel = document.querySelector("#newsFeed");
+const prefModal = document.querySelector("#preferencesModal");
+
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
 /*-------------------------------------------
@@ -213,14 +217,11 @@ function signupUser(e) {
     .auth()
     .createUserWithEmailAndPassword(signupEmail.value, signupPassword.value)
     .then(() => {
-      console.log("Succesfull signup");
-      openPreferenceModal();
-
-      db.collection("member").add({
-        email: signupEmail.value,
-        nickname: signupName.value,
-        permission: "none"
-      });
+      // show preference popup and hide other panels
+      showElement(prefModal);
+      hideElement(userSettingPanel);
+      hideElement(newsFeedPanel);
+      preferenceSetting(signupEmail.value);
     })
     .catch(function(error) {
       console.log(error);
@@ -279,8 +280,6 @@ fileButton.addEventListener("change", function(e) {
     }
   );
 });
-
-let fileUrl;
 
 /*--------------------------------------
 Get animal list from database to user
@@ -371,23 +370,82 @@ function cloneAnimalInfo(data) {
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
-function openPreferenceModal() {
-  //open modal
-  const prefModal = document.querySelector("#preferencesModal");
+function preferenceSetting(email) {
+  const preferenceForm = document.querySelector("#preferencesModal form");
   const closeModalBtn = document.querySelector("#closeModalBtn");
   const choosePrefBtn = document.querySelector("#choosePrefBtn");
 
-  choosePrefBtn.addEventListener("click", sendPreferenceToDatabase);
-
-  prefModal.style.display = "block";
-
+  preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
   closeModalBtn.addEventListener("click", () => {
-    prefModal.style.display = "none";
+    hideElement(prefModal);
   });
 
-  window.addEventListener("click", e => {
-    if (e.target == prefModal) {
-      prefModal.style.display = "none";
-    }
-  });
+  function sendPreferenceToDatabase(e) {
+    e.preventDefault();
+    // get values from preference form
+    const nickname = preferenceForm.nickname.value;
+    const catBol = preferenceForm.cat.checked ? true : false;
+    const dogBol = preferenceForm.dog.checked ? true : false;
+    const maleBol = preferenceForm.male.checked ? true : false;
+    const femaleBol = preferenceForm.female.checked ? true : false;
+    const smallBol = preferenceForm.small.checked ? true : false;
+    const mediumBol = preferenceForm.medium.checked ? true : false;
+    const largeBol = preferenceForm.large.checked ? true : false;
+    const pupBol = preferenceForm.pup.checked ? true : false;
+    const pregnantBol = preferenceForm.pregnant.checked ? true : false;
+    const errandBol = preferenceForm.errand.checked ? true : false;
+    const newcomingBol = preferenceForm.newComming.checked ? true : false;
+    const monthlyDonation = preferenceForm.monthlyDonation.value;
+
+    // add user to db with the values and the email passed from the "signup" step
+    db.collection("member").add({
+      email: email,
+      nickname: nickname,
+      permission: "none",
+      seeCat: catBol,
+      seeDog: dogBol,
+      seeMale: maleBol,
+      seeFemale: femaleBol,
+      seeSmall: smallBol,
+      seeMedium: mediumBol,
+      seeLarge: largeBol,
+      seePup: pupBol,
+      seePregnant: pregnantBol,
+      notifyErrand: errandBol,
+      notifyNewcoming: newcomingBol,
+      monthlyDonation: monthlyDonation
+    });
+    hideElement(prefModal);
+    updateSettingPanel();
+  }
+  // window.addEventListener("click", e => {
+  //   if (e.target == prefModal) {
+  //     prefModal.style.display = "none";
+  //   }
+  // });
+}
+
+/**
+ * content display functions, reusable
+ */
+function updateSettingPanel() {
+  console.log("fetch user setting from db and update user setting panel");
+}
+
+/**
+ * general display functions, reusable
+ */
+
+function showElement(ele) {
+  ele.style.display = "inherit";
+  ele.classList.add("visible");
+}
+
+function hideElement(ele) {
+  ele.style.display = "none";
+  ele.classList.remove("visible");
+}
+
+function toggleElememnt(ele) {
+  ele.classList.toggle("visible");
 }
