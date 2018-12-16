@@ -1929,7 +1929,22 @@ Keyframes for frontpage
   }
 }
 
+/* ----------------------
+      Mobile version
+-----------------------*/
+
 @media (max-width: $breakpoint-mobile) {
+  /* ----------------------
+        Signed in page
+-----------------------*/
+
+  #animalList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* ----------------------
+        Frontpage
+-----------------------*/
+
   #intro {
     display: grid;
     grid-template-columns: 1fr;
@@ -2059,11 +2074,13 @@ Keyframes for frontpage
       }
     }
   }
-  #frontpageForms {
+  #frontpageForms,
+  #sendToUsForms {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    #signupForm {
+    #signupForm,
+    #messageForm {
       grid-row-start: 1;
       margin: 34px;
       padding: 30px;
@@ -2090,7 +2107,8 @@ Keyframes for frontpage
         }
       }
     }
-    #donationForm {
+    #donationForm,
+    #imageForm {
       margin: 34px;
       padding: 30px;
 
