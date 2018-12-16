@@ -12,7 +12,6 @@ function hideMenu() {
   const newsFeed = document.querySelector("#newsFeed");
 
   settingBtn.addEventListener("click", function() {
-    console.log("clicked");
     newsFeed.classList.remove("visible");
     userSettings.classList.toggle("visible");
   });
