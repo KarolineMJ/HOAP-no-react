@@ -75,6 +75,7 @@ Display right content if user
   // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.email === "admin@admin.com") {
+      displayAnimals();
       adminSection.style.display = "block";
       frontpageContent.style.display = "none";
       signedInContent.style.display = "none";
