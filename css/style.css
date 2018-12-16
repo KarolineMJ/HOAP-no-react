@@ -102,6 +102,18 @@ button:focus {
   #messageForm h2,
   #imageForm h2 {
     margin-bottom: 20px; }
+  #loginForm #dragAndDropArea,
+  #messageForm #dragAndDropArea,
+  #imageForm #dragAndDropArea {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    font-family: sans-serif;
+    margin: 100px auto;
+    padding: 20px; }
+  #loginForm #dragAndDropArea.highlight,
+  #messageForm #dragAndDropArea.highlight,
+  #imageForm #dragAndDropArea.highlight {
+    border-color: #74b7a5; }
   #loginForm form,
   #messageForm form,
   #imageForm form {

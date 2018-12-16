@@ -965,6 +965,13 @@
 
         <div id="imageForm">
           <h2>Send us an image</h2>
+          <div id="dragAndDropArea">
+            <form class="dragForm">
+              <input type="file" id="fileButton2" multiple accept="image/*" onchange="handleFiles(this.files)">
+              <label for="fileButton2" class="dragButton">Select files</label>
+            </form>
+          </div>
+
           <form>
             <div class="formField">
               <input type="name" id="sendImage" placeholder="Your name" />

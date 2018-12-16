@@ -140,6 +140,16 @@ button:focus {
   h2 {
     margin-bottom: 20px;
   }
+  #dragAndDropArea {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    font-family: sans-serif;
+    margin: 100px auto;
+    padding: 20px;
+  }
+  #dragAndDropArea.highlight {
+    border-color: $darkbtn;
+  }
   form {
     display: grid;
     .formField {

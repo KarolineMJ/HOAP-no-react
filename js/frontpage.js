@@ -731,3 +731,23 @@ function syncNrWithRange(form, element) {
     element.textContent = e.target.value;
   });
 }
+
+/*--------------------------------
+Drag and drop effect
+-------------------------------*/
+
+const dropArea = document.querySelector("#dragAndDropArea");
+const dropInput = document.querySelector("#fileButton2");
+
+dropArea.addEventListener("dragover", dragFile);
+
+function dragFile(ev) {
+  console.log("dragged over");
+  ev.preventDefault();
+}
+
+dropArea.addEventListener("drop", dropFile);
+
+function dropFile() {
+  ev.preventDefault();
+}
