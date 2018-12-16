@@ -6,6 +6,7 @@ Elements for HTML
 const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
+const adminSection = document.querySelector("#admin");
 const userSettingPanel = document.querySelector("#userSettings");
 const userSettingForm = userSettingPanel.querySelector("form");
 const newsFeedPanel = document.querySelector("#newsFeed");
@@ -15,6 +16,7 @@ const cancelMembershipBtn = document.querySelector("#cancelMembership");
 
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
+
 /*-------------------------------------------
 Initialize Firebase
 ------------------------------------------*/
@@ -36,14 +38,12 @@ const settings = {
 db.settings(settings);
 
 /*-------------------------------------------
-Run init function
+Start
 ------------------------------------------*/
 
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  const adminSection = document.querySelector("#admin");
-
   signinButton.addEventListener("click", signinUser);
   signupBtn.addEventListener("click", signupUser);
   alreadyMemberBtn.addEventListener("click", openSigninForm);
@@ -64,6 +64,7 @@ Display right content if user
   if (window.sessionStorage.getItem("userEmail")) {
     const currentUserEmail = window.sessionStorage.getItem("userEmail");
     getUserSetting(currentUserEmail);
+    getUserNotifications(currentUserEmail);
     getUserAnimals(currentUserEmail);
   }
   // detect user state change and display different content based on what type of user is logged in
@@ -192,8 +193,8 @@ sign in user
 ------------------------------------------*/
 
 //const for signin
-const signipEmail = document.querySelector("#signipEmail");
-const signipPassword = document.querySelector("#signipPassword");
+const signinEmail = document.querySelector("#signinEmail");
+const signinPassword = document.querySelector("#signinPassword");
 const signinButton = document.querySelector("#signinButton");
 
 //sign in a new user
@@ -202,13 +203,14 @@ function signinUser(e) {
   e.preventDefault();
   firebase
     .auth()
-    .signInWithEmailAndPassword(signipEmail.value, signipPassword.value)
+    .signInWithEmailAndPassword(signinEmail.value, signinPassword.value)
     .then(() => {
       // keep current user in browser session so that the user is kept with page reload
-      window.sessionStorage.setItem("userEmail", signipEmail.value);
+      window.sessionStorage.setItem("userEmail", signinEmail.value);
       const currentUserEmail = window.sessionStorage.getItem("userEmail");
       resetForm(userSettingForm);
       getUserSetting(currentUserEmail);
+      getUserNotifications(currentUserEmail);
       getUserAnimals(currentUserEmail);
     })
     .catch(function(error) {
@@ -225,9 +227,7 @@ const signupBtn = document.querySelector("#signupBtn");
 
 function signupUser(e) {
   e.preventDefault();
-
   //go to preferences page
-
   firebase
     .auth()
     .createUserWithEmailAndPassword(signupEmail.value, signupPassword.value)
@@ -236,7 +236,7 @@ function signupUser(e) {
       showElement(prefModal);
       hideElement(userSettingPanel);
       hideElement(newsFeedPanel);
-      window.sessionStorage.setItem("userEmail", signipEmail.value);
+      window.sessionStorage.setItem("userEmail", signupEmail.value);
       const currentUserEmail = window.sessionStorage.getItem("userEmail");
       preferenceSetting(currentUserEmail);
     })
@@ -388,7 +388,7 @@ function cloneAnimalInfo(data) {
 /** 
 /** 
 /** 
- * cleared up from here
+ * From here on the code is cleared and structured 
 **/
 
 /*************************************
@@ -402,11 +402,11 @@ Open preference modal
 function preferenceSetting(email) {
   // sync donation value text when user adjust range bar
   syncNrWithRange(preferenceForm, preferenceForm.querySelector(".donationNr"));
-
+  alert(email);
   // submit form in 2 ways
   const submitPrefBtn = document.querySelector("#submitPrefBtn");
   const skipPrefBtn = document.querySelector("#skipPrefBtn");
-  submitPrefBtn.addEventListener("click", sendPreferenceToDatabase);
+  preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
   skipPrefBtn.addEventListener("click", () => {
     sendPreferenceToDatabase();
     hideElement(prefModal);
@@ -417,7 +417,10 @@ function preferenceSetting(email) {
  * functions that write(POST,UPDATE,DELETE) to database
  *************************************/
 
-function sendPreferenceToDatabase() {
+function sendPreferenceToDatabase(e) {
+  if (e) {
+    e.preventDefault();
+  }
   // get current user email
   let email = window.sessionStorage.getItem("userEmail");
   // get values from preference form
@@ -455,7 +458,9 @@ function sendPreferenceToDatabase() {
       monthlyDonation: monthlyDonation
     })
     .then(() => {
+      console.log("add new");
       getUserSetting(email);
+      getUserNotifications(email);
     });
   // hide modal without waiting for db success
   hideElement(prefModal);
@@ -477,11 +482,6 @@ function cancelMembership() {
       console.log(error);
     });
 }
-// window.addEventListener("click", e => {
-//   if (e.target == prefModal) {
-//     prefModal.style.display = "none";
-//   }
-// });
 
 /**************************************
  * functions that get data from database and display them
@@ -538,6 +538,18 @@ function getUserSetting(userEmail) {
       });
     });
 }
+function getUserNotifications(userEmail) {
+  console.log(userEmail);
+  // check user preferences regarding notifications
+  db.collection("member")
+    .where("email", "==", userEmail)
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        console.log(entry.notifyErrand);
+      });
+    });
+}
 function getUserAnimals(userEmail) {
   console.log(
     "use the current user email to query user settings, than fetch animal based on the settings"
@@ -573,7 +585,6 @@ function resetForm(form) {
 }
 
 function syncNrWithRange(form, element) {
-  alert();
   const donationNr = form.querySelector(".donationNr");
   element.textContent = preferenceForm.monthlyDonation.value;
   form.querySelector('input[type="range"').addEventListener("change", e => {
