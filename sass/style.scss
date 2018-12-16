@@ -745,16 +745,20 @@ button:focus {
     display: none;
     box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
     z-index: 3;
-    height: 200vh;
+    height: calc(100vh - 60px);
+    overflow: scroll;
     background-color: white;
     position: fixed;
     right: 0;
     top: 60px;
     width: 26vw;
     padding: 20px;
+    & > * {
+      margin-bottom: 1rem;
+    }
     .user {
       display: grid;
-      grid-template-columns: 6vw 1fr;
+      grid-template-columns: 1fr 6vw;
       img {
         place-self: center;
         width: 4vw;
