@@ -6,6 +6,9 @@ typo: errand should be errands, both in html and when writing to db
 
 /******* need to add:
 
+deal with cancal membership requires recent sign in 
+
+cancel member should also delete entry in the member collection
 
 add hint with feedback from db, such as too weak password and user already exists
 

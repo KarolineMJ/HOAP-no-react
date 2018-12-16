@@ -44,6 +44,8 @@ Start
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
+  newsFeedPanel.innerHTML = "";
+
   signinButton.addEventListener("click", signinUser);
   signupBtn.addEventListener("click", signupUser);
   alreadyMemberBtn.addEventListener("click", openSigninForm);
@@ -570,6 +572,7 @@ function getUserNotifications(userEmail) {
         if (entry.data().notifyNewcoming) {
           getNewcoming();
         }
+        getUrgent();
         getOtherNotification();
       });
     });
@@ -597,6 +600,34 @@ function getNewcoming() {
       res.forEach(entry => {
         let p = document.createElement("p");
         p.classList.add("newComingNotification");
+        p.textContent = entry.data().text;
+        newsFeedPanel.appendChild(p);
+      });
+    });
+}
+
+function getErrands() {
+  db.collection("notifications")
+    .where("type", "==", "errands")
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        let p = document.createElement("p");
+        p.classList.add("errandsNotification");
+        p.textContent = entry.data().text;
+        newsFeedPanel.appendChild(p);
+      });
+    });
+}
+
+function getUrgent() {
+  db.collection("notifications")
+    .where("type", "==", "urgent")
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        let p = document.createElement("p");
+        p.classList.add("urgentNotification");
         p.textContent = entry.data().text;
         newsFeedPanel.appendChild(p);
       });
