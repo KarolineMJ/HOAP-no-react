@@ -9,6 +9,7 @@ const petExpand = document.querySelector("#petExpand");
 const userSettingPanel = document.querySelector("#userSettings");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
+const preferenceForm = document.querySelector("#preferencesModal form");
 
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
@@ -196,7 +197,6 @@ const signinButton = document.querySelector("#signinButton");
 
 function signinUser(e) {
   e.preventDefault();
-
   firebase
     .auth()
     .signInWithEmailAndPassword(signipEmail.value, signipPassword.value)
@@ -248,6 +248,7 @@ function signout() {
     .signOut()
     .then(function() {
       console.log("Succesfull logout");
+      window.sessionStorage.removeItem("userEmail");
     })
     .catch(function(error) {
       // An error happened.
@@ -326,7 +327,6 @@ function buildAnimalListOnLoggedinPage() {
               console.log(error);
             });
         }
-
         animalListOnLoggedIn.appendChild(clone);
       });
       const allIndividualAnimalS = document.querySelectorAll(".eachAnimal");
@@ -381,9 +381,16 @@ function cloneAnimalInfo(data) {
 Open preference modal
 -------------------------------------*/
 function preferenceSetting(email) {
-  const preferenceForm = document.querySelector("#preferencesModal form");
+  const donationNr = preferenceForm.querySelector(".donationNr");
   const closeModalBtn = document.querySelector("#closeModalBtn");
-  const choosePrefBtn = document.querySelector("#choosePrefBtn");
+
+  // sync donation value text with range bar value
+  donationNr.textContent = preferenceForm.monthlyDonation.value;
+  preferenceForm
+    .querySelector('input[type="range"')
+    .addEventListener("change", e => {
+      donationNr.textContent = e.target.value;
+    });
 
   preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
   closeModalBtn.addEventListener("click", () => {
@@ -408,26 +415,29 @@ function preferenceSetting(email) {
     const monthlyDonation = preferenceForm.monthlyDonation.value;
 
     // add user to db with the values and the email passed from the "signup" step
-    db.collection("member").add({
-      email: email,
-      nickname: nickname,
-      permission: "none",
-      seeCat: catBol,
-      seeDog: dogBol,
-      seeMale: maleBol,
-      seeFemale: femaleBol,
-      seeSmall: smallBol,
-      seeMedium: mediumBol,
-      seeLarge: largeBol,
-      seePup: pupBol,
-      seePregnant: pregnantBol,
-      notifyErrand: errandBol,
-      notifyNewcoming: newcomingBol,
-      monthlyDonation: monthlyDonation
-    });
-    // next steps
+    db.collection("member")
+      .add({
+        email: email,
+        nickname: nickname,
+        permission: "none",
+        seeCat: catBol,
+        seeDog: dogBol,
+        seeMale: maleBol,
+        seeFemale: femaleBol,
+        seeSmall: smallBol,
+        seeMedium: mediumBol,
+        seeLarge: largeBol,
+        seePup: pupBol,
+        seePregnant: pregnantBol,
+        notifyErrand: errandBol,
+        notifyNewcoming: newcomingBol,
+        monthlyDonation: monthlyDonation
+      })
+      .then(() => {
+        updateUserSettingPanel(signupEmail.value);
+      });
+    // hide modal without waiting for db success
     hideElement(prefModal);
-    updateUserSettingPanel(signupEmail.value);
   }
   // window.addEventListener("click", e => {
   //   if (e.target == prefModal) {
@@ -440,7 +450,7 @@ function preferenceSetting(email) {
  * content display functions, reusable
  */
 function updateUserSettingPanel(userEmail) {
-  console.log("fetch user setting from db and update user setting panel");
+  resetForm(preferenceForm);
   db.collection("member")
     .where("email", "==", userEmail)
     .get()
@@ -448,6 +458,44 @@ function updateUserSettingPanel(userEmail) {
       res.forEach(entry => {
         const data = entry.data();
         userSettingPanel.querySelector(".userName").textContent = data.nickname;
+        const updatePrefForm = document.querySelector("#userSettings form");
+        // not DRY from this point on, probably no time to change it before hand in
+        if (data.seeCat) {
+          updatePrefForm.cat.checked = true;
+        }
+        if (data.seeDog) {
+          updatePrefForm.dog.checked = true;
+        }
+        if (data.seeFemale) {
+          updatePrefForm.female.checked = true;
+        }
+        if (data.seeMale) {
+          updatePrefForm.male.checked = true;
+        }
+        if (data.seeSmall) {
+          updatePrefForm.small.checked = true;
+        }
+        if (data.seeMedium) {
+          updatePrefForm.medium.checked = true;
+        }
+        if (data.seeLarge) {
+          updatePrefForm.large.checked = true;
+        }
+        if (data.seePup) {
+          updatePrefForm.pup.checked = true;
+        }
+        if (data.seePregnang) {
+          updatePrefForm.pregnant.checked = true;
+        }
+        if (data.notifyErrand) {
+          updatePrefForm.errand.checked = true;
+        }
+        if (data.notifyNewcoming) {
+          updatePrefForm.newComming.checked = true;
+        }
+        updatePrefForm.monthlyDonation.value = data.monthlyDonation;
+        updatePrefForm.querySelector(".donationNr").textContent =
+          data.monthlyDonation;
       });
     });
 }
@@ -468,4 +516,14 @@ function hideElement(ele) {
 
 function toggleElememnt(ele) {
   ele.classList.toggle("visible");
+}
+
+function resetForm(form) {
+  const allFormELements = form.querySelectorAll("*");
+  allFormELements.forEach(e => {
+    e.value = "";
+    if (e.checked) {
+      e.checked = false;
+    }
+  });
 }

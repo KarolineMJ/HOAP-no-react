@@ -928,10 +928,11 @@
                 <div>
                     <label><input type="checkbox" name= "newComming" />Notify me when new animal arrives</label>
                 </div>
-                <h3>Do you want to make a monthly donation? (Need to give a max? Need to show current value when user slide on the range)</h3>
+                <h3>Change your monthly donation? </h3>
                 <div>
-                  <input type="range" min="0" max="" value="0" step="10" name="monthlyDonation" />
+                  <input type="range" min="0" max="" value="0" step="5" name="monthlyDonation" />
                 </div>
+                <p class="donationNr"></p>
                 <button type="submit" id="updatePrefBtn">Update Preferences</button>
 
             </form>
@@ -1346,11 +1347,11 @@
                   <input type="checkbox" id="preferenceNotificationsAnimals" name= "newComming" />
                   <label for="preferenceNotificationsAnimals">Notify me when new animal arrives</label>
               </div>
-              <h3>Do you want to make a monthly donation? (Need to give a max? Need to show current value when user slide on the range)</h3>
+              <h3>Do you want to make a monthly donation? (Need to give a max? )</h3>
               <div>
-                <input type="range" min="0" max="" value="0" step="10" name="monthlyDonation" />
+                <input type="range" min="0" max="" value="" step="5" name="monthlyDonation" />
               </div>
-  
+              <p class="donationNr"></p>
               <h3><i>* These preferences can be changed anytime in the user panel. </i></h3>
               <button type="submit" id="choosePrefBtn">Set Preferences</button>
             </form>
