@@ -25,9 +25,11 @@ make all close button X the same class and style
 */
 
 /******* need to discuss
-user need to check all sizes/genders/types if he really want to see all? Should we add a option of "all"?
+User need to check all sizes/genders/types if he really want to see all? Should we add a option of "all"?
 
-give a default value for monthly donation? If so, remember the resetForm function needs to be changed to have special treatment for range input 
+Give a default value for monthly donation? If so, remember the resetForm function needs to be changed to have special treatment for range input 
+
+Didn't see that this is a "name" field on the front page for sign up. Ask for nickname here or use the preference form?
 
 */
 

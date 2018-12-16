@@ -11,6 +11,7 @@ const userSettingForm = userSettingPanel.querySelector("form");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
 const preferenceForm = document.querySelector("#preferencesModal form");
+const calcelMembershipBtn = document.querySelector("#calcelMembership");
 
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
@@ -387,18 +388,12 @@ function cloneAnimalInfo(data) {
 Open preference modal
 -------------------------------------*/
 function preferenceSetting(email) {
-  const donationNr = preferenceForm.querySelector(".donationNr");
-  const skipPrefBtn = document.querySelector("#skipPrefBtn");
+  // sync donation value text when user adjust range bar
+  syncNrWithRange(preferenceForm, preferenceForm.querySelector(".donationNr"));
+
+  // submit form in 2 ways
   const submitPrefBtn = document.querySelector("#submitPrefBtn");
-
-  // sync donation value text with range bar value
-  donationNr.textContent = preferenceForm.monthlyDonation.value;
-  preferenceForm
-    .querySelector('input[type="range"')
-    .addEventListener("change", e => {
-      donationNr.textContent = e.target.value;
-    });
-
+  const skipPrefBtn = document.querySelector("#skipPrefBtn");
   submitPrefBtn.addEventListener("click", sendPreferenceToDatabase);
   skipPrefBtn.addEventListener("click", () => {
     sendPreferenceToDatabase();
@@ -544,5 +539,14 @@ function resetForm(form) {
     if (e.checked) {
       e.checked = false;
     }
+  });
+}
+
+function syncNrWithRange(form, element) {
+  alert();
+  const donationNr = form.querySelector(".donationNr");
+  element.textContent = preferenceForm.monthlyDonation.value;
+  form.querySelector('input[type="range"').addEventListener("change", e => {
+    element.textContent = e.target.value;
   });
 }

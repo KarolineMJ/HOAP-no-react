@@ -643,11 +643,6 @@ button:focus {
     #signedInContent #userSettings .user p,
     #signedInContent #newsFeed .user p {
       align-self: center; }
-  #signedInContent #userSettings #signOut,
-  #signedInContent #newsFeed #signOut {
-    position: relative;
-    top: 160px;
-    left: 92px; }
   #signedInContent #userSettings button,
   #signedInContent #newsFeed button {
     font-family: "Raleway", sans-serif;
@@ -666,6 +661,9 @@ button:focus {
     #signedInContent #userSettings button:hover,
     #signedInContent #newsFeed button:hover {
       background-color: #599686; }
+    #signedInContent #userSettings button#calcelMembership:hover,
+    #signedInContent #newsFeed button#calcelMembership:hover {
+      background: red; }
 
 /*-------------------------
 Preferences

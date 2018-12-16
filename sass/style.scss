@@ -768,11 +768,6 @@ button:focus {
         align-self: center;
       }
     }
-    #signOut {
-      position: relative;
-      top: 160px;
-      left: 92px;
-    }
     button {
       font-family: $font;
       height: 40px;
@@ -789,6 +784,11 @@ button:focus {
       align-self: end;
       &:hover {
         background-color: $btnHover;
+      }
+      &#calcelMembership {
+        &:hover {
+          background: red;
+        }
       }
     }
   }
