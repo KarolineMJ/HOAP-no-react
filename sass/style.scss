@@ -756,6 +756,30 @@ button:focus {
     & > * {
       margin-bottom: 1rem;
     }
+
+    h2 {
+      padding-bottom: 10px;
+      font-weight: 100;
+      font-size: 1.3em;
+    }
+    div {
+      padding: 5px 0px;
+    }
+
+    hr {
+      margin-bottom: 10px;
+    }
+
+    h3,
+    h5 {
+      padding: 10px 0px;
+      font-weight: 200;
+    }
+
+    h5 {
+      font-size: 1em;
+    }
+
     .user {
       display: grid;
       grid-template-columns: 1fr 6vw;

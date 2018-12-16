@@ -631,6 +631,26 @@ button:focus {
   #signedInContent #userSettings > *,
   #signedInContent #newsFeed > * {
     margin-bottom: 1rem; }
+  #signedInContent #userSettings h2,
+  #signedInContent #newsFeed h2 {
+    padding-bottom: 10px;
+    font-weight: 100;
+    font-size: 1.3em; }
+  #signedInContent #userSettings div,
+  #signedInContent #newsFeed div {
+    padding: 5px 0px; }
+  #signedInContent #userSettings hr,
+  #signedInContent #newsFeed hr {
+    margin-bottom: 10px; }
+  #signedInContent #userSettings h3,
+  #signedInContent #userSettings h5,
+  #signedInContent #newsFeed h3,
+  #signedInContent #newsFeed h5 {
+    padding: 10px 0px;
+    font-weight: 200; }
+  #signedInContent #userSettings h5,
+  #signedInContent #newsFeed h5 {
+    font-size: 1em; }
   #signedInContent #userSettings .user,
   #signedInContent #newsFeed .user {
     display: grid;
