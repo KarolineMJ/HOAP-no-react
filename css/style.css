@@ -1481,6 +1481,9 @@ Keyframes for frontpage
     bottom: 0%;
     width: 100%;
     height: 60px; }
+    #mobileMenu svg {
+      width: 25px;
+      margin-right: 8px; }
     #mobileMenu div {
       justify-self: center;
       align-self: center; }

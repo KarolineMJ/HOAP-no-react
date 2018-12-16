@@ -1957,6 +1957,11 @@ Keyframes for frontpage
     width: 100%;
     height: 60px;
 
+    svg {
+      width: 25px;
+      margin-right: 8px;
+    }
+
     div {
       justify-self: center;
       align-self: center;
