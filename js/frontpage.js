@@ -227,6 +227,7 @@ const signupBtn = document.querySelector("#signupBtn");
 
 function signupUser(e) {
   e.preventDefault();
+  resetForm(userSettingForm);
   //go to preferences page
   firebase
     .auth()
@@ -402,7 +403,6 @@ Open preference modal
 function preferenceSetting(email) {
   // sync donation value text when user adjust range bar
   syncNrWithRange(preferenceForm, preferenceForm.querySelector(".donationNr"));
-  alert(email);
   // submit form in 2 ways
   const submitPrefBtn = document.querySelector("#submitPrefBtn");
   const skipPrefBtn = document.querySelector("#skipPrefBtn");
@@ -539,17 +539,66 @@ function getUserSetting(userEmail) {
     });
 }
 function getUserNotifications(userEmail) {
-  console.log(userEmail);
+  newsFeedPanel.innerHTML = "";
   // check user preferences regarding notifications
   db.collection("member")
     .where("email", "==", userEmail)
     .get()
     .then(res => {
       res.forEach(entry => {
-        console.log(entry.notifyErrand);
+        if (entry.data().notifyErrand) {
+          getErrands();
+        }
+        if (entry.data().notifyNewcoming) {
+          getNewcoming();
+        }
+        getOtherNotification();
       });
     });
 }
+
+function getErrands() {
+  db.collection("notifications")
+    .where("type", "==", "errands")
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        let p = document.createElement("p");
+        p.classList.add("errandsNotification");
+        p.textContent = entry.data().text;
+        newsFeedPanel.appendChild(p);
+      });
+    });
+}
+
+function getNewcoming() {
+  db.collection("notifications")
+    .where("type", "==", "newComing")
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        let p = document.createElement("p");
+        p.classList.add("newComingNotification");
+        p.textContent = entry.data().text;
+        newsFeedPanel.appendChild(p);
+      });
+    });
+}
+
+function getOtherNotification() {
+  db.collection("notifications")
+    .where("type", "==", "other")
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        let p = document.createElement("p");
+        p.classList.add("otherNotification");
+        p.textContent = entry.data().text;
+        newsFeedPanel.appendChild(p);
+      });
+    });
+}
+
 function getUserAnimals(userEmail) {
   console.log(
     "use the current user email to query user settings, than fetch animal based on the settings"
