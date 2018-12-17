@@ -540,7 +540,7 @@ button:focus {
   display: none; }
 
 #signedInContent #yourPets {
-  padding: 10vw 10vw 0 10vw;
+  padding: 150px 10vw 0 10vw;
   background-color: #efefef;
   color: grey;
   position: relative; }
