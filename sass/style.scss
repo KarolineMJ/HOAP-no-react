@@ -1495,59 +1495,129 @@ Keyframes for frontpage
   }
 }
 // here starts POST AND NOTIFY!!
-.postsContainer {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  margin-bottom: 60px;
-  .publishContainer {
-    position: relative;
+#postAndNotify {
+  height: auto;
+  h3 {
+    padding: 20px;
+  }
+  .postsContainer {
+    height: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin-bottom: 60px;
+    .publishContainer {
+      position: relative;
+      padding-bottom: 30px;
+      p {
+        padding-left: 20px;
+        padding-bottom: 20px;
+        width: 90%;
+      }
 
-    .receviedPictures {
-      // border: 1px solid black;
-      border-right: 1px solid black;
-      width: 100%;
-      height: auto;
-      display: grid;
-      grid-template-columns: 20vh 20vh 20vh;
-      grid-template-rows: 20vh 20vh 20vh;
-      grid-gap: 30px;
-      justify-content: center;
+      .receviedPictures {
+        // border: 1px solid black;
+        border-right: 1px solid black;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 20vh 20vh 20vh;
+        grid-template-rows: 20vh 20vh 20vh;
+        grid-gap: 17px;
+        justify-content: center;
 
-      .singlePic {
-        width: 150px;
-        height: 150px;
-        border: 1px solid black;
+        .singlePic {
+          width: 130px;
+          height: 130px;
+          border: 1px solid black;
+        }
+      }
+      .publishBtn {
+        margin: 25px;
+        position: absolute;
+        right: 0px;
+        bottom: -45px;
+        cursor: pointer;
+        text-align: center;
+        background: $purpleColor;
+        height: 40px;
+        padding: 10px 30px; /* temp solution, should achieve vertical align */
+        border-radius: 25px;
+        color: white;
+        border: none;
       }
     }
-    .publishBtn {
-      margin: 20px;
-      position: absolute;
-      right: 0px;
-    }
-  }
-  .dragAndDropContainer {
-    position: relative;
-    input {
-      margin: auto;
-    }
-    .writeNotification {
-      height: 200px;
-      width: 300px;
-    }
-    .dragAndDrop {
-      width: 150px;
-      height: 150px;
-      border: 1px solid black;
-      margin: auto;
-    }
-    .postBtn {
-      position: absolute;
-      right: 0px;
-      bottom: 0px;
+    .dragAndDropContainer {
+      position: relative;
+      height: 100%;
+      p:nth-child(1) {
+        padding-left: 20px;
+        padding-bottom: 20px;
+      }
+      p:nth-child(2) {
+        padding-left: 20px;
+        padding-bottom: 0px;
+        padding-top: 27px;
+      }
+      p:nth-child(3) {
+        padding-left: 20px;
+        padding-bottom: 0px;
+      }
+
+      label {
+        padding-top: 10px;
+      }
+      .writeNotification {
+        height: 150px;
+        width: 270px;
+        display: block;
+        margin: auto;
+      }
+      #nofiticationAdmin {
+        p {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+      }
+      div {
+        text-align: center;
+        width: 270px;
+        height: 40px;
+        padding: 10px 30px;
+        border: 2px solid $purpleColor;
+        border-radius: 25px;
+        color: white;
+        margin: auto;
+        margin-top: 30px;
+        padding-bottom: 30px;
+        #uploadFileAdmin {
+          pointer-events: none;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+        }
+        label {
+          cursor: pointer;
+          color: $purpleColor;
+        }
+      }
+      .postBtn {
+        margin: 25px;
+        margin-bottom: 0;
+        position: absolute;
+        right: 0px;
+        bottom: -22px;
+        cursor: pointer;
+        text-align: center;
+        background: $purpleColor;
+        height: 40px;
+        padding: 10px 30px; /* temp solution, should achieve vertical align */
+        border-radius: 25px;
+        color: white;
+        border: none;
+      }
     }
   }
 }
-
 // status section
 #status {
   width: 80%;
@@ -1592,6 +1662,22 @@ Keyframes for frontpage
   .listOfDonations {
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+  .singleMember {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    .aboutMember {
+      // border-bottom: 1px solid black;
+      height: 35px;
+    }
+    #moneyDonation,
+    #timeDonation,
+    #stuffDonated {
+      background-color: $purpleColor;
+      color: white;
+      height: 34px;
+    }
   }
 }
 @media only screen and (min-width: $breakpoint-medium1) and (max-width: $breakpoint-medium2) {
