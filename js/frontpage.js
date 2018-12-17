@@ -828,6 +828,67 @@ function syncNrWithRange(form, element) {
     element.textContent = e.target.value;
   });
 }
+
+
+/*--------------------------------------
+Intersection observer on the admin sidebar menu
+-------------------------------------*/
+
+//get sections from the DOM
+const dailyTasksSection = document.querySelector(".animalTasks");
+const dailyTasksAnchor = document.querySelector("aside ul li:nth-child(1) a");
+const postAndNotifySection = document.querySelector(".postBtn");
+const postAndNotifyAnchor = document.querySelector(
+  "aside ul li:nth-child(2) a"
+);
+const statusSection = document.querySelector(".listOfDonations");
+const statusAnchor = document.querySelector("aside ul li:nth-child(3) a");
+
+//Observe daily tasks section
+let observerDailyTasks = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.intersectionRatio > 0) {
+      dailyTasksAnchor.classList.add("activeAnchor");
+      //postAndNotifyAnchor.classList.remove("activeAnchor");
+    } else {
+      dailyTasksAnchor.classList.remove("activeAnchor");
+    }
+  });
+});
+
+observerDailyTasks.observe(dailyTasksSection);
+
+//Observe post and notify section
+let postAndNotifyobserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.intersectionRatio > 0) {
+      postAndNotifyAnchor.classList.add("activeAnchor");
+      //dailyTasksAnchor.classList.remove("activeAnchor");
+      //statusAnchor.classList.remove("activeAnchor");
+    } else {
+      postAndNotifyAnchor.classList.remove("activeAnchor");
+    }
+  });
+});
+
+postAndNotifyobserver.observe(postAndNotifySection);
+
+//Observe status section
+let statusObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.intersectionRatio > 0) {
+      statusAnchor.classList.add("activeAnchor");
+      //postAndNotifyAnchor.classList.remove("activeAnchor");
+    } else {
+      statusAnchor.classList.remove("activeAnchor");
+    }
+  });
+});
+
+statusObserver.observe(statusSection);
+
+
+//Click to see more animals 
 let changeTimes = 0;
 
 function moveAnimals() {
@@ -867,3 +928,4 @@ function moveAnimals() {
     //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 }
+

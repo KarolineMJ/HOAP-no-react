@@ -1236,15 +1236,27 @@ Keyframes for frontpage
     height: 100vh;
     padding: 50px 25px;
     background: $purpleColor;
+
     li {
       list-style: none;
       margin-bottom: 50px;
       a {
         color: white;
+        background-color: $purpleColor;
         text-decoration: none;
         font-size: 24px;
+        width: calc(100% + 50px);
+        position: relative;
+        left: -25px;
+        display: inline-block;
+        padding: 30px 25px;
       }
     }
+  }
+  .activeAnchor {
+    color: $purpleColor;
+    background-color: white;
+    transition: background-color 0.7s ease;
   }
   main {
     position: absolute;
