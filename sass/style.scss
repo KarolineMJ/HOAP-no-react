@@ -612,7 +612,11 @@ button:focus {
   }
 }
 #sendToUsForms {
-  background-color: $darkbtn;
+  background-color: $mainColor;
+}
+
+#sendToUsForms .fullsize {
+  background-color: $mainColor;
 }
 
 #frontpageForms,
@@ -1782,6 +1786,75 @@ Keyframes for frontpage
   }
 }
 @media only screen and (min-width: $breakpoint-medium1) and (max-width: $breakpoint-medium2) {
+  /*-----------------------------*/
+  /* Signed in page */
+  /*-----------------------------*/
+
+  #signedInContent {
+    #sendToUsForms {
+      grid-template-columns: 1fr 1fr;
+      #messageForm {
+        margin: 45px;
+        padding: 30px;
+
+        h2 {
+          font-size: 18px;
+          margin-top: 0px;
+        }
+        form {
+          button {
+            margin-top: 19px;
+            margin-bottom: 0px;
+          }
+        }
+        .formField {
+          margin-bottom: 0;
+          padding: 0;
+          input {
+            font-size: 0.8em;
+            margin: 19px 0px;
+          }
+          label {
+            font-size: 13px;
+          }
+        }
+      }
+      #imageForm {
+        margin: 45px;
+
+        padding: 30px;
+
+        h2 {
+          font-size: 18px;
+          margin-top: 0px;
+        }
+        form {
+          button {
+            margin: 19px 0px;
+          }
+        }
+        form {
+          .formField {
+            margin-bottom: 0;
+            padding: 0;
+            input {
+              font-size: 0.6em;
+              margin: 19px 0px;
+            }
+            label {
+              font-size: 13px;
+              padding-bottom: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /*-----------------------------*/
+  /* Frontpage */
+  /*-----------------------------*/
+
   #intro {
     height: 95vh;
 
@@ -2021,6 +2094,64 @@ Keyframes for frontpage
 }
 
 @media (max-width: $breakpoint-medium1) {
+  #sendToUsForms {
+    grid-template-columns: 1fr;
+    #messageForm {
+      grid-row-start: 1;
+      margin: 50px;
+      padding: 40px;
+      margin-bottom: 0;
+      h2 {
+        font-size: 20px;
+        margin-top: 0px;
+      }
+      form {
+        button {
+          margin-top: 19px;
+          margin-bottom: 0px;
+        }
+      }
+      .formField {
+        margin-bottom: 0;
+        padding: 0;
+        input {
+          font-size: 0.8em;
+          margin: 19px 0px;
+        }
+        label {
+          font-size: 15px;
+        }
+      }
+    }
+    #imageForm {
+      margin: 50px;
+      padding: 40px;
+
+      h2 {
+        font-size: 20px;
+        margin-top: 0px;
+      }
+      form {
+        button {
+          margin: 19px 0px;
+        }
+      }
+      form {
+        .formField {
+          margin-bottom: 0;
+          padding: 0;
+          input {
+            font-size: 0.8em;
+            margin: 19px 0px;
+          }
+          label {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
   #intro {
     display: grid;
     grid-template-columns: 1fr;
@@ -2327,6 +2458,66 @@ Keyframes for frontpage
       }
     }
   }
+  #signedInContent {
+    #sendToUsForms {
+      width: 100%;
+      grid-template-columns: 1fr;
+      #messageForm {
+        margin: 34px;
+        padding: 30px;
+        margin-bottom: 0;
+        h2 {
+          font-size: 20px;
+          margin-top: 0px;
+        }
+        form {
+          button {
+            margin-top: 19px;
+            margin-bottom: 0px;
+          }
+        }
+        .formField {
+          margin-bottom: 0;
+          padding: 0;
+          input {
+            font-size: 0.7em;
+            margin: 19px 0px;
+          }
+          label {
+            font-size: 15px;
+          }
+        }
+      }
+
+      #imageForm {
+        margin: 34px;
+        padding: 30px;
+
+        h2 {
+          font-size: 20px;
+          margin-top: 0px;
+        }
+        form {
+          button {
+            margin: 19px 0px;
+          }
+        }
+        form {
+          .formField {
+            margin-bottom: 0;
+            padding: 0;
+            input {
+              font-size: 0.8em;
+              margin: 19px 0px;
+            }
+            label {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
   /* ----------------------
         Frontpage
 -----------------------*/
@@ -2460,13 +2651,11 @@ Keyframes for frontpage
       }
     }
   }
-  #frontpageForms,
-  #sendToUsForms {
+  #frontpageForms {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    #signupForm,
-    #messageForm {
+    #signupForm {
       grid-row-start: 1;
       margin: 34px;
       padding: 30px;
@@ -2493,8 +2682,7 @@ Keyframes for frontpage
         }
       }
     }
-    #donationForm,
-    #imageForm {
+    #donationForm {
       margin: 34px;
       padding: 30px;
 
