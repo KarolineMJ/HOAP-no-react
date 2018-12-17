@@ -19,6 +19,7 @@ function hideMenu() {
   newsBtn.addEventListener("click", function() {
     userSettings.classList.remove("visible");
     newsFeed.classList.toggle("visible");
+    // getUserNotifications(currentUserEmail);
   });
 }
 hideMenu();
