@@ -420,17 +420,23 @@ function donate(e) {
   const donationSubmitForm = document.querySelector("#donationFormLogginIn");
   const animalID = donationSubmitForm.dataset.id;
   const moneyAmount = donationSubmitForm.moneyAmount.value;
-  //  const date = donationSubmitForm.date.value;
+  const date = donationSubmitForm.date.value;
+  const year = date.split("-")[0];
+  const month = date.split("-")[1];
+  const day = date.split("-")[2];
+  console.log(year, month, day);
   const userEmail = window.sessionStorage.getItem("userEmail");
-  db.collection("moneyDonation")
-    .add({
-      amount: moneyAmount,
-      userEmail: userEmail,
-      animalID: animalID
-    })
-    .then(() => {
-      console.log("money donated");
-    });
+  if (moneyAmount) {
+    db.collection("moneyDonation")
+      .add({
+        amount: moneyAmount,
+        userEmail: userEmail,
+        animalID: animalID
+      })
+      .then(() => {
+        console.log("money donated");
+      });
+  }
 }
 
 /** 
