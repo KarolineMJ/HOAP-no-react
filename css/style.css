@@ -9,7 +9,9 @@
   scroll-behavior: smooth; }
 
 body::-webkit-scrollbar,
-main::-webkit-scrollbar {
+main::-webkit-scrollbar,
+#animalList::-webkit-scrollbar,
+#animalViewBox::-webkit-scrollbar {
   display: none; }
 
 body {
@@ -538,7 +540,7 @@ button:focus {
   display: none; }
 
 #signedInContent #yourPets {
-  padding: 10px 10vw;
+  padding: 0 10vw;
   background-color: #efefef;
   color: grey;
   display: grid;
@@ -561,39 +563,73 @@ button:focus {
       align-self: end;
       justify-self: end;
       margin: 20px 0; }
-  #signedInContent #yourPets #animalList {
+  #signedInContent #yourPets #animalBox {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-row-gap: 70px; }
-    #signedInContent #yourPets #animalList .eachAnimal {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      position: relative;
+    grid-template-columns: 15px 1fr 15px; }
+    #signedInContent #yourPets #animalBox .animalArrows {
+      align-self: center; }
+    #signedInContent #yourPets #animalBox i {
+      border: solid #948a92;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
       cursor: pointer; }
-      #signedInContent #yourPets #animalList .eachAnimal > * {
-        position: absolute; }
-      #signedInContent #yourPets #animalList .eachAnimal > p {
-        width: 100%;
-        text-align: center;
-        bottom: -15%; }
-      #signedInContent #yourPets #animalList .eachAnimal > img:not(.heart) {
-        width: 100%;
-        height: 100%; }
-      #signedInContent #yourPets #animalList .eachAnimal .heart {
-        width: 15%;
-        left: 10%;
-        bottom: -15%; }
-      #signedInContent #yourPets #animalList .eachAnimal .statusCircle {
-        width: 10px;
-        height: 10px;
-        right: 10%;
-        top: 10%;
-        box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
-        background-color: #a81c1c;
-        border-radius: 50%; }
-      #signedInContent #yourPets #animalList .eachAnimal * {
-        pointer-events: none; }
+    #signedInContent #yourPets #animalBox .right {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg); }
+    #signedInContent #yourPets #animalBox .left {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg); }
+    #signedInContent #yourPets #animalBox #animalViewBox {
+      height: 225px;
+      width: 870px;
+      overflow: scroll;
+      white-space: nowrap;
+      justify-self: center; }
+      #signedInContent #yourPets #animalBox #animalViewBox #animalList {
+        position: relative; }
+        #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal {
+          margin: 12px;
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          position: relative;
+          cursor: pointer; }
+          #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > * {
+            position: absolute; }
+          #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > p {
+            width: 100%;
+            text-align: center;
+            bottom: -15%; }
+          #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > img:not(.heart) {
+            width: 100%;
+            height: 100%; }
+          #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal .heart {
+            width: 15%;
+            left: 10%;
+            bottom: -15%; }
+          #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal .statusCircle {
+            width: 10px;
+            height: 10px;
+            right: 10%;
+            top: 10%;
+            box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
+            background-color: #a81c1c;
+            border-radius: 50%; }
+          #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal * {
+            pointer-events: none; }
+
+#signedInContent .triangleUp {
+  display: none;
+  position: absolute;
+  left: 50px;
+  bottom: -63px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid white; }
 
 #signedInContent #petExpand {
   width: 100vw;
@@ -1513,6 +1549,18 @@ Keyframes for frontpage
   #footer #subscribeForm label {
     font-size: 13px; } }
 
+@media (max-width: 1100px) {
+  #signedInContent #yourPets #animalBox #animalViewBox {
+    width: 696px; } }
+
+@media (max-width: 850px) {
+  #signedInContent #yourPets #animalBox #animalViewBox {
+    width: 522px; } }
+
+@media (max-width: 660px) {
+  #signedInContent #yourPets #animalBox #animalViewBox {
+    width: 348px; } }
+
 @media (max-width: 650px) {
   #intro {
     display: grid;
@@ -1686,6 +1734,8 @@ Keyframes for frontpage
   /* ----------------------
         Signed in page
 -----------------------*/
+  #signedInContent #yourPets #animalBox #animalViewBox {
+    width: 174px; }
   #newsBtn,
   #settingBtn {
     display: none; }

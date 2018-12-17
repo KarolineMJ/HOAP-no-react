@@ -368,6 +368,7 @@ function buildAnimalListOnLoggedinPage() {
       allIndividualAnimalS.forEach(a => {
         a.addEventListener("click", e => {
           const clickedAnimalID = e.target.dataset.id;
+
           db.collection("animals")
             .doc(clickedAnimalID)
             .get()
@@ -411,8 +412,12 @@ function cloneAnimalInfo(data, animalID) {
   petExpand.appendChild(donationClone);
   petExpand.appendChild(clone);
   const closeExpandBtn = document.querySelector(".closeExpandBtn");
+
+  const triangleUp = document.querySelectorAll(".triangleUp");
+  
   closeExpandBtn.addEventListener("click", () => {
     petExpand.style.display = "none";
+    hideArrayElements(triangleUp);
   });
 }
 function donate(e) {
@@ -717,6 +722,8 @@ function appendEachAnimal(array, userEmail) {
     animalDiv.dataset.id = entry.id;
     let animalName = document.createElement("p");
     animalName.textContent = data.name;
+    let animalArrow = document.createElement("div");
+    animalArrow.classList.add("triangleUp");
     let animalImg = document.createElement("img");
     if (data.file !== undefined && data.file !== "") {
       let fileName = data.file;
@@ -757,10 +764,22 @@ function appendEachAnimal(array, userEmail) {
     animalDiv.appendChild(animalImg);
     animalDiv.appendChild(heart);
     animalDiv.appendChild(statusCircle);
+    animalDiv.appendChild(animalArrow);
     animalDiv.addEventListener("click", e => {
+      let arrows = e.target.parentElement.querySelectorAll(".triangleUp");
+      hideArrayElements(arrows);
+      e.target.querySelector(".triangleUp").style.display = "inherit";
+
       showAnimalModal(entry.id);
     });
     animalListOnLoggedIn.appendChild(animalDiv);
+  });
+  moveAnimals();
+}
+
+function hideArrayElements(array) {
+  array.forEach(removeElement => {
+    removeElement.style.display = "none";
   });
 }
 
@@ -807,5 +826,44 @@ function syncNrWithRange(form, element) {
   element.textContent = preferenceForm.monthlyDonation.value;
   form.querySelector('input[type="range"').addEventListener("change", e => {
     element.textContent = e.target.value;
+  });
+}
+let changeTimes = 0;
+
+function moveAnimals() {
+  const leftKey = document.querySelector("#animalArrowLeft");
+  const rightKey = document.querySelector("#animalArrowRight");
+
+  const moveAnimalList = document.querySelector("#animalList");
+
+  //const boundRect = moveAnimalList.getBoundingClientRect().width;
+
+  //console.log(boundRect);
+
+  //circular buffer
+  leftKey.addEventListener("click", () => {
+    const last = document.querySelector("#animalList").lastElementChild;
+    const first = document.querySelector("#animalList").firstElementChild;
+
+    last.remove();
+
+    document.querySelector("#animalList").insertBefore(last, first);
+
+    //  changeTimes += 1;
+    //  moveAnimalList.style.left = 174 * changeTimes + "px";
+  });
+
+  rightKey.addEventListener("click", () => {
+    // find first element in animalList
+    const first = document.querySelector("#animalList").firstElementChild;
+
+    //removeit
+    first.remove();
+
+    //insert as lastelement
+    document.querySelector("#animalList").appendChild(first);
+
+    //changeTimes -= 1;
+    //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 }
