@@ -978,7 +978,8 @@ Keyframes for frontpage
       #admin aside li a {
         color: white;
         text-decoration: none;
-        font-size: 24px; }
+        font-size: 24px;
+        padding: 30px 0px; }
   #admin .activeAnchor {
     color: #2e2f4b;
     background-color: white;
@@ -986,7 +987,8 @@ Keyframes for frontpage
     position: relative;
     left: -25px;
     display: inline-block;
-    padding: 0px 25px; }
+    padding: 30px 25px;
+    transition: background-color 0.7s ease; }
   #admin main {
     position: absolute;
     width: 85%;

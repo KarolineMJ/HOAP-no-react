@@ -794,13 +794,13 @@ Intersection observer on the admin sidebar menu
 -------------------------------------*/
 
 //get sections from the DOM
-const dailyTasksSection = document.querySelector(".addToDoBtn");
+const dailyTasksSection = document.querySelector(".animalTasks");
 const dailyTasksAnchor = document.querySelector("aside ul li:nth-child(1) a");
-const postAndNotifySection = document.querySelector(".dragAndDrop");
+const postAndNotifySection = document.querySelector(".postBtn");
 const postAndNotifyAnchor = document.querySelector(
   "aside ul li:nth-child(2) a"
 );
-const statusSection = document.querySelector(".statisticOfMembers h3");
+const statusSection = document.querySelector(".listOfDonations");
 const statusAnchor = document.querySelector("aside ul li:nth-child(3) a");
 
 //Observe daily tasks section
