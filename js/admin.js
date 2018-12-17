@@ -15,6 +15,11 @@ const animalDetailModal = document.querySelector(".animalDetailModal");
 const animalDetailForm = document.querySelector(".animalDetails");
 const date = document.querySelector(".date");
 const uploadBtnAdmin = document.querySelector("#uploadBtnAdmin");
+const donorName = document.querySelector("#memberName");
+const moneyDonation = document.querySelector("#moneyDonation");
+const timeDonation = document.querySelector("#timeDonation");
+const stuffDonation = document.querySelector("#stuffDonated");
+const membersTamplate = document.querySelector("#membersTemplate");
 
 // date related
 const today = new Date();
@@ -461,3 +466,6 @@ closeModalBtn.addEventListener("click", () => {
 function closeModal() {
   animalDetailModal.classList.add("hide");
 }
+
+// GET members details from db and generate the table of members
+function dispalyMembers(name, money, time, stuff) {}

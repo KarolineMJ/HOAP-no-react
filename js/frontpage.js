@@ -13,9 +13,9 @@ const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
 const preferenceForm = document.querySelector("#preferencesModal form");
 const cancelMembershipBtn = document.querySelector("#cancelMembership");
-
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
+const donationTemp = document.querySelector("#memberDonation").content;
 
 /*-------------------------------------------
 Initialize Firebase
@@ -351,7 +351,7 @@ function buildAnimalListOnLoggedinPage() {
           console.log(animalImageName);
           childRef
             .getDownloadURL()
-            .then(function(url) {
+            .then(url => {
               animalImage2.setAttribute("src", url);
               //clone.querySelector(".eachAnimalImage").setAttribute("src", url);
               animalListOnLoggedIn
@@ -368,6 +368,7 @@ function buildAnimalListOnLoggedinPage() {
       allIndividualAnimalS.forEach(a => {
         a.addEventListener("click", e => {
           const clickedAnimalID = e.target.dataset.id;
+
           db.collection("animals")
             .doc(clickedAnimalID)
             .get()
@@ -385,7 +386,7 @@ function buildAnimalListOnLoggedinPage() {
 Add data to expand & open expands
 -------------------------------------*/
 
-function cloneAnimalInfo(data) {
+function cloneAnimalInfo(data, animalID) {
   petExpand.innerHTML = "";
   const clone = detailedAnimalTemp.cloneNode(true);
 
@@ -403,13 +404,38 @@ function cloneAnimalInfo(data) {
   clone.querySelector(".animalStory").textContent = data.story;
   clone.querySelector(".money").textContent = data.money;
   clone.querySelector(".name").textContent = data.name;
+  let donationClone = donationTemp.cloneNode(true);
+  donationClone.querySelector("form").setAttribute("data-id", animalID);
+  const donationForm = donationClone.querySelector("form");
+  donationForm.addEventListener("submit", donate);
 
+  petExpand.appendChild(donationClone);
   petExpand.appendChild(clone);
   const closeExpandBtn = document.querySelector(".closeExpandBtn");
 
+  const triangleUp = document.querySelectorAll(".triangleUp");
+  
   closeExpandBtn.addEventListener("click", () => {
     petExpand.style.display = "none";
+    hideArrayElements(triangleUp);
   });
+}
+function donate(e) {
+  e.preventDefault();
+  const donationSubmitForm = document.querySelector("#donationFormLogginIn");
+  const animalID = donationSubmitForm.dataset.id;
+  const moneyAmount = donationSubmitForm.moneyAmount.value;
+  //  const date = donationSubmitForm.date.value;
+  const userEmail = window.sessionStorage.getItem("userEmail");
+  db.collection("moneyDonation")
+    .add({
+      amount: moneyAmount,
+      userEmail: userEmail,
+      animalID: animalID
+    })
+    .then(() => {
+      console.log("money donated");
+    });
 }
 
 /** 
@@ -696,6 +722,8 @@ function appendEachAnimal(array, userEmail) {
     animalDiv.dataset.id = entry.id;
     let animalName = document.createElement("p");
     animalName.textContent = data.name;
+    let animalArrow = document.createElement("div");
+    animalArrow.classList.add("triangleUp");
     let animalImg = document.createElement("img");
     if (data.file !== undefined && data.file !== "") {
       let fileName = data.file;
@@ -736,10 +764,22 @@ function appendEachAnimal(array, userEmail) {
     animalDiv.appendChild(animalImg);
     animalDiv.appendChild(heart);
     animalDiv.appendChild(statusCircle);
+    animalDiv.appendChild(animalArrow);
     animalDiv.addEventListener("click", e => {
+      let arrows = e.target.parentElement.querySelectorAll(".triangleUp");
+      hideArrayElements(arrows);
+      e.target.querySelector(".triangleUp").style.display = "inherit";
+
       showAnimalModal(entry.id);
     });
     animalListOnLoggedIn.appendChild(animalDiv);
+  });
+  moveAnimals();
+}
+
+function hideArrayElements(array) {
+  array.forEach(removeElement => {
+    removeElement.style.display = "none";
   });
 }
 
@@ -749,7 +789,7 @@ function showAnimalModal(animalId) {
     .get()
     .then(res => {
       petExpand.style.display = "block";
-      cloneAnimalInfo(res.data());
+      cloneAnimalInfo(res.data(), animalId);
     });
 }
 
@@ -788,6 +828,7 @@ function syncNrWithRange(form, element) {
     element.textContent = e.target.value;
   });
 }
+
 
 /*--------------------------------------
 Intersection observer on the admin sidebar menu
@@ -845,3 +886,46 @@ let statusObserver = new IntersectionObserver(entries => {
 });
 
 statusObserver.observe(statusSection);
+
+
+//Click to see more animals 
+let changeTimes = 0;
+
+function moveAnimals() {
+  const leftKey = document.querySelector("#animalArrowLeft");
+  const rightKey = document.querySelector("#animalArrowRight");
+
+  const moveAnimalList = document.querySelector("#animalList");
+
+  //const boundRect = moveAnimalList.getBoundingClientRect().width;
+
+  //console.log(boundRect);
+
+  //circular buffer
+  leftKey.addEventListener("click", () => {
+    const last = document.querySelector("#animalList").lastElementChild;
+    const first = document.querySelector("#animalList").firstElementChild;
+
+    last.remove();
+
+    document.querySelector("#animalList").insertBefore(last, first);
+
+    //  changeTimes += 1;
+    //  moveAnimalList.style.left = 174 * changeTimes + "px";
+  });
+
+  rightKey.addEventListener("click", () => {
+    // find first element in animalList
+    const first = document.querySelector("#animalList").firstElementChild;
+
+    //removeit
+    first.remove();
+
+    //insert as lastelement
+    document.querySelector("#animalList").appendChild(first);
+
+    //changeTimes -= 1;
+    //moveAnimalList.style.left = 174 * changeTimes + "px";
+  });
+}
+
