@@ -1421,21 +1421,26 @@ Keyframes for frontpage
       margin: auto;
       margin-top: 20px;
       margin-bottom: 20px; }
-  #status .listOfDonations {
-    margin-top: 20px;
-    margin-bottom: 20px; }
-  #status .singleMember {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px; }
-    #status .singleMember .aboutMember {
-      height: 35px; }
-    #status .singleMember #moneyDonation,
-    #status .singleMember #timeDonation,
-    #status .singleMember #stuffDonated {
-      background-color: #2e2f4b;
-      color: white;
-      height: 34px; }
+    #status .statisticOfMembers .listOfDonations {
+      margin-top: 20px;
+      margin-bottom: 20px; }
+      #status .statisticOfMembers .listOfDonations .singleMember {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 10px; }
+        #status .statisticOfMembers .listOfDonations .singleMember .aboutMember {
+          height: 35px; }
+        #status .statisticOfMembers .listOfDonations .singleMember .emailBox {
+          width: 150px; }
+          #status .statisticOfMembers .listOfDonations .singleMember .emailBox p {
+            text-overflow: ellipsis;
+            overflow: hidden; }
+        #status .statisticOfMembers .listOfDonations .singleMember #moneyDonation,
+        #status .statisticOfMembers .listOfDonations .singleMember #timeDonation,
+        #status .statisticOfMembers .listOfDonations .singleMember #stuffDonated {
+          background-color: #2e2f4b;
+          color: white;
+          height: 34px; }
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   #intro {
