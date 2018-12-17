@@ -592,8 +592,31 @@ function sendMessage(e) {
       .then(console.log("message sent"));
   }
 }
-function onetimeDonation() {
+function onetimeDonation(e) {
+  e.preventDefault();
   console.log("one time donation");
+  const stuff = oneTimeDonationForm.donateWhat.value;
+  const postNr = oneTimeDonationForm.postNr.value;
+  const pickup = oneTimeDonationForm.pickup.checked;
+  const onetimeMoney = oneTimeDonationForm.onetimeMoney.value;
+  const inWhoseName = oneTimeDonationForm.inWhoseName.value;
+  // if user choose pick up, then this entry shows up in errands
+  if (stuff !== "" && pickup === true && postNr !== "") {
+    db.collection("stuffDonation").add({
+      stuff: stuff,
+      postNr: postNr
+    });
+    const errandsDesc = `Pick up a ${stuff} from ${postNr}`;
+    db.collection("notifications").add({
+      text: errandsDesc,
+      type: "errands"
+    });
+  } else if (stuff !== "" && pickup === false) {
+    db.collection("stuffDonation").add({
+      stuff: stuff
+    });
+  }
+  alert(pickup);
 }
 
 function subscribe(e) {
