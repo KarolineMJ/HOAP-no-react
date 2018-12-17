@@ -637,12 +637,13 @@ button:focus {
 }
 #signedInContent {
   #yourPets {
-    padding: 0 10vw;
+    padding: 0 10vw 0 10vw;
     background-color: $grayColor;
     color: grey;
-    display: grid;
-    grid-template-rows: 20vh 1fr;
     position: relative;
+
+    //display: grid;
+    //grid-template-rows: 20vh 1fr;
     hr {
       position: relative;
       top: -60px;
