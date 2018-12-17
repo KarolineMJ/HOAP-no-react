@@ -1484,21 +1484,32 @@
           <p>Size: <span class="animalSize"></span></p>
           <p class="animalPregnant">* pregnant</p>
           <p class="animalPup">* this is a baby</p>
-          <p class="animalStory">Story: <span></span></p>
           <p class="needs"><span class="name">Animal name</span> needs <span class="money"> money </span> kr. every month</p>
         </div>
-        <div class="bigAnimalNeeds">
-
-        </div>
+      </div>
+      <div class="storyAndExtra">
+        <p>Story:</p>
+          <p class="animalStory">Story: <span></span></p>
       </div>
     </template>
     
     <template id="memberDonation">
       <div class="memberDonation">
         <form id="donationFormLogginIn">
-          <label>I'd like to donate 
-          <input type="number" name="moneyAmount"> kr for this little guy</label>
-          <label><input type="date" name="date"></label>
+          <p>
+            <label>I'd like to donate 
+            <input type="number" name="moneyAmount"> kr for this little guy</label>
+          </p>
+          <hr>
+          <div class="timeSlots">
+              <p>Pick a time you'd like to spend with this furry monster:</p>
+              <p><input type="date" name="date"></p>
+              <p><label><input type="checkbox" name="morning" value="morning">Morning</label>
+            <label><input type="checkbox" name="afternoon" value="morning">Afternoon</label>
+            <label><input type="checkbox" name="evening" value="morning">Evening</label>
+            <label><input type="checkbox" name="traning" value="morning">Training</label></p>
+          </div>
+          <hr>
           <input type="submit" value="I'm in" id="donationBtn" />
         </form>
       </div>

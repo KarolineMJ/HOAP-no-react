@@ -372,7 +372,7 @@ function buildAnimalListOnLoggedinPage() {
             .doc(clickedAnimalID)
             .get()
             .then(res => {
-              petExpand.style.display = "block";
+              petExpand.style.display = "grid";
               cloneAnimalInfo(res.data());
               console.log(res.data().name);
             });
@@ -775,7 +775,7 @@ function showAnimalModal(animalId) {
     .doc(animalId)
     .get()
     .then(res => {
-      petExpand.style.display = "block";
+      petExpand.style.display = "grid";
       cloneAnimalInfo(res.data(), animalId);
     });
 }
