@@ -425,19 +425,19 @@ function cloneAnimalInfo(data, animalID) {
       res.forEach(entry => {
         if (entry.data().morning === false) {
           morning.classList.add("crossout");
-          morning.setAttribute("disabled", "disabled");
+          morning.querySelector("input").setAttribute("disabled", "disabled");
         }
         if (entry.data().afternoon === false) {
           afternoon.classList.add("crossout");
-          afternoon.setAttribute("disabled", "disabled");
+          afternoon.querySelector("input").setAttribute("disabled", "disabled");
         }
         if (entry.data().evening === false) {
           evening.classList.add("crossout");
-          evening.setAttribute("disabled", "disabled");
+          evening.querySelector("input").setAttribute("disabled", "disabled");
         }
         if (entry.data().training === false) {
           training.classList.add("crossout");
-          training.setAttribute("disabled", "disabled");
+          training.querySelector("input").setAttribute("disabled", "disabled");
         }
       });
     });
