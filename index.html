@@ -805,24 +805,25 @@
         <div id="frontpageForms">
           <div id="donationForm">
             <h2>One-time donation</h2>
+            <p>* You can pick one or both *</p>
             <form>
               <div class="formField">
                 <input type="text" placeholder="What" id="donateWhat" />
                 <label for="donateWhat">Thing you want to donate</label>
               </div>
               <label for="donateWhat"></label>
-              <div>
+              <div class="pickUpBox">
                 <input type="checkbox" id="pickUp" aria-placeholder="Pick up" />
                 <label for="pickUp">Want us to pick it up?</label>
               </div>
-              <p>And / or</p>
+              
               <div class="formField">
                 <input type="text" id="donateHowMuch" placeholder="How much" />
                 <label for="donateHowMuch">How much</label>
               </div>
               <div class="formField">
                 <input type="text" id="donateWho" placeholder="In whose name" />
-                <label for="donateWho">In whose name</label>
+                <label class="whoswName" for="donateWho">In whose name</label>
               </div>
 
               <button type="submit">Donate</button>
@@ -832,7 +833,7 @@
             <h2>Sign up as member</h2>
             <form>
               <div class="formField">
-                <input type="email" id="signupEmail" placeholder="Your email" />
+                <input type="email" id="signupEmail" placeholder="Your email" autocomplete="off"/>
                 <label for="signupEmail" class="formLabel">Your email</label>
               </div>
               <div class="formField">
@@ -841,7 +842,7 @@
                   id="signupPassword"
                   placeholder="Your password"
                 />
-                <label for="signupPassword" class="formLabel">Password</label>
+                <label for="signupPassword" class="formLabel" autocomplete="off">Password</label>
               </div>
               <button id="signupBtn" type="submit">Sign up</button>
             </form>
