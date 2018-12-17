@@ -981,7 +981,12 @@ Keyframes for frontpage
         font-size: 24px; }
   #admin .activeAnchor {
     color: #2e2f4b;
-    background-color: white; }
+    background-color: white;
+    width: calc(100% + 50px);
+    position: relative;
+    left: -25px;
+    display: inline-block;
+    padding: 0px 25px; }
   #admin main {
     position: absolute;
     width: 85%;

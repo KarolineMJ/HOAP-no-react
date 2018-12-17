@@ -1179,6 +1179,7 @@ Keyframes for frontpage
     height: 100vh;
     padding: 50px 25px;
     background: $purpleColor;
+
     li {
       list-style: none;
       margin-bottom: 50px;
@@ -1189,10 +1190,14 @@ Keyframes for frontpage
       }
     }
   }
-
   .activeAnchor {
     color: $purpleColor;
     background-color: white;
+    width: calc(100% + 50px);
+    position: relative;
+    left: -25px;
+    display: inline-block;
+    padding: 0px 25px;
   }
   main {
     position: absolute;
