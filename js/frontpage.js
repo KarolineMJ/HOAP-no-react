@@ -9,6 +9,7 @@ const petExpand = document.querySelector("#petExpand");
 const adminSection = document.querySelector("#admin");
 const userSettingPanel = document.querySelector("#userSettings");
 const userSettingForm = userSettingPanel.querySelector("form");
+const messageForm = document.querySelector("#messageForm form");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
 const preferenceForm = document.querySelector("#preferencesModal form");
@@ -474,7 +475,7 @@ function donate(e) {
  * user interaction
  *************************************/
 cancelMembershipBtn.addEventListener("click", cancelMembership);
-
+messageForm.addEventListener("submit", sendMessage);
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
@@ -570,6 +571,19 @@ function cancelMembership() {
     });
 }
 
+function sendMessage(e) {
+  e.preventDefault();
+  const message = messageForm.message.value;
+  if (message) {
+    db.collection("toDoList")
+      .add({
+        task: message,
+        type: "user",
+        writer: "user"
+      })
+      .then(console.log("message sent"));
+  }
+}
 /**************************************
  * functions that GET data from database and display them
  *************************************/
