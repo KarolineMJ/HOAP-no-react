@@ -469,11 +469,13 @@ function closeModal() {
 
 // GET members details from db and generate the table of members
 
+let sumArray = [];
+let maxSum;
 db.collection("member")
   .get()
   .then(res => {
-    res.forEach(doc => {
-      const userEmail = doc.data().email;
+    res.forEach(eachUser => {
+      const userEmail = eachUser.data().email;
       if (userEmail !== "admin@admin.com") {
         let clone = membersTamplate.cloneNode(true);
         let sum = 0;
@@ -484,14 +486,33 @@ db.collection("member")
             res.forEach(doc => {
               console.log(userEmail + "donated" + doc.data().amount);
               sum += Number(doc.data().amount);
-              // time += Number(doc.data().)
+              // time += Number(doc.data())
             });
-            clone.querySelector("#memberName").textContent = userEmail;
-            clone.querySelector("#moneyDonation").textContent = sum;
-
-            document
-              .querySelector(".donationsTableContainer")
-              .appendChild(clone);
+            sumArray.push(sum);
+            maxSum = Math.max.apply(null, sumArray);
+            res.forEach(eachUser => {
+              //              const userEmail = eachUser.data().email;
+              if (userEmail !== "admin@admin.com") {
+                let clone = membersTamplate.cloneNode(true);
+                let sum = 0;
+                db.collection("moneyDonation")
+                  .where("userEmail", "==", userEmail)
+                  .get()
+                  .then(res => {
+                    res.forEach(doc => {
+                      console.log(userEmail + "donated" + doc.data().amount);
+                      sum += Number(doc.data().amount);
+                    });
+                    clone.querySelector("#memberName").textContent = userEmail;
+                    clone.querySelector("#moneyDonation").textContent = sum;
+                    clone.querySelector("#moneyDonation").style.width =
+                      (sum / maxSum) * 100 + "%";
+                    document
+                      .querySelector(".donationsTableContainer")
+                      .appendChild(clone);
+                  });
+              }
+            });
           });
       }
     });
