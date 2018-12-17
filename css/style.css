@@ -1813,7 +1813,7 @@ Keyframes for frontpage
         #frontpageForms #imageForm form .formField label,
         #sendToUsForms #donationForm form .formField label,
         #sendToUsForms #imageForm form .formField label {
-          font-size: 14px; }
+          font-size: 13px; }
   #footer {
     padding: 30px;
     grid-template-columns: 1fr; }
