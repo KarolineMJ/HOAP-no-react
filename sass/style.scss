@@ -713,9 +713,21 @@ button:focus {
     grid-column: 1/-1;
     z-index: 2;
     display: none;
-    grid-template-columns: 1fr 1fr;
+    position: relative;
+    > * {
+      display: inline-block;
+    }
     .closeExpandBtn {
       cursor: pointer;
+      position: absolute;
+      right: 50px;
+      top: 50px;
+    }
+    .donateBtn {
+      cursor: pointer;
+      position: absolute;
+      right: 50px;
+      top: 50px;
     }
     h2 {
       text-align: left;
