@@ -767,6 +767,7 @@ button:focus {
       position: absolute;
       right: 50px;
       top: 50px;
+      font-size: 40px;
     }
     .donateBtn {
       cursor: pointer;
@@ -1996,7 +1997,6 @@ Keyframes for frontpage
     }
   }
 }
-
 
 @media (max-width: $breakpoint-medium1) {
   #intro {
