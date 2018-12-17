@@ -9,6 +9,8 @@ const petExpand = document.querySelector("#petExpand");
 const adminSection = document.querySelector("#admin");
 const userSettingPanel = document.querySelector("#userSettings");
 const userSettingForm = userSettingPanel.querySelector("form");
+const oneTimeDonationForm = document.querySelector("#oneTimeDonation");
+const subscribeForm = document.querySelector("#subscribeForm form");
 const messageForm = document.querySelector("#messageForm form");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
@@ -479,6 +481,8 @@ function donate(e) {
  *************************************/
 cancelMembershipBtn.addEventListener("click", cancelMembership);
 messageForm.addEventListener("submit", sendMessage);
+oneTimeDonationForm.addEventListener("submit", onetimeDonation);
+subscribeForm.addEventListener("submit", subscribe);
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
@@ -587,6 +591,51 @@ function sendMessage(e) {
       })
       .then(console.log("message sent"));
   }
+}
+function onetimeDonation(e) {
+  e.preventDefault();
+  console.log("one time donation");
+  const stuff = oneTimeDonationForm.donateWhat.value;
+  const postNr = oneTimeDonationForm.postNr.value;
+  const pickup = oneTimeDonationForm.pickup.checked;
+  const onetimeMoney = oneTimeDonationForm.onetimeMoney.value;
+  const inWhoseName = oneTimeDonationForm.inWhoseName.value;
+  // if user choose pick up, then this entry shows up in errands
+  if (stuff !== "" && pickup === true && postNr !== "") {
+    db.collection("stuffDonation").add({
+      stuff: stuff,
+      postNr: postNr
+    });
+    const errandsDesc = `Pick up a ${stuff} from ${postNr}`;
+    db.collection("notifications").add({
+      text: errandsDesc,
+      type: "errands"
+    });
+  } else if (stuff !== "" && pickup === false) {
+    db.collection("stuffDonation").add({
+      stuff: stuff
+    });
+  }
+  if (onetimeMoney !== "" && inWhoseName !== "") {
+    db.collection("moneyDonation").add({
+      amount: onetimeMoney,
+      inTheNameOf: inWhoseName
+    });
+  } else if (onetimeDonation !== "") {
+    db.collection("moneyDonation").add({
+      amount: onetimeMoney
+    });
+  }
+}
+
+function subscribe(e) {
+  e.preventDefault();
+  const email = subscribeForm.subEmail.value;
+  db.collection("subscriptionEmails")
+    .add({
+      email: email
+    })
+    .then(console.log("successfully subscribed"));
 }
 /**************************************
  * functions that GET data from database and display them

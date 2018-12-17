@@ -806,23 +806,24 @@
           <div id="donationForm">
             <h2>One-time donation</h2>
             <p>* You can pick one or both *</p>
-            <form>
+            <form id="oneTimeDonation">
               <div class="formField">
-                <input type="text" placeholder="What" id="donateWhat" />
+                <input type="text" placeholder="What" id="donateWhat" name="donateWhat" />
                 <label for="donateWhat">Thing you want to donate</label>
               </div>
               <label for="donateWhat"></label>
               <div class="pickUpBox">
-                <input type="checkbox" id="pickUp" aria-placeholder="Pick up" />
+                <input type="checkbox" id="pickUp" aria-placeholder="Pick up"  name="pickup"/>
                 <label for="pickUp">Want us to pick it up?</label>
+                <label><input type="number" placeholder="Post number" min="300" max="9999" name="postNr"></label>
               </div>
               
               <div class="formField">
-                <input type="text" id="donateHowMuch" placeholder="How much" />
+                <input type="text" id="donateHowMuch" placeholder="How much" name="onetimeMoney" />
                 <label for="donateHowMuch">How much</label>
               </div>
               <div class="formField">
-                <input type="text" id="donateWho" placeholder="In whose name" />
+                <input type="text" id="donateWho" placeholder="In whose name" name="inWhoseName" />
                 <label class="whoswName" for="donateWho">In whose name</label>
               </div>
 
@@ -1418,7 +1419,7 @@
         <h3>Subscribe to our monthly newsletter</h3>
         <form>
           <div class="formField">
-            <input type="email" placeholder="Your email" id="subscribeEmail" />
+            <input type="email" placeholder="Your email" id="subscribeEmail" name= "subEmail" />
             <label for="subscribeEmail">Email</label>
           </div>
           <button type="submit">Subscribe</button>
