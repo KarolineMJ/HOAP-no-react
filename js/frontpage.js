@@ -414,7 +414,7 @@ function cloneAnimalInfo(data, animalID) {
   const closeExpandBtn = document.querySelector(".closeExpandBtn");
 
   const triangleUp = document.querySelectorAll(".triangleUp");
-  
+
   closeExpandBtn.addEventListener("click", () => {
     petExpand.style.display = "none";
     hideArrayElements(triangleUp);
@@ -426,20 +426,39 @@ function donate(e) {
   const animalID = donationSubmitForm.dataset.id;
   const moneyAmount = donationSubmitForm.moneyAmount.value;
   const date = donationSubmitForm.date.value;
-  const year = date.split("-")[0];
-  const month = date.split("-")[1];
-  const day = date.split("-")[2];
-  console.log(year, month, day);
+  // const year = date.split("-")[0];
+  // const month = date.split("-")[1];
+  // const day = date.split("-")[2];
+  // console.log(year, month, day);
   const userEmail = window.sessionStorage.getItem("userEmail");
   if (moneyAmount) {
+    // check if the user has given donation before, if no, add user and donation data, if yes add the amount to the previous sum amount
     db.collection("moneyDonation")
-      .add({
-        amount: moneyAmount,
-        userEmail: userEmail,
-        animalID: animalID
-      })
-      .then(() => {
-        console.log("money donated");
+      .where("userEmail", "==", userEmail)
+      .get()
+      .then(res => {
+        if (res.docs.length === 0) {
+          db.collection("moneyDonation")
+            .add({
+              amount: moneyAmount,
+              userEmail: userEmail,
+              animalID: animalID
+            })
+            .then(() => {
+              console.log("money donated");
+            });
+        } else {
+          console.log("already donated before, will update sum");
+          res.forEach(doc => {
+            let sum = Number(doc.data().amount);
+            sum += Number(moneyAmount);
+            db.collection("moneyDonation")
+              .doc(doc.id)
+              .update({
+                amount: sum
+              });
+          });
+        }
       });
   }
 }
@@ -835,7 +854,6 @@ function syncNrWithRange(form, element) {
   });
 }
 
-
 /*--------------------------------------
 Intersection observer on the admin sidebar menu
 -------------------------------------*/
@@ -893,8 +911,7 @@ let statusObserver = new IntersectionObserver(entries => {
 
 statusObserver.observe(statusSection);
 
-
-//Click to see more animals 
+//Click to see more animals
 let changeTimes = 0;
 
 function moveAnimals() {
@@ -934,4 +951,3 @@ function moveAnimals() {
     //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 }
-
