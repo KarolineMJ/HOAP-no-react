@@ -13,9 +13,9 @@ const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
 const preferenceForm = document.querySelector("#preferencesModal form");
 const cancelMembershipBtn = document.querySelector("#cancelMembership");
-
 const detailedAnimalTemp = document.querySelector("#detailedAnimalTemp")
   .content;
+const donationTemp = document.querySelector("#memberDonation").content;
 
 /*-------------------------------------------
 Initialize Firebase
@@ -351,7 +351,7 @@ function buildAnimalListOnLoggedinPage() {
           console.log(animalImageName);
           childRef
             .getDownloadURL()
-            .then(function(url) {
+            .then(url => {
               animalImage2.setAttribute("src", url);
               //clone.querySelector(".eachAnimalImage").setAttribute("src", url);
               animalListOnLoggedIn
@@ -385,7 +385,7 @@ function buildAnimalListOnLoggedinPage() {
 Add data to expand & open expands
 -------------------------------------*/
 
-function cloneAnimalInfo(data) {
+function cloneAnimalInfo(data, animalID) {
   petExpand.innerHTML = "";
   const clone = detailedAnimalTemp.cloneNode(true);
 
@@ -403,13 +403,34 @@ function cloneAnimalInfo(data) {
   clone.querySelector(".animalStory").textContent = data.story;
   clone.querySelector(".money").textContent = data.money;
   clone.querySelector(".name").textContent = data.name;
+  let donationClone = donationTemp.cloneNode(true);
+  donationClone.querySelector("form").setAttribute("data-id", animalID);
+  const donationForm = donationClone.querySelector("form");
+  donationForm.addEventListener("submit", donate);
 
+  petExpand.appendChild(donationClone);
   petExpand.appendChild(clone);
   const closeExpandBtn = document.querySelector(".closeExpandBtn");
-
   closeExpandBtn.addEventListener("click", () => {
     petExpand.style.display = "none";
   });
+}
+function donate(e) {
+  e.preventDefault();
+  const donationSubmitForm = document.querySelector("#donationFormLogginIn");
+  const animalID = donationSubmitForm.dataset.id;
+  const moneyAmount = donationSubmitForm.moneyAmount.value;
+  //  const date = donationSubmitForm.date.value;
+  const userEmail = window.sessionStorage.getItem("userEmail");
+  db.collection("moneyDonation")
+    .add({
+      amount: moneyAmount,
+      userEmail: userEmail,
+      animalID: animalID
+    })
+    .then(() => {
+      console.log("money donated");
+    });
 }
 
 /** 
@@ -749,7 +770,7 @@ function showAnimalModal(animalId) {
     .get()
     .then(res => {
       petExpand.style.display = "block";
-      cloneAnimalInfo(res.data());
+      cloneAnimalInfo(res.data(), animalId);
     });
 }
 
