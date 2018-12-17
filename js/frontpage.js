@@ -819,9 +819,9 @@ observerDailyTasks.observe(dailyTasksSection);
 let postAndNotifyobserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      console.log("post and notify in view");
+      postandNotifyAnchor.style.background = "red";
     } else {
-      console.log("post and notify not in view");
+      postandNotifyAnchor.style.background = "none";
     }
   });
 });
@@ -832,9 +832,9 @@ postAndNotifyobserver.observe(postAndNotifySection);
 let statusObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      console.log("status in view");
+      statusAnchor.style.background = "red";
     } else {
-      console.log("status not in view");
+      statusAnchor.style.background = "none";
     }
   });
 });
