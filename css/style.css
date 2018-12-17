@@ -766,9 +766,9 @@ button:focus {
     #signedInContent #userSettings button:hover,
     #signedInContent #newsFeed button:hover {
       background-color: #599686; }
-    #signedInContent #userSettings button#calcelMembership:hover,
-    #signedInContent #newsFeed button#calcelMembership:hover {
-      background: red; }
+    #signedInContent #userSettings button#cancelMembership:hover,
+    #signedInContent #newsFeed button#cancelMembership:hover {
+      background: #a81c1c; }
 
 /*-------------------------
 Preferences
