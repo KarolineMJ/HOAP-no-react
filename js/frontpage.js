@@ -794,13 +794,13 @@ Intersection observer on the admin sidebar menu
 -------------------------------------*/
 
 //get sections from the DOM
-const dailyTasksSection = document.querySelector("#dailyTasks");
+const dailyTasksSection = document.querySelector(".addToDoBtn");
 const dailyTasksAnchor = document.querySelector("aside ul li:nth-child(1) a");
-const postAndNotifySection = document.querySelector("#postAndNotify");
-const postandNotifyAnchor = document.querySelector(
+const postAndNotifySection = document.querySelector(".dragAndDrop");
+const postAndNotifyAnchor = document.querySelector(
   "aside ul li:nth-child(2) a"
 );
-const statusSection = document.querySelector("#status");
+const statusSection = document.querySelector(".statisticOfMembers h3");
 const statusAnchor = document.querySelector("aside ul li:nth-child(3) a");
 
 //Observe daily tasks section
@@ -808,6 +808,7 @@ let observerDailyTasks = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       dailyTasksAnchor.classList.add("activeAnchor");
+      //postAndNotifyAnchor.classList.remove("activeAnchor");
     } else {
       dailyTasksAnchor.classList.remove("activeAnchor");
     }
@@ -820,9 +821,11 @@ observerDailyTasks.observe(dailyTasksSection);
 let postAndNotifyobserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      postandNotifyAnchor.classList.add("activeAnchor");
+      postAndNotifyAnchor.classList.add("activeAnchor");
+      //dailyTasksAnchor.classList.remove("activeAnchor");
+      //statusAnchor.classList.remove("activeAnchor");
     } else {
-      postandNotifyAnchor.classList.remove("activeAnchor");
+      postAndNotifyAnchor.classList.remove("activeAnchor");
     }
   });
 });
@@ -834,6 +837,7 @@ let statusObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       statusAnchor.classList.add("activeAnchor");
+      //postAndNotifyAnchor.classList.remove("activeAnchor");
     } else {
       statusAnchor.classList.remove("activeAnchor");
     }
