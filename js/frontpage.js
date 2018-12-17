@@ -381,7 +381,6 @@ function buildAnimalListOnLoggedinPage() {
             .then(res => {
               petExpand.style.display = "grid";
               cloneAnimalInfo(res.data());
-              console.log(res.data().name);
             });
         });
       });
@@ -410,9 +409,38 @@ function cloneAnimalInfo(data, animalID) {
   clone.querySelector(".animalStory").textContent = data.story;
   clone.querySelector(".money").textContent = data.money;
   clone.querySelector(".name").textContent = data.name;
+  // append the donation section of this animal
   let donationClone = donationTemp.cloneNode(true);
   donationClone.querySelector("form").setAttribute("data-id", animalID);
   const donationForm = donationClone.querySelector("form");
+  const morning = donationClone.querySelector("label.morning");
+  const afternoon = donationClone.querySelector("label.afternoon");
+  const evening = donationClone.querySelector("label.evening");
+  const training = donationClone.querySelector("label.training");
+  // need to read db to get needed time slots
+  db.collection("dailyTasks")
+    .where("animalID", "==", animalID)
+    .get()
+    .then(res => {
+      res.forEach(entry => {
+        if (entry.data().morning === false) {
+          morning.classList.add("crossout");
+          morning.setAttribute("disabled", "disabled");
+        }
+        if (entry.data().afternoon === false) {
+          afternoon.classList.add("crossout");
+          afternoon.setAttribute("disabled", "disabled");
+        }
+        if (entry.data().evening === false) {
+          evening.classList.add("crossout");
+          evening.setAttribute("disabled", "disabled");
+        }
+        if (entry.data().training === false) {
+          training.classList.add("crossout");
+          training.setAttribute("disabled", "disabled");
+        }
+      });
+    });
   donationForm.addEventListener("submit", donate);
 
   petExpand.appendChild(donationClone);

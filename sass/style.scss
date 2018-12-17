@@ -823,6 +823,9 @@ button:focus {
       grid-row-start: 2;
       grid-column-start: 3;
       border: 1px dashed $purpleColor;
+      *.crossout {
+        text-decoration: line-through;
+      }
     }
 
     position: relative;
