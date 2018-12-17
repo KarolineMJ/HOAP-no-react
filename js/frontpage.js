@@ -792,10 +792,13 @@ function syncNrWithRange(form, element) {
 /*--------------------------------------
 Intersection observer on the admin sidebar menu
 -------------------------------------*/
+
+//get sections from the DOM
 const dailyTasksSection = document.querySelector("#dailyTasks");
 const postAndNotifySection = document.querySelector("#postAndNotify");
 const statusSection = document.querySelector("#status");
 
+//Observe daily tasks section
 let observerDailyTasks = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
@@ -808,6 +811,7 @@ let observerDailyTasks = new IntersectionObserver(entries => {
 
 observerDailyTasks.observe(dailyTasksSection);
 
+//Observe post and notify section
 let postAndNotifyobserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
@@ -820,6 +824,7 @@ let postAndNotifyobserver = new IntersectionObserver(entries => {
 
 postAndNotifyobserver.observe(postAndNotifySection);
 
+//Observe status section
 let statusObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
@@ -831,30 +836,3 @@ let statusObserver = new IntersectionObserver(entries => {
 });
 
 statusObserver.observe(statusSection);
-
-/*
-//get the elements from the document
-const adminScrollSection = document.querySelectorAll("#admin .section");
-
-//define the observer
-let observer = new IntersectionObserver(entries => {
-  //run through each entry
-  entries.forEach(entry => {
-    //if the ratio is higher than zero, then animate target
-    if (entry.intersectionRatio > 0) {
-      //add classList when the target area is in the screen
-      console.log("In view");
-    } else {
-      console.log("not in view");
-    }
-  });
-});
-
-adminScrollSection.forEach(section => {
-  observer.observe(section);
-});
-
-//observe the element, if the element is in view then run the previous function
-/*myImg.forEach(image => {
-  observer.observe(image);
-});*/
