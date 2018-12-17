@@ -1280,12 +1280,12 @@
             <div class="dragAndDropContainer">
               <p>Write a notification</p>
               <form id="nofiticationAdmin">
-                <input
+                <textarea
                   class="writeNotification"
                   type="text"
                   name="post"
-                  value=""
-                />
+                  value=""></textarea>
+                
                 <p>type of notification</p>
                 <p>
                   <label><input type="radio" name="type" value="newComming">new animal</label>
@@ -1294,7 +1294,11 @@
                   <label><input type="radio" name="type" value="other" checked="checked">normal notification</label>
                 </p>
               </form>
-              <div class="dragAndDrop"><p>Drag and Drop here</p></div>
+              <!-- <div class="dragAndDrop"><p>Drag and Drop here</p></div> -->
+              <div>
+                <input type="file" value="upload" id="uploadFileAdmin">
+                <label for="uploadFileAdmin">Choose file...</label>
+              </div>
               <button class="postBtn">post</button>
             </div>
           </div>
@@ -1330,6 +1334,22 @@
 
             <div class="listOfDonations">
               <h3>Donations including who donated</h3>
+              <div class="donationsTableContainer">
+                  <div class="singleMember">
+                      <h3 class="aboutMember">Name</h3>
+                      <p class="aboutMember"  >Money</p>
+                      <p class="aboutMember">Time</p>
+                      <p class="aboutMember" >Stuff</p>
+                    </div>
+               <!-- <template class="membersTemplate"> -->
+                <div class="singleMember">
+                  <h3 class="aboutMember" id="memberName">Name</h3>
+                  <div class="aboutMember"  id="moneyDonation">150kr. </div>
+                  <div class="aboutMember"  id="timeDonation">25h</div>
+                  <div class="aboutMember"  id="stuffDonated">3pieces</div>
+                </div>
+              <!-- </template> -->
+              </div>
             </div>
           </div>
         </div>
