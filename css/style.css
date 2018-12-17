@@ -685,6 +685,8 @@ button:focus {
     grid-row-start: 2;
     grid-column-start: 3;
     border: 1px dashed #2e2f4b; }
+    #signedInContent #petExpand .memberDonation *.crossout {
+      text-decoration: line-through; }
   #signedInContent #petExpand .closeExpandBtn {
     cursor: pointer;
     position: absolute;
