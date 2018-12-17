@@ -638,9 +638,19 @@ button:focus {
   grid-column: 1/-1;
   z-index: 2;
   display: none;
-  grid-template-columns: 1fr 1fr; }
+  position: relative; }
+  #signedInContent #petExpand > * {
+    display: inline-block; }
   #signedInContent #petExpand .closeExpandBtn {
-    cursor: pointer; }
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    top: 50px; }
+  #signedInContent #petExpand .donateBtn {
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    top: 50px; }
   #signedInContent #petExpand h2 {
     text-align: left;
     padding: 10px; }
@@ -1268,45 +1278,106 @@ Keyframes for frontpage
     cursor: pointer;
     color: #2e2f4b; }
 
-.postsContainer {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  margin-bottom: 60px; }
-  .postsContainer .publishContainer {
-    position: relative; }
-    .postsContainer .publishContainer .receviedPictures {
-      border-right: 1px solid black;
-      width: 100%;
-      height: auto;
-      display: grid;
-      grid-template-columns: 20vh 20vh 20vh;
-      grid-template-rows: 20vh 20vh 20vh;
-      grid-gap: 30px;
-      justify-content: center; }
-      .postsContainer .publishContainer .receviedPictures .singlePic {
-        width: 150px;
+#postAndNotify {
+  height: auto; }
+  #postAndNotify h3 {
+    padding: 20px; }
+  #postAndNotify .postsContainer {
+    height: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin-bottom: 60px; }
+    #postAndNotify .postsContainer .publishContainer {
+      position: relative;
+      padding-bottom: 30px; }
+      #postAndNotify .postsContainer .publishContainer p {
+        padding-left: 20px;
+        padding-bottom: 20px;
+        width: 90%; }
+      #postAndNotify .postsContainer .publishContainer .receviedPictures {
+        border-right: 1px solid black;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 20vh 20vh 20vh;
+        grid-template-rows: 20vh 20vh 20vh;
+        grid-gap: 17px;
+        justify-content: center; }
+        #postAndNotify .postsContainer .publishContainer .receviedPictures .singlePic {
+          width: 130px;
+          height: 130px;
+          border: 1px solid black; }
+      #postAndNotify .postsContainer .publishContainer .publishBtn {
+        margin: 25px;
+        position: absolute;
+        right: 0px;
+        bottom: -45px;
+        cursor: pointer;
+        text-align: center;
+        background: #2e2f4b;
+        height: 40px;
+        padding: 10px 30px;
+        /* temp solution, should achieve vertical align */
+        border-radius: 25px;
+        color: white;
+        border: none; }
+    #postAndNotify .postsContainer .dragAndDropContainer {
+      position: relative;
+      height: 100%; }
+      #postAndNotify .postsContainer .dragAndDropContainer p:nth-child(1) {
+        padding-left: 20px;
+        padding-bottom: 20px; }
+      #postAndNotify .postsContainer .dragAndDropContainer p:nth-child(2) {
+        padding-left: 20px;
+        padding-bottom: 0px;
+        padding-top: 27px; }
+      #postAndNotify .postsContainer .dragAndDropContainer p:nth-child(3) {
+        padding-left: 20px;
+        padding-bottom: 0px; }
+      #postAndNotify .postsContainer .dragAndDropContainer label {
+        padding-top: 10px; }
+      #postAndNotify .postsContainer .dragAndDropContainer .writeNotification {
         height: 150px;
-        border: 1px solid black; }
-    .postsContainer .publishContainer .publishBtn {
-      margin: 20px;
-      position: absolute;
-      right: 0px; }
-  .postsContainer .dragAndDropContainer {
-    position: relative; }
-    .postsContainer .dragAndDropContainer input {
-      margin: auto; }
-    .postsContainer .dragAndDropContainer .writeNotification {
-      height: 200px;
-      width: 300px; }
-    .postsContainer .dragAndDropContainer .dragAndDrop {
-      width: 150px;
-      height: 150px;
-      border: 1px solid black;
-      margin: auto; }
-    .postsContainer .dragAndDropContainer .postBtn {
-      position: absolute;
-      right: 0px;
-      bottom: 0px; }
+        width: 270px;
+        display: block;
+        margin: auto; }
+      #postAndNotify .postsContainer .dragAndDropContainer #nofiticationAdmin p {
+        display: grid;
+        grid-template-columns: 1fr; }
+      #postAndNotify .postsContainer .dragAndDropContainer div {
+        text-align: center;
+        width: 270px;
+        height: 40px;
+        padding: 10px 30px;
+        border: 2px solid #2e2f4b;
+        border-radius: 25px;
+        color: white;
+        margin: auto;
+        margin-top: 30px;
+        padding-bottom: 30px; }
+        #postAndNotify .postsContainer .dragAndDropContainer div #uploadFileAdmin {
+          pointer-events: none;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute; }
+        #postAndNotify .postsContainer .dragAndDropContainer div label {
+          cursor: pointer;
+          color: #2e2f4b; }
+      #postAndNotify .postsContainer .dragAndDropContainer .postBtn {
+        margin: 25px;
+        margin-bottom: 0;
+        position: absolute;
+        right: 0px;
+        bottom: -22px;
+        cursor: pointer;
+        text-align: center;
+        background: #2e2f4b;
+        height: 40px;
+        padding: 10px 30px;
+        /* temp solution, should achieve vertical align */
+        border-radius: 25px;
+        color: white;
+        border: none; }
 
 #status {
   width: 80%;
@@ -1343,6 +1414,140 @@ Keyframes for frontpage
   #status .listOfDonations {
     margin-top: 20px;
     margin-bottom: 20px; }
+  #status .singleMember {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px; }
+    #status .singleMember .aboutMember {
+      height: 35px; }
+    #status .singleMember #moneyDonation,
+    #status .singleMember #timeDonation,
+    #status .singleMember #stuffDonated {
+      background-color: #2e2f4b;
+      color: white;
+      height: 34px; }
+
+@media only screen and (min-width: 650px) and (max-width: 900px) {
+  #intro {
+    height: 95vh; }
+    #intro .introPic .dots {
+      position: relative; }
+      #intro .introPic .dots div:nth-child(1) {
+        width: 40px;
+        top: 19vh;
+        right: 10vw;
+        height: 40px; }
+      #intro .introPic .dots div:nth-child(2) {
+        width: 20px;
+        top: 30vh;
+        right: 8vw;
+        height: 20px; }
+      #intro .introPic .dots div:nth-child(3) {
+        width: 15px;
+        top: 60vh;
+        right: 12vw;
+        height: 15px; }
+      #intro .introPic .dots div:nth-child(4) {
+        width: 20px;
+        top: 20vh;
+        left: 5vw;
+        height: 20px; }
+    #intro .introPic .introCat {
+      top: 320px;
+      left: -10vw; }
+      #intro .introPic .introCat img {
+        width: 25vw; }
+  #aboutUs {
+    display: block;
+    height: auto;
+    padding: 25px; }
+    #aboutUs h1 {
+      font-size: 26px;
+      padding: 10px; }
+    #aboutUs h2 {
+      font-size: 22px;
+      margin: 5px 0;
+      padding-top: 22px; }
+    #aboutUs .aboutCont {
+      padding: 3vw;
+      padding-top: 0; }
+      #aboutUs .aboutCont #walkDog,
+      #aboutUs .aboutCont #errandCar,
+      #aboutUs .aboutCont #coinCat {
+        width: 150px;
+        height: 150px; }
+        #aboutUs .aboutCont #walkDog svg,
+        #aboutUs .aboutCont #errandCar svg,
+        #aboutUs .aboutCont #coinCat svg {
+          width: 150px; }
+    #aboutUs p {
+      font-size: 15px; }
+  #lastBox {
+    display: grid;
+    margin: auto; }
+    #lastBox h2 {
+      text-align: center;
+      align-self: end;
+      margin: 20px 0; }
+    #lastBox #animalImage {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); }
+      #lastBox #animalImage div {
+        margin: 20px 0;
+        justify-self: center; }
+        #lastBox #animalImage div img {
+          width: 95px; }
+  #frontpageForms {
+    width: 98%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto; }
+    #frontpageForms #signupForm {
+      margin: 30px;
+      padding: 30px; }
+      #frontpageForms #signupForm h2 {
+        font-size: 18px;
+        margin-top: 0px; }
+      #frontpageForms #signupForm form button {
+        margin-top: 19px;
+        margin-bottom: 0px; }
+      #frontpageForms #signupForm .formField {
+        margin-bottom: 0;
+        padding: 0; }
+        #frontpageForms #signupForm .formField input {
+          font-size: 0.8em;
+          margin: 19px 0px; }
+        #frontpageForms #signupForm .formField label {
+          font-size: 13px; }
+    #frontpageForms #donationForm {
+      margin: 20px;
+      padding: 30px; }
+      #frontpageForms #donationForm h2 {
+        font-size: 18px;
+        margin-top: 0px; }
+      #frontpageForms #donationForm form button {
+        margin: 19px 0px; }
+      #frontpageForms #donationForm form .formField {
+        margin-bottom: 0;
+        padding: 0; }
+        #frontpageForms #donationForm form .formField input {
+          font-size: 0.6em;
+          margin: 19px 0px; }
+        #frontpageForms #donationForm form .formField label {
+          font-size: 13px;
+          padding-bottom: 3px; }
+  #footer .contactBox h3 {
+    font-size: 16px; }
+  #footer .contactBox p {
+    font-size: 14.5px; }
+  #footer .contactBox svg {
+    width: 50px;
+    height: 50px; }
+  #footer #subscribeForm h3 {
+    font-size: 16px; }
+  #footer #subscribeForm label {
+    font-size: 13px; } }
 
 @media (max-width: 1100px) {
   #signedInContent #yourPets #animalBox #animalViewBox {
@@ -1360,22 +1565,23 @@ Keyframes for frontpage
   #intro {
     display: grid;
     grid-template-columns: 1fr;
-    padding-top: 100px; }
+    padding-top: 100px;
+    height: auto; }
     #intro .introText {
       width: 90vw; }
       #intro .introText .catchphrase {
         text-align: center; }
         #intro .introText .catchphrase h1 {
-          padding-top: 50px;
-          font-size: 10vw; }
+          padding-top: 30px;
+          font-size: 8vw; }
           #intro .introText .catchphrase h1 span {
-            font-size: 15vw; }
+            font-size: 12vw; }
       #intro .introText p {
         text-align: center;
-        padding-bottom: 35px; }
+        padding-bottom: 45px; }
     #intro .introPic {
       grid-row-start: 1;
-      height: 200px;
+      height: 250px;
       width: 100%; }
       #intro .introPic .circle {
         position: relative;
@@ -1386,31 +1592,29 @@ Keyframes for frontpage
           margin: auto; }
       #intro .introPic .introCat {
         top: 130px;
-        left: 4vw; }
+        left: 10vw; }
         #intro .introPic .introCat img {
-          width: 40vw; }
-      #intro .introPic .dots {
-        position: relative; }
-        #intro .introPic .dots div:nth-child(1) {
-          width: 30px;
-          top: 6vh;
-          right: 10vw;
-          height: 30px; }
-        #intro .introPic .dots div:nth-child(2) {
-          width: 15px;
-          top: 15vh;
-          right: 8vw;
-          height: 15px; }
-        #intro .introPic .dots div:nth-child(3) {
-          width: 13px;
-          top: 30vh;
-          right: 12vw;
-          height: 13px; }
-        #intro .introPic .dots div:nth-child(4) {
-          width: 15px;
-          top: 20vh;
-          left: 2vw;
-          height: 15px; }
+          width: 30vw; }
+      #intro .introPic .dots div:nth-child(1) {
+        width: 30px;
+        top: 6vh;
+        right: 17vw;
+        height: 30px; }
+      #intro .introPic .dots div:nth-child(2) {
+        width: 15px;
+        top: 15vh;
+        right: 15vw;
+        height: 15px; }
+      #intro .introPic .dots div:nth-child(3) {
+        width: 13px;
+        top: 30vh;
+        right: 19vw;
+        height: 13px; }
+      #intro .introPic .dots div:nth-child(4) {
+        width: 15px;
+        top: 20vh;
+        left: 20vw;
+        height: 15px; }
   #aboutUs {
     display: block;
     height: auto; }
@@ -1455,7 +1659,7 @@ Keyframes for frontpage
         #lastBox #animalImage div img {
           width: 80px; }
   #frontpageForms {
-    width: 85%;
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr;
     margin: auto; }
@@ -1742,7 +1946,7 @@ Keyframes for frontpage
         #frontpageForms #imageForm form .formField label,
         #sendToUsForms #donationForm form .formField label,
         #sendToUsForms #imageForm form .formField label {
-          font-size: 14px; }
+          font-size: 13px; }
   #footer {
     padding: 30px;
     grid-template-columns: 1fr; }

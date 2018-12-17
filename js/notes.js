@@ -8,6 +8,8 @@ admin page is only hidden from browser, but still accessble in inspector, not se
 
 /******* need to add:
 
+click on animal to follow and change heart
+
 doesn't run admin functions unless logged in as admin
 
 deal with cancal membership requires recent sign in 

@@ -758,9 +758,21 @@ button:focus {
     grid-column: 1/-1;
     z-index: 2;
     display: none;
-    grid-template-columns: 1fr 1fr;
+    position: relative;
+    > * {
+      display: inline-block;
+    }
     .closeExpandBtn {
       cursor: pointer;
+      position: absolute;
+      right: 50px;
+      top: 50px;
+    }
+    .donateBtn {
+      cursor: pointer;
+      position: absolute;
+      right: 50px;
+      top: 50px;
     }
     h2 {
       text-align: left;
@@ -1540,59 +1552,129 @@ Keyframes for frontpage
   }
 }
 // here starts POST AND NOTIFY!!
-.postsContainer {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  margin-bottom: 60px;
-  .publishContainer {
-    position: relative;
+#postAndNotify {
+  height: auto;
+  h3 {
+    padding: 20px;
+  }
+  .postsContainer {
+    height: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin-bottom: 60px;
+    .publishContainer {
+      position: relative;
+      padding-bottom: 30px;
+      p {
+        padding-left: 20px;
+        padding-bottom: 20px;
+        width: 90%;
+      }
 
-    .receviedPictures {
-      // border: 1px solid black;
-      border-right: 1px solid black;
-      width: 100%;
-      height: auto;
-      display: grid;
-      grid-template-columns: 20vh 20vh 20vh;
-      grid-template-rows: 20vh 20vh 20vh;
-      grid-gap: 30px;
-      justify-content: center;
+      .receviedPictures {
+        // border: 1px solid black;
+        border-right: 1px solid black;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 20vh 20vh 20vh;
+        grid-template-rows: 20vh 20vh 20vh;
+        grid-gap: 17px;
+        justify-content: center;
 
-      .singlePic {
-        width: 150px;
-        height: 150px;
-        border: 1px solid black;
+        .singlePic {
+          width: 130px;
+          height: 130px;
+          border: 1px solid black;
+        }
+      }
+      .publishBtn {
+        margin: 25px;
+        position: absolute;
+        right: 0px;
+        bottom: -45px;
+        cursor: pointer;
+        text-align: center;
+        background: $purpleColor;
+        height: 40px;
+        padding: 10px 30px; /* temp solution, should achieve vertical align */
+        border-radius: 25px;
+        color: white;
+        border: none;
       }
     }
-    .publishBtn {
-      margin: 20px;
-      position: absolute;
-      right: 0px;
-    }
-  }
-  .dragAndDropContainer {
-    position: relative;
-    input {
-      margin: auto;
-    }
-    .writeNotification {
-      height: 200px;
-      width: 300px;
-    }
-    .dragAndDrop {
-      width: 150px;
-      height: 150px;
-      border: 1px solid black;
-      margin: auto;
-    }
-    .postBtn {
-      position: absolute;
-      right: 0px;
-      bottom: 0px;
+    .dragAndDropContainer {
+      position: relative;
+      height: 100%;
+      p:nth-child(1) {
+        padding-left: 20px;
+        padding-bottom: 20px;
+      }
+      p:nth-child(2) {
+        padding-left: 20px;
+        padding-bottom: 0px;
+        padding-top: 27px;
+      }
+      p:nth-child(3) {
+        padding-left: 20px;
+        padding-bottom: 0px;
+      }
+
+      label {
+        padding-top: 10px;
+      }
+      .writeNotification {
+        height: 150px;
+        width: 270px;
+        display: block;
+        margin: auto;
+      }
+      #nofiticationAdmin {
+        p {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+      }
+      div {
+        text-align: center;
+        width: 270px;
+        height: 40px;
+        padding: 10px 30px;
+        border: 2px solid $purpleColor;
+        border-radius: 25px;
+        color: white;
+        margin: auto;
+        margin-top: 30px;
+        padding-bottom: 30px;
+        #uploadFileAdmin {
+          pointer-events: none;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+        }
+        label {
+          cursor: pointer;
+          color: $purpleColor;
+        }
+      }
+      .postBtn {
+        margin: 25px;
+        margin-bottom: 0;
+        position: absolute;
+        right: 0px;
+        bottom: -22px;
+        cursor: pointer;
+        text-align: center;
+        background: $purpleColor;
+        height: 40px;
+        padding: 10px 30px; /* temp solution, should achieve vertical align */
+        border-radius: 25px;
+        color: white;
+        border: none;
+      }
     }
   }
 }
-
 // status section
 #status {
   width: 80%;
@@ -1638,124 +1720,226 @@ Keyframes for frontpage
     margin-top: 20px;
     margin-bottom: 20px;
   }
+  .singleMember {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    .aboutMember {
+      // border-bottom: 1px solid black;
+      height: 35px;
+    }
+    #moneyDonation,
+    #timeDonation,
+    #stuffDonated {
+      background-color: $purpleColor;
+      color: white;
+      height: 34px;
+    }
+  }
 }
-// @media (max-width: $breakpoint-medium2) {
-//   #aboutUs {
-//     display: block;
-//     height: auto;
+@media only screen and (min-width: $breakpoint-medium1) and (max-width: $breakpoint-medium2) {
+  #intro {
+    height: 95vh;
 
-//     h1 {
-//       font-size: 26px;
-//       padding: 10px;
-//     }
-//     h2 {
-//       font-size: 22px;
-//       margin: 5px 0;
-//       padding-top: 22px;
-//     }
-//     .aboutCont {
-//       padding: 5vw;
-//       padding-top: 0;
-//       #walkDog,
-//       #errandCar,
-//       #coinCat {
-//         width: 180px;
-//         height: 180px;
+    .introPic {
+      .dots {
+        position: relative;
 
-//         svg {
-//           width: 180px;
-//         }
-//       }
-//     }
-//     p {
-//       font-size: 15px;
-//     }
-//   }
-//   #lastBox {
-//     display: grid;
-//     margin: auto;
+        div:nth-child(1) {
+          width: 40px;
+          top: 19vh;
+          right: 10vw;
+          height: 40px;
+        }
+        div:nth-child(2) {
+          width: 20px;
+          top: 30vh;
+          right: 8vw;
+          height: 20px;
+        }
+        div:nth-child(3) {
+          width: 15px;
+          top: 60vh;
+          right: 12vw;
+          height: 15px;
+        }
+        div:nth-child(4) {
+          width: 20px;
+          top: 20vh;
+          left: 5vw;
+          height: 20px;
+        }
+        // div:nth-child(1) {
+        //   width: 30px;
+        //   top: 18vh;
+        //   right: 20vw;
+        //   height: 30px;
+        // }
+        // div:nth-child(2) {
+        //   width: 15px;
+        //   top: 15vh;
+        //   right: 15vw;
+        //   height: 15px;
+        // }
+        // div:nth-child(3) {
+        //   width: 13px;
+        //   top: 30vh;
+        //   right: 20vw;
+        //   height: 13px;
+        // }
+        // div:nth-child(4) {
+        //   width: 15px;
+        //   top: 25vh;
+        //   left: 20vw;
+        //   height: 15px;
+        // }
+      }
+      .introCat {
+        top: 320px;
+        left: -10vw;
+        img {
+          width: 25vw;
+        }
+      }
+    }
+  }
+  #aboutUs {
+    display: block;
+    height: auto;
+    padding: 25px;
 
-//     h2 {
-//       text-align: center;
-//       align-self: end;
-//       margin: 20px 0;
-//     }
-//     #animalImage {
-//       padding: 0px 5px;
-//       padding-top: 5px;
-//       display: grid;
-//       grid-template-columns: repeat(4, 1fr);
-//       div {
-//         margin: 20px 0;
-//         justify-self: center;
+    h1 {
+      font-size: 26px;
+      padding: 10px;
+    }
+    h2 {
+      font-size: 22px;
+      margin: 5px 0;
+      padding-top: 22px;
+    }
+    .aboutCont {
+      padding: 3vw;
+      padding-top: 0;
+      #walkDog,
+      #errandCar,
+      #coinCat {
+        width: 150px;
+        height: 150px;
 
-//         img {
-//           width: 80px;
-//         }
-//       }
-//     }
-//   }
-//   #frontpageForms {
-//     width: 85%;
-//     display: grid;
-//     grid-template-columns: 1fr;
-//     margin: auto;
-//     #signupForm {
-//       grid-row-start: 1;
-//       margin: 34px;
-//       padding: 30px;
-//       margin-bottom: 0;
-//       h2 {
-//         font-size: 20px;
-//         margin-top: 0px;
-//       }
-//       form {
-//         button {
-//           margin-top: 19px;
-//           margin-bottom: 0px;
-//         }
-//       }
-//       .formField {
-//         margin-bottom: 0;
-//         padding: 0;
-//         input {
-//           font-size: 0.8em;
-//           margin: 19px 0px;
-//         }
-//         label {
-//           font-size: 15px;
-//         }
-//       }
-//     }
-//     #donationForm {
-//       margin: 34px;
-//       padding: 30px;
+        svg {
+          width: 150px;
+        }
+      }
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  #lastBox {
+    display: grid;
+    margin: auto;
 
-//       h2 {
-//         font-size: 20px;
-//         margin-top: 0px;
-//       }
-//       form {
-//         button {
-//           margin: 19px 0px;
-//         }
-//       }
-//       form {
-//         .formField {
-//           margin-bottom: 0;
-//           padding: 0;
-//           input {
-//             font-size: 0.8em;
-//             margin: 19px 0px;
-//           }
-//           label {
-//             font-size: 14px;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+    h2 {
+      text-align: center;
+      align-self: end;
+      margin: 20px 0;
+    }
+    #animalImage {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      div {
+        margin: 20px 0;
+        justify-self: center;
+
+        img {
+          width: 95px;
+        }
+      }
+    }
+  }
+  #frontpageForms {
+    width: 98%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+    #signupForm {
+      margin: 30px;
+      padding: 30px;
+      h2 {
+        font-size: 18px;
+        margin-top: 0px;
+      }
+      form {
+        button {
+          margin-top: 19px;
+          margin-bottom: 0px;
+        }
+      }
+      .formField {
+        margin-bottom: 0;
+        padding: 0;
+        input {
+          font-size: 0.8em;
+          margin: 19px 0px;
+        }
+        label {
+          font-size: 13px;
+        }
+      }
+    }
+    #donationForm {
+      margin: 20px;
+      padding: 30px;
+
+      h2 {
+        font-size: 18px;
+        margin-top: 0px;
+      }
+      form {
+        button {
+          margin: 19px 0px;
+        }
+      }
+      form {
+        .formField {
+          margin-bottom: 0;
+          padding: 0;
+          input {
+            font-size: 0.6em;
+            margin: 19px 0px;
+          }
+          label {
+            font-size: 13px;
+            padding-bottom: 3px;
+          }
+        }
+      }
+    }
+  }
+  #footer {
+    .contactBox {
+      h3 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 14.5px;
+      }
+      svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    #subscribeForm {
+      h3 {
+        font-size: 16px;
+      }
+      label {
+        font-size: 13px;
+      }
+    }
+  }
+}
 @media (max-width: 1100px) {
   #signedInContent {
     #yourPets {
@@ -1792,32 +1976,35 @@ Keyframes for frontpage
   }
 }
 
+
 @media (max-width: $breakpoint-medium1) {
   #intro {
     display: grid;
     grid-template-columns: 1fr;
     padding-top: 100px;
+    height: auto;
 
     .introText {
       width: 90vw;
+
       .catchphrase {
         text-align: center;
         h1 {
-          padding-top: 50px;
-          font-size: 10vw;
+          padding-top: 30px;
+          font-size: 8vw;
           span {
-            font-size: 15vw;
+            font-size: 12vw;
           }
         }
       }
       p {
         text-align: center;
-        padding-bottom: 35px;
+        padding-bottom: 45px;
       }
     }
     .introPic {
       grid-row-start: 1;
-      height: 200px;
+      height: 250px;
       width: 100%;
       .circle {
         position: relative;
@@ -1831,36 +2018,34 @@ Keyframes for frontpage
       }
       .introCat {
         top: 130px;
-        left: 4vw;
+        left: 10vw;
         img {
-          width: 40vw;
+          width: 30vw;
         }
       }
       .dots {
-        position: relative;
-
         div:nth-child(1) {
           width: 30px;
           top: 6vh;
-          right: 10vw;
+          right: 17vw;
           height: 30px;
         }
         div:nth-child(2) {
           width: 15px;
           top: 15vh;
-          right: 8vw;
+          right: 15vw;
           height: 15px;
         }
         div:nth-child(3) {
           width: 13px;
           top: 30vh;
-          right: 12vw;
+          right: 19vw;
           height: 13px;
         }
         div:nth-child(4) {
           width: 15px;
           top: 20vh;
-          left: 2vw;
+          left: 20vw;
           height: 15px;
         }
       }
@@ -1924,7 +2109,7 @@ Keyframes for frontpage
     }
   }
   #frontpageForms {
-    width: 85%;
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr;
     margin: auto;
@@ -2288,7 +2473,7 @@ Keyframes for frontpage
             margin: 19px 0px;
           }
           label {
-            font-size: 14px;
+            font-size: 13px;
           }
         }
       }
