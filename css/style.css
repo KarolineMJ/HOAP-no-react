@@ -977,17 +977,17 @@ Keyframes for frontpage
       margin-bottom: 50px; }
       #admin aside li a {
         color: white;
+        background-color: #2e2f4b;
         text-decoration: none;
         font-size: 24px;
-        padding: 30px 0px; }
+        width: calc(100% + 50px);
+        position: relative;
+        left: -25px;
+        display: inline-block;
+        padding: 30px 25px; }
   #admin .activeAnchor {
     color: #2e2f4b;
     background-color: white;
-    width: calc(100% + 50px);
-    position: relative;
-    left: -25px;
-    display: inline-block;
-    padding: 30px 25px;
     transition: background-color 0.7s ease; }
   #admin main {
     position: absolute;
