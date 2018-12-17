@@ -85,13 +85,13 @@ Display right content if user
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "block";
       footer.style.display = "none";
-      db.collection("toDoList")
-        .get()
-        .then(showTasks => {
-          showTasks.docs.forEach(doc => {
-            //renderTask(doc);
-          });
-        });
+      // db.collection("toDoList")
+      //   .get()
+      //   .then(showTasks => {
+      //     showTasks.docs.forEach(doc => {
+      //       //renderTask(doc);
+      //     });
+      //   });
     } else if (user) {
       adminSection.style.display = "none";
       frontpageContent.style.display = "none";
@@ -131,7 +131,9 @@ Render tasks from database into website
 
     taskDiv.setAttribute("data-id", doc.id);
     task.textContent = doc.data().task;
-
+    if (doc.data().writer === "user") {
+      task.classList.add("userMessage");
+    }
     taskDiv.appendChild(taskCheckbox);
     taskDiv.appendChild(task);
     taskList.appendChild(taskDiv);

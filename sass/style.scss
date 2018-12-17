@@ -1495,12 +1495,16 @@ Keyframes for frontpage
           margin: 0 auto;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          .toDoEntry {
-            line-height: 2rem;
-            input[type="checkbox"] {
-              margin-right: 5px;
-            }
+          span.userMessage {
+            color: red;
           }
+
+          // .toDoEntry {
+          //   line-height: 2rem;
+          //   input[type="checkbox"] {
+          //     margin-right: 5px;
+          //   }
+          // }
         }
       }
     }

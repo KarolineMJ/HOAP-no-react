@@ -1234,10 +1234,8 @@ Keyframes for frontpage
           margin: 0 auto;
           display: grid;
           grid-template-columns: 1fr 1fr; }
-          #admin main .section .subsection .toDoListWrapper .toDoEntry {
-            line-height: 2rem; }
-            #admin main .section .subsection .toDoListWrapper .toDoEntry input[type="checkbox"] {
-              margin-right: 5px; }
+          #admin main .section .subsection .toDoListWrapper span.userMessage {
+            color: red; }
   #admin .adminForm {
     overflow-y: scroll;
     position: fixed;
