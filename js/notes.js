@@ -28,6 +28,8 @@ update user preferences in the setting panel and update page based on new settin
 /*******  would be nice:
 Make all close button X the same class and style
 
+improve the highlight on the admin aside
+
 Change window session to currentUser with auth() 
 https://firebase.google.com/docs/auth/web/manage-users
 
