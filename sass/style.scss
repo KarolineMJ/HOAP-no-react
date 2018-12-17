@@ -637,7 +637,7 @@ button:focus {
 }
 #signedInContent {
   #yourPets {
-    padding: 0 10vw 0 10vw;
+    padding: 10vw 10vw 0 10vw;
     background-color: $grayColor;
     color: grey;
     position: relative;
@@ -755,7 +755,7 @@ button:focus {
   #petExpand {
     width: 100%;
     height: auto;
-    padding: 50px;
+    padding: 60px 50px;
     background-color: white;
     grid-column: 1/-1;
     z-index: 2;
