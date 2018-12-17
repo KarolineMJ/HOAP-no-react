@@ -801,6 +801,7 @@ function moveAnimals() {
 
   //console.log(boundRect);
 
+  //circular buffer
   leftKey.addEventListener("click", () => {
     const last = document.querySelector("#animalList").lastElementChild;
     const first = document.querySelector("#animalList").firstElementChild;
