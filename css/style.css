@@ -540,7 +540,7 @@ button:focus {
   display: none; }
 
 #signedInContent #yourPets {
-  padding: 10px 10vw;
+  padding: 0 10vw;
   background-color: #efefef;
   color: grey;
   display: grid;
@@ -581,7 +581,7 @@ button:focus {
       transform: rotate(135deg);
       -webkit-transform: rotate(135deg); }
     #signedInContent #yourPets #animalBox #animalViewBox {
-      height: 210px;
+      height: 225px;
       width: 870px;
       overflow: scroll;
       white-space: nowrap;
@@ -619,6 +619,17 @@ button:focus {
             border-radius: 50%; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal * {
             pointer-events: none; }
+
+#signedInContent .triangleUp {
+  display: none;
+  position: absolute;
+  left: 50px;
+  bottom: -63px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid white; }
 
 #signedInContent #petExpand {
   width: 100vw;

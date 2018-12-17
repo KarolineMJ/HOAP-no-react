@@ -637,7 +637,7 @@ button:focus {
 }
 #signedInContent {
   #yourPets {
-    padding: 10px 10vw;
+    padding: 0 10vw;
     background-color: $grayColor;
     color: grey;
     display: grid;
@@ -690,7 +690,7 @@ button:focus {
         -webkit-transform: rotate(135deg);
       }
       #animalViewBox {
-        height: 210px;
+        height: 225px;
         width: 870px;
         overflow: scroll;
         white-space: nowrap;
@@ -740,6 +740,17 @@ button:focus {
     }
   }
 
+  .triangleUp {
+    display: none;
+    position: absolute;
+    left: 50px;
+    bottom: -63px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid white;
+  }
   #petExpand {
     width: 100vw;
     height: 40vh;

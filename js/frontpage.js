@@ -368,6 +368,7 @@ function buildAnimalListOnLoggedinPage() {
       allIndividualAnimalS.forEach(a => {
         a.addEventListener("click", e => {
           const clickedAnimalID = e.target.dataset.id;
+
           db.collection("animals")
             .doc(clickedAnimalID)
             .get()
@@ -406,9 +407,11 @@ function cloneAnimalInfo(data) {
 
   petExpand.appendChild(clone);
   const closeExpandBtn = document.querySelector(".closeExpandBtn");
+  const triangleUp = document.querySelectorAll(".triangleUp");
 
   closeExpandBtn.addEventListener("click", () => {
     petExpand.style.display = "none";
+    hideArrayElements(triangleUp);
   });
 }
 
@@ -696,6 +699,8 @@ function appendEachAnimal(array, userEmail) {
     animalDiv.dataset.id = entry.id;
     let animalName = document.createElement("p");
     animalName.textContent = data.name;
+    let animalArrow = document.createElement("div");
+    animalArrow.classList.add("triangleUp");
     let animalImg = document.createElement("img");
     if (data.file !== undefined && data.file !== "") {
       let fileName = data.file;
@@ -736,12 +741,23 @@ function appendEachAnimal(array, userEmail) {
     animalDiv.appendChild(animalImg);
     animalDiv.appendChild(heart);
     animalDiv.appendChild(statusCircle);
+    animalDiv.appendChild(animalArrow);
     animalDiv.addEventListener("click", e => {
+      let arrows = e.target.parentElement.querySelectorAll(".triangleUp");
+      hideArrayElements(arrows);
+      e.target.querySelector(".triangleUp").style.display = "inherit";
+
       showAnimalModal(entry.id);
     });
     animalListOnLoggedIn.appendChild(animalDiv);
   });
   moveAnimals();
+}
+
+function hideArrayElements(array) {
+  array.forEach(removeElement => {
+    removeElement.style.display = "none";
+  });
 }
 
 function showAnimalModal(animalId) {
