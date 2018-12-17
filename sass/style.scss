@@ -1658,25 +1658,34 @@ Keyframes for frontpage
       margin-top: 20px;
       margin-bottom: 20px;
     }
-  }
-  .listOfDonations {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  .singleMember {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    .aboutMember {
-      // border-bottom: 1px solid black;
-      height: 35px;
-    }
-    #moneyDonation,
-    #timeDonation,
-    #stuffDonated {
-      background-color: $purpleColor;
-      color: white;
-      height: 34px;
+
+    .listOfDonations {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .singleMember {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 10px;
+        .aboutMember {
+          // border-bottom: 1px solid black;
+          height: 35px;
+        }
+        .emailBox {
+          width: 150px;
+          p {
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+        #moneyDonation,
+        #timeDonation,
+        #stuffDonated {
+          background-color: $purpleColor;
+          color: white;
+          height: 34px;
+        }
+      }
     }
   }
 }

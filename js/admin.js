@@ -19,7 +19,7 @@ const donorName = document.querySelector("#memberName");
 const moneyDonation = document.querySelector("#moneyDonation");
 const timeDonation = document.querySelector("#timeDonation");
 const stuffDonation = document.querySelector("#stuffDonated");
-const membersTamplate = document.querySelector("#membersTemplate");
+const membersTamplate = document.querySelector(".membersTemplate").content;
 
 // date related
 const today = new Date();
@@ -468,4 +468,31 @@ function closeModal() {
 }
 
 // GET members details from db and generate the table of members
-function dispalyMembers(name, money, time, stuff) {}
+
+db.collection("member")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      const userEmail = doc.data().email;
+      if (userEmail !== "admin@admin.com") {
+        let clone = membersTamplate.cloneNode(true);
+        let sum = 0;
+        db.collection("moneyDonation")
+          .where("userEmail", "==", userEmail)
+          .get()
+          .then(res => {
+            res.forEach(doc => {
+              console.log(userEmail + "donated" + doc.data().amount);
+              sum += Number(doc.data().amount);
+              // time += Number(doc.data().)
+            });
+            clone.querySelector("#memberName").textContent = userEmail;
+            clone.querySelector("#moneyDonation").textContent = sum;
+
+            document
+              .querySelector(".donationsTableContainer")
+              .appendChild(clone);
+          });
+      }
+    });
+  });
