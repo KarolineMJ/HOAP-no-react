@@ -70,7 +70,7 @@ Display right content if user
   if (window.sessionStorage.getItem("userEmail")) {
     const currentUserEmail = window.sessionStorage.getItem("userEmail");
     getUserSetting(currentUserEmail);
-    getUserNotifications(currentUserEmail);
+    //    getUserNotifications(currentUserEmail);
   }
   // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
@@ -237,7 +237,7 @@ function signinUser(e) {
       const currentUserEmail = window.sessionStorage.getItem("userEmail");
       resetForm(userSettingForm);
       getUserSetting(currentUserEmail);
-      getUserNotifications(currentUserEmail);
+      // getUserNotifications(currentUserEmail);
       getUserAnimals(currentUserEmail);
     })
     .catch(function(error) {
