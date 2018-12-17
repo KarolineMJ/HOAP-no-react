@@ -797,7 +797,9 @@ Intersection observer on the admin sidebar menu
 const dailyTasksSection = document.querySelector("#dailyTasks");
 const dailyTasksAnchor = document.querySelector("aside ul li:nth-child(1)");
 const postAndNotifySection = document.querySelector("#postAndNotify");
+const postandNotifyAnchor = document.querySelector("aside ul li:nth-child(2)");
 const statusSection = document.querySelector("#status");
+const statusAnchor = document.querySelector("aside ul li:nth-child(3)");
 
 //Observe daily tasks section
 let observerDailyTasks = new IntersectionObserver(entries => {
@@ -806,7 +808,7 @@ let observerDailyTasks = new IntersectionObserver(entries => {
       //console.log("daily tasks in view");
       dailyTasksAnchor.style.background = "red";
     } else {
-      console.log("daily tasks not in view");
+      dailyTasksAnchor.style.background = "none";
     }
   });
 });
