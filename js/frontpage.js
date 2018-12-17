@@ -795,20 +795,21 @@ Intersection observer on the admin sidebar menu
 
 //get sections from the DOM
 const dailyTasksSection = document.querySelector("#dailyTasks");
-const dailyTasksAnchor = document.querySelector("aside ul li:nth-child(1)");
+const dailyTasksAnchor = document.querySelector("aside ul li:nth-child(1) a");
 const postAndNotifySection = document.querySelector("#postAndNotify");
-const postandNotifyAnchor = document.querySelector("aside ul li:nth-child(2)");
+const postandNotifyAnchor = document.querySelector(
+  "aside ul li:nth-child(2) a"
+);
 const statusSection = document.querySelector("#status");
-const statusAnchor = document.querySelector("aside ul li:nth-child(3)");
+const statusAnchor = document.querySelector("aside ul li:nth-child(3) a");
 
 //Observe daily tasks section
 let observerDailyTasks = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      //console.log("daily tasks in view");
-      dailyTasksAnchor.style.background = "red";
+      dailyTasksAnchor.classList.add("activeAnchor");
     } else {
-      dailyTasksAnchor.style.background = "none";
+      dailyTasksAnchor.classList.remove("activeAnchor");
     }
   });
 });
@@ -819,9 +820,9 @@ observerDailyTasks.observe(dailyTasksSection);
 let postAndNotifyobserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      postandNotifyAnchor.style.background = "red";
+      postandNotifyAnchor.classList.add("activeAnchor");
     } else {
-      postandNotifyAnchor.style.background = "none";
+      postandNotifyAnchor.classList.remove("activeAnchor");
     }
   });
 });
@@ -832,9 +833,9 @@ postAndNotifyobserver.observe(postAndNotifySection);
 let statusObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      statusAnchor.style.background = "red";
+      statusAnchor.classList.add("activeAnchor");
     } else {
-      statusAnchor.style.background = "none";
+      statusAnchor.classList.remove("activeAnchor");
     }
   });
 });

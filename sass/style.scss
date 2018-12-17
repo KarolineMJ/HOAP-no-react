@@ -1189,6 +1189,12 @@ Keyframes for frontpage
       }
     }
   }
+
+  .activeAnchor {
+    width: 100%;
+    color: $purpleColor;
+    background-color: white;
+  }
   main {
     position: absolute;
     width: 85%;
