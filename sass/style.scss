@@ -20,6 +20,11 @@ $breakpoint-desktop: 1100px;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+body::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: $font;
 }
@@ -624,6 +629,10 @@ button:focus {
 /* -----------------------
         signed in page
 ------------------------*/
+
+#mobileMenu {
+  display: none;
+}
 #signedInContent {
   #yourPets {
     padding: 10px 10vw;
@@ -654,57 +663,50 @@ button:focus {
         margin: 20px 0;
       }
     }
-
-    #animalImage {
+    #animalList {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-
-      div {
+      grid-template-columns: repeat(5, 1fr);
+      grid-row-gap: 70px;
+      .eachAnimal {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
         position: relative;
-        margin: 20px 0;
-        justify-self: center;
-        text-align: center;
-
-        .needsCircle {
-          right: 3vw;
-          width: 2vw;
-          height: 2vw;
+        > * {
+          position: absolute;
+        }
+        > p {
+          width: 100%;
+          text-align: center;
+          bottom: -15%;
+        }
+        > img:not(.heart) {
+          width: 100%;
+          height: 100%;
+        }
+        .heart {
+          width: 15%;
+          left: 10%;
+          bottom: -15%;
+        }
+        .statusCircle {
+          width: 10px;
+          height: 10px;
+          right: 10%;
+          top: 10%;
           box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
           background-color: #a81c1c;
           border-radius: 50%;
-          position: absolute;
         }
-
-        img {
-          cursor: pointer;
-
-          width: 15vw;
-          border-radius: 50%;
-          align-self: center;
-        }
-
-        .petName {
-          display: inline-block;
-          padding: 2px;
-          grid-row: 2;
-
-          svg {
-            width: 20px;
-            vertical-align: middle;
-            padding-right: 3px;
-          }
-          h3 {
-            vertical-align: middle;
-            display: inline-block;
-            padding: 2px;
-            color: grey;
-          }
+        cursor: pointer;
+        * {
+          pointer-events: none;
         }
       }
     }
   }
 
-  .petExpand {
+  #petExpand {
     width: 100vw;
     height: 40vh;
     background-color: white;
@@ -712,7 +714,9 @@ button:focus {
     z-index: 2;
     display: none;
     grid-template-columns: 1fr 1fr;
-
+    .closeExpandBtn {
+      cursor: pointer;
+    }
     h2 {
       text-align: left;
       padding: 10px;
@@ -749,67 +753,122 @@ button:focus {
     background-color: $mainColor;
   }
 
-  .sidebar {
+  #userSettings,
+  #newsFeed {
     display: none;
     box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
     z-index: 3;
-    height: 200vh;
+    height: calc(100vh - 60px);
+    overflow: scroll;
     background-color: white;
     position: fixed;
     right: 0;
     top: 60px;
     width: 26vw;
     padding: 20px;
-    #userSettings {
-      display: none;
-      .user {
-        display: grid;
-        grid-template-columns: 6vw 1fr;
-        img {
-          place-self: center;
-          width: 4vw;
-          border-radius: 50%;
-        }
-        p {
-          align-self: center;
+    & > * {
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      padding-bottom: 10px;
+      font-weight: 100;
+      font-size: 1.3em;
+    }
+    h3,
+    h5 {
+      padding: 10px 0px;
+      font-weight: 300;
+    }
+
+    h5 {
+      font-size: 1em;
+    }
+    div {
+      padding: 5px 0px;
+
+      label {
+        font-size: 0.8em;
+        input[type="checkbox"] {
+          margin-right: 10px;
         }
       }
-      #signOut {
-        position: relative;
-        top: 160px;
-        left: 92px;
+    }
+    hr {
+      margin-bottom: 10px;
+    }
+
+    .user {
+      display: grid;
+      grid-template-columns: 1fr 6vw;
+      img {
+        place-self: center;
+        width: 4vw;
+        border-radius: 50%;
       }
-      button {
-        font-family: $font;
-        height: 40px;
-        justify-self: end;
-        padding: 7px;
-        width: 150px;
-        background-color: $darkbtn;
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 40px;
-        cursor: pointer;
-        align-self: end;
+      p {
+        align-self: center;
+      }
+    }
+    button {
+      font-family: $font;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      width: 150px;
+      background-color: $darkbtn;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 40px;
+      cursor: pointer;
+      align-self: end;
+      &:hover {
+        background-color: $btnHover;
+      }
+      &#calcelMembership {
         &:hover {
-          background-color: $btnHover;
+          background: red;
         }
       }
     }
-    #newsFeed {
-      display: none;
-    }
-  }
-  .closed {
-    grid-template-columns: 1fr;
   }
 }
 
 /*-------------------------
 Preferences
 ------------------------*/
+#preferencesModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  #skipPrefBtn {
+    cursor: pointer;
+  }
+  .modalContent {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+}
+
 .form-popup {
   display: none;
   height: 100vh;
@@ -1133,7 +1192,7 @@ Keyframes for frontpage
   main {
     position: absolute;
     width: 85%;
-    height: 100vh;
+    height: calc(100vh - 60px);
     top: 60px;
     right: 0;
     overflow-y: scroll;
@@ -1211,6 +1270,9 @@ Keyframes for frontpage
               border-right: 1px solid $purpleColor;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px;
+              *:not(.animalImage) {
+                pointer-events: none;
+              }
               &:last-of-type {
                 border-right: none;
               }
@@ -1249,10 +1311,10 @@ Keyframes for frontpage
         .animalDetailModal {
           z-index: 3;
           position: absolute;
-          bottom: -170px; // cover up the "add to do" button and most of the list to avoid confusion
+          bottom: -260px; // temp solution
           left: 0;
           width: 85vw;
-          height: 450px;
+          height: 550px;
           padding: 50px;
           background: white;
           box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
@@ -1348,6 +1410,7 @@ Keyframes for frontpage
     }
   }
   .adminForm {
+    overflow-y: scroll;
     position: fixed;
     z-index: 2;
     right: 0;
@@ -1356,7 +1419,7 @@ Keyframes for frontpage
     height: calc(100vh - 60px);
     background: white;
     border-left: 1px solid $purpleColor;
-    padding: 50px;
+    padding: 40px;
     &.hide {
       display: none;
     }
@@ -1365,6 +1428,69 @@ Keyframes for frontpage
       right: 50px;
       top: 50px;
       cursor: pointer;
+    }
+  }
+}
+
+.addAnimalForm {
+  p:nth-child(1),
+  p:nth-child(10),
+  p:nth-child(13),
+  p:nth-child(19) {
+    font-size: 1.2em;
+  }
+
+  p:nth-child(9) {
+    label {
+      padding: 0;
+    }
+  }
+
+  p {
+    padding: 10px 0px;
+    label {
+      padding-left: 5px;
+    }
+  }
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    padding: 6px;
+    border: 1px solid #999;
+    width: 100%;
+
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  .addAnimalToDB {
+    background-color: $purpleColor;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: white;
+  }
+
+  div {
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px 30px;
+    border: 2px solid $purpleColor;
+    border-radius: 25px;
+    color: white;
+    #uploadBtnAdmin {
+      pointer-events: none;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+    }
+    label {
+      cursor: pointer;
+      color: $purpleColor;
     }
   }
 }
@@ -1905,7 +2031,73 @@ Keyframes for frontpage
   }
 }
 
+/* ----------------------
+      Mobile version
+-----------------------*/
+
 @media (max-width: $breakpoint-mobile) {
+  /* ----------------------
+        Signed in page
+-----------------------*/
+
+  #newsBtn,
+  #settingBtn {
+    display: none;
+  }
+
+  #mobileMenu {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
+    position: sticky;
+    bottom: 0%;
+    width: 100%;
+    height: 60px;
+
+    svg {
+      width: 25px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    div {
+      justify-self: center;
+      align-self: center;
+    }
+  }
+  #signedInContent {
+    #yourPets {
+      #petChoices {
+        grid-template-columns: 1fr;
+
+        div {
+          justify-self: center;
+        }
+        p {
+          //grid-row: 1;
+          justify-self: center;
+          margin-top: 0;
+          margin-bottom: 10px;
+        }
+      }
+      #animalList {
+        grid-template-columns: 1fr;
+        align-self: center;
+        justify-self: center;
+
+        .eachAnimal {
+          width: 200px;
+          height: 200px;
+          margin: 20px;
+        }
+      }
+    }
+  }
+  /* ----------------------
+        Frontpage
+-----------------------*/
+
   #intro {
     display: grid;
     grid-template-columns: 1fr;
@@ -2035,11 +2227,13 @@ Keyframes for frontpage
       }
     }
   }
-  #frontpageForms {
+  #frontpageForms,
+  #sendToUsForms {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    #signupForm {
+    #signupForm,
+    #messageForm {
       grid-row-start: 1;
       margin: 34px;
       padding: 30px;
@@ -2066,7 +2260,8 @@ Keyframes for frontpage
         }
       }
     }
-    #donationForm {
+    #donationForm,
+    #imageForm {
       margin: 34px;
       padding: 30px;
 

@@ -8,6 +8,10 @@
   box-sizing: border-box;
   scroll-behavior: smooth; }
 
+body::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  display: none; }
+
 body {
   font-family: "Raleway", sans-serif; }
 
@@ -530,6 +534,9 @@ button:focus {
 /* -----------------------
         signed in page
 ------------------------*/
+#mobileMenu {
+  display: none; }
+
 #signedInContent #yourPets {
   padding: 10px 10vw;
   background-color: #efefef;
@@ -554,42 +561,41 @@ button:focus {
       align-self: end;
       justify-self: end;
       margin: 20px 0; }
-  #signedInContent #yourPets #animalImage {
+  #signedInContent #yourPets #animalList {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; }
-    #signedInContent #yourPets #animalImage div {
+    grid-template-columns: repeat(5, 1fr);
+    grid-row-gap: 70px; }
+    #signedInContent #yourPets #animalList .eachAnimal {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
       position: relative;
-      margin: 20px 0;
-      justify-self: center;
-      text-align: center; }
-      #signedInContent #yourPets #animalImage div .needsCircle {
-        right: 3vw;
-        width: 2vw;
-        height: 2vw;
+      cursor: pointer; }
+      #signedInContent #yourPets #animalList .eachAnimal > * {
+        position: absolute; }
+      #signedInContent #yourPets #animalList .eachAnimal > p {
+        width: 100%;
+        text-align: center;
+        bottom: -15%; }
+      #signedInContent #yourPets #animalList .eachAnimal > img:not(.heart) {
+        width: 100%;
+        height: 100%; }
+      #signedInContent #yourPets #animalList .eachAnimal .heart {
+        width: 15%;
+        left: 10%;
+        bottom: -15%; }
+      #signedInContent #yourPets #animalList .eachAnimal .statusCircle {
+        width: 10px;
+        height: 10px;
+        right: 10%;
+        top: 10%;
         box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
         background-color: #a81c1c;
-        border-radius: 50%;
-        position: absolute; }
-      #signedInContent #yourPets #animalImage div img {
-        cursor: pointer;
-        width: 15vw;
-        border-radius: 50%;
-        align-self: center; }
-      #signedInContent #yourPets #animalImage div .petName {
-        display: inline-block;
-        padding: 2px;
-        grid-row: 2; }
-        #signedInContent #yourPets #animalImage div .petName svg {
-          width: 20px;
-          vertical-align: middle;
-          padding-right: 3px; }
-        #signedInContent #yourPets #animalImage div .petName h3 {
-          vertical-align: middle;
-          display: inline-block;
-          padding: 2px;
-          color: grey; }
+        border-radius: 50%; }
+      #signedInContent #yourPets #animalList .eachAnimal * {
+        pointer-events: none; }
 
-#signedInContent .petExpand {
+#signedInContent #petExpand {
   width: 100vw;
   height: 40vh;
   background-color: white;
@@ -597,81 +603,137 @@ button:focus {
   z-index: 2;
   display: none;
   grid-template-columns: 1fr 1fr; }
-  #signedInContent .petExpand h2 {
+  #signedInContent #petExpand .closeExpandBtn {
+    cursor: pointer; }
+  #signedInContent #petExpand h2 {
     text-align: left;
     padding: 10px; }
-  #signedInContent .petExpand ul {
+  #signedInContent #petExpand ul {
     list-style: none;
     padding: 10px; }
-    #signedInContent .petExpand ul li {
+    #signedInContent #petExpand ul li {
       text-decoration: none;
       padding: 0;
       text-align: left; }
-  #signedInContent .petExpand p {
+  #signedInContent #petExpand p {
     text-align: left;
     padding: 10px;
     padding-right: 70px; }
-  #signedInContent .petExpand .expandImg {
+  #signedInContent #petExpand .expandImg {
     width: 20vw;
     align-self: center; }
-    #signedInContent .petExpand .expandImg img {
+    #signedInContent #petExpand .expandImg img {
       border-radius: 50%;
       width: 20vw; }
 
 #signedInContent #sendToUsForms {
   background-color: #ead8a6; }
 
-#signedInContent .sidebar {
+#signedInContent #userSettings,
+#signedInContent #newsFeed {
   display: none;
   box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
   z-index: 3;
-  height: 200vh;
+  height: calc(100vh - 60px);
+  overflow: scroll;
   background-color: white;
   position: fixed;
   right: 0;
   top: 60px;
   width: 26vw;
   padding: 20px; }
-  #signedInContent .sidebar #userSettings {
-    display: none; }
-    #signedInContent .sidebar #userSettings .user {
-      display: grid;
-      grid-template-columns: 6vw 1fr; }
-      #signedInContent .sidebar #userSettings .user img {
-        place-self: center;
-        width: 4vw;
-        border-radius: 50%; }
-      #signedInContent .sidebar #userSettings .user p {
-        align-self: center; }
-    #signedInContent .sidebar #userSettings #signOut {
-      position: relative;
-      top: 160px;
-      left: 92px; }
-    #signedInContent .sidebar #userSettings button {
-      font-family: "Raleway", sans-serif;
-      height: 40px;
-      justify-self: end;
-      padding: 7px;
-      width: 150px;
-      background-color: #74b7a5;
-      border: none;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 40px;
-      cursor: pointer;
-      align-self: end; }
-      #signedInContent .sidebar #userSettings button:hover {
-        background-color: #599686; }
-  #signedInContent .sidebar #newsFeed {
-    display: none; }
-
-#signedInContent .closed {
-  grid-template-columns: 1fr; }
+  #signedInContent #userSettings > *,
+  #signedInContent #newsFeed > * {
+    margin-bottom: 1rem; }
+  #signedInContent #userSettings h2,
+  #signedInContent #newsFeed h2 {
+    padding-bottom: 10px;
+    font-weight: 100;
+    font-size: 1.3em; }
+  #signedInContent #userSettings h3,
+  #signedInContent #userSettings h5,
+  #signedInContent #newsFeed h3,
+  #signedInContent #newsFeed h5 {
+    padding: 10px 0px;
+    font-weight: 300; }
+  #signedInContent #userSettings h5,
+  #signedInContent #newsFeed h5 {
+    font-size: 1em; }
+  #signedInContent #userSettings div,
+  #signedInContent #newsFeed div {
+    padding: 5px 0px; }
+    #signedInContent #userSettings div label,
+    #signedInContent #newsFeed div label {
+      font-size: 0.8em; }
+      #signedInContent #userSettings div label input[type="checkbox"],
+      #signedInContent #newsFeed div label input[type="checkbox"] {
+        margin-right: 10px; }
+  #signedInContent #userSettings hr,
+  #signedInContent #newsFeed hr {
+    margin-bottom: 10px; }
+  #signedInContent #userSettings .user,
+  #signedInContent #newsFeed .user {
+    display: grid;
+    grid-template-columns: 1fr 6vw; }
+    #signedInContent #userSettings .user img,
+    #signedInContent #newsFeed .user img {
+      place-self: center;
+      width: 4vw;
+      border-radius: 50%; }
+    #signedInContent #userSettings .user p,
+    #signedInContent #newsFeed .user p {
+      align-self: center; }
+  #signedInContent #userSettings button,
+  #signedInContent #newsFeed button {
+    font-family: "Raleway", sans-serif;
+    height: 40px;
+    justify-self: end;
+    padding: 7px;
+    width: 150px;
+    background-color: #74b7a5;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 40px;
+    cursor: pointer;
+    align-self: end; }
+    #signedInContent #userSettings button:hover,
+    #signedInContent #newsFeed button:hover {
+      background-color: #599686; }
+    #signedInContent #userSettings button#calcelMembership:hover,
+    #signedInContent #newsFeed button#calcelMembership:hover {
+      background: red; }
 
 /*-------------------------
 Preferences
 ------------------------*/
+#preferencesModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4); }
+  #preferencesModal #skipPrefBtn {
+    cursor: pointer; }
+  #preferencesModal .modalContent {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; }
+  #preferencesModal .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold; }
+
 .form-popup {
   display: none;
   height: 100vh;
@@ -920,7 +982,7 @@ Keyframes for frontpage
   #admin main {
     position: absolute;
     width: 85%;
-    height: 100vh;
+    height: calc(100vh - 60px);
     top: 60px;
     right: 0;
     overflow-y: scroll; }
@@ -991,6 +1053,8 @@ Keyframes for frontpage
               border-right: 1px solid #2e2f4b;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px; }
+              #admin main .section .subsection .tableWrapper .columns .column *:not(.animalImage) {
+                pointer-events: none; }
               #admin main .section .subsection .tableWrapper .columns .column:last-of-type {
                 border-right: none; }
               #admin main .section .subsection .tableWrapper .columns .column .animalImage {
@@ -1021,10 +1085,10 @@ Keyframes for frontpage
         #admin main .section .subsection .animalDetailModal {
           z-index: 3;
           position: absolute;
-          bottom: -170px;
+          bottom: -260px;
           left: 0;
           width: 85vw;
-          height: 450px;
+          height: 550px;
           padding: 50px;
           background: white;
           box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
@@ -1100,6 +1164,7 @@ Keyframes for frontpage
             #admin main .section .subsection .toDoListWrapper .toDoEntry input[type="checkbox"] {
               margin-right: 5px; }
   #admin .adminForm {
+    overflow-y: scroll;
     position: fixed;
     z-index: 2;
     right: 0;
@@ -1108,7 +1173,7 @@ Keyframes for frontpage
     height: calc(100vh - 60px);
     background: white;
     border-left: 1px solid #2e2f4b;
-    padding: 50px; }
+    padding: 40px; }
     #admin .adminForm.hide {
       display: none; }
     #admin .adminForm .close {
@@ -1116,6 +1181,56 @@ Keyframes for frontpage
       right: 50px;
       top: 50px;
       cursor: pointer; }
+
+.addAnimalForm p:nth-child(1),
+.addAnimalForm p:nth-child(10),
+.addAnimalForm p:nth-child(13),
+.addAnimalForm p:nth-child(19) {
+  font-size: 1.2em; }
+
+.addAnimalForm p:nth-child(9) label {
+  padding: 0; }
+
+.addAnimalForm p {
+  padding: 10px 0px; }
+  .addAnimalForm p label {
+    padding-left: 5px; }
+
+.addAnimalForm input[type="text"],
+.addAnimalForm input[type="number"],
+.addAnimalForm textarea {
+  padding: 6px;
+  border: 1px solid #999;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none; }
+
+.addAnimalForm .addAnimalToDB {
+  background-color: #2e2f4b;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  padding: 10px 30px;
+  border-radius: 25px;
+  color: white; }
+
+.addAnimalForm div {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  padding: 10px 30px;
+  border: 2px solid #2e2f4b;
+  border-radius: 25px;
+  color: white; }
+  .addAnimalForm div #uploadBtnAdmin {
+    pointer-events: none;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute; }
+  .addAnimalForm div label {
+    cursor: pointer;
+    color: #2e2f4b; }
 
 .postsContainer {
   display: grid;
@@ -1481,7 +1596,51 @@ Keyframes for frontpage
         width: 50px;
         height: 50px; } }
 
+/* ----------------------
+      Mobile version
+-----------------------*/
 @media (max-width: 450px) {
+  /* ----------------------
+        Signed in page
+-----------------------*/
+  #newsBtn,
+  #settingBtn {
+    display: none; }
+  #mobileMenu {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
+    position: sticky;
+    bottom: 0%;
+    width: 100%;
+    height: 60px; }
+    #mobileMenu svg {
+      width: 25px;
+      margin-right: 8px;
+      vertical-align: middle; }
+    #mobileMenu div {
+      justify-self: center;
+      align-self: center; }
+  #signedInContent #yourPets #petChoices {
+    grid-template-columns: 1fr; }
+    #signedInContent #yourPets #petChoices div {
+      justify-self: center; }
+    #signedInContent #yourPets #petChoices p {
+      justify-self: center;
+      margin-top: 0;
+      margin-bottom: 10px; }
+  #signedInContent #yourPets #animalList {
+    grid-template-columns: 1fr;
+    align-self: center;
+    justify-self: center; }
+    #signedInContent #yourPets #animalList .eachAnimal {
+      width: 200px;
+      height: 200px;
+      margin: 20px; }
+  /* ----------------------
+        Frontpage
+-----------------------*/
   #intro {
     display: grid;
     grid-template-columns: 1fr;
@@ -1579,45 +1738,82 @@ Keyframes for frontpage
         #lastBox #animalImage div img {
           width: 70px;
           border-radius: 50%; }
-  #frontpageForms {
+  #frontpageForms,
+  #sendToUsForms {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr; }
-    #frontpageForms #signupForm {
+    #frontpageForms #signupForm,
+    #frontpageForms #messageForm,
+    #sendToUsForms #signupForm,
+    #sendToUsForms #messageForm {
       grid-row-start: 1;
       margin: 34px;
       padding: 30px;
       margin-bottom: 0; }
-      #frontpageForms #signupForm h2 {
+      #frontpageForms #signupForm h2,
+      #frontpageForms #messageForm h2,
+      #sendToUsForms #signupForm h2,
+      #sendToUsForms #messageForm h2 {
         font-size: 20px;
         margin-top: 0px; }
-      #frontpageForms #signupForm form button {
+      #frontpageForms #signupForm form button,
+      #frontpageForms #messageForm form button,
+      #sendToUsForms #signupForm form button,
+      #sendToUsForms #messageForm form button {
         margin-top: 19px;
         margin-bottom: 0px; }
-      #frontpageForms #signupForm .formField {
+      #frontpageForms #signupForm .formField,
+      #frontpageForms #messageForm .formField,
+      #sendToUsForms #signupForm .formField,
+      #sendToUsForms #messageForm .formField {
         margin-bottom: 0;
         padding: 0; }
-        #frontpageForms #signupForm .formField input {
+        #frontpageForms #signupForm .formField input,
+        #frontpageForms #messageForm .formField input,
+        #sendToUsForms #signupForm .formField input,
+        #sendToUsForms #messageForm .formField input {
           font-size: 0.7em;
           margin: 19px 0px; }
-        #frontpageForms #signupForm .formField label {
+        #frontpageForms #signupForm .formField label,
+        #frontpageForms #messageForm .formField label,
+        #sendToUsForms #signupForm .formField label,
+        #sendToUsForms #messageForm .formField label {
           font-size: 15px; }
-    #frontpageForms #donationForm {
+    #frontpageForms #donationForm,
+    #frontpageForms #imageForm,
+    #sendToUsForms #donationForm,
+    #sendToUsForms #imageForm {
       margin: 34px;
       padding: 30px; }
-      #frontpageForms #donationForm h2 {
+      #frontpageForms #donationForm h2,
+      #frontpageForms #imageForm h2,
+      #sendToUsForms #donationForm h2,
+      #sendToUsForms #imageForm h2 {
         font-size: 20px;
         margin-top: 0px; }
-      #frontpageForms #donationForm form button {
+      #frontpageForms #donationForm form button,
+      #frontpageForms #imageForm form button,
+      #sendToUsForms #donationForm form button,
+      #sendToUsForms #imageForm form button {
         margin: 19px 0px; }
-      #frontpageForms #donationForm form .formField {
+      #frontpageForms #donationForm form .formField,
+      #frontpageForms #imageForm form .formField,
+      #sendToUsForms #donationForm form .formField,
+      #sendToUsForms #imageForm form .formField {
         margin-bottom: 0;
         padding: 0; }
-        #frontpageForms #donationForm form .formField input {
+        #frontpageForms #donationForm form .formField input,
+        #frontpageForms #imageForm form .formField input,
+        #sendToUsForms #donationForm form .formField input,
+        #sendToUsForms #imageForm form .formField input {
           font-size: 0.8em;
           margin: 19px 0px; }
-        #frontpageForms #donationForm form .formField label {
-          font-size: 13px; }
+        #frontpageForms #donationForm form .formField label,
+        #frontpageForms #imageForm form .formField label,
+        #sendToUsForms #donationForm form .formField label,
+        #sendToUsForms #imageForm form .formField label {
+          font-size: 14px; }
   #footer {
     padding: 30px;
     grid-template-columns: 1fr; }
