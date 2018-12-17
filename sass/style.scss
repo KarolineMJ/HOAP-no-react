@@ -9,6 +9,7 @@ $darkbtn: #74b7a5;
 $mainColor: #ead8a6;
 $grayColor: #efefef;
 $purpleColor: #2e2f4b;
+$redColor: #a81c1c;
 $breakpoint-mobile: 450px;
 $breakpoint-medium1: 650px;
 $breakpoint-medium2: 900px;
@@ -911,9 +912,9 @@ button:focus {
       &:hover {
         background-color: $btnHover;
       }
-      &#calcelMembership {
+      &#cancelMembership {
         &:hover {
-          background: red;
+          background: $redColor;
         }
       }
     }
