@@ -21,7 +21,9 @@ $breakpoint-desktop: 1100px;
   scroll-behavior: smooth;
 }
 body::-webkit-scrollbar,
-main::-webkit-scrollbar {
+main::-webkit-scrollbar,
+#animalList::-webkit-scrollbar,
+#animalViewBox::-webkit-scrollbar {
   display: none;
 }
 
@@ -663,44 +665,76 @@ button:focus {
         margin: 20px 0;
       }
     }
-    #animalList {
+
+    #animalBox {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-row-gap: 70px;
-      .eachAnimal {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        position: relative;
-        > * {
-          position: absolute;
-        }
-        > p {
-          width: 100%;
-          text-align: center;
-          bottom: -15%;
-        }
-        > img:not(.heart) {
-          width: 100%;
-          height: 100%;
-        }
-        .heart {
-          width: 15%;
-          left: 10%;
-          bottom: -15%;
-        }
-        .statusCircle {
-          width: 10px;
-          height: 10px;
-          right: 10%;
-          top: 10%;
-          box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
-          background-color: #a81c1c;
-          border-radius: 50%;
-        }
+      grid-template-columns: 15px 1fr 15px;
+      .animalArrows {
+        align-self: center;
+      }
+      i {
+        border: solid #948a92;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
         cursor: pointer;
-        * {
-          pointer-events: none;
+      }
+
+      .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+      }
+
+      .left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+      }
+      #animalViewBox {
+        height: 210px;
+        width: 870px;
+        overflow: scroll;
+        white-space: nowrap;
+        justify-self: center;
+        #animalList {
+          position: relative;
+          .eachAnimal {
+            margin: 12px;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: relative;
+            > * {
+              position: absolute;
+            }
+            > p {
+              width: 100%;
+              text-align: center;
+              bottom: -15%;
+            }
+            > img:not(.heart) {
+              width: 100%;
+              height: 100%;
+            }
+            .heart {
+              width: 15%;
+              left: 10%;
+              bottom: -15%;
+            }
+            .statusCircle {
+              width: 10px;
+              height: 10px;
+              right: 10%;
+              top: 10%;
+              box-shadow: 3px 1px 17px 3px rgba(255, 255, 255, 0.83);
+              background-color: #a81c1c;
+              border-radius: 50%;
+            }
+            cursor: pointer;
+            * {
+              pointer-events: none;
+            }
+          }
         }
       }
     }
@@ -1711,6 +1745,42 @@ Keyframes for frontpage
 //     }
 //   }
 // }
+@media (max-width: 1100px) {
+  #signedInContent {
+    #yourPets {
+      #animalBox {
+        #animalViewBox {
+          width: 696px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  #signedInContent {
+    #yourPets {
+      #animalBox {
+        #animalViewBox {
+          width: 522px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  #signedInContent {
+    #yourPets {
+      #animalBox {
+        #animalViewBox {
+          width: 348px;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: $breakpoint-medium1) {
   #intro {
     display: grid;
@@ -1953,6 +2023,16 @@ Keyframes for frontpage
   /* ----------------------
         Signed in page
 -----------------------*/
+
+  #signedInContent {
+    #yourPets {
+      #animalBox {
+        #animalViewBox {
+          width: 174px;
+        }
+      }
+    }
+  }
 
   #newsBtn,
   #settingBtn {

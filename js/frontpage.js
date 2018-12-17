@@ -741,6 +741,7 @@ function appendEachAnimal(array, userEmail) {
     });
     animalListOnLoggedIn.appendChild(animalDiv);
   });
+  moveAnimals();
 }
 
 function showAnimalModal(animalId) {
@@ -786,5 +787,43 @@ function syncNrWithRange(form, element) {
   element.textContent = preferenceForm.monthlyDonation.value;
   form.querySelector('input[type="range"').addEventListener("change", e => {
     element.textContent = e.target.value;
+  });
+}
+let changeTimes = 0;
+
+function moveAnimals() {
+  const leftKey = document.querySelector("#animalArrowLeft");
+  const rightKey = document.querySelector("#animalArrowRight");
+
+  const moveAnimalList = document.querySelector("#animalList");
+
+  //const boundRect = moveAnimalList.getBoundingClientRect().width;
+
+  //console.log(boundRect);
+
+  leftKey.addEventListener("click", () => {
+    const last = document.querySelector("#animalList").lastElementChild;
+    const first = document.querySelector("#animalList").firstElementChild;
+
+    last.remove();
+
+    document.querySelector("#animalList").insertBefore(last, first);
+
+    //  changeTimes += 1;
+    //  moveAnimalList.style.left = 174 * changeTimes + "px";
+  });
+
+  rightKey.addEventListener("click", () => {
+    // find first element in animalList
+    const first = document.querySelector("#animalList").firstElementChild;
+
+    //removeit
+    first.remove();
+
+    //insert as lastelement
+    document.querySelector("#animalList").appendChild(first);
+
+    //changeTimes -= 1;
+    //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 }
