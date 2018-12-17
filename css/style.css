@@ -265,17 +265,19 @@ button:focus {
       #signupForm form button:hover {
         background-color: #916a56; }
     #donationForm form input,
-    #donationForm form button,
-    #signupForm form input,
-    #signupForm form button {
+    #signupForm form input {
       margin: 20px 0; }
+    #donationForm form button,
+    #signupForm form button {
+      margin-top: 40px;
+      margin-bottom: 0px; }
 
 #subscribeForm form {
   display: grid; }
   #subscribeForm form .formField {
     display: flex;
     flex-flow: column-reverse;
-    margin-bottom: 1em; }
+    margin-bottom: 1.5em; }
     #subscribeForm form .formField input {
       color: #ffffff;
       background-color: rgba(0, 0, 0, 0);
@@ -532,6 +534,31 @@ button:focus {
   #sendToUsForms #imageForm {
     margin: 10vw;
     padding: 40px; }
+
+#frontpageForms #donationForm label {
+  color: #b28973; }
+
+#frontpageForms #donationForm h2 {
+  margin-bottom: 0px; }
+
+#frontpageForms #donationForm p {
+  text-align: center;
+  margin-bottom: 6px; }
+
+#frontpageForms #donationForm div.formField {
+  margin-bottom: 0px; }
+  #frontpageForms #donationForm div.formField input,
+  #frontpageForms #donationForm div.formField #donateWhat {
+    margin-bottom: 0px;
+    margin-top: 15px; }
+  #frontpageForms #donationForm div.formField .whoswName {
+    font-size: 14px; }
+  #frontpageForms #donationForm div.formField form button {
+    margin-top: 50px;
+    margin-bottom: 0px; }
+
+#frontpageForms #signupForm label.formLabel {
+  color: #b28973; }
 
 /* -----------------------
         signed in page

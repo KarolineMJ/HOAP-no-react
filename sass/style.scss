@@ -285,9 +285,12 @@ button:focus {
         background-color: #916a56;
       }
     }
-    input,
-    button {
+    input {
       margin: 20px 0;
+    }
+    button {
+      margin-top: 40px;
+      margin-bottom: 0px;
     }
   }
 }
@@ -298,7 +301,7 @@ button:focus {
     .formField {
       display: flex;
       flex-flow: column-reverse;
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
       input {
         color: #ffffff;
         background-color: rgba(0, 0, 0, 0);
@@ -627,7 +630,42 @@ button:focus {
     padding: 40px;
   }
 }
-
+#frontpageForms {
+  #donationForm {
+    label {
+      color: #b28973;
+    }
+    h2 {
+      margin-bottom: 0px;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    div.formField {
+      margin-bottom: 0px;
+      input,
+      #donateWhat {
+        margin-bottom: 0px;
+        margin-top: 15px;
+      }
+      .whoswName {
+        font-size: 14px;
+      }
+      form {
+        button {
+          margin-top: 50px;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+  #signupForm {
+    label.formLabel {
+      color: #b28973;
+    }
+  }
+}
 /* -----------------------
         signed in page
 ------------------------*/
