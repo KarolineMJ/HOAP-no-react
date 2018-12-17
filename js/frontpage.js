@@ -9,6 +9,7 @@ const petExpand = document.querySelector("#petExpand");
 const adminSection = document.querySelector("#admin");
 const userSettingPanel = document.querySelector("#userSettings");
 const userSettingForm = userSettingPanel.querySelector("form");
+const messageForm = document.querySelector("#messageForm form");
 const newsFeedPanel = document.querySelector("#newsFeed");
 const prefModal = document.querySelector("#preferencesModal");
 const preferenceForm = document.querySelector("#preferencesModal form");
@@ -84,13 +85,13 @@ Display right content if user
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "block";
       footer.style.display = "none";
-      db.collection("toDoList")
-        .get()
-        .then(showTasks => {
-          showTasks.docs.forEach(doc => {
-            //renderTask(doc);
-          });
-        });
+      // db.collection("toDoList")
+      //   .get()
+      //   .then(showTasks => {
+      //     showTasks.docs.forEach(doc => {
+      //       //renderTask(doc);
+      //     });
+      //   });
     } else if (user) {
       adminSection.style.display = "none";
       frontpageContent.style.display = "none";
@@ -130,7 +131,9 @@ Render tasks from database into website
 
     taskDiv.setAttribute("data-id", doc.id);
     task.textContent = doc.data().task;
-
+    if (doc.data().writer === "user") {
+      task.classList.add("userMessage");
+    }
     taskDiv.appendChild(taskCheckbox);
     taskDiv.appendChild(task);
     taskList.appendChild(taskDiv);
@@ -474,7 +477,7 @@ function donate(e) {
  * user interaction
  *************************************/
 cancelMembershipBtn.addEventListener("click", cancelMembership);
-
+messageForm.addEventListener("submit", sendMessage);
 /*--------------------------------------
 Open preference modal
 -------------------------------------*/
@@ -570,6 +573,19 @@ function cancelMembership() {
     });
 }
 
+function sendMessage(e) {
+  e.preventDefault();
+  const message = messageForm.message.value;
+  if (message) {
+    db.collection("toDoList")
+      .add({
+        task: message,
+        type: "user",
+        writer: "user"
+      })
+      .then(console.log("message sent"));
+  }
+}
 /**************************************
  * functions that GET data from database and display them
  *************************************/
