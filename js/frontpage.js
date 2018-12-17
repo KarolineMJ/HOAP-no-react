@@ -130,10 +130,11 @@ Render tasks from database into website
     taskCheckbox.type = "checkbox";
 
     taskDiv.setAttribute("data-id", doc.id);
-    task.textContent = doc.data().task;
-    if (doc.data().writer === "user") {
+    if (doc.data().writer !== "admin") {
+      task.textContent = "From " + doc.data().writer + ": ";
       task.classList.add("userMessage");
     }
+    task.textContent += doc.data().task;
     taskDiv.appendChild(taskCheckbox);
     taskDiv.appendChild(task);
     taskList.appendChild(taskDiv);
@@ -575,13 +576,14 @@ function cancelMembership() {
 
 function sendMessage(e) {
   e.preventDefault();
+  const user = window.sessionStorage.getItem("userEmail");
   const message = messageForm.message.value;
   if (message) {
     db.collection("toDoList")
       .add({
         task: message,
         type: "user",
-        writer: "user"
+        writer: user
       })
       .then(console.log("message sent"));
   }
