@@ -616,7 +616,16 @@ function onetimeDonation(e) {
       stuff: stuff
     });
   }
-  alert(pickup);
+  if (onetimeMoney !== "" && inWhoseName !== "") {
+    db.collection("moneyDonation").add({
+      amount: onetimeMoney,
+      inTheNameOf: inWhoseName
+    });
+  } else if (onetimeDonation !== "") {
+    db.collection("moneyDonation").add({
+      amount: onetimeMoney
+    });
+  }
 }
 
 function subscribe(e) {
