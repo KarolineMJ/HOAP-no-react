@@ -454,17 +454,45 @@ function cloneAnimalInfo(data, animalID) {
     hideArrayElements(triangleUp);
   });
 }
+
 function donate(e) {
   e.preventDefault();
   const donationSubmitForm = document.querySelector("#donationFormLogginIn");
   const animalID = donationSubmitForm.dataset.id;
   const moneyAmount = donationSubmitForm.moneyAmount.value;
   const date = donationSubmitForm.date.value;
-  // const year = date.split("-")[0];
-  // const month = date.split("-")[1];
-  // const day = date.split("-")[2];
-  // console.log(year, month, day);
   const userEmail = window.sessionStorage.getItem("userEmail");
+
+  if (date) {
+    const year = date.split("-")[0];
+    const month = date.split("-")[1];
+    const day = date.split("-")[2];
+    console.log(year, month, day);
+    const morning = donationSubmitForm.morning.checked;
+    const afternoon = donationSubmitForm.afternoon.checked;
+    const evening = donationSubmitForm.evening.checked;
+    const training = donationSubmitForm.traning.checked;
+    if (
+      morning === true ||
+      afternoon === true ||
+      evening === true ||
+      training === true
+    ) {
+      db.collection("dailyTasks")
+        .add({
+          animalID: animalID,
+          morning: morning,
+          afternoon: afternoon,
+          evening: evening,
+          training: training,
+          year: year,
+          month: month,
+          day: day,
+          user: userEmail
+        })
+        .then(console.log("Thank you~"));
+    }
+  }
   if (moneyAmount) {
     // check if the user has given donation before, if no, add user and donation data, if yes add the amount to the previous sum amount
     db.collection("moneyDonation")
