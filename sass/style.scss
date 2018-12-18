@@ -1283,24 +1283,37 @@ Keyframes for border radius header image
       }
       .subsection {
         height: auto;
-        padding: 80px 50px;
+        padding: 80px 10vw;
         position: relative;
         &.otherToDo {
-          padding: 50px;
+          padding: 50px 10vw;
           width: 95%;
         }
         h2 {
           margin-bottom: 20px;
         }
+        .extraNotice {
+          margin: 15px 0;
+          font-weight: bold;
+        }
+        .date {
+          font-size: 24px;
+          padding-bottom: 10px;
+          margin-bottom: 0;
+        }
         .subsectionHeader {
           width: 95%;
-          height: 50px;
+          margin-bottom: 20px;
           display: grid;
           grid-template-columns: 190px auto 150px;
+          p {
+            margin: 0;
+            align-self: center;
+          }
           span {
             display: inline-block;
             padding-top: 10px;
-
+            align-self: center;
             input {
               width: 95%; /* temp solution */
               font-size: 16px;
@@ -1308,9 +1321,7 @@ Keyframes for border radius header image
               border-bottom: 1px solid $purpleColor;
             }
           }
-          .date {
-            font-size: 24px;
-          }
+
           .adminBtn {
             cursor: pointer;
             text-align: center;
@@ -1383,7 +1394,7 @@ Keyframes for border radius header image
               }
             }
             .row:not(.head):not(:last-of-type) {
-              border-bottom: 1px solid $purpleColor;
+              border-bottom: 1px solid #efefef;
             }
             b {
               color: $purpleColor;
@@ -1401,7 +1412,7 @@ Keyframes for border radius header image
             white-space: nowrap;
 
             .column {
-              border-right: 1px solid $purpleColor;
+              border-right: 1px solid #cacaca;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px;
               *:not(.animalImage) {
@@ -1436,13 +1447,16 @@ Keyframes for border radius header image
                   left: -20px;
                   top: -20px;
                 }
+                .noTask {
+                  background-image: url(../img/icons/notaskbg.png);
+                }
                 .memberName {
                   font-size: 13px;
                   margin-left: 5px; /* temp setting */
                 }
               }
               .row:not(:last-of-type):not(.head) {
-                border-bottom: 1px solid $purpleColor;
+                border-bottom: 1px solid #cacaca;
               }
             }
           }

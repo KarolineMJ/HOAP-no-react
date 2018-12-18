@@ -1036,29 +1036,38 @@ Keyframes for border radius header image
           margin-bottom: 2em; }
       #admin main .section .subsection {
         height: auto;
-        padding: 80px 50px;
+        padding: 80px 10vw;
         position: relative; }
         #admin main .section .subsection.otherToDo {
-          padding: 50px;
+          padding: 50px 10vw;
           width: 95%; }
         #admin main .section .subsection h2 {
           margin-bottom: 20px; }
+        #admin main .section .subsection .extraNotice {
+          margin: 15px 0;
+          font-weight: bold; }
+        #admin main .section .subsection .date {
+          font-size: 24px;
+          padding-bottom: 10px;
+          margin-bottom: 0; }
         #admin main .section .subsection .subsectionHeader {
           width: 95%;
-          height: 50px;
+          margin-bottom: 20px;
           display: grid;
           grid-template-columns: 190px auto 150px; }
+          #admin main .section .subsection .subsectionHeader p {
+            margin: 0;
+            align-self: center; }
           #admin main .section .subsection .subsectionHeader span {
             display: inline-block;
-            padding-top: 10px; }
+            padding-top: 10px;
+            align-self: center; }
             #admin main .section .subsection .subsectionHeader span input {
               width: 95%;
               /* temp solution */
               font-size: 16px;
               border: none;
               border-bottom: 1px solid #2e2f4b; }
-          #admin main .section .subsection .subsectionHeader .date {
-            font-size: 24px; }
           #admin main .section .subsection .subsectionHeader .adminBtn {
             cursor: pointer;
             text-align: center;
@@ -1121,7 +1130,7 @@ Keyframes for border radius header image
                 width: 30px;
                 vertical-align: middle; }
             #admin main .section .subsection .tableWrapper .firstColumn .row:not(.head):not(:last-of-type) {
-              border-bottom: 1px solid #2e2f4b; }
+              border-bottom: 1px solid #efefef; }
             #admin main .section .subsection .tableWrapper .firstColumn b {
               color: #2e2f4b;
               place-self: center; }
@@ -1135,7 +1144,7 @@ Keyframes for border radius header image
             grid-template-columns: repeat(11, auto);
             white-space: nowrap; }
             #admin main .section .subsection .tableWrapper .columns .column {
-              border-right: 1px solid #2e2f4b;
+              border-right: 1px solid #cacaca;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px; }
               #admin main .section .subsection .tableWrapper .columns .column *:not(.animalImage) {
@@ -1164,12 +1173,14 @@ Keyframes for border radius header image
                   position: relative;
                   left: -20px;
                   top: -20px; }
+                #admin main .section .subsection .tableWrapper .columns .column .row .noTask {
+                  background-image: url(../img/icons/notaskbg.png); }
                 #admin main .section .subsection .tableWrapper .columns .column .row .memberName {
                   font-size: 13px;
                   margin-left: 5px;
                   /* temp setting */ }
               #admin main .section .subsection .tableWrapper .columns .column .row:not(:last-of-type):not(.head) {
-                border-bottom: 1px solid #2e2f4b; }
+                border-bottom: 1px solid #cacaca; }
         #admin main .section .subsection .animalDetailModal {
           z-index: 3;
           position: absolute;

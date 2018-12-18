@@ -103,6 +103,7 @@ function buildAnimalColumn(entry) {
             let row = document.createElement("div");
             row.classList.add("row");
             let noTask = document.createElement("p");
+            noTask.className = "noTask";
             noTask.textContent = "-";
             row.appendChild(noTask);
             // let noTaskImage = document.createElement("img");
@@ -129,6 +130,7 @@ function buildAnimalColumn(entry) {
             let row = document.createElement("div");
             row.classList.add("row");
             let noTask = document.createElement("p");
+            noTask.className = "noTask";
             noTask.textContent = "-";
             row.appendChild(noTask);
             // let noTaskImage = document.createElement("img");
@@ -155,6 +157,7 @@ function buildAnimalColumn(entry) {
             let row = document.createElement("div");
             row.classList.add("row");
             let noTask = document.createElement("p");
+            noTask.className = "noTask";
             noTask.textContent = "-";
             row.appendChild(noTask);
             // let noTaskImage = document.createElement("img");
@@ -180,6 +183,7 @@ function buildAnimalColumn(entry) {
             let row = document.createElement("div");
             row.classList.add("row");
             let noTask = document.createElement("p");
+            noTask.className = "noTask";
             noTask.textContent = "-";
             row.appendChild(noTask);
             // let noTaskImage = document.createElement("img");
@@ -205,6 +209,7 @@ function buildAnimalColumn(entry) {
             let row = document.createElement("div");
             row.classList.add("row");
             let noTask = document.createElement("p");
+            noTask.className = "noTask";
             noTask.textContent = "-";
             row.appendChild(noTask);
             // let noTaskImage = document.createElement("img");
@@ -238,6 +243,7 @@ function buildAnimalColumn(entry) {
           .where("day", "==", day)
           .get()
           .then(res => {
+            noTask.classList.add("noTask");
             res.forEach(doc => {
               const user = doc.data().user;
               const morning = doc.data().morning;
