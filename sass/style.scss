@@ -2485,19 +2485,6 @@ Keyframes for frontpage
   }
   #signedInContent {
     #yourPets {
-      #petChoices {
-        grid-template-columns: 1fr;
-
-        div {
-          justify-self: center;
-        }
-        p {
-          //grid-row: 1;
-          justify-self: center;
-          margin-top: 0;
-          margin-bottom: 10px;
-        }
-      }
       #animalList {
         grid-template-columns: 1fr;
         align-self: center;
@@ -2511,14 +2498,18 @@ Keyframes for frontpage
       }
     }
   }
-  #signedInContent {
+  #signedInContent,
+  #frontpageForms {
     #sendToUsForms {
       width: 100%;
       grid-template-columns: 1fr;
-      #messageForm {
+      #messageForm,
+      #signupForm,
+      #imageForm,
+      #donationForm {
         margin: 34px;
         padding: 30px;
-        margin-bottom: 0;
+
         h2 {
           font-size: 20px;
           margin-top: 0px;
@@ -2541,7 +2532,10 @@ Keyframes for frontpage
           }
         }
       }
+    }
+  }
 
+  /*
       #imageForm {
         margin: 34px;
         padding: 30px;
@@ -2570,7 +2564,7 @@ Keyframes for frontpage
         }
       }
     }
-  }
+  }*/
   /* ----------------------
         Frontpage
 -----------------------*/
@@ -2704,6 +2698,7 @@ Keyframes for frontpage
       }
     }
   }
+  /*
   #frontpageForms {
     width: 100%;
     display: grid;
@@ -2763,6 +2758,7 @@ Keyframes for frontpage
       }
     }
   }
+  */
   // here comes the footer
   #footer {
     padding: 30px 30px 100px 30px;
