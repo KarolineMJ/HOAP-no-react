@@ -1030,16 +1030,17 @@ Keyframes for border radius header image
       height: auto;
       min-height: 300px;
       /* delete me later when all sections are finished */ }
+      #admin main .section p {
+        line-height: 1.3; }
+        #admin main .section p:last-of-type {
+          margin-bottom: 2em; }
       #admin main .section .subsection {
         height: auto;
         padding: 80px 10vw;
         position: relative; }
         #admin main .section .subsection.otherToDo {
-          padding: 50px 10vw; }
-          #admin main .section .subsection.otherToDo p {
-            margin: 35px 0px; }
-        #admin main .section .subsection h2 {
-          margin-bottom: 20px; }
+          padding: 50px;
+          width: 95%; }
         #admin main .section .subsection .subsectionHeader {
           width: 95%;
           height: 50px;
@@ -1054,6 +1055,8 @@ Keyframes for border radius header image
               font-size: 16px;
               border: none;
               border-bottom: 1px solid #2e2f4b; }
+          #admin main .section .subsection .subsectionHeader .date {
+            font-size: 24px; }
           #admin main .section .subsection .subsectionHeader .adminBtn {
             cursor: pointer;
             text-align: center;
