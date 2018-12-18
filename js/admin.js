@@ -547,6 +547,7 @@ db.collection("imagesFromAdmin")
               .then(console.log("added to db, will be published online soon"));
           });
           // clear fileArray after publish
+          resetForm(imageContainer);
         }
       });
   });
