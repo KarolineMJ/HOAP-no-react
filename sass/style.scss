@@ -9,6 +9,7 @@ $btnHover: #599686;
 $darkbtn: #74b7a5;
 $mainColor: #ead8a6;
 $grayColor: #efefef;
+$darkGrayColor: #cacaca;
 $purpleColor: #2e2f4b;
 $redColor: #a81c1c;
 $breakpoint-mobile: 450px;
@@ -50,7 +51,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
-  svg {
+  img {
     width: 150px;
     padding: 18px;
     fill: #818181;
@@ -1325,6 +1326,7 @@ Keyframes for border radius header image
             grid-template-rows: 100px 50px 50px 50px 50px 70px;
             .head {
               height: 100px;
+              background-color: $darkGrayColor;
             }
             .row {
               padding: 20px;
@@ -1349,6 +1351,7 @@ Keyframes for border radius header image
             display: grid;
             grid-template-columns: repeat(11, 170px);
             white-space: nowrap;
+
             .column {
               border-right: 1px solid $purpleColor;
               display: grid;
@@ -1359,16 +1362,18 @@ Keyframes for border radius header image
               &:last-of-type {
                 border-right: none;
               }
+              div:nth-child(1) {
+                background-color: $darkGrayColor;
+              }
               .animalImage {
-                height: 70px;
-                width: 70px;
-                border-radius: 50%;
-                margin: 10px auto auto auto;
+                display: grid;
                 cursor: pointer;
                 img {
                   width: 70px;
                   height: 70px;
                   border-radius: 35px;
+                  border-radius: 50%;
+                  place-self: center;
                 }
               }
               .row {

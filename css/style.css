@@ -33,7 +33,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77); }
-  .navbar svg {
+  .navbar img {
     width: 150px;
     padding: 18px;
     fill: #818181;
@@ -1076,7 +1076,8 @@ Keyframes for border radius header image
             display: grid;
             grid-template-rows: 100px 50px 50px 50px 50px 70px; }
             #admin main .section .subsection .tableWrapper .firstColumn .head {
-              height: 100px; }
+              height: 100px;
+              background-color: #cacaca; }
             #admin main .section .subsection .tableWrapper .firstColumn .row {
               padding: 20px; }
               #admin main .section .subsection .tableWrapper .firstColumn .row img {
@@ -1103,16 +1104,17 @@ Keyframes for border radius header image
                 pointer-events: none; }
               #admin main .section .subsection .tableWrapper .columns .column:last-of-type {
                 border-right: none; }
+              #admin main .section .subsection .tableWrapper .columns .column div:nth-child(1) {
+                background-color: #cacaca; }
               #admin main .section .subsection .tableWrapper .columns .column .animalImage {
-                height: 70px;
-                width: 70px;
-                border-radius: 50%;
-                margin: 10px auto auto auto;
+                display: grid;
                 cursor: pointer; }
                 #admin main .section .subsection .tableWrapper .columns .column .animalImage img {
                   width: 70px;
                   height: 70px;
-                  border-radius: 35px; }
+                  border-radius: 35px;
+                  border-radius: 50%;
+                  place-self: center; }
               #admin main .section .subsection .tableWrapper .columns .column .row {
                 padding: 20px;
                 /* temp solution, should achieve vertical align */ }
