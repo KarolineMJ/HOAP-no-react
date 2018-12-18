@@ -69,20 +69,21 @@ function buildAnimalColumn(entry) {
   animalImageDiv.classList.add("animalImage");
   let animalImage = document.createElement("img");
   if (entry.data().file !== undefined && entry.data().file !== "") {
-    let animalImageName = entry.data().file;
-    let storage = firebase.storage();
-    let storageReference = storage.ref();
-    let childRef = storageReference.child(`admin/${animalImageName}`);
-    console.log(animalImageName);
-    childRef
-      .getDownloadURL()
-      .then(function(url) {
-        animalImage.src = url;
-      })
-      .catch(function(error) {
-        console.log(error);
-        animalImage.src = "img/animals/default.png";
-      });
+    animalImage.src = entry.data().file;
+    // let animalImageName = entry.data().file;
+    // let storage = firebase.storage();
+    // let storageReference = storage.ref();
+    // let childRef = storageReference.child(`admin/${animalImageName}`);
+    // console.log(animalImageName);
+    // childRef
+    //   .getDownloadURL()
+    //   .then(function(url) {
+    //     animalImage.src = url;
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //     animalImage.src = "img/animals/default.png";
+    //   });
   } else {
     animalImage.src = "img/animals/newcomer.png";
   }
@@ -101,9 +102,12 @@ function buildAnimalColumn(entry) {
           if (doc.data().morning === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -124,9 +128,12 @@ function buildAnimalColumn(entry) {
           if (doc.data().afternoon === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -147,9 +154,12 @@ function buildAnimalColumn(entry) {
           if (doc.data().evening === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -169,9 +179,12 @@ function buildAnimalColumn(entry) {
           if (doc.data().training === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -191,9 +204,12 @@ function buildAnimalColumn(entry) {
           if (doc.data().extra === "") {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {

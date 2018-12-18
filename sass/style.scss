@@ -1286,17 +1286,13 @@ Keyframes for border radius header image
           }
         }
         .subsectionHeader {
-          width: 100%;
+          width: 95%;
           height: 50px;
           display: grid;
           grid-template-columns: 190px auto 150px;
           span {
             display: inline-block;
             padding-top: 10px;
-            img {
-              vertical-align: middle;
-              width: 20px;
-            }
             input {
               width: 95%; /* temp solution */
               font-size: 16px;
@@ -1313,6 +1309,12 @@ Keyframes for border radius header image
             padding: 10px 30px; /* temp solution, should achieve vertical align */
             border-radius: 25px;
             color: white;
+          }
+        }
+        p {
+          img {
+            vertical-align: middle;
+            width: 20px;
           }
         }
         .subsectionToDo {
