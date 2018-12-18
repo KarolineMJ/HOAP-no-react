@@ -496,3 +496,27 @@ db.collection("member")
       }
     });
   });
+
+// show image in 3x3 section
+const imageContainer = document.querySelector(".receviedPictures");
+const singlePicTemp = document.querySelector("#singlePicTemp").content;
+db.collection("imagesFromAdmin")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      let clone = singlePicTemp.cloneNode(true);
+      let singlePicDiv = clone.querySelector(".singlePic");
+      singlePicDiv.style.backgroundImage = "url('img/animals/broder.jpg')";
+      imageContainer.appendChild(clone);
+    });
+    db.collection("imagesFromMember")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          let clone = singlePicTemp.cloneNode(true);
+          let singlePicDiv = clone.querySelector(".singlePic");
+          singlePicDiv.style.backgroundImage = "url('img/animals/broder.jpg')";
+          imageContainer.appendChild(clone);
+        });
+      });
+  });

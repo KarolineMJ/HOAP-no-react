@@ -1285,18 +1285,14 @@
           <h3>Post and notify</h3>
           <div class="postsContainer">
             <div class="publishContainer">
-              <p>Choose which image to be published</p>
+              <p>Choose which image to be published on the front page</p>
               <div class="receviedPictures">
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
-                <div class="singlePic"></div>
               </div>
+              <template id="singlePicTemp">
+                  <div class="singlePic"><label for="">
+                    <input type="checkbox" name="publish">
+                  </label></div>
+              </template>
               <button class="publishBtn">publish</button>
             </div>
             <div class="dragAndDropContainer">

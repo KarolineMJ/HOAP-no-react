@@ -1670,7 +1670,8 @@ Keyframes for frontpage
         .singlePic {
           width: 130px;
           height: 130px;
-          border: 1px solid black;
+          border-radius: 50%;
+          background-size: cover;
         }
       }
       .publishBtn {
