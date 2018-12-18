@@ -1768,9 +1768,9 @@ Keyframes for border radius header image
   }
 }
 @media only screen and (min-width: $breakpoint-medium1) and (max-width: $breakpoint-medium2) {
-  /*-----------------------------*/
-  /* Signed in page */
-  /*-----------------------------*/
+  /*-----------------------------
+        Signed in page 
+  -----------------------------*/
 
   /* ----------------------
         Forms
@@ -2011,7 +2011,7 @@ Keyframes for border radius header image
     #donationForm {
       margin: 50px;
       padding: 40px;
-      margin-bottom: 0;
+
       h2 {
         font-size: 20px;
         margin-top: 0px;

@@ -1422,9 +1422,9 @@ Keyframes for border radius header image
           height: 34px; }
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
-  /*-----------------------------*/
-  /* Signed in page */
-  /*-----------------------------*/
+  /*-----------------------------
+        Signed in page 
+  -----------------------------*/
   /* ----------------------
         Forms
 -----------------------*/
@@ -1653,8 +1653,7 @@ Keyframes for border radius header image
     #frontpageForms #signupForm,
     #frontpageForms #donationForm {
       margin: 50px;
-      padding: 40px;
-      margin-bottom: 0; }
+      padding: 40px; }
       #sendToUsForms #messageForm h2,
       #sendToUsForms #imageForm h2,
       #sendToUsForms #signupForm h2,
