@@ -1036,6 +1036,8 @@ Keyframes for border radius header image
         position: relative; }
         #admin main .section .subsection.otherToDo {
           padding: 50px; }
+          #admin main .section .subsection.otherToDo p {
+            margin: 35px 0px; }
         #admin main .section .subsection .subsectionHeader {
           width: 100%;
           height: 50px;
@@ -1054,6 +1056,33 @@ Keyframes for border radius header image
               border: none;
               border-bottom: 1px solid #2e2f4b; }
           #admin main .section .subsection .subsectionHeader .adminBtn {
+            cursor: pointer;
+            text-align: center;
+            background: #2e2f4b;
+            width: 100%;
+            height: 40px;
+            padding: 10px 30px;
+            /* temp solution, should achieve vertical align */
+            border-radius: 25px;
+            color: white; }
+        #admin main .section .subsection .subsectionToDo {
+          width: 100%;
+          height: 50px;
+          display: grid;
+          grid-template-columns: auto 150px; }
+          #admin main .section .subsection .subsectionToDo span {
+            display: inline-block;
+            padding-top: 10px; }
+            #admin main .section .subsection .subsectionToDo span img {
+              vertical-align: middle;
+              width: 20px; }
+            #admin main .section .subsection .subsectionToDo span input {
+              width: 95%;
+              /* temp solution */
+              font-size: 16px;
+              border: none;
+              border-bottom: 1px solid #2e2f4b; }
+          #admin main .section .subsection .subsectionToDo .adminBtn {
             cursor: pointer;
             text-align: center;
             background: #2e2f4b;
@@ -1206,7 +1235,7 @@ Keyframes for border radius header image
         #admin main .section .subsection .toDoListWrapper {
           width: 70%;
           /* temp solution. Need to figure out if and how should this part be aligned to other elements */
-          margin: 0 auto; }
+          margin: 0 26px; }
           #admin main .section .subsection .toDoListWrapper span {
             margin-left: 15px; }
           #admin main .section .subsection .toDoListWrapper span.userMessage {
@@ -1285,9 +1314,10 @@ Keyframes for border radius header image
     color: #2e2f4b; }
 
 #postAndNotify {
+  padding: 50px;
   height: auto; }
   #postAndNotify h3 {
-    padding: 20px; }
+    padding: 15px 0; }
   #postAndNotify .postsContainer {
     height: auto;
     display: grid;
@@ -1297,19 +1327,15 @@ Keyframes for border radius header image
       position: relative;
       padding-bottom: 30px; }
       #postAndNotify .postsContainer .publishContainer p {
-        padding-left: 20px;
-        padding-bottom: 20px;
-        width: 90%; }
+        padding: 15px 0;
+        padding-bottom: 30px; }
       #postAndNotify .postsContainer .publishContainer .receviedPictures {
         border-right: 1px solid black;
         width: 100%;
-        height: calc(60vh + 34px);
-        overflow: scroll;
         display: grid;
         grid-template-columns: 20vh 20vh 20vh;
         grid-template-rows: 20vh 20vh 20vh;
-        grid-gap: 17px;
-        justify-content: center; }
+        grid-gap: 17px; }
         #postAndNotify .postsContainer .publishContainer .receviedPictures .singlePic {
           width: 130px;
           height: 130px;
@@ -1334,25 +1360,25 @@ Keyframes for border radius header image
         color: white;
         border: none; }
     #postAndNotify .postsContainer .dragAndDropContainer {
+      padding: 0 0 0 50px;
       position: relative;
       height: 100%; }
       #postAndNotify .postsContainer .dragAndDropContainer p:nth-child(1) {
-        padding-left: 20px;
-        padding-bottom: 20px; }
+        padding: 15px 0;
+        padding-bottom: 30px; }
       #postAndNotify .postsContainer .dragAndDropContainer p:nth-child(2) {
-        padding-left: 20px;
-        padding-bottom: 0px;
-        padding-top: 27px; }
+        padding: 15px 0;
+        padding-bottom: 30px; }
       #postAndNotify .postsContainer .dragAndDropContainer p:nth-child(3) {
-        padding-left: 20px;
-        padding-bottom: 0px; }
+        padding: 15px 0; }
       #postAndNotify .postsContainer .dragAndDropContainer label {
-        padding-top: 10px; }
+        margin-bottom: 10px; }
+        #postAndNotify .postsContainer .dragAndDropContainer label input {
+          margin-right: 10px; }
       #postAndNotify .postsContainer .dragAndDropContainer .writeNotification {
         height: 150px;
-        width: 270px;
-        display: block;
-        margin: auto; }
+        width: 100%;
+        display: block; }
       #postAndNotify .postsContainer .dragAndDropContainer #nofiticationAdmin p {
         display: grid;
         grid-template-columns: 1fr; }

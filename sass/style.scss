@@ -1281,12 +1281,45 @@ Keyframes for border radius header image
         position: relative;
         &.otherToDo {
           padding: 50px;
+          p {
+            margin: 35px 0px;
+          }
         }
         .subsectionHeader {
           width: 100%;
           height: 50px;
           display: grid;
           grid-template-columns: 190px auto 150px;
+          span {
+            display: inline-block;
+            padding-top: 10px;
+            img {
+              vertical-align: middle;
+              width: 20px;
+            }
+            input {
+              width: 95%; /* temp solution */
+              font-size: 16px;
+              border: none;
+              border-bottom: 1px solid $purpleColor;
+            }
+          }
+          .adminBtn {
+            cursor: pointer;
+            text-align: center;
+            background: $purpleColor;
+            width: 100%;
+            height: 40px;
+            padding: 10px 30px; /* temp solution, should achieve vertical align */
+            border-radius: 25px;
+            color: white;
+          }
+        }
+        .subsectionToDo {
+          width: 100%;
+          height: 50px;
+          display: grid;
+          grid-template-columns: auto 150px;
           span {
             display: inline-block;
             padding-top: 10px;
@@ -1486,7 +1519,7 @@ Keyframes for border radius header image
         }
         .toDoListWrapper {
           width: 70%; /* temp solution. Need to figure out if and how should this part be aligned to other elements */
-          margin: 0 auto;
+          margin: 0 26px;
           //display: grid;
           //grid-template-columns: 1fr 1fr;
           span {
@@ -1595,9 +1628,10 @@ Keyframes for border radius header image
 }
 // here starts POST AND NOTIFY!!
 #postAndNotify {
+  padding: 50px;
   height: auto;
   h3 {
-    padding: 20px;
+    padding: 15px 0;
   }
   .postsContainer {
     height: auto;
@@ -1608,22 +1642,18 @@ Keyframes for border radius header image
       position: relative;
       padding-bottom: 30px;
       p {
-        padding-left: 20px;
-        padding-bottom: 20px;
-        width: 90%;
+        padding: 15px 0;
+        padding-bottom: 30px;
       }
 
       .receviedPictures {
         // border: 1px solid black;
         border-right: 1px solid black;
         width: 100%;
-        height: calc(60vh + 34px);
-        overflow: scroll;
         display: grid;
         grid-template-columns: 20vh 20vh 20vh;
         grid-template-rows: 20vh 20vh 20vh;
         grid-gap: 17px;
-        justify-content: center;
 
         .singlePic {
           width: 130px;
@@ -1653,30 +1683,31 @@ Keyframes for border radius header image
       }
     }
     .dragAndDropContainer {
+      padding: 0 0 0 50px;
       position: relative;
       height: 100%;
       p:nth-child(1) {
-        padding-left: 20px;
-        padding-bottom: 20px;
+        padding: 15px 0;
+        padding-bottom: 30px;
       }
       p:nth-child(2) {
-        padding-left: 20px;
-        padding-bottom: 0px;
-        padding-top: 27px;
+        padding: 15px 0;
+        padding-bottom: 30px;
       }
       p:nth-child(3) {
-        padding-left: 20px;
-        padding-bottom: 0px;
+        padding: 15px 0;
       }
 
       label {
-        padding-top: 10px;
+        margin-bottom: 10px;
+        input {
+          margin-right: 10px;
+        }
       }
       .writeNotification {
         height: 150px;
-        width: 270px;
+        width: 100%;
         display: block;
-        margin: auto;
       }
       #nofiticationAdmin {
         p {
