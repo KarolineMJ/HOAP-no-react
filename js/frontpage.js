@@ -246,6 +246,7 @@ function signinUser(e) {
       getUserSetting(currentUserEmail);
       // getUserNotifications(currentUserEmail);
       getUserAnimals(currentUserEmail);
+      wrongPassword.style.display = "none";
     })
     .catch(function(error) {
       console.log(error);
