@@ -1044,9 +1044,23 @@
       
 
         <div class="section" id="status">
-          Status (including members)
-          <h3>Budget</h3>
-          <div class="monthsContainer">
+          <h2>Status</h2>
+          <div class="animalStatus">
+              <h3>Animals</h3>
+              <p>How many cats right now<img src="" alt="cat icon"></p>
+              <p>all time high</p>
+              <p>How many dogs<img src="" alt="cat icon"></p>
+              <p>all time high</p>
+          </div>
+          <div class="budget">
+              <h3>Budget</h3>
+              <p>basic running cost</p>
+              <p>budget for cats / month</p>
+              <p>budget for dogs / month</p>
+              <p>reserve/ cost</p>
+            </div>
+
+          <!-- <div class="monthsContainer">
             <div class="month"></div>
             <div class="month"></div>
             <div class="month"></div>
@@ -1066,28 +1080,26 @@
             <h3>Statistic of animals</h3>
             <div class="statisticDiagram"></div>
           </div>
-          <hr />
+          <hr /> -->
           <div class="statisticOfMembers">
-            <h3>Statistic of members</h3>
-            <div class="membersDiagram"></div>
 
             <div class="listOfDonations">
-              <h3>Donations including who donated</h3>
-              <div class="donationsTableContainer">
+                <h3>Help from members</h3>
+                <div class="donationsTableContainer">
                   <div class="singleMember">
-                      <h3 class="aboutMember">Name</h3>
-                      <p class="aboutMember"  >Money</p>
-                      <p class="aboutMember">Time</p>
-                      <p class="aboutMember" >Stuff</p>
+                    <h3 class="aboutMember">Name</h3>
+                    <p class="aboutMember"  >Money</p>
+                    <p class="aboutMember">Time</p>
+                    <p class="aboutMember" >Stuff</p>
+                  </div>
+                  <template class="membersTemplate">
+                    <div class="singleMember">
+                    <div class="emailBox"><p class="aboutMember" id="memberName">Name</p></div> 
+                      <div class="aboutMember"  id="moneyDonation">150kr. </div>
+                      <div class="aboutMember"  id="timeDonation">25h</div>
+                      <div class="aboutMember"  id="stuffDonated">3pieces</div>
                     </div>
-               <template class="membersTemplate">
-                <div class="singleMember">
-                 <div class="emailBox"><p class="aboutMember" id="memberName">Name</p></div> 
-                  <div class="aboutMember"  id="moneyDonation">150kr. </div>
-                  <div class="aboutMember"  id="timeDonation">25h</div>
-                  <div class="aboutMember"  id="stuffDonated">3pieces</div>
-                </div>
-              </template>
+                  </template>
               </div>
             </div>
           </div>

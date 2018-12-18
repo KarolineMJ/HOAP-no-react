@@ -1446,35 +1446,26 @@ Keyframes for border radius header image
       margin: auto;
       margin-top: 20px;
       margin-bottom: 20px; }
-  #status .statisticOfMembers {
-    margin-top: 20px; }
-    #status .statisticOfMembers .membersDiagram {
-      height: 150px;
-      width: 100%;
-      border: 1px solid black;
-      margin: auto;
-      margin-top: 20px;
-      margin-bottom: 20px; }
-    #status .statisticOfMembers .listOfDonations {
-      margin-top: 20px;
-      margin-bottom: 20px; }
-      #status .statisticOfMembers .listOfDonations .singleMember {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px; }
-        #status .statisticOfMembers .listOfDonations .singleMember .aboutMember {
-          height: 35px; }
-        #status .statisticOfMembers .listOfDonations .singleMember .emailBox {
-          width: 150px; }
-          #status .statisticOfMembers .listOfDonations .singleMember .emailBox p {
-            text-overflow: ellipsis;
-            overflow: hidden; }
-        #status .statisticOfMembers .listOfDonations .singleMember #moneyDonation,
-        #status .statisticOfMembers .listOfDonations .singleMember #timeDonation,
-        #status .statisticOfMembers .listOfDonations .singleMember #stuffDonated {
-          background-color: #2e2f4b;
-          color: white;
-          height: 34px; }
+  #status .listOfDonations {
+    margin-top: 20px;
+    margin-bottom: 20px; }
+    #status .listOfDonations .singleMember {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 10px; }
+      #status .listOfDonations .singleMember .aboutMember {
+        height: 35px; }
+      #status .listOfDonations .singleMember .emailBox {
+        width: 150px; }
+        #status .listOfDonations .singleMember .emailBox p {
+          text-overflow: ellipsis;
+          overflow: hidden; }
+      #status .listOfDonations .singleMember #moneyDonation,
+      #status .listOfDonations .singleMember #timeDonation,
+      #status .listOfDonations .singleMember #stuffDonated {
+        background-color: #2e2f4b;
+        color: white;
+        height: 34px; }
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   /*-----------------------------

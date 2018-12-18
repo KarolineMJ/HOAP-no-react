@@ -1797,43 +1797,31 @@ Keyframes for border radius header image
       margin-bottom: 20px;
     }
   }
-  .statisticOfMembers {
+  .listOfDonations {
     margin-top: 20px;
-    .membersDiagram {
-      height: 150px;
-      width: 100%;
-      border: 1px solid black;
-      margin: auto;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
+    margin-bottom: 20px;
 
-    .listOfDonations {
-      margin-top: 20px;
-      margin-bottom: 20px;
-
-      .singleMember {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px;
-        .aboutMember {
-          // border-bottom: 1px solid black;
-          height: 35px;
+    .singleMember {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 10px;
+      .aboutMember {
+        // border-bottom: 1px solid black;
+        height: 35px;
+      }
+      .emailBox {
+        width: 150px;
+        p {
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
-        .emailBox {
-          width: 150px;
-          p {
-            text-overflow: ellipsis;
-            overflow: hidden;
-          }
-        }
-        #moneyDonation,
-        #timeDonation,
-        #stuffDonated {
-          background-color: $purpleColor;
-          color: white;
-          height: 34px;
-        }
+      }
+      #moneyDonation,
+      #timeDonation,
+      #stuffDonated {
+        background-color: $purpleColor;
+        color: white;
+        height: 34px;
       }
     }
   }
