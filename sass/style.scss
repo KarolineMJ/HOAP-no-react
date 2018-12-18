@@ -1384,7 +1384,7 @@ Keyframes for border radius header image
             left: 15%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, 170px);
+            grid-template-columns: repeat(11, auto);
             white-space: nowrap;
 
             .column {
@@ -1393,6 +1393,9 @@ Keyframes for border radius header image
               grid-template-rows: 100px 50px 50px 50px 50px 70px;
               *:not(.animalImage) {
                 pointer-events: none;
+                input[type="checkbox"] {
+                  pointer-events: initial;
+                }
               }
               &:last-of-type {
                 border-right: none;
