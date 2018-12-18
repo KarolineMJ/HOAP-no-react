@@ -548,8 +548,37 @@ db.collection("imagesFromAdmin")
               })
               .then(console.log("added to db, will be published online soon"));
           });
+          // for the published files, change 'published' to true
+          fileArray.forEach(eachfile => {
+            db.collection("imagesFromMember")
+              .where("filename", "==", eachfile)
+              .get()
+              .then(res => {
+                res.forEach(doc => {
+                  db.collection("imagesFromMember")
+                    .doc(doc.id)
+                    .update({
+                      published: true
+                    });
+                });
+              });
+
+            db.collection("imagesFromAdmin")
+              .where("filename", "==", eachfile)
+              .get()
+              .then(res => {
+                res.forEach(doc => {
+                  db.collection("imagesFromAdmin")
+                    .doc(doc.id)
+                    .update({
+                      published: true
+                    });
+                });
+              });
+          });
           // clear fileArray after publish
           resetForm(imageContainer);
+          // update image container // remove the ones that're just published from the container
         }
       });
   });
