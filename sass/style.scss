@@ -1787,6 +1787,33 @@ Keyframes for border radius header image
 // status section
 #status {
   padding: 85px 10vw;
+  h2 {
+    padding-bottom: 20px;
+  }
+  hr:last-of-type {
+    margin-bottom: 10px;
+  }
+  h3 {
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 5px;
+  }
+  .Economy {
+    p {
+      img {
+        height: 20px;
+      }
+    }
+  }
+
+  .animalStatus {
+    p {
+      img {
+        height: 20px;
+      }
+    }
+  }
   .monthsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, 75px);
