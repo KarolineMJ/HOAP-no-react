@@ -1065,8 +1065,9 @@ Keyframes for border radius header image
             grid-template-rows: 100px 50px 50px 50px 50px 70px; }
             #admin main .section .subsection .tableWrapper .firstColumn .head {
               height: 100px; }
-            #admin main .section .subsection .tableWrapper .firstColumn .row {
-              padding: 20px; }
+            #admin main .section .subsection .tableWrapper .firstColumn .row img {
+              width: 30px;
+              vertical-align: middle; }
             #admin main .section .subsection .tableWrapper .firstColumn .row:not(.head):not(:last-of-type) {
               border-bottom: 1px solid #2e2f4b; }
             #admin main .section .subsection .tableWrapper .firstColumn b {
