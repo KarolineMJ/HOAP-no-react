@@ -1036,7 +1036,7 @@ Keyframes for border radius header image
           margin-bottom: 2em; }
       #admin main .section .subsection {
         height: auto;
-        padding: 50px 50px 0 50px;
+        padding: 80px 10vw;
         position: relative; }
         #admin main .section .subsection.otherToDo {
           padding: 50px;
@@ -1321,8 +1321,7 @@ Keyframes for border radius header image
     color: #2e2f4b; }
 
 #postAndNotify {
-  padding: 50px;
-  height: auto; }
+  padding: 70px 10vw; }
   #postAndNotify h3 {
     padding: 15px 0; }
   #postAndNotify .postsContainer {
@@ -1425,9 +1424,7 @@ Keyframes for border radius header image
         border: none; }
 
 #status {
-  width: 80%;
-  margin: auto;
-  margin-top: 20px; }
+  padding: 85px 10vw; }
   #status .monthsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, 75px);
