@@ -1711,43 +1711,75 @@ Keyframes for frontpage
     width: 348px; } }
 
 @media (max-width: 650px) {
-  #sendToUsForms {
+  /*----------------------------*/
+  /*   Forms                    */
+  /*----------------------------*/
+  #sendToUsForms,
+  #frontpageForms {
     grid-template-columns: 1fr; }
-    #sendToUsForms #messageForm {
-      grid-row-start: 1;
+    #sendToUsForms #messageForm,
+    #sendToUsForms #imageForm,
+    #sendToUsForms #signupForm,
+    #sendToUsForms #donationForm,
+    #frontpageForms #messageForm,
+    #frontpageForms #imageForm,
+    #frontpageForms #signupForm,
+    #frontpageForms #donationForm {
       margin: 50px;
       padding: 40px;
       margin-bottom: 0; }
-      #sendToUsForms #messageForm h2 {
+      #sendToUsForms #messageForm h2,
+      #sendToUsForms #imageForm h2,
+      #sendToUsForms #signupForm h2,
+      #sendToUsForms #donationForm h2,
+      #frontpageForms #messageForm h2,
+      #frontpageForms #imageForm h2,
+      #frontpageForms #signupForm h2,
+      #frontpageForms #donationForm h2 {
         font-size: 20px;
         margin-top: 0px; }
-      #sendToUsForms #messageForm form button {
+      #sendToUsForms #messageForm form button,
+      #sendToUsForms #imageForm form button,
+      #sendToUsForms #signupForm form button,
+      #sendToUsForms #donationForm form button,
+      #frontpageForms #messageForm form button,
+      #frontpageForms #imageForm form button,
+      #frontpageForms #signupForm form button,
+      #frontpageForms #donationForm form button {
         margin-top: 19px;
         margin-bottom: 0px; }
-      #sendToUsForms #messageForm .formField {
+      #sendToUsForms #messageForm .formField,
+      #sendToUsForms #imageForm .formField,
+      #sendToUsForms #signupForm .formField,
+      #sendToUsForms #donationForm .formField,
+      #frontpageForms #messageForm .formField,
+      #frontpageForms #imageForm .formField,
+      #frontpageForms #signupForm .formField,
+      #frontpageForms #donationForm .formField {
         margin-bottom: 0;
         padding: 0; }
-        #sendToUsForms #messageForm .formField input {
+        #sendToUsForms #messageForm .formField input,
+        #sendToUsForms #imageForm .formField input,
+        #sendToUsForms #signupForm .formField input,
+        #sendToUsForms #donationForm .formField input,
+        #frontpageForms #messageForm .formField input,
+        #frontpageForms #imageForm .formField input,
+        #frontpageForms #signupForm .formField input,
+        #frontpageForms #donationForm .formField input {
           font-size: 0.8em;
           margin: 19px 0px; }
-        #sendToUsForms #messageForm .formField label {
+        #sendToUsForms #messageForm .formField label,
+        #sendToUsForms #imageForm .formField label,
+        #sendToUsForms #signupForm .formField label,
+        #sendToUsForms #donationForm .formField label,
+        #frontpageForms #messageForm .formField label,
+        #frontpageForms #imageForm .formField label,
+        #frontpageForms #signupForm .formField label,
+        #frontpageForms #donationForm .formField label {
           font-size: 15px; }
-    #sendToUsForms #imageForm {
-      margin: 50px;
-      padding: 40px; }
-      #sendToUsForms #imageForm h2 {
-        font-size: 20px;
-        margin-top: 0px; }
-      #sendToUsForms #imageForm form button {
-        margin: 19px 0px; }
-      #sendToUsForms #imageForm form .formField {
-        margin-bottom: 0;
-        padding: 0; }
-        #sendToUsForms #imageForm form .formField input {
-          font-size: 0.8em;
-          margin: 19px 0px; }
-        #sendToUsForms #imageForm form .formField label {
-          font-size: 14px; }
+  /*----------------------------*/
+  /*   Frontpage                */
+  /*----------------------------*/
   #intro {
     display: grid;
     grid-template-columns: 1fr;
@@ -1844,46 +1876,6 @@ Keyframes for frontpage
         justify-self: center; }
         #lastBox #animalImage div img {
           width: 80px; }
-  #frontpageForms {
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: auto; }
-    #frontpageForms #signupForm {
-      grid-row-start: 1;
-      margin: 34px;
-      padding: 30px;
-      margin-bottom: 0; }
-      #frontpageForms #signupForm h2 {
-        font-size: 20px;
-        margin-top: 0px; }
-      #frontpageForms #signupForm form button {
-        margin-top: 19px;
-        margin-bottom: 0px; }
-      #frontpageForms #signupForm .formField {
-        margin-bottom: 0;
-        padding: 0; }
-        #frontpageForms #signupForm .formField input {
-          font-size: 0.8em;
-          margin: 19px 0px; }
-        #frontpageForms #signupForm .formField label {
-          font-size: 15px; }
-    #frontpageForms #donationForm {
-      margin: 34px;
-      padding: 30px; }
-      #frontpageForms #donationForm h2 {
-        font-size: 20px;
-        margin-top: 0px; }
-      #frontpageForms #donationForm form button {
-        margin: 19px 0px; }
-      #frontpageForms #donationForm form .formField {
-        margin-bottom: 0;
-        padding: 0; }
-        #frontpageForms #donationForm form .formField input {
-          font-size: 0.8em;
-          margin: 19px 0px; }
-        #frontpageForms #donationForm form .formField label {
-          font-size: 14px; }
   #footer {
     padding: 30px;
     padding-left: 95px;

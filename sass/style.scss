@@ -2069,10 +2069,17 @@ Keyframes for frontpage
 }
 
 @media (max-width: $breakpoint-medium1) {
-  #sendToUsForms {
+  /*----------------------------*/
+  /*   Forms                    */
+  /*----------------------------*/
+
+  #sendToUsForms,
+  #frontpageForms {
     grid-template-columns: 1fr;
-    #messageForm {
-      grid-row-start: 1;
+    #messageForm,
+    #imageForm,
+    #signupForm,
+    #donationForm {
       margin: 50px;
       padding: 40px;
       margin-bottom: 0;
@@ -2098,34 +2105,11 @@ Keyframes for frontpage
         }
       }
     }
-    #imageForm {
-      margin: 50px;
-      padding: 40px;
-
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin: 19px 0px;
-        }
-      }
-      form {
-        .formField {
-          margin-bottom: 0;
-          padding: 0;
-          input {
-            font-size: 0.8em;
-            margin: 19px 0px;
-          }
-          label {
-            font-size: 14px;
-          }
-        }
-      }
-    }
   }
+
+  /*----------------------------*/
+  /*   Frontpage                */
+  /*----------------------------*/
 
   #intro {
     display: grid;
@@ -2257,66 +2241,7 @@ Keyframes for frontpage
       }
     }
   }
-  #frontpageForms {
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: auto;
-    #signupForm {
-      grid-row-start: 1;
-      margin: 34px;
-      padding: 30px;
-      margin-bottom: 0;
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin-top: 19px;
-          margin-bottom: 0px;
-        }
-      }
-      .formField {
-        margin-bottom: 0;
-        padding: 0;
-        input {
-          font-size: 0.8em;
-          margin: 19px 0px;
-        }
-        label {
-          font-size: 15px;
-        }
-      }
-    }
-    #donationForm {
-      margin: 34px;
-      padding: 30px;
 
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin: 19px 0px;
-        }
-      }
-      form {
-        .formField {
-          margin-bottom: 0;
-          padding: 0;
-          input {
-            font-size: 0.8em;
-            margin: 19px 0px;
-          }
-          label {
-            font-size: 14px;
-          }
-        }
-      }
-    }
-  }
   // here comes the footer
   #footer {
     padding: 30px;
