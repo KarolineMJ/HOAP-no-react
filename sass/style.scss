@@ -2,6 +2,7 @@
        main things
 -----------------------*/
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("../font/axis-extrabold.otf");
 
 $font: "Raleway", sans-serif;
 $btnHover: #599686;
@@ -384,15 +385,17 @@ button:focus {
     padding-left: 10vw;
     width: 42vw;
     align-self: center;
+
     .catchphrase {
       justify-self: center;
       padding-bottom: 30px;
       h1 {
+        font-family: "axis-extrabold", sans-serif;
         line-height: 1;
         color: rgba($color: white, $alpha: 0.7);
         font-size: 6vw;
         span {
-          font-size: 9.5vw;
+          font-size: 8.5vw;
           &::before {
             content: "\A";
             white-space: pre;

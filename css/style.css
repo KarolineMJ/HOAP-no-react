@@ -2,6 +2,7 @@
        main things
 -----------------------*/
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("../font/axis-extrabold.otf");
 * {
   margin: 0;
   padding: 0;
@@ -353,11 +354,12 @@ button:focus {
       justify-self: center;
       padding-bottom: 30px; }
       #intro .introText .catchphrase h1 {
+        font-family: "axis-extrabold", sans-serif;
         line-height: 1;
         color: rgba(255, 255, 255, 0.7);
         font-size: 6vw; }
         #intro .introText .catchphrase h1 span {
-          font-size: 9.5vw; }
+          font-size: 8.5vw; }
           #intro .introText .catchphrase h1 span::before {
             content: "\A";
             white-space: pre; }
