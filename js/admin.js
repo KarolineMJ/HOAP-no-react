@@ -624,3 +624,44 @@ db.collection("imagesFromAdmin")
         }
       });
   });
+
+/**
+ * status
+ */
+// fixed costs
+const waterCost = 3000;
+const elCost = 2000;
+const heatCost = 3000;
+const staffCost = 20000;
+document.querySelector(".waterCost").textContent = waterCost;
+document.querySelector(".elCost").textContent = elCost;
+document.querySelector(".heatCost").textContent = heatCost;
+document.querySelector(".staffCost").textContent = staffCost;
+
+let catCost;
+let dogCost;
+let catCount;
+let dogCount;
+// donation gain is the sum of all donation made by both member and visitors what's not registered as member
+// plus
+// monthly donation by members
+let donationGain = 0;
+db.collection("moneyDonation")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      const eachAmount = doc.data().amount;
+      donationGain += Number(eachAmount);
+    });
+    db.collection("member")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          const monthlyDonation = doc.data().monthlyDonation;
+          if (monthlyDonation) {
+            donationGain += Number(monthlyDonation);
+          }
+        });
+        document.querySelector(".donationGain").textContent = donationGain;
+      });
+  });
