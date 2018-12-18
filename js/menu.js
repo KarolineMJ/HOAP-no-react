@@ -4,10 +4,9 @@
 Show/hide sidemenu
 ------------------------------------------*/
 
-function hideMenu() {
+function toggleSidebar() {
   const settingBtn = document.querySelector("#settingBtn");
   const newsBtn = document.querySelector("#newsBtn");
-  const signedInContainer = document.querySelector(".signedInContainer");
   const userSettings = document.querySelector("#userSettings");
   const newsFeed = document.querySelector("#newsFeed");
 
@@ -22,7 +21,38 @@ function hideMenu() {
     // getUserNotifications(currentUserEmail);
   });
 }
-hideMenu();
+
+toggleSidebar();
+
+function toggleMobileSections() {
+  const mobileSettingBtn = document.querySelector("#settingSectionMobile");
+  const mobileNewsBtn = document.querySelector("#newsSectionMobile");
+  const mobileHomeBtn = document.querySelector("#homeSectionMobile");
+  const userSettings = document.querySelector("#userSettings");
+  const newsFeed = document.querySelector("#newsFeed");
+  const homeSection = document.querySelector("#signedInContent");
+
+  mobileSettingBtn.addEventListener("click", function() {
+    newsFeed.classList.remove("visible");
+    homeSection.classList.remove("visible");
+    userSettings.classList.toggle("visible");
+  });
+
+  mobileNewsBtn.addEventListener("click", function() {
+    userSettings.classList.remove("visible");
+    homeSection.classList.remove("visible");
+    newsFeed.classList.toggle("visible");
+    // getUserNotifications(currentUserEmail);
+  });
+
+  mobileHomeBtn.addEventListener("click", function() {
+    userSettings.classList.remove("visible");
+    newsFeed.classList.remove("visible");
+    // getUserNotifications(currentUserEmail);
+  });
+}
+toggleMobileSections();
+
 /*
 function expandInfo() {
   const petImage = document.querySelectorAll("#animalImage img");

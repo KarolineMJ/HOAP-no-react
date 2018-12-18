@@ -2237,6 +2237,24 @@ Keyframes for border radius header image
 -----------------------*/
 
   #signedInContent {
+    #userSettings,
+    #newsFeed {
+      width: 100vw;
+      padding: 50px;
+      padding-bottom: 100px;
+
+      h2 {
+        font-size: 1.4em;
+      }
+      .user {
+        p {
+          font-size: 1.2em;
+        }
+        img {
+          width: 50px;
+        }
+      }
+    }
     #yourPets {
       #animalBox {
         #animalViewBox {
@@ -2253,6 +2271,7 @@ Keyframes for border radius header image
 
   #mobileMenu {
     background-color: white;
+    z-index: 3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     box-shadow: 0px 3px 20px 3px rgba(195, 195, 195, 0.77);
@@ -2462,67 +2481,7 @@ Keyframes for border radius header image
       }
     }
   }
-  /*
-  #frontpageForms {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    #signupForm {
-      grid-row-start: 1;
-      margin: 34px;
-      padding: 30px;
-      margin-bottom: 0;
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin-top: 19px;
-          margin-bottom: 0px;
-        }
-      }
-      .formField {
-        margin-bottom: 0;
-        padding: 0;
-        input {
-          font-size: 0.7em;
-          margin: 19px 0px;
-        }
-        label {
-          font-size: 15px;
-        }
-      }
-    }
-    #donationForm {
-      margin: 34px;
-      padding: 30px;
 
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin: 19px 0px;
-        }
-      }
-      form {
-        .formField {
-          margin-bottom: 0;
-          padding: 0;
-          input {
-            font-size: 0.8em;
-            margin: 19px 0px;
-          }
-          label {
-            font-size: 13px;
-          }
-        }
-      }
-    }
-  }
-  */
   // here comes the footer
   #footer {
     padding: 30px 30px 100px 30px;
