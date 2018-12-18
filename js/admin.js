@@ -23,9 +23,9 @@ const membersTamplate = document.querySelector(".membersTemplate").content;
 
 // date related
 const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth() + 1;
-const day = today.getDate();
+const year = today.getFullYear().toString();
+const month = (today.getMonth() + 1).toString();
+const day = today.getDate().toString();
 const timestamp = today.getTime();
 date.textContent = `${year}-${month}-${day}`;
 
@@ -92,15 +92,12 @@ function buildAnimalColumn(entry) {
   // get daily task of this animal from another collection in database
   db.collection("dailyTaskTemplate")
     .where("animalID", "==", animalID)
-    // .where("month", "==", month)
-    // .where("day", "==", day)
     .get()
     .then(res => {
       res.docs.forEach(doc => {
         if (!doc.data().month && !doc.data().year && !doc.data().day) {
           console.log(doc.data());
           ///////////////////// need to DRY these
-          //        if (doc.data().month === month && doc.data().day === day) {
           if (doc.data().morning === false) {
             let row = document.createElement("div");
             row.classList.add("row");
@@ -115,10 +112,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("morningByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().morningMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -140,10 +135,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("afternoonByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().afternoonMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -165,10 +158,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("eveningByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().eveningMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -189,10 +180,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("trainingByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().trainingMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -226,6 +215,44 @@ function buildAnimalColumn(entry) {
             columns.appendChild(column);
           }
         }
+        db.collection("dailyTasks")
+          .where("animalID", "==", doc.data().animalID)
+          .where("year", "==", year)
+          .where("month", "==", month)
+          .where("day", "==", day)
+          .get()
+          .then(res => {
+            res.forEach(doc => {
+              const user = doc.data().user;
+              const morning = doc.data().morning;
+              const afternoon = doc.data().afternoon;
+              const evening = doc.data().evening;
+              const training = doc.data().training;
+              const matchingAnimal = document.querySelector(
+                `div[data-id="${animalID}"]`
+              );
+              if (morning) {
+                matchingAnimal.querySelector(
+                  ".morningByWhom"
+                ).textContent = user;
+              }
+              if (afternoon) {
+                matchingAnimal.querySelector(
+                  ".afternoonByWhom"
+                ).textContent = user;
+              }
+              if (evening) {
+                matchingAnimal.querySelector(
+                  ".eveningByWhom"
+                ).textContent = user;
+              }
+              if (training) {
+                matchingAnimal.querySelector(
+                  ".trainingByWhom"
+                ).textContent = user;
+              }
+            });
+          });
       });
     });
   // add listener to newly built column
@@ -257,24 +284,6 @@ function getFilename(evt) {
   console.log(filename);
 }
 
-// addAnimalToDbBtn.addEventListener("click", e => {
-//   e.preventDefault();
-//   db.collection("animalList")
-//     .add({
-//       name: addAnimalForm.animalName.value,
-//       type: addAnimalForm.type.value,
-//       breed: addAnimalForm.breed.value,
-//       age: addAnimalForm.age.value,
-//       gender: addAnimalForm.gender.value,
-//       size: addAnimalForm.size.value,
-//       young: addAnimalForm.young.checked ? true : false,
-//       pregnant: addAnimalForm.pregnant.checked ? true : false,
-//       money: addAnimalForm.money.value,
-//       story: addAnimalForm.story.value,
-//       file: addAnimalForm.filename.value
-//     })
-//     .then(alert("added"));
-// });
 //add animal to db, including image file
 addAnimalToDbBtn.addEventListener("click", e => {
   e.preventDefault();
