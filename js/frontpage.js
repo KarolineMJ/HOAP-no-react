@@ -229,6 +229,7 @@ sign in user
 const signinEmail = document.querySelector("#signinEmail");
 const signinPassword = document.querySelector("#signinPassword");
 const signinButton = document.querySelector("#signinButton");
+const wrongPassword = document.querySelector("#wrongPassword");
 
 //sign in a new user
 
@@ -248,6 +249,7 @@ function signinUser(e) {
     })
     .catch(function(error) {
       console.log(error);
+      wrongPassword.style.display = "block";
     });
 }
 /*-------------------------------------------
