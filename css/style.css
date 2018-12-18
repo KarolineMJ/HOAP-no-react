@@ -1125,7 +1125,7 @@ Keyframes for border radius header image
             left: 15%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, 170px);
+            grid-template-columns: repeat(11, auto);
             white-space: nowrap; }
             #admin main .section .subsection .tableWrapper .columns .column {
               border-right: 1px solid #2e2f4b;
@@ -1133,6 +1133,8 @@ Keyframes for border radius header image
               grid-template-rows: 100px 50px 50px 50px 50px 70px; }
               #admin main .section .subsection .tableWrapper .columns .column *:not(.animalImage) {
                 pointer-events: none; }
+                #admin main .section .subsection .tableWrapper .columns .column *:not(.animalImage) input[type="checkbox"] {
+                  pointer-events: initial; }
               #admin main .section .subsection .tableWrapper .columns .column:last-of-type {
                 border-right: none; }
               #admin main .section .subsection .tableWrapper .columns .column div:nth-child(1) {
