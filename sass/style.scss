@@ -619,10 +619,6 @@ button:focus {
   background-color: $mainColor;
 }
 
-#sendToUsForms .fullsize {
-  background-color: $mainColor;
-}
-
 #frontpageForms,
 #sendToUsForms {
   display: grid;
@@ -1021,7 +1017,7 @@ Preferences
 }
 
 /*-------------------------
-Keyframes for frontpage
+Keyframes for border radius header image
 ------------------------*/
 
 @keyframes morph {
@@ -1049,77 +1045,10 @@ Keyframes for frontpage
 }
 
 /* -----------------------
-        animation page  
+        Keyframes for "what you can do" animations 
 ------------------------*/
 
-/*#animation {
-  #errandCar {
-    width: 300px;
-    svg {
-      #leftwheel {
-        animation: rotateWheel 0.6s infinite linear reverse;
-        transform-origin: 20.2% 74.7%;
-      }
-
-      #rightwheel {
-        animation: rotateWheel 0.6s infinite linear reverse;
-        transform-origin: 74.7% 74.5%;
-      }
-      #car {
-        animation: carBounce 1s infinite alternate-reverse ease-in-out;
-      }
-      #box3,
-      #box1 {
-        animation: boxSideBounce 1s infinite alternate-reverse ease-in-out;
-      }
-
-      #box2 {
-        animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out;
-      }
-
-      #cattree {
-        animation: catTreeBounce 1s infinite alternate-reverse ease-in-out;
-
-        #ball {
-          animation: ballSwing 1s infinite alternate-reverse ease-in-out;
-          transform-origin: 76.3% 19%;
-        }
-      }
-    }
-  }
-  #coinCat {
-    width: 300px;
-    svg {
-      #head {
-        animation: moveHead 2s 0.5s infinite;
-        transform-origin: 50%;
-      }
-      #coin {
-        animation: coinFall 2s ease-in-out infinite;
-      }
-      #eyes {
-        animation: moveHead 2s 0.5s infinite;
-        transform-origin: 50%;
-      }
-    }
-  }
-
-  #walkDog {
-    width: 300px;
-    svg {
-      #eyes {
-        animation: eyeBlink 5s infinite;
-        transform-origin: 50% 40%;
-      }
-      #tail {
-        animation: moveTail 2s infinite;
-        transform-origin: bottom left;
-      }
-    }
-  }
-}
-*/
-/*        keyframes for cat     */
+//Keyframes for cat
 
 @keyframes coinFall {
   from {
@@ -1140,7 +1069,7 @@ Keyframes for frontpage
   }
 }
 
-/*          keyframes for dog     */
+//Keyframes for dog
 
 @keyframes moveTail {
   0% {
@@ -1209,7 +1138,7 @@ Keyframes for frontpage
   }
 }
 
-/*        keyframes for car    */
+//Keyframes for car
 @keyframes carBounce {
   from {
     transform: translateY(0%);
@@ -1839,14 +1768,23 @@ Keyframes for frontpage
   }
 }
 @media only screen and (min-width: $breakpoint-medium1) and (max-width: $breakpoint-medium2) {
-  /*-----------------------------*/
-  /* Signed in page */
-  /*-----------------------------*/
+  /*-----------------------------
+        Signed in page 
+  -----------------------------*/
 
-  #signedInContent {
-    #sendToUsForms {
+  /* ----------------------
+        Forms
+-----------------------*/
+
+  #signedInContent,
+  #lastBox {
+    #sendToUsForms,
+    #frontpageForms {
       grid-template-columns: 1fr 1fr;
-      #messageForm {
+      #messageForm,
+      #signupForm,
+      #imageForm,
+      #donationForm {
         margin: 45px;
         padding: 30px;
 
@@ -1869,35 +1807,6 @@ Keyframes for frontpage
           }
           label {
             font-size: 13px;
-          }
-        }
-      }
-      #imageForm {
-        margin: 45px;
-
-        padding: 30px;
-
-        h2 {
-          font-size: 18px;
-          margin-top: 0px;
-        }
-        form {
-          button {
-            margin: 19px 0px;
-          }
-        }
-        form {
-          .formField {
-            margin-bottom: 0;
-            padding: 0;
-            input {
-              font-size: 0.6em;
-              margin: 19px 0px;
-            }
-            label {
-              font-size: 13px;
-              padding-bottom: 3px;
-            }
           }
         }
       }
@@ -2028,65 +1937,7 @@ Keyframes for frontpage
       }
     }
   }
-  #frontpageForms {
-    width: 98%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-    #signupForm {
-      margin: 30px;
-      padding: 30px;
-      h2 {
-        font-size: 18px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin-top: 19px;
-          margin-bottom: 0px;
-        }
-      }
-      .formField {
-        margin-bottom: 0;
-        padding: 0;
-        input {
-          font-size: 0.8em;
-          margin: 19px 0px;
-        }
-        label {
-          font-size: 13px;
-        }
-      }
-    }
-    #donationForm {
-      margin: 30px;
-      padding: 30px;
 
-      h2 {
-        font-size: 18px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin: 19px 0px;
-        }
-      }
-      form {
-        .formField {
-          margin-bottom: 0;
-          padding: 0;
-          input {
-            font-size: 0.6em;
-            margin: 19px 0px;
-          }
-          label {
-            font-size: 13px;
-            padding-bottom: 3px;
-          }
-        }
-      }
-    }
-  }
   #footer {
     .contactBox {
       h3 {
@@ -2147,13 +1998,20 @@ Keyframes for frontpage
 }
 
 @media (max-width: $breakpoint-medium1) {
-  #sendToUsForms {
+  /*----------------------------*/
+  /*   Forms                    */
+  /*----------------------------*/
+
+  #sendToUsForms,
+  #frontpageForms {
     grid-template-columns: 1fr;
-    #messageForm {
-      grid-row-start: 1;
+    #messageForm,
+    #imageForm,
+    #signupForm,
+    #donationForm {
       margin: 50px;
       padding: 40px;
-      margin-bottom: 0;
+
       h2 {
         font-size: 20px;
         margin-top: 0px;
@@ -2176,34 +2034,11 @@ Keyframes for frontpage
         }
       }
     }
-    #imageForm {
-      margin: 50px;
-      padding: 40px;
-
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin: 19px 0px;
-        }
-      }
-      form {
-        .formField {
-          margin-bottom: 0;
-          padding: 0;
-          input {
-            font-size: 0.8em;
-            margin: 19px 0px;
-          }
-          label {
-            font-size: 14px;
-          }
-        }
-      }
-    }
   }
+
+  /*----------------------------*/
+  /*   Frontpage                */
+  /*----------------------------*/
 
   #intro {
     display: grid;
@@ -2335,66 +2170,7 @@ Keyframes for frontpage
       }
     }
   }
-  #frontpageForms {
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: auto;
-    #signupForm {
-      grid-row-start: 1;
-      margin: 34px;
-      padding: 30px;
-      margin-bottom: 0;
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin-top: 19px;
-          margin-bottom: 0px;
-        }
-      }
-      .formField {
-        margin-bottom: 0;
-        padding: 0;
-        input {
-          font-size: 0.8em;
-          margin: 19px 0px;
-        }
-        label {
-          font-size: 15px;
-        }
-      }
-    }
-    #donationForm {
-      margin: 34px;
-      padding: 30px;
 
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin: 19px 0px;
-        }
-      }
-      form {
-        .formField {
-          margin-bottom: 0;
-          padding: 0;
-          input {
-            font-size: 0.8em;
-            margin: 19px 0px;
-          }
-          label {
-            font-size: 14px;
-          }
-        }
-      }
-    }
-  }
   // here comes the footer
   #footer {
     padding: 30px;
@@ -2485,19 +2261,6 @@ Keyframes for frontpage
   }
   #signedInContent {
     #yourPets {
-      #petChoices {
-        grid-template-columns: 1fr;
-
-        div {
-          justify-self: center;
-        }
-        p {
-          //grid-row: 1;
-          justify-self: center;
-          margin-top: 0;
-          margin-bottom: 10px;
-        }
-      }
       #animalList {
         grid-template-columns: 1fr;
         align-self: center;
@@ -2511,14 +2274,23 @@ Keyframes for frontpage
       }
     }
   }
-  #signedInContent {
+
+  /* ----------------------
+        Forms
+-----------------------*/
+
+  #signedInContent,
+  #frontpageForms {
     #sendToUsForms {
       width: 100%;
       grid-template-columns: 1fr;
-      #messageForm {
+      #messageForm,
+      #signupForm,
+      #imageForm,
+      #donationForm {
         margin: 34px;
         padding: 30px;
-        margin-bottom: 0;
+
         h2 {
           font-size: 20px;
           margin-top: 0px;
@@ -2541,36 +2313,9 @@ Keyframes for frontpage
           }
         }
       }
-
-      #imageForm {
-        margin: 34px;
-        padding: 30px;
-
-        h2 {
-          font-size: 20px;
-          margin-top: 0px;
-        }
-        form {
-          button {
-            margin: 19px 0px;
-          }
-        }
-        form {
-          .formField {
-            margin-bottom: 0;
-            padding: 0;
-            input {
-              font-size: 0.8em;
-              margin: 19px 0px;
-            }
-            label {
-              font-size: 13px;
-            }
-          }
-        }
-      }
     }
   }
+
   /* ----------------------
         Frontpage
 -----------------------*/
@@ -2704,6 +2449,7 @@ Keyframes for frontpage
       }
     }
   }
+  /*
   #frontpageForms {
     width: 100%;
     display: grid;
@@ -2763,6 +2509,7 @@ Keyframes for frontpage
       }
     }
   }
+  */
   // here comes the footer
   #footer {
     padding: 30px 30px 100px 30px;
