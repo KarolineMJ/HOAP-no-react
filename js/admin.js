@@ -704,6 +704,19 @@ db.collection("animals")
           });
       });
   });
-
-let catCount;
-let dogCount;
+// count animals
+let catCount = 0;
+let dogCount = 0;
+db.collection("animals")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().type === "cat") {
+        catCount += 1;
+      } else if (doc.data().type === "dog") {
+        dogCount += 1;
+      }
+    });
+    document.querySelector(".catCount").textContent = catCount;
+    document.querySelector(".dogCount").textContent = dogCount;
+  });
