@@ -1327,6 +1327,7 @@ Keyframes for border radius header image
             .head {
               height: 100px;
               background-color: $darkGrayColor;
+              display: grid;
             }
             .row {
               padding: 20px;
@@ -1340,6 +1341,7 @@ Keyframes for border radius header image
             }
             b {
               color: $purpleColor;
+              place-self: center;
             }
           }
           .columns {
