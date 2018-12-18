@@ -563,9 +563,6 @@ button:focus {
 /* -----------------------
         signed in page
 ------------------------*/
-#mobileMenu {
-  display: none; }
-
 #signedInContent #yourPets {
   padding: 150px 10vw 0 10vw;
   background-color: #efefef;
@@ -1843,6 +1840,12 @@ Keyframes for border radius header image
     width: 100vw;
     padding: 50px;
     padding-bottom: 100px; }
+    #signedInContent #userSettings h2,
+    #signedInContent #newsFeed h2 {
+      font-size: 1.4em; }
+    #signedInContent #userSettings .user p,
+    #signedInContent #newsFeed .user p {
+      font-size: 1.2em; }
     #signedInContent #userSettings .user img,
     #signedInContent #newsFeed .user img {
       width: 50px; }
@@ -2042,67 +2045,6 @@ Keyframes for border radius header image
         #lastBox #animalImage div img {
           width: 70px;
           border-radius: 50%; }
-  /*
-  #frontpageForms {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    #signupForm {
-      grid-row-start: 1;
-      margin: 34px;
-      padding: 30px;
-      margin-bottom: 0;
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin-top: 19px;
-          margin-bottom: 0px;
-        }
-      }
-      .formField {
-        margin-bottom: 0;
-        padding: 0;
-        input {
-          font-size: 0.7em;
-          margin: 19px 0px;
-        }
-        label {
-          font-size: 15px;
-        }
-      }
-    }
-    #donationForm {
-      margin: 34px;
-      padding: 30px;
-
-      h2 {
-        font-size: 20px;
-        margin-top: 0px;
-      }
-      form {
-        button {
-          margin: 19px 0px;
-        }
-      }
-      form {
-        .formField {
-          margin-bottom: 0;
-          padding: 0;
-          input {
-            font-size: 0.8em;
-            margin: 19px 0px;
-          }
-          label {
-            font-size: 13px;
-          }
-        }
-      }
-    }
-  }
-  */
   #footer {
     padding: 30px 30px 100px 30px;
     grid-template-columns: 1fr; }
