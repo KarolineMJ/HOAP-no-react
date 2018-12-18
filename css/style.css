@@ -1686,45 +1686,6 @@ Keyframes for frontpage
         justify-self: center; }
         #lastBox #animalImage div img {
           width: 95px; }
-  #frontpageForms {
-    width: 98%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: auto; }
-    #frontpageForms #signupForm {
-      margin: 30px;
-      padding: 30px; }
-      #frontpageForms #signupForm h2 {
-        font-size: 18px;
-        margin-top: 0px; }
-      #frontpageForms #signupForm form button {
-        margin-top: 19px;
-        margin-bottom: 0px; }
-      #frontpageForms #signupForm .formField {
-        margin-bottom: 0;
-        padding: 0; }
-        #frontpageForms #signupForm .formField input {
-          font-size: 0.8em;
-          margin: 19px 0px; }
-        #frontpageForms #signupForm .formField label {
-          font-size: 13px; }
-    #frontpageForms #donationForm {
-      margin: 30px;
-      padding: 30px; }
-      #frontpageForms #donationForm h2 {
-        font-size: 18px;
-        margin-top: 0px; }
-      #frontpageForms #donationForm form button {
-        margin: 19px 0px; }
-      #frontpageForms #donationForm form .formField {
-        margin-bottom: 0;
-        padding: 0; }
-        #frontpageForms #donationForm form .formField input {
-          font-size: 0.6em;
-          margin: 19px 0px; }
-        #frontpageForms #donationForm form .formField label {
-          font-size: 13px;
-          padding-bottom: 3px; }
   #footer .contactBox h3 {
     font-size: 16px; }
   #footer .contactBox p {
