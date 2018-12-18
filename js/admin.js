@@ -624,3 +624,99 @@ db.collection("imagesFromAdmin")
         }
       });
   });
+
+/**
+ * status
+ */
+// fixed costs
+const waterCost = 3000;
+const elCost = 2000;
+const heatCost = 3000;
+const staffCost = 20000;
+document.querySelector(".waterCost").textContent = waterCost;
+document.querySelector(".elCost").textContent = elCost;
+document.querySelector(".heatCost").textContent = heatCost;
+document.querySelector(".staffCost").textContent = staffCost;
+document.querySelector(".fixCost").textContent =
+  waterCost + elCost + heatCost + staffCost;
+// animal cost
+let catCost = 0;
+let dogCost = 0;
+db.collection("animals")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().type === "cat") {
+        catCost += Number(doc.data().money);
+      }
+    });
+    document.querySelector(".catCost").textContent = catCost;
+    //    document.querySelector(".totalAnimalCost").textContent = catCost + dogCost;
+    db.collection("animals")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          if (doc.data().type === "dog") {
+            dogCost += Number(doc.data().money);
+          }
+        });
+        document.querySelector(".dogCost").textContent = dogCost;
+        document.querySelector(".totalAnimalCost").textContent =
+          catCost + dogCost;
+      });
+    // donation gain is the sum of all donation made by both member and visitors what's not registered as member
+    let donationGain = 0;
+    let monthlyDonationGain = 0;
+    db.collection("moneyDonation")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          const eachAmount = doc.data().amount;
+          donationGain += Number(eachAmount);
+        });
+        document.querySelector(".donationGain").textContent = donationGain;
+        // monthly donation from member
+        db.collection("member")
+          .get()
+          .then(res => {
+            res.forEach(doc => {
+              const monthlyDonation = doc.data().monthlyDonation;
+              if (monthlyDonation) {
+                monthlyDonationGain += Number(monthlyDonation);
+              }
+            });
+            document.querySelector(
+              ".monthlyDonationGain"
+            ).textContent = monthlyDonationGain;
+            const result =
+              monthlyDonationGain -
+              waterCost -
+              elCost -
+              heatCost -
+              staffCost -
+              catCost -
+              dogCost;
+            document.querySelector(".result").textContent = result;
+            if (result < 0) {
+              document.querySelector(".hint").textContent =
+                "didn't raise enough money this month to cover the cost, must use reserve.";
+            }
+          });
+      });
+  });
+// count animals
+let catCount = 0;
+let dogCount = 0;
+db.collection("animals")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().type === "cat") {
+        catCount += 1;
+      } else if (doc.data().type === "dog") {
+        dogCount += 1;
+      }
+    });
+    document.querySelector(".catCount").textContent = catCount;
+    document.querySelector(".dogCount").textContent = dogCount;
+  });
