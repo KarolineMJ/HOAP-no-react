@@ -1277,13 +1277,16 @@ Keyframes for border radius header image
       min-height: 300px; /* delete me later when all sections are finished */
       .subsection {
         height: auto;
-        padding: 50px 50px 0 50px;
+        padding: 80px 10vw;
         position: relative;
         &.otherToDo {
-          padding: 50px;
+          padding: 50px 10vw;
           p {
             margin: 35px 0px;
           }
+        }
+        h2 {
+          margin-bottom: 20px;
         }
         .subsectionHeader {
           width: 95%;
@@ -1633,8 +1636,7 @@ Keyframes for border radius header image
 }
 // here starts POST AND NOTIFY!!
 #postAndNotify {
-  padding: 50px;
-  height: auto;
+  padding: 70px 10vw;
   h3 {
     padding: 15px 0;
   }
@@ -1762,10 +1764,7 @@ Keyframes for border radius header image
 }
 // status section
 #status {
-  width: 80%;
-  margin: auto;
-  margin-top: 20px;
-
+  padding: 85px 10vw;
   .monthsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, 75px);
