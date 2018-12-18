@@ -1843,10 +1843,19 @@ Keyframes for frontpage
   /* Signed in page */
   /*-----------------------------*/
 
-  #signedInContent {
-    #sendToUsForms {
+  /* ----------------------
+        Forms
+-----------------------*/
+
+  #signedInContent,
+  #lastBox {
+    #sendToUsForms,
+    #frontpageForms {
       grid-template-columns: 1fr 1fr;
-      #messageForm {
+      #messageForm,
+      #signupForm,
+      #imageForm,
+      #donationForm {
         margin: 45px;
         padding: 30px;
 
@@ -1869,35 +1878,6 @@ Keyframes for frontpage
           }
           label {
             font-size: 13px;
-          }
-        }
-      }
-      #imageForm {
-        margin: 45px;
-
-        padding: 30px;
-
-        h2 {
-          font-size: 18px;
-          margin-top: 0px;
-        }
-        form {
-          button {
-            margin: 19px 0px;
-          }
-        }
-        form {
-          .formField {
-            margin-bottom: 0;
-            padding: 0;
-            input {
-              font-size: 0.6em;
-              margin: 19px 0px;
-            }
-            label {
-              font-size: 13px;
-              padding-bottom: 3px;
-            }
           }
         }
       }
@@ -2498,6 +2478,11 @@ Keyframes for frontpage
       }
     }
   }
+
+  /* ----------------------
+        Forms
+-----------------------*/
+
   #signedInContent,
   #frontpageForms {
     #sendToUsForms {
@@ -2535,36 +2520,6 @@ Keyframes for frontpage
     }
   }
 
-  /*
-      #imageForm {
-        margin: 34px;
-        padding: 30px;
-
-        h2 {
-          font-size: 20px;
-          margin-top: 0px;
-        }
-        form {
-          button {
-            margin: 19px 0px;
-          }
-        }
-        form {
-          .formField {
-            margin-bottom: 0;
-            padding: 0;
-            input {
-              font-size: 0.8em;
-              margin: 19px 0px;
-            }
-            label {
-              font-size: 13px;
-            }
-          }
-        }
-      }
-    }
-  }*/
   /* ----------------------
         Frontpage
 -----------------------*/

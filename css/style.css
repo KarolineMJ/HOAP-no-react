@@ -1498,42 +1498,121 @@ Keyframes for frontpage
   /*-----------------------------*/
   /* Signed in page */
   /*-----------------------------*/
-  #signedInContent #sendToUsForms {
+  /* ----------------------
+        Forms
+-----------------------*/
+  #signedInContent #sendToUsForms,
+  #signedInContent #frontpageForms,
+  #lastBox #sendToUsForms,
+  #lastBox #frontpageForms {
     grid-template-columns: 1fr 1fr; }
-    #signedInContent #sendToUsForms #messageForm {
+    #signedInContent #sendToUsForms #messageForm,
+    #signedInContent #sendToUsForms #signupForm,
+    #signedInContent #sendToUsForms #imageForm,
+    #signedInContent #sendToUsForms #donationForm,
+    #signedInContent #frontpageForms #messageForm,
+    #signedInContent #frontpageForms #signupForm,
+    #signedInContent #frontpageForms #imageForm,
+    #signedInContent #frontpageForms #donationForm,
+    #lastBox #sendToUsForms #messageForm,
+    #lastBox #sendToUsForms #signupForm,
+    #lastBox #sendToUsForms #imageForm,
+    #lastBox #sendToUsForms #donationForm,
+    #lastBox #frontpageForms #messageForm,
+    #lastBox #frontpageForms #signupForm,
+    #lastBox #frontpageForms #imageForm,
+    #lastBox #frontpageForms #donationForm {
       margin: 45px;
       padding: 30px; }
-      #signedInContent #sendToUsForms #messageForm h2 {
+      #signedInContent #sendToUsForms #messageForm h2,
+      #signedInContent #sendToUsForms #signupForm h2,
+      #signedInContent #sendToUsForms #imageForm h2,
+      #signedInContent #sendToUsForms #donationForm h2,
+      #signedInContent #frontpageForms #messageForm h2,
+      #signedInContent #frontpageForms #signupForm h2,
+      #signedInContent #frontpageForms #imageForm h2,
+      #signedInContent #frontpageForms #donationForm h2,
+      #lastBox #sendToUsForms #messageForm h2,
+      #lastBox #sendToUsForms #signupForm h2,
+      #lastBox #sendToUsForms #imageForm h2,
+      #lastBox #sendToUsForms #donationForm h2,
+      #lastBox #frontpageForms #messageForm h2,
+      #lastBox #frontpageForms #signupForm h2,
+      #lastBox #frontpageForms #imageForm h2,
+      #lastBox #frontpageForms #donationForm h2 {
         font-size: 18px;
         margin-top: 0px; }
-      #signedInContent #sendToUsForms #messageForm form button {
+      #signedInContent #sendToUsForms #messageForm form button,
+      #signedInContent #sendToUsForms #signupForm form button,
+      #signedInContent #sendToUsForms #imageForm form button,
+      #signedInContent #sendToUsForms #donationForm form button,
+      #signedInContent #frontpageForms #messageForm form button,
+      #signedInContent #frontpageForms #signupForm form button,
+      #signedInContent #frontpageForms #imageForm form button,
+      #signedInContent #frontpageForms #donationForm form button,
+      #lastBox #sendToUsForms #messageForm form button,
+      #lastBox #sendToUsForms #signupForm form button,
+      #lastBox #sendToUsForms #imageForm form button,
+      #lastBox #sendToUsForms #donationForm form button,
+      #lastBox #frontpageForms #messageForm form button,
+      #lastBox #frontpageForms #signupForm form button,
+      #lastBox #frontpageForms #imageForm form button,
+      #lastBox #frontpageForms #donationForm form button {
         margin-top: 19px;
         margin-bottom: 0px; }
-      #signedInContent #sendToUsForms #messageForm .formField {
+      #signedInContent #sendToUsForms #messageForm .formField,
+      #signedInContent #sendToUsForms #signupForm .formField,
+      #signedInContent #sendToUsForms #imageForm .formField,
+      #signedInContent #sendToUsForms #donationForm .formField,
+      #signedInContent #frontpageForms #messageForm .formField,
+      #signedInContent #frontpageForms #signupForm .formField,
+      #signedInContent #frontpageForms #imageForm .formField,
+      #signedInContent #frontpageForms #donationForm .formField,
+      #lastBox #sendToUsForms #messageForm .formField,
+      #lastBox #sendToUsForms #signupForm .formField,
+      #lastBox #sendToUsForms #imageForm .formField,
+      #lastBox #sendToUsForms #donationForm .formField,
+      #lastBox #frontpageForms #messageForm .formField,
+      #lastBox #frontpageForms #signupForm .formField,
+      #lastBox #frontpageForms #imageForm .formField,
+      #lastBox #frontpageForms #donationForm .formField {
         margin-bottom: 0;
         padding: 0; }
-        #signedInContent #sendToUsForms #messageForm .formField input {
+        #signedInContent #sendToUsForms #messageForm .formField input,
+        #signedInContent #sendToUsForms #signupForm .formField input,
+        #signedInContent #sendToUsForms #imageForm .formField input,
+        #signedInContent #sendToUsForms #donationForm .formField input,
+        #signedInContent #frontpageForms #messageForm .formField input,
+        #signedInContent #frontpageForms #signupForm .formField input,
+        #signedInContent #frontpageForms #imageForm .formField input,
+        #signedInContent #frontpageForms #donationForm .formField input,
+        #lastBox #sendToUsForms #messageForm .formField input,
+        #lastBox #sendToUsForms #signupForm .formField input,
+        #lastBox #sendToUsForms #imageForm .formField input,
+        #lastBox #sendToUsForms #donationForm .formField input,
+        #lastBox #frontpageForms #messageForm .formField input,
+        #lastBox #frontpageForms #signupForm .formField input,
+        #lastBox #frontpageForms #imageForm .formField input,
+        #lastBox #frontpageForms #donationForm .formField input {
           font-size: 0.8em;
           margin: 19px 0px; }
-        #signedInContent #sendToUsForms #messageForm .formField label {
+        #signedInContent #sendToUsForms #messageForm .formField label,
+        #signedInContent #sendToUsForms #signupForm .formField label,
+        #signedInContent #sendToUsForms #imageForm .formField label,
+        #signedInContent #sendToUsForms #donationForm .formField label,
+        #signedInContent #frontpageForms #messageForm .formField label,
+        #signedInContent #frontpageForms #signupForm .formField label,
+        #signedInContent #frontpageForms #imageForm .formField label,
+        #signedInContent #frontpageForms #donationForm .formField label,
+        #lastBox #sendToUsForms #messageForm .formField label,
+        #lastBox #sendToUsForms #signupForm .formField label,
+        #lastBox #sendToUsForms #imageForm .formField label,
+        #lastBox #sendToUsForms #donationForm .formField label,
+        #lastBox #frontpageForms #messageForm .formField label,
+        #lastBox #frontpageForms #signupForm .formField label,
+        #lastBox #frontpageForms #imageForm .formField label,
+        #lastBox #frontpageForms #donationForm .formField label {
           font-size: 13px; }
-    #signedInContent #sendToUsForms #imageForm {
-      margin: 45px;
-      padding: 30px; }
-      #signedInContent #sendToUsForms #imageForm h2 {
-        font-size: 18px;
-        margin-top: 0px; }
-      #signedInContent #sendToUsForms #imageForm form button {
-        margin: 19px 0px; }
-      #signedInContent #sendToUsForms #imageForm form .formField {
-        margin-bottom: 0;
-        padding: 0; }
-        #signedInContent #sendToUsForms #imageForm form .formField input {
-          font-size: 0.6em;
-          margin: 19px 0px; }
-        #signedInContent #sendToUsForms #imageForm form .formField label {
-          font-size: 13px;
-          padding-bottom: 3px; }
   /*-----------------------------*/
   /* Frontpage */
   /*-----------------------------*/
@@ -1909,6 +1988,9 @@ Keyframes for frontpage
       width: 200px;
       height: 200px;
       margin: 20px; }
+  /* ----------------------
+        Forms
+-----------------------*/
   #signedInContent #sendToUsForms,
   #frontpageForms #sendToUsForms {
     width: 100%;
@@ -1972,36 +2054,6 @@ Keyframes for frontpage
         #frontpageForms #sendToUsForms #imageForm .formField label,
         #frontpageForms #sendToUsForms #donationForm .formField label {
           font-size: 15px; }
-  /*
-      #imageForm {
-        margin: 34px;
-        padding: 30px;
-
-        h2 {
-          font-size: 20px;
-          margin-top: 0px;
-        }
-        form {
-          button {
-            margin: 19px 0px;
-          }
-        }
-        form {
-          .formField {
-            margin-bottom: 0;
-            padding: 0;
-            input {
-              font-size: 0.8em;
-              margin: 19px 0px;
-            }
-            label {
-              font-size: 13px;
-            }
-          }
-        }
-      }
-    }
-  }*/
   /* ----------------------
         Frontpage
 -----------------------*/
