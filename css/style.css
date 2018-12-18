@@ -1364,6 +1364,10 @@ Keyframes for frontpage
           height: 130px;
           border-radius: 50%;
           background-size: cover; }
+          #postAndNotify .postsContainer .publishContainer .receviedPictures .singlePic label {
+            display: inline-block;
+            width: 130px;
+            height: 130px; }
       #postAndNotify .postsContainer .publishContainer .publishBtn {
         margin: 25px;
         position: absolute;

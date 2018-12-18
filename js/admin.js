@@ -504,19 +504,24 @@ db.collection("imagesFromAdmin")
   .get()
   .then(res => {
     res.forEach(doc => {
-      let clone = singlePicTemp.cloneNode(true);
-      let singlePicDiv = clone.querySelector(".singlePic");
-      singlePicDiv.style.backgroundImage = "url('img/animals/broder.jpg')";
-      imageContainer.appendChild(clone);
+      if (doc.data().published === false) {
+        let clone = singlePicTemp.cloneNode(true);
+        let singlePicDiv = clone.querySelector(".singlePic");
+        singlePicDiv.style.backgroundImage = "url('img/animals/broder.jpg')";
+        imageContainer.appendChild(clone);
+      }
     });
     db.collection("imagesFromMember")
       .get()
       .then(res => {
         res.forEach(doc => {
-          let clone = singlePicTemp.cloneNode(true);
-          let singlePicDiv = clone.querySelector(".singlePic");
-          singlePicDiv.style.backgroundImage = "url('img/animals/broder.jpg')";
-          imageContainer.appendChild(clone);
+          if (doc.data().published === false) {
+            let clone = singlePicTemp.cloneNode(true);
+            let singlePicDiv = clone.querySelector(".singlePic");
+            singlePicDiv.style.backgroundImage =
+              "url('img/animals/broder.jpg')";
+            imageContainer.appendChild(clone);
+          }
         });
       });
   });

@@ -1672,6 +1672,11 @@ Keyframes for frontpage
           height: 130px;
           border-radius: 50%;
           background-size: cover;
+          label {
+            display: inline-block;
+            width: 130px;
+            height: 130px;
+          }
         }
       }
       .publishBtn {

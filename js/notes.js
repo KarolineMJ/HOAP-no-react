@@ -7,6 +7,7 @@ admin page is only hidden from browser, but still accessble in inspector, not se
 
 change get task column function, since data structure changed // add another collection only for daily needs template
 
+label in publish image container is not triggering the checkbox
 */
 
 /******* need to add:
