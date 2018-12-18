@@ -202,7 +202,7 @@ function buildAnimalColumn(entry) {
             let extraDesc = document.createElement("p");
             extraDesc.textContent = doc.data().extra;
             let taskCheckbox = document.createElement("input");
-            taskCheckbox.setAttribute("type", "checkbox");
+            taskCheckbox.style.display = "none"; // bad solution
             let byWhom = document.createElement("span");
             byWhom.classList.add("memberName");
             if (doc.data().extraMember !== "") {
