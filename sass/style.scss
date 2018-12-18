@@ -1485,18 +1485,23 @@ Keyframes for border radius header image
         .toDoListWrapper {
           width: 70%; /* temp solution. Need to figure out if and how should this part be aligned to other elements */
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+          //display: grid;
+          //grid-template-columns: 1fr 1fr;
+          span {
+            margin-left: 15px;
+            //margin-left: 40px;
+          }
           span.userMessage {
             color: red;
           }
 
-          // .toDoEntry {
-          //   line-height: 2rem;
-          //   input[type="checkbox"] {
-          //     margin-right: 5px;
-          //   }
-          // }
+          div {
+            line-height: 2rem;
+            input[type="checkbox"] {
+              //margin-right: 40px;
+              margin-left: -25px;
+            }
+          }
         }
       }
     }
