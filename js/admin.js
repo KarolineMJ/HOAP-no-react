@@ -44,7 +44,7 @@ function displayAnimals() {
     animalArray.push(a.dataset.id);
   });
   db.collection("animals")
-    .orderBy("timestamp")
+    //    .orderBy("timestamp")
     .get()
     .then(res => {
       res.docs.forEach(doc => {
@@ -90,7 +90,7 @@ function buildAnimalColumn(entry) {
   animalImageDiv.appendChild(animalImage);
   column.appendChild(animalImageDiv);
   // get daily task of this animal from another collection in database
-  db.collection("dailyTasks")
+  db.collection("dailyTaskTemplate")
     .where("animalID", "==", animalID)
     // .where("month", "==", month)
     // .where("day", "==", day)
@@ -257,14 +257,31 @@ function getFilename(evt) {
   console.log(filename);
 }
 
-// add animal to db, including image file
-addAnimalForm.addEventListener("submit", e => {
+// addAnimalToDbBtn.addEventListener("click", e => {
+//   e.preventDefault();
+//   db.collection("animalList")
+//     .add({
+//       name: addAnimalForm.animalName.value,
+//       type: addAnimalForm.type.value,
+//       breed: addAnimalForm.breed.value,
+//       age: addAnimalForm.age.value,
+//       gender: addAnimalForm.gender.value,
+//       size: addAnimalForm.size.value,
+//       young: addAnimalForm.young.checked ? true : false,
+//       pregnant: addAnimalForm.pregnant.checked ? true : false,
+//       money: addAnimalForm.money.value,
+//       story: addAnimalForm.story.value,
+//       file: addAnimalForm.filename.value
+//     })
+//     .then(alert("added"));
+// });
+//add animal to db, including image file
+addAnimalToDbBtn.addEventListener("click", e => {
   e.preventDefault();
-
   //add to the specific collection in firestore
   db.collection("animals")
     .add({
-      timestamp: timestamp,
+      //      timestamp: timestamp,
       name: addAnimalForm.animalName.value,
       type: addAnimalForm.type.value,
       breed: addAnimalForm.breed.value,
@@ -275,15 +292,15 @@ addAnimalForm.addEventListener("submit", e => {
       pregnant: addAnimalForm.pregnant.checked ? true : false,
       money: addAnimalForm.money.value,
       story: addAnimalForm.story.value,
-      file: filename
+      file: addAnimalForm.filename.value
     })
     .then(docRef => {
       const newlyAddedAnimalID = docRef.id;
-      db.collection("dailyTasks").add({
+      db.collection("dailyTaskTemplate").add({
         animalID: newlyAddedAnimalID,
-        year: year,
-        month: month,
-        day: day,
+        // year: year,
+        // month: month,
+        // day: day,
         morning: addAnimalForm.morning.checked ? true : false,
         afternoon: addAnimalForm.afternoon.checked ? true : false,
         evening: addAnimalForm.evening.checked ? true : false,
@@ -327,13 +344,13 @@ editAnimalBtn.addEventListener("click", e => {
       pregnant: animalDetailForm.pregnant.checked ? true : false
     });
   // update dailytasks db
-  db.collection("dailyTasks")
+  db.collection("dailyTaskTemplate")
     .where("animalID", "==", id)
     .get()
     .then(res => {
       res.forEach(doc => {
         const docID = doc.id;
-        db.collection("dailyTasks")
+        db.collection("dailyTaskTemplate")
           .doc(docID)
           .update({
             morning: animalDetailForm.morning.checked ? true : false,
@@ -421,7 +438,7 @@ function showAnimalDetail(data, id, elem, editableBol) {
     .querySelector(`input[value='${data.size}']`)
     .setAttribute("checked", "checked");
   elem.querySelector(".story-textarea").value = data.story;
-  db.collection("dailyTasks")
+  db.collection("dailyTaskTemplate")
     .where("animalID", "==", id)
     .get()
     .then(res => {
