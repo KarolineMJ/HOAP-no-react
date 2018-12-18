@@ -418,7 +418,7 @@ function cloneAnimalInfo(data, animalID) {
   const evening = donationClone.querySelector("label.evening");
   const training = donationClone.querySelector("label.training");
   // need to read db to get needed time slots
-  db.collection("dailyTasks")
+  db.collection("dailyTaskTemplate")
     .where("animalID", "==", animalID)
     .get()
     .then(res => {
