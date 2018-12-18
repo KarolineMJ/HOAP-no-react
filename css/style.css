@@ -1036,11 +1036,13 @@ Keyframes for border radius header image
           margin-bottom: 2em; }
       #admin main .section .subsection {
         height: auto;
-        padding: 80px 10vw;
+        padding: 80px 50px;
         position: relative; }
         #admin main .section .subsection.otherToDo {
           padding: 50px;
           width: 95%; }
+        #admin main .section .subsection h2 {
+          margin-bottom: 20px; }
         #admin main .section .subsection .subsectionHeader {
           width: 95%;
           height: 50px;
