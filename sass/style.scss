@@ -619,10 +619,6 @@ button:focus {
   background-color: $mainColor;
 }
 
-#sendToUsForms .fullsize {
-  background-color: $mainColor;
-}
-
 #frontpageForms,
 #sendToUsForms {
   display: grid;
@@ -1021,7 +1017,7 @@ Preferences
 }
 
 /*-------------------------
-Keyframes for frontpage
+Keyframes for border radius header image
 ------------------------*/
 
 @keyframes morph {
@@ -1049,77 +1045,10 @@ Keyframes for frontpage
 }
 
 /* -----------------------
-        animation page  
+        Keyframes for "what you can do" animations 
 ------------------------*/
 
-/*#animation {
-  #errandCar {
-    width: 300px;
-    svg {
-      #leftwheel {
-        animation: rotateWheel 0.6s infinite linear reverse;
-        transform-origin: 20.2% 74.7%;
-      }
-
-      #rightwheel {
-        animation: rotateWheel 0.6s infinite linear reverse;
-        transform-origin: 74.7% 74.5%;
-      }
-      #car {
-        animation: carBounce 1s infinite alternate-reverse ease-in-out;
-      }
-      #box3,
-      #box1 {
-        animation: boxSideBounce 1s infinite alternate-reverse ease-in-out;
-      }
-
-      #box2 {
-        animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out;
-      }
-
-      #cattree {
-        animation: catTreeBounce 1s infinite alternate-reverse ease-in-out;
-
-        #ball {
-          animation: ballSwing 1s infinite alternate-reverse ease-in-out;
-          transform-origin: 76.3% 19%;
-        }
-      }
-    }
-  }
-  #coinCat {
-    width: 300px;
-    svg {
-      #head {
-        animation: moveHead 2s 0.5s infinite;
-        transform-origin: 50%;
-      }
-      #coin {
-        animation: coinFall 2s ease-in-out infinite;
-      }
-      #eyes {
-        animation: moveHead 2s 0.5s infinite;
-        transform-origin: 50%;
-      }
-    }
-  }
-
-  #walkDog {
-    width: 300px;
-    svg {
-      #eyes {
-        animation: eyeBlink 5s infinite;
-        transform-origin: 50% 40%;
-      }
-      #tail {
-        animation: moveTail 2s infinite;
-        transform-origin: bottom left;
-      }
-    }
-  }
-}
-*/
-/*        keyframes for cat     */
+//Keyframes for cat
 
 @keyframes coinFall {
   from {
@@ -1140,7 +1069,7 @@ Keyframes for frontpage
   }
 }
 
-/*          keyframes for dog     */
+//Keyframes for dog
 
 @keyframes moveTail {
   0% {
@@ -1209,7 +1138,7 @@ Keyframes for frontpage
   }
 }
 
-/*        keyframes for car    */
+//Keyframes for car
 @keyframes carBounce {
   from {
     transform: translateY(0%);

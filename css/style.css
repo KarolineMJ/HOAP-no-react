@@ -520,9 +520,6 @@ button:focus {
 #sendToUsForms {
   background-color: #ead8a6; }
 
-#sendToUsForms .fullsize {
-  background-color: #ead8a6; }
-
 #frontpageForms,
 #sendToUsForms {
   display: grid;
@@ -848,7 +845,7 @@ Preferences
       border-radius: 40px; }
 
 /*-------------------------
-Keyframes for frontpage
+Keyframes for border radius header image
 ------------------------*/
 @keyframes morph {
   100% {
@@ -867,76 +864,8 @@ Keyframes for frontpage
     border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; } }
 
 /* -----------------------
-        animation page  
+        Keyframes for "what you can do" animations 
 ------------------------*/
-/*#animation {
-  #errandCar {
-    width: 300px;
-    svg {
-      #leftwheel {
-        animation: rotateWheel 0.6s infinite linear reverse;
-        transform-origin: 20.2% 74.7%;
-      }
-
-      #rightwheel {
-        animation: rotateWheel 0.6s infinite linear reverse;
-        transform-origin: 74.7% 74.5%;
-      }
-      #car {
-        animation: carBounce 1s infinite alternate-reverse ease-in-out;
-      }
-      #box3,
-      #box1 {
-        animation: boxSideBounce 1s infinite alternate-reverse ease-in-out;
-      }
-
-      #box2 {
-        animation: boxMiddleBounce 1s infinite alternate-reverse ease-in-out;
-      }
-
-      #cattree {
-        animation: catTreeBounce 1s infinite alternate-reverse ease-in-out;
-
-        #ball {
-          animation: ballSwing 1s infinite alternate-reverse ease-in-out;
-          transform-origin: 76.3% 19%;
-        }
-      }
-    }
-  }
-  #coinCat {
-    width: 300px;
-    svg {
-      #head {
-        animation: moveHead 2s 0.5s infinite;
-        transform-origin: 50%;
-      }
-      #coin {
-        animation: coinFall 2s ease-in-out infinite;
-      }
-      #eyes {
-        animation: moveHead 2s 0.5s infinite;
-        transform-origin: 50%;
-      }
-    }
-  }
-
-  #walkDog {
-    width: 300px;
-    svg {
-      #eyes {
-        animation: eyeBlink 5s infinite;
-        transform-origin: 50% 40%;
-      }
-      #tail {
-        animation: moveTail 2s infinite;
-        transform-origin: bottom left;
-      }
-    }
-  }
-}
-*/
-/*        keyframes for cat     */
 @keyframes coinFall {
   from {
     transform: translateY(-100px); }
@@ -949,7 +878,6 @@ Keyframes for frontpage
   50% {
     transform: rotate(8deg); } }
 
-/*          keyframes for dog     */
 @keyframes moveTail {
   0% {
     transform: rotate(-2deg); }
@@ -994,7 +922,6 @@ Keyframes for frontpage
   100% {
     transform: scaleY(0); } }
 
-/*        keyframes for car    */
 @keyframes carBounce {
   from {
     transform: translateY(0%); }
