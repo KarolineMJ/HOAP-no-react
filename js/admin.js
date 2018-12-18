@@ -496,3 +496,58 @@ db.collection("member")
       }
     });
   });
+
+// show image in 3x3 section
+const imageContainer = document.querySelector(".receviedPictures");
+const singlePicTemp = document.querySelector("#singlePicTemp").content;
+db.collection("imagesFromAdmin")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().published === false) {
+        let clone = singlePicTemp.cloneNode(true);
+        let singlePicDiv = clone.querySelector(".singlePic");
+        singlePicDiv.style.backgroundImage = "url('img/animals/broder.jpg')";
+        singlePicDiv.setAttribute("data-file", "url('img/animals/broder.jpg')");
+        imageContainer.appendChild(clone);
+      }
+    });
+    db.collection("imagesFromMember")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          if (doc.data().published === false) {
+            let clone = singlePicTemp.cloneNode(true);
+            let singlePicDiv = clone.querySelector(".singlePic");
+            singlePicDiv.style.backgroundImage =
+              "url('img/animals/broder.jpg')";
+            imageContainer.appendChild(clone);
+          }
+        });
+        // publish checked image (only update db, no fetching of these images on the frontpage yet)
+        const publishBtn = document.querySelector(".publishBtn");
+        let fileArray = [];
+        publishBtn.addEventListener("click", publishImg);
+        function publishImg() {
+          const needToPublish = document.querySelectorAll(".singlePic");
+          needToPublish.forEach(eachImage => {
+            const checkbox = eachImage.querySelector('input[type="checkbox"]');
+            if (checkbox.checked) {
+              const needToPublishFile = eachImage.dataset.file;
+              fileArray.push(needToPublishFile);
+            }
+          });
+          console.log(fileArray);
+          // POST files to db
+          fileArray.forEach(eachfile => {
+            db.collection("frontpageImages")
+              .add({
+                filename: eachfile
+              })
+              .then(console.log("added to db, will be published online soon"));
+          });
+          // clear fileArray after publish
+          resetForm(imageContainer);
+        }
+      });
+  });

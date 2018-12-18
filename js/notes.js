@@ -4,11 +4,17 @@ typo: errand should be errands, both in html and when writing to db
 admin page animal image title doesn't show up anymore. add animal name?
 
 admin page is only hidden from browser, but still accessble in inspector, not secure
+
+change get task column function, since data structure changed // add another collection only for daily needs template
+
+label in publish image container is not triggering the checkbox
 */
 
 /******* need to add:
 
 click on animal to follow and change heart
+
+user panal doesn't need to update everytimt the panel opens, only update when user changes pref or when user make a donation and the sum-up part changes
 
 doesn't run admin functions unless logged in as admin
 
@@ -18,7 +24,6 @@ limit how many notification to get
 
 add hint with feedback from db, such as too weak password and user already exists
 
-add if user has a preference setting in which type of animal to see and user wants to receive notification about new animals, only notify that chosen type 
 
 
 update user preferences in the setting panel and update page based on new setting
@@ -47,6 +52,13 @@ Didn't see that this is a "name" field on the front page for sign up. Ask for ni
 combine menu.js and frontpage.js?
 
 */
+
+/** 
+ * low priority
+
+ add if user has a preference setting in which type of animal to see and user wants to receive notification about new animals, only notify that chosen type 
+
+ */
 
 /** 
  * DONE

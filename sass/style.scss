@@ -1660,7 +1660,8 @@ Keyframes for frontpage
         // border: 1px solid black;
         border-right: 1px solid black;
         width: 100%;
-        height: auto;
+        height: calc(60vh + 34px);
+        overflow: scroll;
         display: grid;
         grid-template-columns: 20vh 20vh 20vh;
         grid-template-rows: 20vh 20vh 20vh;
@@ -1670,7 +1671,13 @@ Keyframes for frontpage
         .singlePic {
           width: 130px;
           height: 130px;
-          border: 1px solid black;
+          border-radius: 50%;
+          background-size: cover;
+          label {
+            display: inline-block;
+            width: 130px;
+            height: 130px;
+          }
         }
       }
       .publishBtn {

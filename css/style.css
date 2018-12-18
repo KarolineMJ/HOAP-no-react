@@ -1353,7 +1353,8 @@ Keyframes for frontpage
       #postAndNotify .postsContainer .publishContainer .receviedPictures {
         border-right: 1px solid black;
         width: 100%;
-        height: auto;
+        height: calc(60vh + 34px);
+        overflow: scroll;
         display: grid;
         grid-template-columns: 20vh 20vh 20vh;
         grid-template-rows: 20vh 20vh 20vh;
@@ -1362,7 +1363,12 @@ Keyframes for frontpage
         #postAndNotify .postsContainer .publishContainer .receviedPictures .singlePic {
           width: 130px;
           height: 130px;
-          border: 1px solid black; }
+          border-radius: 50%;
+          background-size: cover; }
+          #postAndNotify .postsContainer .publishContainer .receviedPictures .singlePic label {
+            display: inline-block;
+            width: 130px;
+            height: 130px; }
       #postAndNotify .postsContainer .publishContainer .publishBtn {
         margin: 25px;
         position: absolute;
