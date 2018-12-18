@@ -90,147 +90,170 @@ function buildAnimalColumn(entry) {
   animalImageDiv.appendChild(animalImage);
   column.appendChild(animalImageDiv);
   // get daily task of this animal from another collection in database
-  db.collection("dailyTasks")
+  db.collection("dailyTaskTemplate")
     .where("animalID", "==", animalID)
-    .where("year", "==", year)
-    .where("month", "==", month)
-    .where("day", "==", day)
     .get()
     .then(res => {
-      alert(res.docs.length);
-      if (res.docs.length > 0) {
-        res.docs.forEach(doc => {
-          if (!doc.data().month && !doc.data().year && !doc.data().day) {
-            console.log(doc.data());
-            ///////////////////// need to DRY these
-            //        if (doc.data().month === month && doc.data().day === day) {
-            if (doc.data().morning === false) {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let noTaskImage = document.createElement("img");
-              noTaskImage.setAttribute("src", "img/notask.png");
-              row.appendChild(noTaskImage);
-              column.appendChild(row);
-              columns.appendChild(column);
-            } else {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let taskCheckbox = document.createElement("input");
-              taskCheckbox.setAttribute("type", "checkbox");
-              let byWhom = document.createElement("span");
-              byWhom.classList.add("memberName");
-              if (doc.data().morningMember !== "") {
-                byWhom.textContent = doc.data().morningMember;
-              }
-              row.appendChild(taskCheckbox);
-              row.appendChild(byWhom);
-              column.appendChild(row);
-              columns.appendChild(column);
-            }
-            ////////////////////////////////
-
-            if (doc.data().afternoon === false) {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let noTaskImage = document.createElement("img");
-              noTaskImage.setAttribute("src", "img/notask.png");
-              row.appendChild(noTaskImage);
-              column.appendChild(row);
-              columns.appendChild(column);
-            } else {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let taskCheckbox = document.createElement("input");
-              taskCheckbox.setAttribute("type", "checkbox");
-              let byWhom = document.createElement("span");
-              byWhom.classList.add("memberName");
-              if (doc.data().morningMember !== "") {
-                byWhom.textContent = doc.data().afternoonMember;
-              }
-              row.appendChild(taskCheckbox);
-              row.appendChild(byWhom);
-              column.appendChild(row);
-              columns.appendChild(column);
-            }
-
-            /////////////////////////////
-            if (doc.data().evening === false) {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let noTaskImage = document.createElement("img");
-              noTaskImage.setAttribute("src", "img/notask.png");
-              row.appendChild(noTaskImage);
-              column.appendChild(row);
-              columns.appendChild(column);
-            } else {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let taskCheckbox = document.createElement("input");
-              taskCheckbox.setAttribute("type", "checkbox");
-              let byWhom = document.createElement("span");
-              byWhom.classList.add("memberName");
-              if (doc.data().morningMember !== "") {
-                byWhom.textContent = doc.data().eveningMember;
-              }
-              row.appendChild(taskCheckbox);
-              row.appendChild(byWhom);
-              column.appendChild(row);
-              columns.appendChild(column);
-            }
-            /////////////////////////////
-            if (doc.data().training === false) {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let noTaskImage = document.createElement("img");
-              noTaskImage.setAttribute("src", "img/notask.png");
-              row.appendChild(noTaskImage);
-              column.appendChild(row);
-              columns.appendChild(column);
-            } else {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let taskCheckbox = document.createElement("input");
-              taskCheckbox.setAttribute("type", "checkbox");
-              let byWhom = document.createElement("span");
-              byWhom.classList.add("memberName");
-              if (doc.data().morningMember !== "") {
-                byWhom.textContent = doc.data().trainingMember;
-              }
-              row.appendChild(taskCheckbox);
-              row.appendChild(byWhom);
-              column.appendChild(row);
-              columns.appendChild(column);
-            }
-            /////////////////////////////
-            if (doc.data().extra === "") {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let noTaskImage = document.createElement("img");
-              noTaskImage.setAttribute("src", "img/notask.png");
-              row.appendChild(noTaskImage);
-              column.appendChild(row);
-              columns.appendChild(column);
-            } else {
-              let row = document.createElement("div");
-              row.classList.add("row");
-              let extraDesc = document.createElement("p");
-              extraDesc.textContent = doc.data().extra;
-              let taskCheckbox = document.createElement("input");
-              taskCheckbox.setAttribute("type", "checkbox");
-              let byWhom = document.createElement("span");
-              byWhom.classList.add("memberName");
-              if (doc.data().extraMember !== "") {
-                byWhom.textContent = doc.data().extraMember;
-              }
-              row.appendChild(extraDesc);
-              row.appendChild(taskCheckbox);
-              row.appendChild(byWhom);
-              column.appendChild(row);
-              columns.appendChild(column);
-            }
+      res.docs.forEach(doc => {
+        if (!doc.data().month && !doc.data().year && !doc.data().day) {
+          console.log(doc.data());
+          ///////////////////// need to DRY these
+          if (doc.data().morning === false) {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let noTaskImage = document.createElement("img");
+            noTaskImage.setAttribute("src", "img/notask.png");
+            row.appendChild(noTaskImage);
+            column.appendChild(row);
+            columns.appendChild(column);
+          } else {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let taskCheckbox = document.createElement("input");
+            taskCheckbox.setAttribute("type", "checkbox");
+            let byWhom = document.createElement("span");
+            byWhom.classList.add("morningByWhom");
+            byWhom.classList.add("memberName");
+            row.appendChild(taskCheckbox);
+            row.appendChild(byWhom);
+            column.appendChild(row);
+            columns.appendChild(column);
           }
-        });
-      }
+          ////////////////////////////////
+
+          if (doc.data().afternoon === false) {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let noTaskImage = document.createElement("img");
+            noTaskImage.setAttribute("src", "img/notask.png");
+            row.appendChild(noTaskImage);
+            column.appendChild(row);
+            columns.appendChild(column);
+          } else {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let taskCheckbox = document.createElement("input");
+            taskCheckbox.setAttribute("type", "checkbox");
+            let byWhom = document.createElement("span");
+            byWhom.classList.add("afternoonByWhom");
+            byWhom.classList.add("memberName");
+            row.appendChild(taskCheckbox);
+            row.appendChild(byWhom);
+            column.appendChild(row);
+            columns.appendChild(column);
+          }
+
+          /////////////////////////////
+          if (doc.data().evening === false) {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let noTaskImage = document.createElement("img");
+            noTaskImage.setAttribute("src", "img/notask.png");
+            row.appendChild(noTaskImage);
+            column.appendChild(row);
+            columns.appendChild(column);
+          } else {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let taskCheckbox = document.createElement("input");
+            taskCheckbox.setAttribute("type", "checkbox");
+            let byWhom = document.createElement("span");
+            byWhom.classList.add("eveningByWhom");
+            byWhom.classList.add("memberName");
+            row.appendChild(taskCheckbox);
+            row.appendChild(byWhom);
+            column.appendChild(row);
+            columns.appendChild(column);
+          }
+          /////////////////////////////
+          if (doc.data().training === false) {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let noTaskImage = document.createElement("img");
+            noTaskImage.setAttribute("src", "img/notask.png");
+            row.appendChild(noTaskImage);
+            column.appendChild(row);
+            columns.appendChild(column);
+          } else {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let taskCheckbox = document.createElement("input");
+            taskCheckbox.setAttribute("type", "checkbox");
+            let byWhom = document.createElement("span");
+            byWhom.classList.add("trainingByWhom");
+            byWhom.classList.add("memberName");
+            row.appendChild(taskCheckbox);
+            row.appendChild(byWhom);
+            column.appendChild(row);
+            columns.appendChild(column);
+          }
+          /////////////////////////////
+          if (doc.data().extra === "") {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let noTaskImage = document.createElement("img");
+            noTaskImage.setAttribute("src", "img/notask.png");
+            row.appendChild(noTaskImage);
+            column.appendChild(row);
+            columns.appendChild(column);
+          } else {
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let extraDesc = document.createElement("p");
+            extraDesc.textContent = doc.data().extra;
+            let taskCheckbox = document.createElement("input");
+            taskCheckbox.setAttribute("type", "checkbox");
+            let byWhom = document.createElement("span");
+            byWhom.classList.add("memberName");
+            if (doc.data().extraMember !== "") {
+              byWhom.textContent = doc.data().extraMember;
+            }
+            row.appendChild(extraDesc);
+            row.appendChild(taskCheckbox);
+            row.appendChild(byWhom);
+            column.appendChild(row);
+            columns.appendChild(column);
+          }
+        }
+        db.collection("dailyTasks")
+          .where("animalID", "==", doc.data().animalID)
+          .where("year", "==", year)
+          .where("month", "==", month)
+          .where("day", "==", day)
+          .get()
+          .then(res => {
+            res.forEach(doc => {
+              const user = doc.data().user;
+              const morning = doc.data().morning;
+              const afternoon = doc.data().afternoon;
+              const evening = doc.data().evening;
+              const training = doc.data().training;
+              const matchingAnimal = document.querySelector(
+                `div[data-id="${animalID}"]`
+              );
+              if (morning) {
+                matchingAnimal.querySelector(
+                  ".morningByWhom"
+                ).textContent = user;
+              }
+              if (afternoon) {
+                matchingAnimal.querySelector(
+                  ".afternoonByWhom"
+                ).textContent = user;
+              }
+              if (evening) {
+                matchingAnimal.querySelector(
+                  ".eveningByWhom"
+                ).textContent = user;
+              }
+              if (training) {
+                matchingAnimal.querySelector(
+                  ".trainingByWhom"
+                ).textContent = user;
+              }
+            });
+          });
+      });
     });
   // add listener to newly built column
   column.querySelector(".animalImage").addEventListener("click", e => {
