@@ -1275,15 +1275,19 @@ Keyframes for border radius header image
       border-bottom: 7px dotted $purpleColor;
       height: auto;
       min-height: 300px; /* delete me later when all sections are finished */
+      p {
+        line-height: 1.3;
+        &:last-of-type {
+          margin-bottom: 2em;
+        }
+      }
       .subsection {
         height: auto;
         padding: 50px 50px 0 50px;
         position: relative;
         &.otherToDo {
           padding: 50px;
-          p {
-            margin: 35px 0px;
-          }
+          width: 95%;
         }
         .subsectionHeader {
           width: 95%;
@@ -1293,12 +1297,16 @@ Keyframes for border radius header image
           span {
             display: inline-block;
             padding-top: 10px;
+
             input {
               width: 95%; /* temp solution */
               font-size: 16px;
               border: none;
               border-bottom: 1px solid $purpleColor;
             }
+          }
+          .date {
+            font-size: 24px;
           }
           .adminBtn {
             cursor: pointer;
