@@ -1202,11 +1202,15 @@ Keyframes for border radius header image
         #admin main .section .subsection .toDoListWrapper {
           width: 70%;
           /* temp solution. Need to figure out if and how should this part be aligned to other elements */
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr; }
+          margin: 0 auto; }
+          #admin main .section .subsection .toDoListWrapper span {
+            margin-left: 15px; }
           #admin main .section .subsection .toDoListWrapper span.userMessage {
             color: red; }
+          #admin main .section .subsection .toDoListWrapper div {
+            line-height: 2rem; }
+            #admin main .section .subsection .toDoListWrapper div input[type="checkbox"] {
+              margin-left: -25px; }
   #admin .adminForm {
     overflow-y: scroll;
     position: fixed;
