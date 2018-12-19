@@ -135,12 +135,14 @@ button:focus {
 }
 
 #messageForm,
-#imageForm {
+#imageForm,
+#stuffDonationForm {
   background-color: white;
 }
 #loginForm,
 #messageForm,
-#imageForm {
+#imageForm,
+#stuffDonationForm {
   padding: 40px;
   color: grey;
   h2 {
@@ -385,10 +387,8 @@ button:focus {
 }
 
 .sendImageUser {
-  width: 270px;
   height: 40px;
   color: white;
-  margin: auto;
   margin-top: 30px;
   padding-bottom: 30px;
   input {
@@ -663,8 +663,9 @@ button:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   #messageForm,
-  #imageForm {
-    margin: 5vw 10vw 10vw 10vw;
+  #imageForm,
+  #stuffDonationForm {
+    margin: 5vw 0 10vw 0;
     padding: 40px;
   }
   #donationForm,
@@ -674,7 +675,9 @@ button:focus {
   }
 }
 #sendToUsForms {
+  padding: 0 10vw;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 4vw;
 }
 #frontpageForms {
   #donationForm {
@@ -1019,7 +1022,7 @@ button:focus {
       height: 40px;
       justify-self: end;
       padding: 7px;
-      width: 150px;
+      width: 100%;
       background-color: $darkbtn;
       border: none;
       color: white;
@@ -1032,8 +1035,9 @@ button:focus {
         background-color: $btnHover;
       }
       &#cancelMembership {
+        background: $redColor;
         &:hover {
-          background: $redColor;
+          background: #9c1818;
         }
       }
     }
@@ -1972,7 +1976,8 @@ Keyframes for border radius header image
       #messageForm,
       #signupForm,
       #imageForm,
-      #donationForm {
+      #donationForm,
+      #stuffDonationForm {
         margin: 45px;
         padding: 30px;
 
@@ -2196,7 +2201,8 @@ Keyframes for border radius header image
     #messageForm,
     #imageForm,
     #signupForm,
-    #donationForm {
+    #donationForm,
+    #stuffDonationForm {
       margin: 50px;
       padding: 40px;
 
@@ -2489,8 +2495,10 @@ Keyframes for border radius header image
   #signedInContent,
   #frontpageForms {
     #sendToUsForms {
+      padding: 10vw;
       width: 100%;
       grid-template-columns: 1fr;
+
       #messageForm,
       #signupForm,
       #imageForm,
