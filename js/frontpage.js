@@ -73,6 +73,7 @@ Display right content if user
   if (window.sessionStorage.getItem("userEmail")) {
     const currentUserEmail = window.sessionStorage.getItem("userEmail");
     getUserSetting(currentUserEmail);
+    getUserDonationSofar(currentUserEmail);
     //    getUserNotifications(currentUserEmail);
   }
   // detect user state change and display different content based on what type of user is logged in
@@ -106,6 +107,7 @@ Display right content if user
       getUserAnimals(user.email);
       getUserSetting(user.email);
       getUserNotifications(user.email);
+      getUserDonationSofar(user.email);
     } else {
       adminSection.style.display = "none";
       frontpageContent.style.display = "block";
@@ -242,6 +244,7 @@ function signinUser(e) {
       const currentUserEmail = window.sessionStorage.getItem("userEmail");
       resetForm(userSettingForm);
       getUserSetting(currentUserEmail);
+      getUserDonationSofar(currentUserEmail);
       // getUserNotifications(currentUserEmail);
       getUserAnimals(currentUserEmail);
     })
@@ -644,6 +647,7 @@ function sendPreferenceToDatabase(e) {
       getUserSetting(email);
       getUserNotifications(email);
       getUserAnimals(email);
+      getUserDonationSofar(email);
     });
   // hide modal without waiting for db success
   hideElement(prefModal);
@@ -733,9 +737,55 @@ function subscribe(e) {
     })
     .then(console.log("successfully subscribed"));
 }
+
+// donate stuff on logged in page
+const stuffDonationForm = document.querySelector("#stuffDonationForm form");
+stuffDonationForm.addEventListener("submit", stuffDonate);
+function stuffDonate(e) {
+  e.preventDefault();
+  const userEmail = window.sessionStorage.getItem("userEmail");
+  const stuff = stuffDonationForm.donateWhatLoggedIn.value;
+  const pickup = stuffDonationForm.pickupLoggedIn.checked ? true : false;
+  db.collection("stuffDonation")
+    .add({
+      userEmail: userEmail,
+      stuff: stuff,
+      pickup: pickup
+    })
+    .then(console.log("stuff donated"));
+  if (pickup === true) {
+    const errandsDesc = `Pick up a ${stuff} from ${userEmail}`;
+    db.collection("notifications")
+      .add({
+        text: errandsDesc,
+        type: "errands"
+      })
+      .then(
+        console.log("your donation will be picked up by one of our members")
+      );
+  }
+}
 /**************************************
  * functions that GET data from database and display them
  *************************************/
+function getUserDonationSofar(userEmail) {
+  db.collection("timeDonation")
+    .where("userEmail", "==", userEmail)
+    .get()
+    .then(res => {
+      res.forEach(doc => {
+        const timeSoFar = doc.data().time;
+        if (timeSoFar === "1") {
+          document.querySelector(".timeSofar").textContent =
+            timeSoFar + " hour";
+        } else {
+          document.querySelector(".timeSofar").textContent =
+            timeSoFar + " hours";
+        }
+      });
+    });
+}
+
 function getUserSetting(userEmail) {
   resetForm(preferenceForm);
   // get current setting
@@ -1113,32 +1163,4 @@ function moveAnimals() {
     //changeTimes -= 1;
     //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
-}
-
-// donate stuff
-const stuffDonationForm = document.querySelector("#stuffDonationForm form");
-stuffDonationForm.addEventListener("submit", stuffDonate);
-function stuffDonate(e) {
-  e.preventDefault();
-  const userEmail = window.sessionStorage.getItem("userEmail");
-  const stuff = stuffDonationForm.donateWhatLoggedIn.value;
-  const pickup = stuffDonationForm.pickupLoggedIn.checked ? true : false;
-  db.collection("stuffDonation")
-    .add({
-      userEmail: userEmail,
-      stuff: stuff,
-      pickup: pickup
-    })
-    .then(console.log("stuff donated"));
-  if (pickup === true) {
-    const errandsDesc = `Pick up a ${stuff} from ${userEmail}`;
-    db.collection("notifications")
-      .add({
-        text: errandsDesc,
-        type: "errands"
-      })
-      .then(
-        console.log("your donation will be picked up by one of our members")
-      );
-  }
 }
