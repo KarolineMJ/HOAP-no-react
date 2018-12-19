@@ -102,10 +102,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().morning === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -129,10 +126,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().afternoon === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -156,10 +150,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().evening === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -182,10 +173,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().training === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -208,10 +196,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().extra === "") {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -243,7 +228,6 @@ function buildAnimalColumn(entry) {
           .where("day", "==", day)
           .get()
           .then(res => {
-            //            noTask.classList.add("noTask");
             res.forEach(doc => {
               const user = doc.data().user;
               const morning = doc.data().morning;
@@ -522,6 +506,14 @@ let sum = 0;
 let sumArray = [];
 let maxSum;
 
+let time = 0;
+let timeArray = [];
+let maxTime;
+
+let stuff = 0;
+let stuffArray = [];
+let maxStuff;
+
 db.collection("member")
   .get()
   .then(res => {
@@ -529,11 +521,7 @@ db.collection("member")
       const userEmail = doc.data().email;
       if (userEmail !== "admin@admin.com") {
         let clone = membersTamplate.cloneNode(true);
-        // let time = 0;
-        // let maxTime = 0;
 
-        // let stuff = 0;
-        // let maxStuff = 0;
         db.collection("moneyDonation")
           .where("userEmail", "==", userEmail)
           .get()
@@ -543,29 +531,65 @@ db.collection("member")
               sum = Number(eachMemberDonationSum.data().amount);
               sumArray.push(sum);
               console.log(sumArray);
-              // time += Number(doc.data().time);
-              // maxTime = Math.max(null, time);
-              // stuff = Number(doc.data().stuff);
-              // maxStuff = Number.max(null, stuff)
             });
             maxSum = Math.max.apply(null, sumArray);
             console.log(sumArray, maxSum);
+            clone
+              .querySelector(".singleMember")
+              .setAttribute("data-user", userEmail);
             clone.querySelector("#memberName").textContent = userEmail;
             clone.querySelector("#moneyDonation").textContent = sum;
-            // clone.querySelector("#timeDonation").textContent = time + " h";
-            // clone.querySelector("#stuffDonation").textContent =
-            //   stuff + " pieces";
+
             clone.querySelector("#moneyDonation").style.width =
               (sum * 100) / maxSum + "%";
 
-            // clone.querySelector(".moneyDonation").setAttribute("width", sum);
-            // --
-            // clone.querySelector("#timeDonation").textContent = time;
-            // clone.querySelector("#stuffDonation").textContent = stuff;
             document
               .querySelector(".donationsTableContainer")
               .appendChild(clone);
+
+            // // // time donation goes here
+            db.collection("timeDonation")
+              .where("userEmail", "==", userEmail)
+              .get()
+              .then(res => {
+                res.forEach(eachMemberTimeDonationSum => {
+                  time = Number(eachMemberTimeDonationSum.data().time);
+                  timeArray.push(time);
+                  console.log(timeArray);
+                });
+                maxTime = Math.max.apply(null, timeArray);
+                document.querySelector(
+                  `.singleMember[data-user='${userEmail}'] #timeDonation`
+                ).textContent = time + " h";
+                document.querySelector(
+                  `.singleMember[data-user='${userEmail}'] #timeDonation`
+                ).style.width = (time * 100) / maxTime + "%";
+
+                // document
+                //   .querySelector(".donationsTableContainer")
+                //   .appendChild(clone2);
+              });
           });
+
+        // //stuff donation comes here
+        // db.collection("stuffDonation")
+        //   .where("userEmail", "==", userEmail)
+        //   .get()
+        //   .then(res => {
+        //     res.forEach(eachMemberStuffDonationSum => {
+        //       stuffArray = Number(eachMemberStuffDonationSum.data().stuff);
+        //       stuffArray.push(stuff);
+        //     });
+        //     maxStuff = Math.max.apply(null, stuffArray);
+        //     clone.querySelector("#stuffDonation").textContent =
+        //       stuff + " pieces";
+        //     clone.querySelector("#stuffDonation").style.width =
+        //       (stuff * 100) / maxStuff + "%";
+
+        //     document
+        //       .querySelector(".donationsTableContainer")
+        //       .appendChild(clone);
+        //   });
       }
     });
   });
