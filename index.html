@@ -1186,10 +1186,12 @@
     <div id="preferencesModal" class="modal">
         <div class="modalContent">
             <span id="skipPrefBtn">X skip for now</span>
-          <h1>Welcome to the family</h1>
-          <form>
-              <h3>How should we call you?</h3>
-              <p><input type="text" placeholder="pick a nickname" name="nickname"></p>
+            <h1>Welcome to the family</h1>
+            <form>
+              <div class="formField"> 
+                  <input type="text" placeholder="pick a nickname" name="nickname" id="nickName">
+                  <label for="nickName">How should we call you?</label>
+            </div>
               <h3>What do you want to see on the site?</h3>
                   <h5>Which kind of animals? You can choose both of course ~</h5>
               <div>
@@ -1227,7 +1229,7 @@
                 <input type="checkbox" id="preferencePups" name="pup" />
                 <label for="preferencePups">Yes!</label>
               </div>
-              <h5>Pregnant? (might need to remove this, and show "pregnant" in the extra section)</h5>
+              <h5>Pregnant?</h5>
               <div>
                 <input type="checkbox" id="preferencePregnant" name="pregnant" />
                 <label for="preferencePregnant">Pregnant</label>
@@ -1241,7 +1243,7 @@
                   <input type="checkbox" id="preferenceNotificationsAnimals" name= "newComming" />
                   <label for="preferenceNotificationsAnimals">Notify me when new animal arrives</label>
               </div>
-              <h3>Do you want to make a monthly donation? (Need to give a max? )</h3>
+              <h3>Do you want to make a monthly donation?</h3>
               <div>
                 <input type="range" min="0" max="" value="" step="5" name="monthlyDonation" />
               </div>
