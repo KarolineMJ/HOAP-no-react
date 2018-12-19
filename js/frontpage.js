@@ -157,10 +157,9 @@ Render tasks from database into website
 ------------------------------------------*/
 
   const toDoBtn = document.querySelector(".addToDoBtn");
-  const toDoInput = document.querySelector(".subsectionHeader span input");
+  const toDoInput = document.querySelector(".subsectionToDo input");
 
   toDoBtn.addEventListener("click", e => {
-    console.log("hello");
     e.preventDefault();
     db.collection("toDoList").add({
       task: toDoInput.value,
@@ -1103,13 +1102,22 @@ function stuffDonate(e) {
   const userEmail = window.sessionStorage.getItem("userEmail");
   const stuff = stuffDonationForm.donateWhatLoggedIn.value;
   const pickup = stuffDonationForm.pickupLoggedIn.checked ? true : false;
-  const postNr = stuffDonationForm.postNr.value;
   db.collection("stuffDonation")
     .add({
       userEmail: userEmail,
       stuff: stuff,
-      pickup: pickup,
-      postNr: postNr
+      pickup: pickup
     })
     .then(console.log("stuff donated"));
+  if (pickup === true) {
+    const errandsDesc = `Pick up a ${stuff} from ${userEmail}`;
+    db.collection("notifications")
+      .add({
+        text: errandsDesc,
+        type: "errands"
+      })
+      .then(
+        console.log("your donation will be picked up by one of our members")
+      );
+  }
 }
