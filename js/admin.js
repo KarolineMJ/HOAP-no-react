@@ -844,7 +844,8 @@ db.collection("animals")
           let options = {
             // title: "Pets montly situation",
             curveType: "function",
-            legend: { position: "bottom" }
+            legend: { position: "bottom" },
+            colors: ["#ead8a6", "#c18e63", "#74b7a5"]
           };
 
           let chart = new google.visualization.LineChart(
