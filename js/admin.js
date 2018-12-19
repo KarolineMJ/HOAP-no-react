@@ -544,32 +544,14 @@ db.collection("moneyDonation")
                   res.forEach(eachMemberDonationSum => {
                     sum = Number(eachMemberDonationSum.data().amount);
                     document.querySelector(
-                      `.singleMember[data-email='${userEmail}'] #moneyDonation`
-                    ).textContent = sum;
-                    console.log(sum, maxMoneyDonation);
+                      `.singleMember[data-email='${userEmail}'] #moneyDonation p`
+                    ).textContent = sum + " kr.";
                     document.querySelector(
                       `.singleMember[data-email='${userEmail}'] #moneyDonation`
                     ).style.width = (100 * sum) / maxMoneyDonation + "%";
                   });
                 }
               });
-            // // check money donation from each user
-            // db.collection("timeDonation")
-            //   .where("userEmail", "==", userEmail)
-            //   .get()
-            //   .then(res => {
-            //     if (res.docs.length > 0) {
-            //       res.forEach(eachMemberDonationSum => {
-            //         sum = Number(eachMemberDonationSum.data().amount);
-            //         document.querySelector(
-            //           `.singleMember[data-email='${userEmail}'] #timeDonation`
-            //         ).textContent = time;
-            //         document.querySelector(
-            //           `.singleMember[data-email='${userEmail}'] #timeDonation`
-            //         ).style.width = (100 * time) / maxMoneyDonation + "%";
-            //       });
-            //     }
-            //   });
           }
         });
       });
@@ -598,9 +580,15 @@ db.collection("timeDonation")
                 if (res.docs.length > 0) {
                   res.forEach(eachMemberDonationSum => {
                     time = Number(eachMemberDonationSum.data().time);
-                    document.querySelector(
-                      `.singleMember[data-email='${userEmail}'] #timeDonation`
-                    ).textContent = time;
+                    if (time === 1) {
+                      document.querySelector(
+                        `.singleMember[data-email='${userEmail}'] #timeDonation p`
+                      ).textContent = time + " hour";
+                    } else if (time > 1) {
+                      document.querySelector(
+                        `.singleMember[data-email='${userEmail}'] #timeDonation p`
+                      ).textContent = time + " hours";
+                    }
                     document.querySelector(
                       `.singleMember[data-email='${userEmail}'] #timeDonation`
                     ).style.width = (100 * time) / maxTimeDonation + "%";
@@ -610,6 +598,38 @@ db.collection("timeDonation")
           }
         });
       });
+  });
+
+// find max of stuff donations
+db.collection("member")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      const userEmail = doc.data().email;
+      if (userEmail !== "admin@admin.com") {
+        db.collection("stuffDonation")
+          .where("userEmail", "==", userEmail)
+          .get()
+          .then(res => {
+            stuff = res.docs.length;
+            if (stuff > maxStuffDonation) {
+              maxStuffDonation = stuff;
+            }
+            if (stuff === 1) {
+              document.querySelector(
+                `.singleMember[data-email='${userEmail}'] #stuffDonation p`
+              ).textContent = stuff + " piece";
+            } else if (stuff > 1) {
+              document.querySelector(
+                `.singleMember[data-email='${userEmail}'] #stuffDonation p`
+              ).textContent = stuff + " pieces";
+            }
+            document.querySelector(
+              `.singleMember[data-email='${userEmail}'] #stuffDonation`
+            ).style.width = (100 * stuff) / maxStuffDonation + "%";
+          });
+      }
+    });
   });
 
 // show image in 3x3 section
