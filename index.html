@@ -608,14 +608,18 @@
       
           <div id="donationStatus">
             <h2>Your help so far:</h2>
-            <p><span class="timeSofar"></span></p>
-            <p><span class="moneySofar"></span></p>
-            <p><span class="stuffSofar"></span></p>
             <hr>
+            <p> <img src="img/icons/clock.png" alt="">
+              <span class="timeSofar"></span></p>
+            <p> <img src="img/icons/cost.png" alt="">
+              <span class="moneySofar"></span></p>
+            <p> <img src="img/icons/bone.png" alt="">
+              <span class="stuffSofar"></span></p>
+
             <button id="signOut">Sign out</button>
           </div>
           <div id="currentSettings">
-            <h2>Current settings</h2>
+            <h2>Your settings</h2>
             <hr>
             <form>
                 <h5>Which kind of animals? You can choose both of course</h5>
@@ -657,7 +661,7 @@
                     <label><input type="checkbox" name= "newComming" />Notify me when new animal arrives</label>
                 </div>
                 <h5>Change your monthly donation? </h5>
-                <div>
+                <div id="montlyDonationMember">
                   <input type="range" min="0" max="" value="0" step="5" name="monthlyDonation" />
                 </div>
                 <p class="donationNr"></p>
@@ -715,8 +719,6 @@
               <input type="file" value="upload" id="fileButton">
               <label for="fileButton">Choose file...</label>
             </div>
-            <div id="testImage"><img src="" alt=""></div>
-
             <button type="submit">Send</button>
           </form>
         </div>

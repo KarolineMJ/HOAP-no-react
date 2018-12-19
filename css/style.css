@@ -580,6 +580,7 @@ button:focus {
   #sendToUsForms #messageForm,
   #sendToUsForms #imageForm,
   #sendToUsForms #stuffDonationForm {
+    display: grid;
     margin: 5vw 0 10vw 0;
     padding: 40px; }
   #frontpageForms #donationForm,
@@ -811,8 +812,33 @@ button:focus {
 #signedInContent #sendToUsForms {
   background-color: #ead8a6; }
 
+#signedInContent #userSettings #donationStatus p {
+  padding: 5px 0px; }
+  #signedInContent #userSettings #donationStatus p img {
+    position: relative;
+    width: 20px;
+    top: 5px; }
+
+#signedInContent #userSettings #donationStatus #signOut {
+  margin: 20px 0; }
+
+#signedInContent #userSettings #currentSettings h5 {
+  margin-top: 10px;
+  font-weight: bold; }
+
+#signedInContent #userSettings #currentSettings #updatePrefBtn {
+  margin: 20px 0; }
+
+#signedInContent #userSettings #currentSettings #montlyDonationMember input {
+  width: 95%; }
+
+#signedInContent #newsFeed p {
+  padding: 20px 0;
+  border-bottom: 1px solid #eaeaea; }
+
 #signedInContent #userSettings,
 #signedInContent #newsFeed {
+  color: #717070;
   display: none;
   box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
   z-index: 3;
@@ -824,9 +850,6 @@ button:focus {
   top: 60px;
   width: 26vw;
   padding: 20px; }
-  #signedInContent #userSettings > *,
-  #signedInContent #newsFeed > * {
-    margin-bottom: 1rem; }
   #signedInContent #userSettings h2,
   #signedInContent #newsFeed h2 {
     padding-bottom: 10px;

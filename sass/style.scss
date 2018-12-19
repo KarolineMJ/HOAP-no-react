@@ -665,6 +665,7 @@ button:focus {
   #messageForm,
   #imageForm,
   #stuffDonationForm {
+    display: grid;
     margin: 5vw 0 10vw 0;
     padding: 40px;
   }
@@ -960,8 +961,45 @@ button:focus {
     background-color: $mainColor;
   }
 
+  #userSettings {
+    #donationStatus {
+      p {
+        padding: 5px 0px;
+        img {
+          position: relative;
+          width: 20px;
+          top: 5px;
+        }
+      }
+      #signOut {
+        margin: 20px 0;
+      }
+    }
+    #currentSettings {
+      h5 {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      #updatePrefBtn {
+        margin: 20px 0;
+      }
+      #montlyDonationMember {
+        input {
+          width: 95%;
+        }
+      }
+    }
+  }
+
+  #newsFeed {
+    p {
+      padding: 20px 0;
+      border-bottom: 1px solid #eaeaea;
+    }
+  }
   #userSettings,
   #newsFeed {
+    color: #717070;
     display: none;
     box-shadow: 3px 1px 17px 3px rgba(155, 155, 155, 0.68);
     z-index: 3;
@@ -974,7 +1012,6 @@ button:focus {
     width: 26vw;
     padding: 20px;
     & > * {
-      margin-bottom: 1rem;
     }
 
     h2 {
