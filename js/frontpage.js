@@ -525,7 +525,6 @@ function donate(e) {
             .then(user => {
               let sumSofar = user.data().time;
               sumSofar += workingTimes;
-              alert(sumSofar);
               db.collection("timeDonation")
                 .doc(res.docs[0].id)
                 .update({
@@ -783,6 +782,29 @@ function getUserDonationSofar(userEmail) {
             timeSoFar + " hours";
         }
       });
+    });
+  db.collection("moneyDonation")
+    .where("userEmail", "==", userEmail)
+    .get()
+    .then(res => {
+      res.forEach(doc => {
+        const moneySoFar = doc.data().amount;
+        document.querySelector(".moneySofar").textContent = moneySoFar + " kr.";
+      });
+    });
+  db.collection("stuffDonation")
+    .where("userEmail", "==", userEmail)
+    .get()
+    .then(res => {
+      let piece = 0;
+      res.forEach(doc => {
+        piece += 1;
+      });
+      if (piece === 1) {
+        document.querySelector(".stuffSofar").textContent = piece + " piece";
+      } else {
+        document.querySelector(".stuffSofar").textContent = piece + " pieces";
+      }
     });
 }
 
