@@ -670,7 +670,13 @@
         
       </div>
 
-      <div id="sendToUsForms" class="fullsize">
+      <div id="aboutLoggedIn">
+        <h2>We are so happy to see you!</h2>
+        <p>We are so glad that you are participating as a part of our family.</p>
+        <p>If you have any questions or if you might have a cute picture from the shelter - please send it to us!</p>
+      </div>
+
+      <div id="sendToUsForms" >
         <div id="messageForm">
           <h2>Send us a message</h2>
           <form>
@@ -691,9 +697,10 @@
                 >Drag and drop here</label
               >
             </div> -->
-            <div>
+            <div class="sendImageUser">
               <!-- <progress value="0" max="100" id="uploader">0%</progress> -->
               <input type="file" value="upload" id="fileButton">
+              <label for="fileButton">Choose file...</label>
             </div>
             <div id="testImage"><img src="" alt=""></div>
 
@@ -1273,9 +1280,10 @@
     <template id="memberDonation">
       <div class="memberDonation">
         <form id="donationFormLogginIn">
+          <h3>Help <span>him</span> by donating time or money</h3>
           <p>
             <label>I'd like to donate 
-            <input type="number" name="moneyAmount"> kr for this little guy</label>
+            <input type="number" name="moneyAmount"> kr for this little <span>guy</span></label>
           </p>
           <hr>
           <div class="timeSlots">

@@ -102,10 +102,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().morning === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -129,10 +126,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().afternoon === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -156,10 +150,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().evening === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -182,10 +173,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().training === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -208,10 +196,7 @@ function buildAnimalColumn(entry) {
           if (doc.data().extra === "") {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTask = document.createElement("p");
-            noTask.className = "noTask";
-            noTask.textContent = "-";
-            row.appendChild(noTask);
+            row.classList.add("noTask");
             // let noTaskImage = document.createElement("img");
             // noTaskImage.setAttribute("src", "img/notask.png");
             // row.appendChild(noTaskImage);
@@ -243,7 +228,6 @@ function buildAnimalColumn(entry) {
           .where("day", "==", day)
           .get()
           .then(res => {
-            noTask.classList.add("noTask");
             res.forEach(doc => {
               const user = doc.data().user;
               const morning = doc.data().morning;
