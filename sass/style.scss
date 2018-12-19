@@ -1523,7 +1523,10 @@ Keyframes for border radius header image
             left: 15%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, auto);
+            grid-template-columns: repeat(
+              20,
+              auto
+            ); /* temp solution, should be dynamic based on data */
             white-space: nowrap;
 
             .column {
