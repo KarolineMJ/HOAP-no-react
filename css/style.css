@@ -571,6 +571,9 @@ button:focus {
     margin: 3vw 10vw 10vw 10vw;
     padding: 40px; }
 
+#sendToUsForms {
+  grid-template-columns: 1fr 1fr 1fr; }
+
 #frontpageForms #donationForm label {
   color: #b28973; }
 
