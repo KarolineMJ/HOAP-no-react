@@ -237,22 +237,25 @@ function buildAnimalColumn(entry) {
               const matchingAnimal = document.querySelector(
                 `div[data-id="${animalID}"]`
               );
-              if (morning) {
+              if (morning && matchingAnimal.querySelector(".morningByWhom")) {
                 matchingAnimal.querySelector(
                   ".morningByWhom"
                 ).textContent = user;
               }
-              if (afternoon) {
+              if (
+                afternoon &&
+                matchingAnimal.querySelector(".afternoonByWhom")
+              ) {
                 matchingAnimal.querySelector(
                   ".afternoonByWhom"
                 ).textContent = user;
               }
-              if (evening) {
+              if (evening && matchingAnimal.querySelector(".eveningByWhom")) {
                 matchingAnimal.querySelector(
                   ".eveningByWhom"
                 ).textContent = user;
               }
-              if (training) {
+              if (training && matchingAnimal.querySelector(".trainingByWhom")) {
                 matchingAnimal.querySelector(
                   ".trainingByWhom"
                 ).textContent = user;
@@ -503,93 +506,128 @@ function closeModal() {
 
 // GET members details from db and generate the table of members
 let sum = 0;
-let sumArray = [];
-let maxSum;
-
 let time = 0;
-let timeArray = [];
-let maxTime;
-
 let stuff = 0;
-let stuffArray = [];
-let maxStuff;
+let maxMoneyDonation = 0;
+let maxTimeDonation = 0;
+let maxStuffDonation = 0;
 
+// find max of money donations
+db.collection("moneyDonation")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().amount > maxMoneyDonation) {
+        maxMoneyDonation = doc.data().amount;
+      }
+    });
+    db.collection("member")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          const userEmail = doc.data().email;
+          if (userEmail !== "admin@admin.com") {
+            let clone = membersTamplate.cloneNode(true);
+            clone
+              .querySelector(".singleMember")
+              .setAttribute("data-email", userEmail);
+            clone.querySelector(".emailBox").textContent = userEmail;
+            document
+              .querySelector(".donationsTableContainer")
+              .appendChild(clone);
+            // check money donation from each user
+            db.collection("moneyDonation")
+              .where("userEmail", "==", userEmail)
+              .get()
+              .then(res => {
+                if (res.docs.length > 0) {
+                  res.forEach(eachMemberDonationSum => {
+                    sum = Number(eachMemberDonationSum.data().amount);
+                    document.querySelector(
+                      `.singleMember[data-email='${userEmail}'] #moneyDonation p`
+                    ).textContent = sum + " kr.";
+                    document.querySelector(
+                      `.singleMember[data-email='${userEmail}'] #moneyDonation`
+                    ).style.width = (100 * sum) / maxMoneyDonation + "%";
+                  });
+                }
+              });
+          }
+        });
+      });
+  });
+
+// find max of time donations
+db.collection("timeDonation")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().time > maxTimeDonation) {
+        maxTimeDonation = doc.data().time;
+      }
+    });
+    db.collection("member")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          const userEmail = doc.data().email;
+          if (userEmail !== "admin@admin.com") {
+            // check money donation from each user
+            db.collection("timeDonation")
+              .where("userEmail", "==", userEmail)
+              .get()
+              .then(res => {
+                if (res.docs.length > 0) {
+                  res.forEach(eachMemberDonationSum => {
+                    time = Number(eachMemberDonationSum.data().time);
+                    if (time === 1) {
+                      document.querySelector(
+                        `.singleMember[data-email='${userEmail}'] #timeDonation p`
+                      ).textContent = time + " hour";
+                    } else if (time > 1) {
+                      document.querySelector(
+                        `.singleMember[data-email='${userEmail}'] #timeDonation p`
+                      ).textContent = time + " hours";
+                    }
+                    document.querySelector(
+                      `.singleMember[data-email='${userEmail}'] #timeDonation`
+                    ).style.width = (100 * time) / maxTimeDonation + "%";
+                  });
+                }
+              });
+          }
+        });
+      });
+  });
+
+// find max of stuff donations
 db.collection("member")
   .get()
   .then(res => {
     res.forEach(doc => {
       const userEmail = doc.data().email;
       if (userEmail !== "admin@admin.com") {
-        let clone = membersTamplate.cloneNode(true);
-
-        db.collection("moneyDonation")
+        db.collection("stuffDonation")
           .where("userEmail", "==", userEmail)
           .get()
           .then(res => {
-            res.forEach(eachMemberDonationSum => {
-              //              console.log(userEmail + "donated" + doc.data().amount);
-              sum = Number(eachMemberDonationSum.data().amount);
-              sumArray.push(sum);
-              console.log(sumArray);
-            });
-            maxSum = Math.max.apply(null, sumArray);
-            console.log(sumArray, maxSum);
-            clone
-              .querySelector(".singleMember")
-              .setAttribute("data-user", userEmail);
-            clone.querySelector("#memberName").textContent = userEmail;
-            clone.querySelector("#moneyDonation").textContent = sum;
-
-            clone.querySelector("#moneyDonation").style.width =
-              (sum * 100) / maxSum + "%";
-
-            document
-              .querySelector(".donationsTableContainer")
-              .appendChild(clone);
-
-            // // // time donation goes here
-            db.collection("timeDonation")
-              .where("userEmail", "==", userEmail)
-              .get()
-              .then(res => {
-                res.forEach(eachMemberTimeDonationSum => {
-                  time = Number(eachMemberTimeDonationSum.data().time);
-                  timeArray.push(time);
-                  console.log(timeArray);
-                });
-                maxTime = Math.max.apply(null, timeArray);
-                document.querySelector(
-                  `.singleMember[data-user='${userEmail}'] #timeDonation`
-                ).textContent = time + " h";
-                document.querySelector(
-                  `.singleMember[data-user='${userEmail}'] #timeDonation`
-                ).style.width = (time * 100) / maxTime + "%";
-
-                // document
-                //   .querySelector(".donationsTableContainer")
-                //   .appendChild(clone2);
-              });
+            stuff = res.docs.length;
+            if (stuff > maxStuffDonation) {
+              maxStuffDonation = stuff;
+            }
+            if (stuff === 1) {
+              document.querySelector(
+                `.singleMember[data-email='${userEmail}'] #stuffDonation p`
+              ).textContent = stuff + " piece";
+            } else if (stuff > 1) {
+              document.querySelector(
+                `.singleMember[data-email='${userEmail}'] #stuffDonation p`
+              ).textContent = stuff + " pieces";
+            }
+            document.querySelector(
+              `.singleMember[data-email='${userEmail}'] #stuffDonation`
+            ).style.width = (100 * stuff) / maxStuffDonation + "%";
           });
-
-        // //stuff donation comes here
-        // db.collection("stuffDonation")
-        //   .where("userEmail", "==", userEmail)
-        //   .get()
-        //   .then(res => {
-        //     res.forEach(eachMemberStuffDonationSum => {
-        //       stuffArray = Number(eachMemberStuffDonationSum.data().stuff);
-        //       stuffArray.push(stuff);
-        //     });
-        //     maxStuff = Math.max.apply(null, stuffArray);
-        //     clone.querySelector("#stuffDonation").textContent =
-        //       stuff + " pieces";
-        //     clone.querySelector("#stuffDonation").style.width =
-        //       (stuff * 100) / maxStuff + "%";
-
-        //     document
-        //       .querySelector(".donationsTableContainer")
-        //       .appendChild(clone);
-        //   });
       }
     });
   });
@@ -792,23 +830,24 @@ db.collection("animals")
           ["Sep", 7, 7, 20],
           ["Oct", 8, 8, 19],
           ["Nov", 9, 8, 21]
-          // ["XII", 7, 7, 21]
         ];
         statisArray.push(["Dec", catCount, dogCount, memberCount]);
-        // statistic chart
+        document.querySelector(".memberCount").textContent = memberCount;
 
+        // statistic chart
+        // https://developers.google.com/chart/interactive/docs/gallery/linechart
         google.charts.load("current", { packages: ["corechart"] });
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
-          var data = google.visualization.arrayToDataTable(statisArray);
+          let data = google.visualization.arrayToDataTable(statisArray);
 
-          var options = {
+          let options = {
             // title: "Pets montly situation",
             curveType: "function",
             legend: { position: "bottom" }
           };
 
-          var chart = new google.visualization.LineChart(
+          let chart = new google.visualization.LineChart(
             document.getElementById("curve_chart")
           );
 

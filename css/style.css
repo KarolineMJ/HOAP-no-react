@@ -1577,9 +1577,10 @@ Keyframes for border radius header image
     margin-top: 20px;
     margin-bottom: 20px; }
     #status .listOfDonations .singleMember {
+      padding: 10px 0;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-gap: 10px; }
+      grid-gap: 20px; }
       #status .listOfDonations .singleMember .aboutMember {
         height: 35px; }
       #status .listOfDonations .singleMember .emailBox {
@@ -1589,10 +1590,18 @@ Keyframes for border radius header image
           overflow: hidden; }
       #status .listOfDonations .singleMember #moneyDonation,
       #status .listOfDonations .singleMember #timeDonation,
-      #status .listOfDonations .singleMember #stuffDonated {
+      #status .listOfDonations .singleMember #stuffDonation {
         background-color: #2e2f4b;
         color: white;
-        height: 34px; }
+        height: 3px;
+        width: 0;
+        color: #2e2f4b; }
+        #status .listOfDonations .singleMember #moneyDonation p,
+        #status .listOfDonations .singleMember #timeDonation p,
+        #status .listOfDonations .singleMember #stuffDonation p {
+          white-space: nowrap; }
+      #status .listOfDonations .singleMember:nth-of-type(2n) {
+        background: #efefef; }
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   /*-----------------------------

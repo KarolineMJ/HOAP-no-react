@@ -1972,9 +1972,10 @@ Keyframes for border radius header image
     margin-bottom: 20px;
 
     .singleMember {
+      padding: 10px 0;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-gap: 10px;
+      grid-gap: 20px;
       .aboutMember {
         // border-bottom: 1px solid black;
         height: 35px;
@@ -1988,10 +1989,18 @@ Keyframes for border radius header image
       }
       #moneyDonation,
       #timeDonation,
-      #stuffDonated {
+      #stuffDonation {
         background-color: $purpleColor;
         color: white;
-        height: 34px;
+        height: 3px;
+        width: 0;
+        color: $purpleColor;
+        p {
+          white-space: nowrap;
+        }
+      }
+      &:nth-of-type(2n) {
+        background: $grayColor;
       }
     }
   }
