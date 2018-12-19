@@ -467,7 +467,6 @@ function donate(e) {
     const year = date.split("-")[0];
     const month = date.split("-")[1];
     const day = date.split("-")[2];
-    console.log(year, month, day);
     const morning = donationSubmitForm.morning.checked;
     const afternoon = donationSubmitForm.afternoon.checked;
     const evening = donationSubmitForm.evening.checked;
@@ -506,12 +505,34 @@ function donate(e) {
       workingTimes += 2;
     }
     db.collection("timeDonation")
-      .add({
-        animalID: animalID,
-        userEmail: userEmail,
-        time: workingTimes
-      })
-      .then(console.log("time registered"));
+      .where("userEmail", "==", userEmail)
+      .get()
+      .then(res => {
+        if (res.docs.length < 1) {
+          db.collection("timeDonation")
+            .add({
+              animalID: animalID,
+              userEmail: userEmail,
+              time: workingTimes
+            })
+            .then(console.log("time registered"));
+        } else {
+          db.collection("timeDonation")
+            .doc(res.docs[0].id)
+            .get()
+            .then(user => {
+              let sumSofar = user.data().time;
+              sumSofar += workingTimes;
+              alert(sumSofar);
+              db.collection("timeDonation")
+                .doc(res.docs[0].id)
+                .update({
+                  time: sumSofar
+                })
+                .then(console.log("time counted up"));
+            });
+        }
+      });
   }
   if (moneyAmount) {
     // check if the user has given donation before, if no, add user and donation data, if yes add the amount to the previous sum amount
