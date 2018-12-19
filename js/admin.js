@@ -755,20 +755,20 @@ db.collection("animals")
         });
         let statisArray = [
           ["month", "cats", "dogs", "members"],
-          ["I", 8, 7, 20],
-          ["II", 7, 6, 18],
-          ["III", 8, 6, 19],
-          ["IV", 8, 7, 19],
-          ["V", 7, 9, 20],
-          ["VI", 7, 9, 21],
-          ["VII", 6, 6, 21],
-          ["VIII", 7, 6, 22],
-          ["IX", 7, 7, 20],
-          ["X", 8, 8, 19],
-          ["XI", 9, 8, 21]
+          ["Jan", 8, 7, 20],
+          ["Feb", 7, 6, 18],
+          ["Mar", 8, 6, 19],
+          ["Apr", 8, 7, 19],
+          ["May", 7, 9, 20],
+          ["Jun", 7, 9, 21],
+          ["Jul", 6, 6, 21],
+          ["Aug", 7, 6, 22],
+          ["Sep", 7, 7, 20],
+          ["Oct", 8, 8, 19],
+          ["Nov", 9, 8, 21]
           // ["XII", 7, 7, 21]
         ];
-        statisArray.push(["XII", catCount, dogCount, memberCount]);
+        statisArray.push(["Dec", catCount, dogCount, memberCount]);
         // statistic chart
 
         google.charts.load("current", { packages: ["corechart"] });
