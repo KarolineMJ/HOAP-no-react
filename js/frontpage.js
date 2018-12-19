@@ -1094,3 +1094,22 @@ function moveAnimals() {
     //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 }
+
+// donate stuff
+const stuffDonationForm = document.querySelector("#stuffDonationForm form");
+stuffDonationForm.addEventListener("submit", stuffDonate);
+function stuffDonate(e) {
+  e.preventDefault();
+  const userEmail = window.sessionStorage.getItem("userEmail");
+  const stuff = stuffDonationForm.donateWhatLoggedIn.value;
+  const pickup = stuffDonationForm.pickupLoggedIn.checked ? true : false;
+  const postNr = stuffDonationForm.postNr.value;
+  db.collection("stuffDonation")
+    .add({
+      userEmail: userEmail,
+      stuff: stuff,
+      pickup: pickup,
+      postNr: postNr
+    })
+    .then(console.log("stuff donated"));
+}

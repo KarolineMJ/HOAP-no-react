@@ -687,7 +687,21 @@
             <button type="submit">Send</button>
           </form>
         </div>
-
+        <div id="stuffDonationForm">
+          <h2>Donate some stuff</h2>
+          <form>
+              <div class="formField">
+                  <input type="text" placeholder="What" id="donateWhatLoggedIn" name="donateWhatLoggedIn" />
+                  <label for="donateWhatLoggedIn">Thing you want to donate</label>
+                </div>
+                <div class="pickUpBox">
+                  <input type="checkbox" id="pickupLoggedIn" aria-placeholder="Pick up"  name="pickupLoggedIn"/>
+                  <label for="pickupLoggedIn">Want us to pick it up?</label>
+                  <label><input type="number" placeholder="Post number" min="300" max="9999" name="postNr"></label>
+                </div>  
+                <button type="submit">Donate</button>
+          </form>
+        </div>
         <div id="imageForm">
           <h2>Send us an image</h2>
           <form>
