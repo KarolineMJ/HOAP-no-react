@@ -243,7 +243,7 @@ function buildAnimalColumn(entry) {
           .where("day", "==", day)
           .get()
           .then(res => {
-            noTask.classList.add("noTask");
+            //            noTask.classList.add("noTask");
             res.forEach(doc => {
               const user = doc.data().user;
               const morning = doc.data().morning;

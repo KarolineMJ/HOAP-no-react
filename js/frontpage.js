@@ -229,7 +229,6 @@ sign in user
 const signinEmail = document.querySelector("#signinEmail");
 const signinPassword = document.querySelector("#signinPassword");
 const signinButton = document.querySelector("#signinButton");
-const wrongPassword = document.querySelector("#wrongPassword");
 
 //sign in a new user
 
@@ -246,11 +245,9 @@ function signinUser(e) {
       getUserSetting(currentUserEmail);
       // getUserNotifications(currentUserEmail);
       getUserAnimals(currentUserEmail);
-      wrongPassword.style.display = "none";
     })
     .catch(function(error) {
       console.log(error);
-      wrongPassword.style.display = "block";
     });
 }
 /*-------------------------------------------
@@ -421,7 +418,7 @@ function cloneAnimalInfo(data, animalID) {
   const evening = donationClone.querySelector("label.evening");
   const training = donationClone.querySelector("label.training");
   // need to read db to get needed time slots
-  db.collection("dailyTaskTemplate")
+  db.collection("dailyTask")
     .where("animalID", "==", animalID)
     .get()
     .then(res => {
@@ -495,6 +492,26 @@ function donate(e) {
         })
         .then(console.log("Thank you~"));
     }
+    let workingTimes = 0;
+    if (morning === true) {
+      workingTimes += 1;
+    }
+    if (afternoon === true) {
+      workingTimes += 1;
+    }
+    if (evening === true) {
+      workingTimes += 1;
+    }
+    if (training === true) {
+      workingTimes += 2;
+    }
+    db.collection("timeDonation")
+      .add({
+        animalID: animalID,
+        userEmail: userEmail,
+        time: workingTimes
+      })
+      .then(console.log("time registered"));
   }
   if (moneyAmount) {
     // check if the user has given donation before, if no, add user and donation data, if yes add the amount to the previous sum amount
@@ -886,7 +903,7 @@ function appendEachAnimal(array, userEmail) {
           animalImg.setAttribute("src", url);
         })
         .catch(function(error) {
-          console.log(error);
+          console.log("DB error: " + error);
           animalImg.setAttribute("src", "img/animals/default.png");
         });
     } else {
