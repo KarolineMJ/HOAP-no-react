@@ -32,14 +32,12 @@ let config = {
   messagingSenderId: "287614156735"
 };
 firebase.initializeApp(config);
-
 // config database in firestore
 const db = firebase.firestore();
 const settings = {
   timestampsInSnapshots: true
 };
 db.settings(settings);
-
 // reference to storage in firebase
 let storage = firebase.storage();
 let storageReference = storage.ref();
@@ -88,13 +86,6 @@ Display right content if user
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "block";
       footer.style.display = "none";
-      // db.collection("toDoList")
-      //   .get()
-      //   .then(showTasks => {
-      //     showTasks.docs.forEach(doc => {
-      //       //renderTask(doc);
-      //     });
-      //   });
     } else if (user) {
       adminSection.style.display = "none";
       frontpageContent.style.display = "none";
@@ -336,67 +327,12 @@ fileButton.addEventListener("change", function(e) {
 });
 
 /*--------------------------------------
-Get animal list from database to user
--------------------------------------*/
-
-function buildAnimalListOnLoggedinPage() {
-  animalListOnLoggedIn.innerHTML = "";
-  db.collection("animals")
-    .get()
-    .then(res => {
-      res.docs.forEach(doc => {
-        const clone = eachAnimalTemp.cloneNode(true);
-
-        clone.querySelector(".animalName").textContent = doc.data().name;
-        clone.querySelector(".eachAnimal").setAttribute("data-id", doc.id);
-
-        if (doc.data().file !== undefined && doc.data().file !== "") {
-          let animalImage2 = document.createElement("img");
-          let animalImageName = doc.data().file;
-          let storage = firebase.storage();
-          let storageReference = storage.ref();
-          let childRef = storageReference.child(`admin/${animalImageName}`);
-          console.log(animalImageName);
-          childRef
-            .getDownloadURL()
-            .then(url => {
-              animalImage2.setAttribute("src", url);
-              //clone.querySelector(".eachAnimalImage").setAttribute("src", url);
-              animalListOnLoggedIn
-                .querySelector(".eachAnimal")
-                .appendChild(animalImage2);
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-        }
-        animalListOnLoggedIn.appendChild(clone);
-      });
-      const allIndividualAnimalS = document.querySelectorAll(".eachAnimal");
-      allIndividualAnimalS.forEach(a => {
-        a.addEventListener("click", e => {
-          const clickedAnimalID = e.target.dataset.id;
-
-          db.collection("animals")
-            .doc(clickedAnimalID)
-            .get()
-            .then(res => {
-              petExpand.style.display = "grid";
-              cloneAnimalInfo(res.data());
-            });
-        });
-      });
-    });
-}
-
-/*--------------------------------------
 Add data to expand & open expands
 -------------------------------------*/
 
 function cloneAnimalInfo(data, animalID) {
   petExpand.innerHTML = "";
   const clone = detailedAnimalTemp.cloneNode(true);
-
   clone.querySelector(".animalName").textContent = data.name;
   clone.querySelector(".animalBreed").textContent = data.breed;
   clone.querySelector(".animalAge").textContent = data.age;
@@ -420,7 +356,7 @@ function cloneAnimalInfo(data, animalID) {
   const evening = donationClone.querySelector("label.evening");
   const training = donationClone.querySelector("label.training");
   // need to read db to get needed time slots
-  db.collection("dailyTask")
+  db.collection("dailyTaskTemplate")
     .where("animalID", "==", animalID)
     .get()
     .then(res => {
@@ -567,13 +503,6 @@ function donate(e) {
   }
 }
 
-/** 
-/** 
-/** 
-/** 
- * From here on the code is cleared and structured 
-**/
-
 /*************************************
  * user interaction
  *************************************/
@@ -581,21 +510,6 @@ cancelMembershipBtn.addEventListener("click", cancelMembership);
 messageForm.addEventListener("submit", sendMessage);
 oneTimeDonationForm.addEventListener("submit", onetimeDonation);
 subscribeForm.addEventListener("submit", subscribe);
-/*--------------------------------------
-Open preference modal
--------------------------------------*/
-function preferenceSetting(email) {
-  // sync donation value text when user adjust range bar
-  syncNrWithRange(preferenceForm, preferenceForm.querySelector(".donationNr"));
-  // submit form in 2 ways
-  const submitPrefBtn = document.querySelector("#submitPrefBtn");
-  const skipPrefBtn = document.querySelector("#skipPrefBtn");
-  preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
-  skipPrefBtn.addEventListener("click", () => {
-    sendPreferenceToDatabase();
-    hideElement(prefModal);
-  });
-}
 
 /*************************************
  * functions that write(POST,UPDATE,DELETE) to database
@@ -691,6 +605,7 @@ function sendMessage(e) {
       .then(console.log("message sent"));
   }
 }
+
 function onetimeDonation(e) {
   e.preventDefault();
   console.log("one time donation");
@@ -764,6 +679,7 @@ function stuffDonate(e) {
       );
   }
 }
+
 /**************************************
  * functions that GET data from database and display them
  *************************************/
@@ -985,22 +901,26 @@ function appendEachAnimal(array, userEmail) {
     let animalArrow = document.createElement("div");
     animalArrow.classList.add("triangleUp");
     let animalImg = document.createElement("img");
-    if (data.file !== undefined && data.file !== "") {
-      let fileName = data.file;
-      let animalImgRef = storageReference.child(`admin/${fileName}`);
-      animalImgRef
-        .getDownloadURL()
-        .then(function(url) {
-          console.log(url);
-          animalImg.setAttribute("src", url);
-        })
-        .catch(function(error) {
-          console.log("DB error: " + error);
-          animalImg.setAttribute("src", "img/animals/default.png");
-        });
-    } else {
-      animalImg.setAttribute("src", "img/animals/newcomer.png");
-    }
+    animalImg.setAttribute("src", entry.data().file);
+    // due to Firebase storage quota limit, we decided to not to use images stored in Firebase
+    ////////////////////////////////////////////////////////////
+    // if (data.file !== undefined && data.file !== "") {
+    //   let fileName = data.file;
+    //   let animalImgRef = storageReference.child(`admin/${fileName}`);
+    //   animalImgRef
+    //     .getDownloadURL()
+    //     .then(function(url) {
+    //       console.log(url);
+    //       animalImg.setAttribute("src", url);
+    //     })
+    //     .catch(function(error) {
+    //       console.log("DB error: " + error);
+    //       animalImg.setAttribute("src", "img/animals/default.png");
+    //     });
+    // } else {
+    //   animalImg.setAttribute("src", "img/animals/newcomer.png");
+    // }
+    ////////////////////////////////////////////////////////////
     let heart = document.createElement("img");
     heart.classList.add("heart");
     // check if user follows this animal
@@ -1037,12 +957,6 @@ function appendEachAnimal(array, userEmail) {
   moveAnimals();
 }
 
-function hideArrayElements(array) {
-  array.forEach(removeElement => {
-    removeElement.style.display = "none";
-  });
-}
-
 function showAnimalModal(animalId) {
   db.collection("animals")
     .doc(animalId)
@@ -1069,6 +983,12 @@ function hideElement(ele) {
 
 function toggleElememnt(ele) {
   ele.classList.toggle("visible");
+}
+
+function hideArrayElements(array) {
+  array.forEach(removeElement => {
+    removeElement.style.display = "none";
+  });
 }
 
 function resetForm(form) {
@@ -1184,5 +1104,20 @@ function moveAnimals() {
 
     //changeTimes -= 1;
     //moveAnimalList.style.left = 174 * changeTimes + "px";
+  });
+}
+/*--------------------------------------
+Open preference modal
+-------------------------------------*/
+function preferenceSetting(email) {
+  // sync donation value text when user adjust range bar
+  syncNrWithRange(preferenceForm, preferenceForm.querySelector(".donationNr"));
+  // submit form in 2 ways
+  const submitPrefBtn = document.querySelector("#submitPrefBtn");
+  const skipPrefBtn = document.querySelector("#skipPrefBtn");
+  preferenceForm.addEventListener("submit", sendPreferenceToDatabase);
+  skipPrefBtn.addEventListener("click", () => {
+    sendPreferenceToDatabase();
+    hideElement(prefModal);
   });
 }
