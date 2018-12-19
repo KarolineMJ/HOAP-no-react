@@ -1438,25 +1438,29 @@ Keyframes for border radius header image
                   place-self: center;
                 }
               }
+
+              .noTask {
+                background-image: url(../img/icons/notaskbg.png);
+                background-size: 242px;
+              }
               .row {
                 padding: 20px; /* temp solution, should achieve vertical align */
+                border-bottom: 1px solid #cacaca;
                 img {
                   width: calc(100% + 40px);
                   height: calc(100% + 40px);
                   position: relative;
                   left: -20px;
                   top: -20px;
+
+                  .memberName {
+                    font-size: 13px;
+                    margin-left: 5px; /* temp setting */
+                  }
                 }
-                .noTask {
-                  background-image: url(../img/icons/notaskbg.png);
+                .row:not(:last-of-type):not(.head) {
+                  border-bottom: 1px solid #cacaca;
                 }
-                .memberName {
-                  font-size: 13px;
-                  margin-left: 5px; /* temp setting */
-                }
-              }
-              .row:not(:last-of-type):not(.head) {
-                border-bottom: 1px solid #cacaca;
               }
             }
           }
