@@ -1089,7 +1089,7 @@
 
           <div class="statistiOfAnimals">
             <h3>Statistic of animals</h3>
-            <div class="statisticDiagram"></div>
+            <div id="curve_chart" style="width: 100%; height: 200px"></div>
           </div>
           <hr /> -->
           <div class="statisticOfMembers">
@@ -1300,5 +1300,43 @@
     <script src="js/frontpage.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/admin.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["month", "cats", "dogs"],
+          ["I", 8, 7],
+          ["II", 7, 6],
+          ["III", 8, 6],
+          ["IV", 8, 7],
+          ["V", 7, 9],
+          ["VI", 7, 9],
+          ["VII", 6, 6],
+          ["VIII", 7, 6],
+          ["IX", 7, 7],
+          ["X", 8, 8],
+          ["XI", 9, 8],
+          ["XII", 7, 7]
+        ]);
+
+        var options = {
+          // title: "Pets montly situation",
+          curveType: "function",
+          legend: { position: "bottom" }
+        };
+
+        var chart = new google.visualization.LineChart(
+          document.getElementById("curve_chart")
+        );
+
+        chart.draw(data, options);
+      }
+    </script>
   </body>
 </html>
