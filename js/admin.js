@@ -518,6 +518,9 @@ function closeModal() {
 }
 
 // GET members details from db and generate the table of members
+let sum = 0;
+let sumArray = [];
+let maxSum;
 
 db.collection("member")
   .get()
@@ -526,9 +529,6 @@ db.collection("member")
       const userEmail = doc.data().email;
       if (userEmail !== "admin@admin.com") {
         let clone = membersTamplate.cloneNode(true);
-        let sum = [];
-        let maxSum = 0;
-
         // let time = 0;
         // let maxTime = 0;
 
@@ -538,23 +538,25 @@ db.collection("member")
           .where("userEmail", "==", userEmail)
           .get()
           .then(res => {
-            res.forEach(doc => {
-              console.log(userEmail + "donated" + doc.data().amount);
-              sum = Number(doc.data().amount);
-              maxSum = Math.max(null, sum);
-              console.log(sum);
+            res.forEach(eachMemberDonationSum => {
+              //              console.log(userEmail + "donated" + doc.data().amount);
+              sum = Number(eachMemberDonationSum.data().amount);
+              sumArray.push(sum);
+              console.log(sumArray);
               // time += Number(doc.data().time);
               // maxTime = Math.max(null, time);
               // stuff = Number(doc.data().stuff);
               // maxStuff = Number.max(null, stuff)
             });
+            maxSum = Math.max.apply(null, sumArray);
+            console.log(sumArray, maxSum);
             clone.querySelector("#memberName").textContent = userEmail;
             clone.querySelector("#moneyDonation").textContent = sum;
             // clone.querySelector("#timeDonation").textContent = time + " h";
             // clone.querySelector("#stuffDonation").textContent =
             //   stuff + " pieces";
-            // clone.querySelector("#moneyDonation").style.width =
-            //   (sum * 100) / maxSum;
+            clone.querySelector("#moneyDonation").style.width =
+              (sum * 100) / maxSum + "%";
 
             // clone.querySelector(".moneyDonation").setAttribute("width", sum);
             // --
