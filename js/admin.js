@@ -830,23 +830,24 @@ db.collection("animals")
           ["Sep", 7, 7, 20],
           ["Oct", 8, 8, 19],
           ["Nov", 9, 8, 21]
-          // ["XII", 7, 7, 21]
         ];
         statisArray.push(["Dec", catCount, dogCount, memberCount]);
-        // statistic chart
+        document.querySelector(".memberCount").textContent = memberCount;
 
+        // statistic chart
+        // https://developers.google.com/chart/interactive/docs/gallery/linechart
         google.charts.load("current", { packages: ["corechart"] });
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
-          var data = google.visualization.arrayToDataTable(statisArray);
+          let data = google.visualization.arrayToDataTable(statisArray);
 
-          var options = {
+          let options = {
             // title: "Pets montly situation",
             curveType: "function",
             legend: { position: "bottom" }
           };
 
-          var chart = new google.visualization.LineChart(
+          let chart = new google.visualization.LineChart(
             document.getElementById("curve_chart")
           );
 
