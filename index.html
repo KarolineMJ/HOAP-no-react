@@ -612,12 +612,13 @@
             <p>..............................</p>
             <p>... whole lot of data here, haha ...</p>
             <p>..............................</p>
+            <button id="signOut">Sign out</button>
           </div>
           <div id="currentSettings">
             <h2>Current settings</h2>
             <hr>
             <form>
-                <h5>Which kind of animals? You can choose both of course ~</h5>
+                <h5>Which kind of animals? You can choose both of course</h5>
                 <div>
                   <label><input type="checkbox" name="cat" />Cats</label>
                 </div>
@@ -631,7 +632,7 @@
                 <div>
                   <label><input type="checkbox" name="female" />Female</label>
                 </div>
-                <h5>Which size of animals? (might need to remove this)</h5>
+                <h5>Which size of animals?</h5>
                 <div>
                   <label><input type="checkbox" name="small" />Small</label>
                 </div>
@@ -663,7 +664,6 @@
                 <button type="submit" id="updatePrefBtn">Update Preferences</button>
             </form>
           </div>
-          <button id="signOut">Sign out</button>
           <button id="cancelMembership">Cancel membership</button>
         </div>
       <div id="newsFeed">
@@ -1320,40 +1320,5 @@
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
     <script src="js/admin.js"></script>
-    
-    <!-- <script type="text/javascript">
-      google.charts.load("current", { packages: ["corechart"] });
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ["month", "cats", "dogs", "members"],
-          ["I", 8, 7,20],
-          ["II", 7, 6,18],
-          ["III", 8, 6,19],
-          ["IV", 8, 7,19],
-          ["V", 7, 9,20],
-          ["VI", 7, 9,21],
-          ["VII", 6, 6,21],
-          ["VIII", 7, 6,22],
-          ["IX", 7, 7,20],
-          ["X", 8, 8,19],
-          ["XI", 9, 8,21],
-          ["XII", 7, 7,21]
-        ]);
-
-        var options = {
-          // title: "Pets montly situation",
-          curveType: "function",
-          legend: { position: "bottom" }
-        };
-
-        var chart = new google.visualization.LineChart(
-          document.getElementById("curve_chart")
-        );
-
-        chart.draw(data, options);
-      }
-    </script> -->
   </body>
 </html>
