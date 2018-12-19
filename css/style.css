@@ -687,9 +687,10 @@ button:focus {
           width: 150px;
           height: 150px;
           border-radius: 50%;
-          overflow: hidden;
           position: relative;
           cursor: pointer; }
+          #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal img {
+            border-radius: 50%; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > * {
             position: absolute; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > p {

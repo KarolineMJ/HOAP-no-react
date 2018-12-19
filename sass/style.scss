@@ -801,8 +801,10 @@ button:focus {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            overflow: hidden;
             position: relative;
+            img {
+              border-radius: 50%;
+            }
             > * {
               position: absolute;
             }
