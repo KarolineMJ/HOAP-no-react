@@ -673,6 +673,9 @@ button:focus {
     padding: 40px;
   }
 }
+#sendToUsForms {
+  grid-template-columns: 1fr 1fr 1fr;
+}
 #frontpageForms {
   #donationForm {
     label {
