@@ -1462,13 +1462,6 @@ Keyframes for border radius header image
       border: 2px solid lightblue; }
   #status .statistiOfAnimals {
     margin-top: 20px; }
-    #status .statistiOfAnimals .statisticDiagram {
-      height: 150px;
-      width: 100%;
-      border: 1px solid black;
-      margin: auto;
-      margin-top: 20px;
-      margin-bottom: 20px; }
   #status .listOfDonations {
     margin-top: 20px;
     margin-bottom: 20px; }
