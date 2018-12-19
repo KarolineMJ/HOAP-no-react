@@ -734,6 +734,7 @@ db.collection("animals")
 // count animals
 let catCount = 0;
 let dogCount = 0;
+let memberCount = 0;
 db.collection("animals")
   .get()
   .then(res => {
@@ -746,4 +747,46 @@ db.collection("animals")
     });
     document.querySelector(".catCount").textContent = catCount;
     document.querySelector(".dogCount").textContent = dogCount;
+    db.collection("member")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          memberCount += 1;
+        });
+        let statisArray = [
+          ["month", "cats", "dogs", "members"],
+          ["I", 8, 7, 20],
+          ["II", 7, 6, 18],
+          ["III", 8, 6, 19],
+          ["IV", 8, 7, 19],
+          ["V", 7, 9, 20],
+          ["VI", 7, 9, 21],
+          ["VII", 6, 6, 21],
+          ["VIII", 7, 6, 22],
+          ["IX", 7, 7, 20],
+          ["X", 8, 8, 19],
+          ["XI", 9, 8, 21]
+          // ["XII", 7, 7, 21]
+        ];
+        statisArray.push(["XII", catCount, dogCount, memberCount]);
+        // statistic chart
+
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable(statisArray);
+
+          var options = {
+            // title: "Pets montly situation",
+            curveType: "function",
+            legend: { position: "bottom" }
+          };
+
+          var chart = new google.visualization.LineChart(
+            document.getElementById("curve_chart")
+          );
+
+          chart.draw(data, options);
+        }
+      });
   });
