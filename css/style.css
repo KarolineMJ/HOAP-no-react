@@ -687,6 +687,7 @@ button:focus {
           width: 150px;
           height: 150px;
           border-radius: 50%;
+          overflow: hidden;
           position: relative;
           cursor: pointer; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > * {
@@ -1330,7 +1331,8 @@ Keyframes for border radius header image
             left: 15%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, auto);
+            grid-template-columns: repeat(20, auto);
+            /* temp solution, should be dynamic based on data */
             white-space: nowrap; }
             #admin main .section .subsection .tableWrapper .columns .column {
               border-right: 1px solid #cacaca;
