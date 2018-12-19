@@ -1009,7 +1009,7 @@ button:focus {
     position: fixed;
     right: 0;
     top: 60px;
-    width: 26vw;
+    width: 280px;
     padding: 20px;
     & > * {
     }
@@ -1104,8 +1104,10 @@ Preferences
   #skipPrefBtn {
     cursor: pointer;
     float: right;
+    background-color: $darkbtn;
   }
   .modalContent {
+    display: grid;
     color: #717070;
     background-color: #fefefe;
     margin: auto;
@@ -1116,13 +1118,19 @@ Preferences
     span {
       padding: 40px 5vw;
     }
-    #skipPrefBtn {
-      color: white;
-    }
-    h1 {
+    #modalTop {
+      display: grid;
+      grid-template-columns: 1fr 10%;
       color: white;
       background-color: $darkbtn;
+      span {
+        justify-self: end;
+      }
+      #skipPrefBtn {
+        color: white;
+      }
     }
+
     .formField {
       display: flex;
       flex-flow: column-reverse;
@@ -2659,6 +2667,20 @@ Keyframes for border radius header image
     }
   }
 
+  #preferencesModal {
+    .modalContent {
+      #modalTop {
+        display: grid;
+        grid-template-columns: 1fr;
+        h1 {
+          padding: 40px 5vw 0 5vw;
+        }
+        span {
+          padding: 0 5vw 40px 5vw;
+        }
+      }
+    }
+  }
   /* ----------------------
         Frontpage
 -----------------------*/

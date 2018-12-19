@@ -848,7 +848,7 @@ button:focus {
   position: fixed;
   right: 0;
   top: 60px;
-  width: 26vw;
+  width: 280px;
   padding: 20px; }
   #signedInContent #userSettings h2,
   #signedInContent #newsFeed h2 {
@@ -934,8 +934,10 @@ Preferences
     width: 250px; }
   #preferencesModal #skipPrefBtn {
     cursor: pointer;
-    float: right; }
+    float: right;
+    background-color: #74b7a5; }
   #preferencesModal .modalContent {
+    display: grid;
     color: #717070;
     background-color: #fefefe;
     margin: auto;
@@ -945,11 +947,15 @@ Preferences
     #preferencesModal .modalContent h1,
     #preferencesModal .modalContent span {
       padding: 40px 5vw; }
-    #preferencesModal .modalContent #skipPrefBtn {
-      color: white; }
-    #preferencesModal .modalContent h1 {
+    #preferencesModal .modalContent #modalTop {
+      display: grid;
+      grid-template-columns: 1fr 10%;
       color: white;
       background-color: #74b7a5; }
+      #preferencesModal .modalContent #modalTop span {
+        justify-self: end; }
+      #preferencesModal .modalContent #modalTop #skipPrefBtn {
+        color: white; }
     #preferencesModal .modalContent .formField {
       display: flex;
       flex-flow: column-reverse;
@@ -2232,6 +2238,13 @@ Keyframes for border radius header image
         #frontpageForms #sendToUsForms #imageForm .formField label,
         #frontpageForms #sendToUsForms #donationForm .formField label {
           font-size: 15px; }
+  #preferencesModal .modalContent #modalTop {
+    display: grid;
+    grid-template-columns: 1fr; }
+    #preferencesModal .modalContent #modalTop h1 {
+      padding: 40px 5vw 0 5vw; }
+    #preferencesModal .modalContent #modalTop span {
+      padding: 0 5vw 40px 5vw; }
   /* ----------------------
         Frontpage
 -----------------------*/
