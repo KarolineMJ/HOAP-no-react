@@ -1060,7 +1060,7 @@ Keyframes for border radius header image
 
 @keyframes coinFall {
   from {
-    transform: translateY(-100px);
+    transform: translateY(0px);
   }
 
   to {
@@ -1275,28 +1275,45 @@ Keyframes for border radius header image
       border-bottom: 7px dotted $purpleColor;
       height: auto;
       min-height: 300px; /* delete me later when all sections are finished */
+      p {
+        line-height: 1.3;
+        &:last-of-type {
+          margin-bottom: 2em;
+        }
+      }
       .subsection {
         height: auto;
-        padding: 50px 50px 0 50px;
+        padding: 80px 10vw;
         position: relative;
         &.otherToDo {
-          padding: 50px;
-          p {
-            margin: 35px 0px;
-          }
+          padding: 50px 10vw;
+          width: 95%;
+        }
+        h2 {
+          margin-bottom: 20px;
+        }
+        .extraNotice {
+          margin: 15px 0;
+          font-weight: bold;
+        }
+        .date {
+          font-size: 24px;
+          padding-bottom: 10px;
+          margin-bottom: 0;
         }
         .subsectionHeader {
-          width: 100%;
-          height: 50px;
+          width: 95%;
+          margin-bottom: 20px;
           display: grid;
           grid-template-columns: 190px auto 150px;
+          p {
+            margin: 0;
+            align-self: center;
+          }
           span {
             display: inline-block;
             padding-top: 10px;
-            img {
-              vertical-align: middle;
-              width: 20px;
-            }
+            align-self: center;
             input {
               width: 95%; /* temp solution */
               font-size: 16px;
@@ -1304,6 +1321,7 @@ Keyframes for border radius header image
               border-bottom: 1px solid $purpleColor;
             }
           }
+
           .adminBtn {
             cursor: pointer;
             text-align: center;
@@ -1313,6 +1331,12 @@ Keyframes for border radius header image
             padding: 10px 30px; /* temp solution, should achieve vertical align */
             border-radius: 25px;
             color: white;
+          }
+        }
+        p {
+          img {
+            vertical-align: middle;
+            width: 20px;
           }
         }
         .subsectionToDo {
@@ -1370,7 +1394,7 @@ Keyframes for border radius header image
               }
             }
             .row:not(.head):not(:last-of-type) {
-              border-bottom: 1px solid $purpleColor;
+              border-bottom: 1px solid #efefef;
             }
             b {
               color: $purpleColor;
@@ -1384,15 +1408,18 @@ Keyframes for border radius header image
             left: 15%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, 170px);
+            grid-template-columns: repeat(11, auto);
             white-space: nowrap;
 
             .column {
-              border-right: 1px solid $purpleColor;
+              border-right: 1px solid #cacaca;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px;
               *:not(.animalImage) {
                 pointer-events: none;
+                input[type="checkbox"] {
+                  pointer-events: initial;
+                }
               }
               &:last-of-type {
                 border-right: none;
@@ -1420,13 +1447,16 @@ Keyframes for border radius header image
                   left: -20px;
                   top: -20px;
                 }
+                .noTask {
+                  background-image: url(../img/icons/notaskbg.png);
+                }
                 .memberName {
                   font-size: 13px;
                   margin-left: 5px; /* temp setting */
                 }
               }
               .row:not(:last-of-type):not(.head) {
-                border-bottom: 1px solid $purpleColor;
+                border-bottom: 1px solid #cacaca;
               }
             }
           }
@@ -1628,8 +1658,7 @@ Keyframes for border radius header image
 }
 // here starts POST AND NOTIFY!!
 #postAndNotify {
-  padding: 50px;
-  height: auto;
+  padding: 70px 10vw;
   h3 {
     padding: 15px 0;
   }
@@ -1757,10 +1786,34 @@ Keyframes for border radius header image
 }
 // status section
 #status {
-  width: 80%;
-  margin: auto;
-  margin-top: 20px;
+  padding: 85px 10vw;
+  h2 {
+    padding-bottom: 20px;
+  }
+  hr:last-of-type {
+    margin-bottom: 10px;
+  }
+  h3 {
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 5px;
+  }
+  .Economy {
+    p {
+      img {
+        height: 20px;
+      }
+    }
+  }
 
+  .animalStatus {
+    p {
+      img {
+        height: 20px;
+      }
+    }
+  }
   .monthsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, 75px);
@@ -1785,43 +1838,31 @@ Keyframes for border radius header image
     //   margin-bottom: 20px;
     // }
   }
-  .statisticOfMembers {
+  .listOfDonations {
     margin-top: 20px;
-    .membersDiagram {
-      height: 150px;
-      width: 100%;
-      border: 1px solid black;
-      margin: auto;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
+    margin-bottom: 20px;
 
-    .listOfDonations {
-      margin-top: 20px;
-      margin-bottom: 20px;
-
-      .singleMember {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px;
-        .aboutMember {
-          // border-bottom: 1px solid black;
-          height: 35px;
+    .singleMember {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 10px;
+      .aboutMember {
+        // border-bottom: 1px solid black;
+        height: 35px;
+      }
+      .emailBox {
+        width: 150px;
+        p {
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
-        .emailBox {
-          width: 150px;
-          p {
-            text-overflow: ellipsis;
-            overflow: hidden;
-          }
-        }
-        #moneyDonation,
-        #timeDonation,
-        #stuffDonated {
-          background-color: $purpleColor;
-          color: white;
-          height: 34px;
-        }
+      }
+      #moneyDonation,
+      #timeDonation,
+      #stuffDonated {
+        background-color: $purpleColor;
+        color: white;
+        height: 34px;
       }
     }
   }

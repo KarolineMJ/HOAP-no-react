@@ -876,7 +876,7 @@ Keyframes for border radius header image
 ------------------------*/
 @keyframes coinFall {
   from {
-    transform: translateY(-100px); }
+    transform: translateY(0px); }
   to {
     transform: translateY(400px); } }
 
@@ -1030,25 +1030,38 @@ Keyframes for border radius header image
       height: auto;
       min-height: 300px;
       /* delete me later when all sections are finished */ }
+      #admin main .section p {
+        line-height: 1.3; }
+        #admin main .section p:last-of-type {
+          margin-bottom: 2em; }
       #admin main .section .subsection {
         height: auto;
-        padding: 50px 50px 0 50px;
+        padding: 80px 10vw;
         position: relative; }
         #admin main .section .subsection.otherToDo {
-          padding: 50px; }
-          #admin main .section .subsection.otherToDo p {
-            margin: 35px 0px; }
+          padding: 50px 10vw;
+          width: 95%; }
+        #admin main .section .subsection h2 {
+          margin-bottom: 20px; }
+        #admin main .section .subsection .extraNotice {
+          margin: 15px 0;
+          font-weight: bold; }
+        #admin main .section .subsection .date {
+          font-size: 24px;
+          padding-bottom: 10px;
+          margin-bottom: 0; }
         #admin main .section .subsection .subsectionHeader {
-          width: 100%;
-          height: 50px;
+          width: 95%;
+          margin-bottom: 20px;
           display: grid;
           grid-template-columns: 190px auto 150px; }
+          #admin main .section .subsection .subsectionHeader p {
+            margin: 0;
+            align-self: center; }
           #admin main .section .subsection .subsectionHeader span {
             display: inline-block;
-            padding-top: 10px; }
-            #admin main .section .subsection .subsectionHeader span img {
-              vertical-align: middle;
-              width: 20px; }
+            padding-top: 10px;
+            align-self: center; }
             #admin main .section .subsection .subsectionHeader span input {
               width: 95%;
               /* temp solution */
@@ -1065,6 +1078,9 @@ Keyframes for border radius header image
             /* temp solution, should achieve vertical align */
             border-radius: 25px;
             color: white; }
+        #admin main .section .subsection p img {
+          vertical-align: middle;
+          width: 20px; }
         #admin main .section .subsection .subsectionToDo {
           width: 100%;
           height: 50px;
@@ -1114,7 +1130,7 @@ Keyframes for border radius header image
                 width: 30px;
                 vertical-align: middle; }
             #admin main .section .subsection .tableWrapper .firstColumn .row:not(.head):not(:last-of-type) {
-              border-bottom: 1px solid #2e2f4b; }
+              border-bottom: 1px solid #efefef; }
             #admin main .section .subsection .tableWrapper .firstColumn b {
               color: #2e2f4b;
               place-self: center; }
@@ -1125,14 +1141,16 @@ Keyframes for border radius header image
             left: 15%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, 170px);
+            grid-template-columns: repeat(11, auto);
             white-space: nowrap; }
             #admin main .section .subsection .tableWrapper .columns .column {
-              border-right: 1px solid #2e2f4b;
+              border-right: 1px solid #cacaca;
               display: grid;
               grid-template-rows: 100px 50px 50px 50px 50px 70px; }
               #admin main .section .subsection .tableWrapper .columns .column *:not(.animalImage) {
                 pointer-events: none; }
+                #admin main .section .subsection .tableWrapper .columns .column *:not(.animalImage) input[type="checkbox"] {
+                  pointer-events: initial; }
               #admin main .section .subsection .tableWrapper .columns .column:last-of-type {
                 border-right: none; }
               #admin main .section .subsection .tableWrapper .columns .column div:nth-child(1) {
@@ -1155,12 +1173,14 @@ Keyframes for border radius header image
                   position: relative;
                   left: -20px;
                   top: -20px; }
+                #admin main .section .subsection .tableWrapper .columns .column .row .noTask {
+                  background-image: url(../img/icons/notaskbg.png); }
                 #admin main .section .subsection .tableWrapper .columns .column .row .memberName {
                   font-size: 13px;
                   margin-left: 5px;
                   /* temp setting */ }
               #admin main .section .subsection .tableWrapper .columns .column .row:not(:last-of-type):not(.head) {
-                border-bottom: 1px solid #2e2f4b; }
+                border-bottom: 1px solid #cacaca; }
         #admin main .section .subsection .animalDetailModal {
           z-index: 3;
           position: absolute;
@@ -1314,8 +1334,7 @@ Keyframes for border radius header image
     color: #2e2f4b; }
 
 #postAndNotify {
-  padding: 50px;
-  height: auto; }
+  padding: 70px 10vw; }
   #postAndNotify h3 {
     padding: 15px 0; }
   #postAndNotify .postsContainer {
@@ -1418,9 +1437,19 @@ Keyframes for border radius header image
         border: none; }
 
 #status {
-  width: 80%;
-  margin: auto;
-  margin-top: 20px; }
+  padding: 85px 10vw; }
+  #status h2 {
+    padding-bottom: 20px; }
+  #status hr:last-of-type {
+    margin-bottom: 10px; }
+  #status h3 {
+    margin-bottom: 10px; }
+  #status p {
+    margin-bottom: 5px; }
+  #status .Economy p img {
+    height: 20px; }
+  #status .animalStatus p img {
+    height: 20px; }
   #status .monthsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, 75px);
@@ -1440,35 +1469,26 @@ Keyframes for border radius header image
       margin: auto;
       margin-top: 20px;
       margin-bottom: 20px; }
-  #status .statisticOfMembers {
-    margin-top: 20px; }
-    #status .statisticOfMembers .membersDiagram {
-      height: 150px;
-      width: 100%;
-      border: 1px solid black;
-      margin: auto;
-      margin-top: 20px;
-      margin-bottom: 20px; }
-    #status .statisticOfMembers .listOfDonations {
-      margin-top: 20px;
-      margin-bottom: 20px; }
-      #status .statisticOfMembers .listOfDonations .singleMember {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px; }
-        #status .statisticOfMembers .listOfDonations .singleMember .aboutMember {
-          height: 35px; }
-        #status .statisticOfMembers .listOfDonations .singleMember .emailBox {
-          width: 150px; }
-          #status .statisticOfMembers .listOfDonations .singleMember .emailBox p {
-            text-overflow: ellipsis;
-            overflow: hidden; }
-        #status .statisticOfMembers .listOfDonations .singleMember #moneyDonation,
-        #status .statisticOfMembers .listOfDonations .singleMember #timeDonation,
-        #status .statisticOfMembers .listOfDonations .singleMember #stuffDonated {
-          background-color: #2e2f4b;
-          color: white;
-          height: 34px; }
+  #status .listOfDonations {
+    margin-top: 20px;
+    margin-bottom: 20px; }
+    #status .listOfDonations .singleMember {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 10px; }
+      #status .listOfDonations .singleMember .aboutMember {
+        height: 35px; }
+      #status .listOfDonations .singleMember .emailBox {
+        width: 150px; }
+        #status .listOfDonations .singleMember .emailBox p {
+          text-overflow: ellipsis;
+          overflow: hidden; }
+      #status .listOfDonations .singleMember #moneyDonation,
+      #status .listOfDonations .singleMember #timeDonation,
+      #status .listOfDonations .singleMember #stuffDonated {
+        background-color: #2e2f4b;
+        color: white;
+        height: 34px; }
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   /*-----------------------------

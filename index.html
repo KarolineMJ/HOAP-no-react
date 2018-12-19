@@ -807,11 +807,19 @@
       <main>
         <div class="section" id="dailyTasks">
           <div class="subsection animalTasks">
-            <h2>Our animals</h2>
+            <h2>Today's exercise schedule</h2>
+            <p>Here shows each animals daily exercise routine. </p>
+            <p>You can mark the task as checked when you have finished the work. </p>
+            <p>If a member has picked a time slot to spend time on the animal, this user's email acount will be displayed.</p>
+            <p>If no member has has taken the time slot, you'll have to assign it to a staff.</p>
+            <p class="extraNotice">* Pay attention to the 'extra' section.</p>
+            <p class="date"></p> 
             <div class="subsectionHeader">
-              <span class="date"></span> <span>Filters: Cat <img src="img/icons/catsilhouette.png" alt="">  | Dog <img src="img/icons/dogsilhouette.png" alt=""> </span
-              ><span class="adminBtn addAnimalBtn">Add animal</span>
+                <p>Filters: Cat <img src="img/icons/catsilhouette.png" alt="">  | Dog <img src="img/icons/dogsilhouette.png" alt=""></p>
+                <span></span>
+                <span class="adminBtn addAnimalBtn">Add animal</span>
             </div>
+            
             <div class="tableWrapper">
               <div class="firstColumn column">
                 <div class="row head"><b>Animals</b></div>
@@ -824,7 +832,8 @@
               <div class="columns"></div>
             </div>
             <div class="animalDetailModal hide">
-              <div class="animalImageBig"></div>
+              <div class="animalImageBig">
+              </div>
               <form class="animalDetails">
                 <div>
                   <input
@@ -983,7 +992,9 @@
             <h2>To do!</h2>
             <p>Hello boss!
               <br><br>
-              This is what currently is going on in the field. Every time you see a red line, this is a message from the user. If you click it off it will be removed FOREVER! But don't worry, you can easily add it again. Try it out!</p>
+              <p>This is a list of stuff that you need to do. It contains both the tasks you wrote yourself and some requirement from the members, which is marked red.</p>
+              <p>If you check it off it will be removed FOREVER! </p>
+              <p>But don't worry, you can easily add it again. Try it out!</p>
             <div class="subsectionToDo">
               <span><input type="text" placeholder="Any new task?"/></span>
               <span class="adminBtn addToDoBtn">Add a to-do</span>
@@ -1035,9 +1046,32 @@
       
 
         <div class="section" id="status">
-          Status (including members)
-          <h3>Budget</h3>
-          <div class="monthsContainer">
+          <h2>Status</h2>
+          <div class="Economy">
+              <h3>Expance / Income</h3>
+              <p>Fake basic monthly running cost <span class="waterCost"></span><img src="img/icons/water.png" alt="water"> <span class="elCost"></span><img src="img/icons/electricity.png" alt="electricity"> <span class="heatCost"></span><img src="img/icons/heat.png" alt="heat"> <span class="staffCost"></span><img src="img/icons/user.png" alt="staff"></p>
+              <p>Total fix cost per month: <span class="fixCost"></span> kr.</p>
+              <hr>
+              <p>Monthly cost for all cats: <span class="catCost"></span></p>
+              <p>Monthly cost for all dogs: <span class="dogCost"></span></p>
+              <p>Total cost for animals per month: <span class="totalAnimalCost"></span> kr.</p>
+              <hr>
+              <hr>
+              <p>Monthly donation gain: <span class="monthlyDonationGain"></span></p>
+              <hr>
+              <p>Result? <span class="result"></span></p>
+              <hr>
+              <i><p class="hint"></p></i>
+              <p>Fake reserve: 50000 kr. including real one-time-donations of <span class="donationGain"></span> kr. </p>
+              
+            </div>
+          <div class="animalStatus">
+              <h3>Animals</h3>
+              <p>Currently we have <span class="catCount"> </span><img src="img/icons/catsilhouette.png" alt="cat icon"> and <span class="dogCount"></span> <img src="img/icons/dogsilhouette.png" alt="dog icon"> </p>
+              
+          </div>
+
+          <!-- <div class="monthsContainer">
             <div class="month"></div>
             <div class="month"></div>
             <div class="month"></div>
@@ -1057,28 +1091,26 @@
             <h3>Statistic of animals</h3>
             <div id="curve_chart" style="width: 100%; height: 200px"></div>
           </div>
-          <hr />
+          <hr /> -->
           <div class="statisticOfMembers">
-            <h3>Statistic of members</h3>
-            <div class="membersDiagram"></div>
 
             <div class="listOfDonations">
-              <h3>Donations including who donated</h3>
-              <div class="donationsTableContainer">
+                <h3>Help from members</h3>
+                <div class="donationsTableContainer">
                   <div class="singleMember">
-                      <h3 class="aboutMember">Name</h3>
-                      <p class="aboutMember"  >Money</p>
-                      <p class="aboutMember">Time</p>
-                      <p class="aboutMember" >Stuff</p>
+                    <h3 class="aboutMember">Name</h3>
+                    <p class="aboutMember"  >Money</p>
+                    <p class="aboutMember">Time</p>
+                    <p class="aboutMember" >Stuff</p>
+                  </div>
+                  <template class="membersTemplate">
+                    <div class="singleMember">
+                    <div class="emailBox"><p class="aboutMember" id="memberName">Name</p></div> 
+                      <div class="aboutMember"  id="moneyDonation">150kr. </div>
+                      <div class="aboutMember"  id="timeDonation">25h</div>
+                      <div class="aboutMember"  id="stuffDonated">3pieces</div>
                     </div>
-               <template class="membersTemplate">
-                <div class="singleMember">
-                 <div class="emailBox"><p class="aboutMember" id="memberName">Name</p></div> 
-                  <div class="moneyDonation"><div class="aboutMember"  id="moneyDonation">150kr. </div> </div>
-                  <div class="aboutMember"  id="timeDonation">25 h</div>
-                  <div class="aboutMember"  id="stuffDonated">3 pieces</div>
-                </div>
-              </template>
+                  </template>
               </div>
             </div>
           </div>

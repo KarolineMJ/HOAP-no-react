@@ -23,9 +23,9 @@ const membersTamplate = document.querySelector(".membersTemplate").content;
 
 // date related
 const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth() + 1;
-const day = today.getDate();
+const year = today.getFullYear().toString();
+const month = (today.getMonth() + 1).toString();
+const day = today.getDate().toString();
 const timestamp = today.getTime();
 date.textContent = `${year}-${month}-${day}`;
 
@@ -69,20 +69,21 @@ function buildAnimalColumn(entry) {
   animalImageDiv.classList.add("animalImage");
   let animalImage = document.createElement("img");
   if (entry.data().file !== undefined && entry.data().file !== "") {
-    let animalImageName = entry.data().file;
-    let storage = firebase.storage();
-    let storageReference = storage.ref();
-    let childRef = storageReference.child(`admin/${animalImageName}`);
-    console.log(animalImageName);
-    childRef
-      .getDownloadURL()
-      .then(function(url) {
-        animalImage.src = url;
-      })
-      .catch(function(error) {
-        console.log(error);
-        animalImage.src = "img/animals/default.png";
-      });
+    animalImage.src = entry.data().file;
+    // let animalImageName = entry.data().file;
+    // let storage = firebase.storage();
+    // let storageReference = storage.ref();
+    // let childRef = storageReference.child(`admin/${animalImageName}`);
+    // console.log(animalImageName);
+    // childRef
+    //   .getDownloadURL()
+    //   .then(function(url) {
+    //     animalImage.src = url;
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //     animalImage.src = "img/animals/default.png";
+    //   });
   } else {
     animalImage.src = "img/animals/newcomer.png";
   }
@@ -92,21 +93,22 @@ function buildAnimalColumn(entry) {
   // get daily task of this animal from another collection in database
   db.collection("dailyTaskTemplate")
     .where("animalID", "==", animalID)
-    // .where("month", "==", month)
-    // .where("day", "==", day)
     .get()
     .then(res => {
       res.docs.forEach(doc => {
         if (!doc.data().month && !doc.data().year && !doc.data().day) {
           console.log(doc.data());
           ///////////////////// need to DRY these
-          //        if (doc.data().month === month && doc.data().day === day) {
           if (doc.data().morning === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.className = "noTask";
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -115,10 +117,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("morningByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().morningMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -129,9 +129,13 @@ function buildAnimalColumn(entry) {
           if (doc.data().afternoon === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.className = "noTask";
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -140,10 +144,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("afternoonByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().afternoonMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -154,9 +156,13 @@ function buildAnimalColumn(entry) {
           if (doc.data().evening === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.className = "noTask";
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -165,10 +171,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("eveningByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().eveningMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -178,9 +182,13 @@ function buildAnimalColumn(entry) {
           if (doc.data().training === false) {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.className = "noTask";
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -189,10 +197,8 @@ function buildAnimalColumn(entry) {
             let taskCheckbox = document.createElement("input");
             taskCheckbox.setAttribute("type", "checkbox");
             let byWhom = document.createElement("span");
+            byWhom.classList.add("trainingByWhom");
             byWhom.classList.add("memberName");
-            if (doc.data().morningMember !== "") {
-              byWhom.textContent = doc.data().trainingMember;
-            }
             row.appendChild(taskCheckbox);
             row.appendChild(byWhom);
             column.appendChild(row);
@@ -202,9 +208,13 @@ function buildAnimalColumn(entry) {
           if (doc.data().extra === "") {
             let row = document.createElement("div");
             row.classList.add("row");
-            let noTaskImage = document.createElement("img");
-            noTaskImage.setAttribute("src", "img/notask.png");
-            row.appendChild(noTaskImage);
+            let noTask = document.createElement("p");
+            noTask.className = "noTask";
+            noTask.textContent = "-";
+            row.appendChild(noTask);
+            // let noTaskImage = document.createElement("img");
+            // noTaskImage.setAttribute("src", "img/notask.png");
+            // row.appendChild(noTaskImage);
             column.appendChild(row);
             columns.appendChild(column);
           } else {
@@ -213,7 +223,7 @@ function buildAnimalColumn(entry) {
             let extraDesc = document.createElement("p");
             extraDesc.textContent = doc.data().extra;
             let taskCheckbox = document.createElement("input");
-            taskCheckbox.setAttribute("type", "checkbox");
+            taskCheckbox.style.display = "none"; // bad solution
             let byWhom = document.createElement("span");
             byWhom.classList.add("memberName");
             if (doc.data().extraMember !== "") {
@@ -226,6 +236,45 @@ function buildAnimalColumn(entry) {
             columns.appendChild(column);
           }
         }
+        db.collection("dailyTasks")
+          .where("animalID", "==", doc.data().animalID)
+          .where("year", "==", year)
+          .where("month", "==", month)
+          .where("day", "==", day)
+          .get()
+          .then(res => {
+            noTask.classList.add("noTask");
+            res.forEach(doc => {
+              const user = doc.data().user;
+              const morning = doc.data().morning;
+              const afternoon = doc.data().afternoon;
+              const evening = doc.data().evening;
+              const training = doc.data().training;
+              const matchingAnimal = document.querySelector(
+                `div[data-id="${animalID}"]`
+              );
+              if (morning) {
+                matchingAnimal.querySelector(
+                  ".morningByWhom"
+                ).textContent = user;
+              }
+              if (afternoon) {
+                matchingAnimal.querySelector(
+                  ".afternoonByWhom"
+                ).textContent = user;
+              }
+              if (evening) {
+                matchingAnimal.querySelector(
+                  ".eveningByWhom"
+                ).textContent = user;
+              }
+              if (training) {
+                matchingAnimal.querySelector(
+                  ".trainingByWhom"
+                ).textContent = user;
+              }
+            });
+          });
       });
     });
   // add listener to newly built column
@@ -257,24 +306,6 @@ function getFilename(evt) {
   console.log(filename);
 }
 
-// addAnimalToDbBtn.addEventListener("click", e => {
-//   e.preventDefault();
-//   db.collection("animalList")
-//     .add({
-//       name: addAnimalForm.animalName.value,
-//       type: addAnimalForm.type.value,
-//       breed: addAnimalForm.breed.value,
-//       age: addAnimalForm.age.value,
-//       gender: addAnimalForm.gender.value,
-//       size: addAnimalForm.size.value,
-//       young: addAnimalForm.young.checked ? true : false,
-//       pregnant: addAnimalForm.pregnant.checked ? true : false,
-//       money: addAnimalForm.money.value,
-//       story: addAnimalForm.story.value,
-//       file: addAnimalForm.filename.value
-//     })
-//     .then(alert("added"));
-// });
 //add animal to db, including image file
 addAnimalToDbBtn.addEventListener("click", e => {
   e.preventDefault();
@@ -619,4 +650,100 @@ db.collection("imagesFromAdmin")
           // update image container // remove the ones that're just published from the container
         }
       });
+  });
+
+/**
+ * status
+ */
+// fixed costs
+const waterCost = 3000;
+const elCost = 2000;
+const heatCost = 3000;
+const staffCost = 20000;
+document.querySelector(".waterCost").textContent = waterCost;
+document.querySelector(".elCost").textContent = elCost;
+document.querySelector(".heatCost").textContent = heatCost;
+document.querySelector(".staffCost").textContent = staffCost;
+document.querySelector(".fixCost").textContent =
+  waterCost + elCost + heatCost + staffCost;
+// animal cost
+let catCost = 0;
+let dogCost = 0;
+db.collection("animals")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().type === "cat") {
+        catCost += Number(doc.data().money);
+      }
+    });
+    document.querySelector(".catCost").textContent = catCost;
+    //    document.querySelector(".totalAnimalCost").textContent = catCost + dogCost;
+    db.collection("animals")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          if (doc.data().type === "dog") {
+            dogCost += Number(doc.data().money);
+          }
+        });
+        document.querySelector(".dogCost").textContent = dogCost;
+        document.querySelector(".totalAnimalCost").textContent =
+          catCost + dogCost;
+      });
+    // donation gain is the sum of all donation made by both member and visitors what's not registered as member
+    let donationGain = 0;
+    let monthlyDonationGain = 0;
+    db.collection("moneyDonation")
+      .get()
+      .then(res => {
+        res.forEach(doc => {
+          const eachAmount = doc.data().amount;
+          donationGain += Number(eachAmount);
+        });
+        document.querySelector(".donationGain").textContent = donationGain;
+        // monthly donation from member
+        db.collection("member")
+          .get()
+          .then(res => {
+            res.forEach(doc => {
+              const monthlyDonation = doc.data().monthlyDonation;
+              if (monthlyDonation) {
+                monthlyDonationGain += Number(monthlyDonation);
+              }
+            });
+            document.querySelector(
+              ".monthlyDonationGain"
+            ).textContent = monthlyDonationGain;
+            const result =
+              monthlyDonationGain -
+              waterCost -
+              elCost -
+              heatCost -
+              staffCost -
+              catCost -
+              dogCost;
+            document.querySelector(".result").textContent = result;
+            if (result < 0) {
+              document.querySelector(".hint").textContent =
+                "didn't raise enough money this month to cover the cost, must use reserve.";
+            }
+          });
+      });
+  });
+// count animals
+let catCount = 0;
+let dogCount = 0;
+db.collection("animals")
+  .get()
+  .then(res => {
+    res.forEach(doc => {
+      if (doc.data().type === "cat") {
+        catCount += 1;
+      } else if (doc.data().type === "dog") {
+        dogCount += 1;
+      }
+    });
+    document.querySelector(".catCount").textContent = catCount;
+    document.querySelector(".dogCount").textContent = dogCount;
   });
