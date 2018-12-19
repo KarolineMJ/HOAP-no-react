@@ -1569,7 +1569,8 @@ Keyframes for border radius header image
       #status .listOfDonations .singleMember #stuffDonated {
         background-color: #2e2f4b;
         color: white;
-        height: 34px; }
+        height: 34px;
+        width: 0; }
 
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   /*-----------------------------
