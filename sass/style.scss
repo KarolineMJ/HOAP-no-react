@@ -61,9 +61,16 @@ body {
   #sidebarBtns {
     display: none;
     justify-self: end;
-    svg {
-      width: 70px;
-      padding: 15px;
+    img {
+      width: 65px;
+      padding: 13px;
+
+    }
+    #newsBtn {
+      margin-right: 10px;
+    }
+    #newsBtn, #settingBtn{
+      cursor: pointer;
     }
   }
 
@@ -2062,6 +2069,8 @@ Keyframes for border radius header image
     //   margin-bottom: 20px;
     // }
     #curve_chart {
+      width: 100%;
+      height: 200px;
       svg {
         rect {
           g:nth-child(1) {
