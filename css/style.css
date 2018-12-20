@@ -1397,7 +1397,9 @@ Keyframes for border radius header image
           #admin main .section .subsection .animalDetailModal .animalImageBig {
             height: 170px;
             border-radius: 50%;
-            border: 3px solid black; }
+            overflow: hidden; }
+            #admin main .section .subsection .animalDetailModal .animalImageBig img {
+              width: 170px; }
           #admin main .section .subsection .animalDetailModal .animalDetails {
             display: grid;
             grid-template-columns: 200px auto;
