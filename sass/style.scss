@@ -124,6 +124,7 @@ button:focus {
     .formField {
       input {
         border-bottom: 1px solid grey;
+        width: 100%;
       }
     }
   }
@@ -131,11 +132,13 @@ button:focus {
 #donationForm,
 #signupForm {
   background-color: #ded2c3;
+  border-radius: 30px;
   color: white;
   form {
     .formField {
       input {
         border-bottom: 1px solid grey;
+        width: 100%;
       }
     }
   }
@@ -166,6 +169,7 @@ button:focus {
       flex-flow: column-reverse;
       margin-bottom: 1em;
       input {
+        width: 100%;
         background: none;
         font-size: 1em;
         border: 0;
@@ -255,6 +259,7 @@ button:focus {
       flex-flow: column-reverse;
       margin-bottom: 1em;
       input {
+        width: 100%;
         background: none;
         font-size: 1em;
         border: 0;
@@ -331,6 +336,7 @@ button:focus {
       flex-flow: column-reverse;
       margin-bottom: 1.5em;
       input {
+        width: 100%;
         color: #ffffff;
         background-color: rgba(0, 0, 0, 0);
         font-size: 1em;
@@ -671,6 +677,7 @@ button:focus {
   #messageForm,
   #imageForm,
   #stuffDonationForm {
+    border-radius: 30px;
     display: grid;
     margin: 5vw 0 10vw 0;
     padding: 40px;
@@ -706,6 +713,7 @@ button:focus {
       #donateWhat {
         margin-bottom: 0px;
         margin-top: 15px;
+        width: 100%;
       }
       .whoswName {
         font-size: 14px;
@@ -1166,7 +1174,7 @@ Preferences
         border: 0;
         border-bottom: 1px solid grey;
         font-family: inherit;
-
+        width: 100%;
         -webkit-appearance: none;
         border-radius: 0;
         padding: 0;
@@ -2187,6 +2195,7 @@ Keyframes for border radius header image
           input {
             font-size: 0.8em;
             margin: 19px 0px;
+            width: 100%;
           }
           label {
             font-size: 13px;
@@ -2418,6 +2427,7 @@ Keyframes for border radius header image
         input {
           font-size: 0.8em;
           margin: 19px 0px;
+          width: 100%;
         }
         label {
           font-size: 15px;
@@ -2718,6 +2728,7 @@ Keyframes for border radius header image
           input {
             font-size: 0.7em;
             margin: 19px 0px;
+            width: 100%;
           }
           label {
             font-size: 15px;
