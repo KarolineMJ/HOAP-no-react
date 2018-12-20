@@ -1001,6 +1001,8 @@ Preferences
       display: grid; }
       #preferencesModal .modalContent form h3 {
         padding-top: 20px; }
+        #preferencesModal .modalContent form h3 i {
+          font-size: 13px; }
       #preferencesModal .modalContent form h5 {
         padding-top: 15px;
         padding-bottom: 5px; }
