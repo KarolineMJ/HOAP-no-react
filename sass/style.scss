@@ -874,6 +874,7 @@ button:focus {
       width: 280px;
       height: 280px;
       border-radius: 50%;
+      overflow: hidden;
       background-color: $darkbtn;
     }
     .bigAnimalInfo {
@@ -1708,7 +1709,10 @@ Keyframes for border radius header image
           .animalImageBig {
             height: 170px;
             border-radius: 50%;
-            border: 3px solid black;
+            overflow: hidden;
+            img {
+              width: 170px;
+            }
           }
           .animalDetails {
             display: grid;

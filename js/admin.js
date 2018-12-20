@@ -418,6 +418,9 @@ deleteAnimalBtn.addEventListener("click", e => {
 
 // display animal details
 function showAnimalDetail(data, id, elem, editableBol) {
+  const src = document
+    .querySelector(`.column[data-id = "${id}"] .animalImage img`)
+    .getAttribute("src");
   const currentAnimal = id;
   elem.dataset.id = id;
   // clear previous values
@@ -432,8 +435,11 @@ function showAnimalDetail(data, id, elem, editableBol) {
   previousKeys.forEach(key => {
     elem.querySelector(`input[value='${key}']`).removeAttribute("checked");
   });
-  if (editableBol === true) {
-  }
+  // if (editableBol === true) {
+  // }
+  let bigImage = document.createElement("img");
+  bigImage.setAttribute("src", src);
+  elem.querySelector(".animalImageBig").appendChild(bigImage);
   // display newly fetched values
   elem.querySelector(".animalName").value = data.name;
   elem.querySelector(".breed").value = data.breed;
