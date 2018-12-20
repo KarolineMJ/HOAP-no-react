@@ -586,13 +586,15 @@ button:focus {
   #sendToUsForms #stuffDonationForm {
     display: grid;
     margin: 5vw 0 10vw 0;
-    padding: 40px; }
+    padding: 40px;
+    border-radius: 30px; }
   #frontpageForms #donationForm,
   #frontpageForms #signupForm,
   #sendToUsForms #donationForm,
   #sendToUsForms #signupForm {
     margin: 3vw 10vw 10vw 10vw;
-    padding: 40px; }
+    padding: 40px;
+    border-radius: 30px; }
 
 #sendToUsForms {
   padding: 0 10vw;

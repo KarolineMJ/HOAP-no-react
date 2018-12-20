@@ -674,11 +674,13 @@ button:focus {
     display: grid;
     margin: 5vw 0 10vw 0;
     padding: 40px;
+    border-radius: 30px;
   }
   #donationForm,
   #signupForm {
     margin: 3vw 10vw 10vw 10vw;
     padding: 40px;
+    border-radius: 30px;
   }
 }
 #sendToUsForms {
