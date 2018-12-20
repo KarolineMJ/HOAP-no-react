@@ -64,12 +64,12 @@ body {
     img {
       width: 65px;
       padding: 13px;
-
     }
     #newsBtn {
       margin-right: 10px;
     }
-    #newsBtn, #settingBtn{
+    #newsBtn,
+    #settingBtn {
       cursor: pointer;
     }
   }
@@ -2658,7 +2658,7 @@ Keyframes for border radius header image
       padding: 10vw;
       width: 100%;
       grid-template-columns: 1fr;
-
+      #stuffDonationForm,
       #messageForm,
       #signupForm,
       #imageForm,
