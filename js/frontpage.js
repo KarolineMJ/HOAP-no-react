@@ -79,7 +79,6 @@ function checkUser() {
   // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.email === "admin@admin.com") {
-      displayAnimals();
       adminSection.style.display = "block";
       frontpageContent.style.display = "none";
       signedInContent.style.display = "none";
@@ -88,6 +87,7 @@ function checkUser() {
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "block";
       footer.style.display = "none";
+      admin(); // only run admin functions if logged in as admin
     } else if (user) {
       adminSection.style.display = "none";
       frontpageContent.style.display = "none";
@@ -204,42 +204,6 @@ function signout() {
       console.log(err);
     });
 }
-
-/*-------------------------------------------
-Upload an image to database
-------------------------------------------*/
-
-//get elements
-const uploader = document.querySelector("#uploader");
-const fileButton = document.querySelector("#fileButton");
-
-//listen for file selection
-
-fileButton.addEventListener("change", function(e) {
-  //get file
-  let file = e.target.files[0];
-
-  // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
-  //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
-
-  //create a storage ret
-  let storageRef = firebase.storage().ref("member/" + file.name);
-
-  //upload file
-  let task = storageRef.put(file);
-
-  // update progress bar
-  task.on(
-    "state_changed",
-    function progress(snapshot) {
-      let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    },
-    function error(err) {},
-    function complete() {
-      console.log("picture is uploaded");
-    }
-  );
-});
 
 /*--------------------------------------
 Add data to expand & open expands
@@ -1124,4 +1088,44 @@ adminPostBtn.addEventListener("click", e => {
     image: ""
   });
   adminPostInput.value = "";
+});
+
+////////////////////////////////////////////////////////////////////////////////
+// functions that we don't use anymore due to Firebase storage quota limitation
+////////////////////////////////////////////////////////////////////////////////
+
+/*-------------------------------------------
+Upload an image to database
+------------------------------------------*/
+
+//get elements
+const uploader = document.querySelector("#uploader");
+const fileButton = document.querySelector("#fileButton");
+
+//listen for file selection
+
+fileButton.addEventListener("change", function(e) {
+  //get file
+  let file = e.target.files[0];
+
+  // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
+  //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
+
+  //create a storage ret
+  let storageRef = firebase.storage().ref("member/" + file.name);
+
+  //upload file
+  let task = storageRef.put(file);
+
+  // update progress bar
+  task.on(
+    "state_changed",
+    function progress(snapshot) {
+      let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    },
+    function error(err) {},
+    function complete() {
+      console.log("picture is uploaded");
+    }
+  );
 });

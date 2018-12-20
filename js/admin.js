@@ -35,8 +35,10 @@ let file;
 // displayed animal array, use this for update animal list without re-render the whole list AND without using firebases's built-in onchange function
 let animalArray = [];
 
-//window.addEventListener("DOMContentLoaded", displayAnimals);
-
+function admin() {
+  displayAnimals();
+  addAnimalBtn.addEventListener("click", showAddAnimalForm);
+}
 // GET animals from db and generate animal columns
 function displayAnimals() {
   const displayedAnimal = document.querySelectorAll(".columns .column");
@@ -97,7 +99,6 @@ function buildAnimalColumn(entry) {
     .then(res => {
       res.docs.forEach(doc => {
         if (!doc.data().month && !doc.data().year && !doc.data().day) {
-          console.log(doc.data());
           ///////////////////// need to DRY these
           if (doc.data().morning === false) {
             let row = document.createElement("div");
@@ -276,14 +277,9 @@ function buildAnimalColumn(entry) {
 }
 
 // show add animal panel
-addAnimalBtn.addEventListener("click", showAddAnimalForm);
 function showAddAnimalForm() {
   addAnimalPanel.classList.toggle("hide");
 }
-// addToDoBtn.addEventListener("click", addToDo);
-// function addToDo() {
-//   console.log("add a to do to the list");
-// }
 
 // get image file
 uploadBtnAdmin.addEventListener("change", getFilename);
@@ -334,6 +330,7 @@ addAnimalToDbBtn.addEventListener("click", e => {
       let task = storageRef.put(file);
     });
 });
+
 // get animal info and display in animal detail modal
 function getAnimalInfo(id) {
   db.collection("animals")
@@ -400,21 +397,6 @@ deleteAnimalBtn.addEventListener("click", e => {
   closeModal();
   document.querySelector(`.column[data-id='${id}']`).remove();
 });
-
-/********************
- * shared functions
- ********************/
-
-// reset form, moved to frontpage.js
-// function resetForm(form) {
-//   const allFormELements = form.querySelectorAll("*");
-//   allFormELements.forEach(e => {
-//     e.value = "";
-//     if (e.checked) {
-//       e.checked = false;
-//     }
-//   });
-// }
 
 // display animal details
 function showAnimalDetail(data, id, elem, editableBol) {
@@ -509,6 +491,10 @@ closeModalBtn.addEventListener("click", () => {
 function closeModal() {
   animalDetailModal.classList.add("hide");
 }
+
+/********************************
+ * functions related to database
+ ********************************/
 
 // GET members details from db and generate the table of members
 let sum = 0;
@@ -722,9 +708,6 @@ db.collection("imagesFromAdmin")
       });
   });
 
-/**
- * status
- */
 // fixed costs
 const waterCost = 3000;
 const elCost = 2000;
@@ -801,6 +784,7 @@ db.collection("animals")
           });
       });
   });
+
 // count animals
 let catCount = 0;
 let dogCount = 0;
