@@ -331,8 +331,12 @@ Add data to expand & open expands
 -------------------------------------*/
 
 function cloneAnimalInfo(data, animalID) {
+  const src = document
+    .querySelector(`.eachAnimal[data-id="${animalID}"] img`)
+    .getAttribute("src");
   petExpand.innerHTML = "";
   const clone = detailedAnimalTemp.cloneNode(true);
+  clone.querySelector(".bigAnimalImage img").setAttribute("src", src);
   clone.querySelector(".animalName").textContent = data.name;
   clone.querySelector(".animalBreed").textContent = data.breed;
   clone.querySelector(".animalAge").textContent = data.age;
