@@ -1481,14 +1481,14 @@ Keyframes for border radius header image
     width: 15%;
     height: 100vh;
     padding: 50px 25px;
-    background: $purpleColor;
+    background: $mainColor;
 
     li {
       list-style: none;
       margin-bottom: 50px;
       a {
-        color: white;
-        background-color: $purpleColor;
+        color: #b28973;
+        background-color: $mainColor;
         text-decoration: none;
         font-size: 24px;
         width: calc(100% + 50px);
@@ -1500,7 +1500,7 @@ Keyframes for border radius header image
     }
   }
   .activeAnchor {
-    color: $purpleColor;
+    color: #b28973;
     background-color: white;
     transition: background-color 0.7s ease;
   }
@@ -1563,7 +1563,7 @@ Keyframes for border radius header image
           .adminBtn {
             cursor: pointer;
             text-align: center;
-            background: $purpleColor;
+            background: $darkbtn;
             width: 100%;
             height: 40px;
             padding: 10px 30px; /* temp solution, should achieve vertical align */
@@ -1599,7 +1599,7 @@ Keyframes for border radius header image
           .adminBtn {
             cursor: pointer;
             text-align: center;
-            background: $purpleColor;
+            background: $darkbtn;
             width: 100%;
             height: 40px;
             padding: 10px 30px; /* temp solution, should achieve vertical align */
@@ -1621,7 +1621,7 @@ Keyframes for border radius header image
             grid-template-rows: 100px 50px 50px 50px 50px 70px;
             .head {
               height: 100px;
-              background-color: $darkGrayColor;
+              background-color: #e7debc;
               display: grid;
             }
             .row {
@@ -1662,7 +1662,7 @@ Keyframes for border radius header image
                 border-right: none;
               }
               div:nth-child(1) {
-                background-color: $darkGrayColor;
+                background-color: #e7debc;
               }
               .animalImage {
                 padding: 10px 23px;
@@ -1935,8 +1935,8 @@ Keyframes for border radius header image
         grid-gap: 17px;
         justify-content: center;
         .singlePic {
-          width: 130px;
-          height: 130px;
+          width: 120px;
+          height: 120px;
           border-radius: 50%;
           background-size: cover;
           label {
@@ -1953,7 +1953,7 @@ Keyframes for border radius header image
         bottom: -45px;
         cursor: pointer;
         text-align: center;
-        background: $purpleColor;
+        background: $darkbtn;
         height: 40px;
         padding: 10px 30px; /* temp solution, should achieve vertical align */
         border-radius: 25px;
@@ -1996,7 +1996,7 @@ Keyframes for border radius header image
         text-align: center;
         height: 40px;
         padding: 10px 30px;
-        border: 2px solid $purpleColor;
+        border: 2px solid $darkbtn;
         border-radius: 25px;
         color: white;
         margin: auto;
@@ -2021,7 +2021,7 @@ Keyframes for border radius header image
         bottom: -22px;
         cursor: pointer;
         text-align: center;
-        background: $purpleColor;
+        background: $darkbtn;
         height: 40px;
         padding: 10px 30px; /* temp solution, should achieve vertical align */
         border-radius: 25px;
@@ -2031,6 +2031,7 @@ Keyframes for border radius header image
     }
   }
 }
+
 // status section
 #status {
   padding: 85px 10vw;
@@ -2106,7 +2107,11 @@ Keyframes for border radius header image
   .listOfDonations {
     margin-top: 20px;
     margin-bottom: 20px;
-
+    .donationsTableContainer {
+      p {
+        margin-top: 5px;
+      }
+    }
     .singleMember {
       padding: 10px 0;
       display: grid;
@@ -2126,11 +2131,11 @@ Keyframes for border radius header image
       #moneyDonation,
       #timeDonation,
       #stuffDonation {
-        background-color: $purpleColor;
+        background-color: #b28973;
         color: white;
         height: 3px;
         width: 0;
-        color: $purpleColor;
+        color: #b28973;
         p {
           white-space: nowrap;
         }
@@ -2162,6 +2167,7 @@ Keyframes for border radius header image
       #stuffDonationForm {
         margin: 45px;
         padding: 30px;
+        border-radius: 30px;
 
         h2 {
           font-size: 18px;
@@ -2394,8 +2400,7 @@ Keyframes for border radius header image
     #stuffDonationForm {
       margin: 50px;
       padding: 40px;
-
-      h2 {
+      border-radius: h2 {
         font-size: 20px;
         margin-top: 0px;
       }

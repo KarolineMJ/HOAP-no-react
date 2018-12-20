@@ -1201,13 +1201,13 @@ Keyframes for border radius header image
     width: 15%;
     height: 100vh;
     padding: 50px 25px;
-    background: #2e2f4b; }
+    background: #ead8a6; }
     #admin aside li {
       list-style: none;
       margin-bottom: 50px; }
       #admin aside li a {
-        color: white;
-        background-color: #2e2f4b;
+        color: #b28973;
+        background-color: #ead8a6;
         text-decoration: none;
         font-size: 24px;
         width: calc(100% + 50px);
@@ -1216,7 +1216,7 @@ Keyframes for border radius header image
         display: inline-block;
         padding: 30px 25px; }
   #admin .activeAnchor {
-    color: #2e2f4b;
+    color: #b28973;
     background-color: white;
     transition: background-color 0.7s ease; }
   #admin main {
@@ -1270,7 +1270,7 @@ Keyframes for border radius header image
           #admin main .section .subsection .subsectionHeader .adminBtn {
             cursor: pointer;
             text-align: center;
-            background: #2e2f4b;
+            background: #74b7a5;
             width: 100%;
             height: 40px;
             padding: 10px 30px;
@@ -1300,7 +1300,7 @@ Keyframes for border radius header image
           #admin main .section .subsection .subsectionToDo .adminBtn {
             cursor: pointer;
             text-align: center;
-            background: #2e2f4b;
+            background: #74b7a5;
             width: 100%;
             height: 40px;
             padding: 10px 30px;
@@ -1321,7 +1321,7 @@ Keyframes for border radius header image
             grid-template-rows: 100px 50px 50px 50px 50px 70px; }
             #admin main .section .subsection .tableWrapper .firstColumn .head {
               height: 100px;
-              background-color: #cacaca;
+              background-color: #e7debc;
               display: grid; }
             #admin main .section .subsection .tableWrapper .firstColumn .row {
               padding: 20px; }
@@ -1353,7 +1353,7 @@ Keyframes for border radius header image
               #admin main .section .subsection .tableWrapper .columns .column:last-of-type {
                 border-right: none; }
               #admin main .section .subsection .tableWrapper .columns .column div:nth-child(1) {
-                background-color: #cacaca; }
+                background-color: #e7debc; }
               #admin main .section .subsection .tableWrapper .columns .column .animalImage {
                 padding: 10px 23px;
                 display: grid;
@@ -1563,8 +1563,8 @@ Keyframes for border radius header image
         grid-gap: 17px;
         justify-content: center; }
         #postAndNotify .postsContainer .publishContainer .receviedPictures .singlePic {
-          width: 130px;
-          height: 130px;
+          width: 120px;
+          height: 120px;
           border-radius: 50%;
           background-size: cover; }
           #postAndNotify .postsContainer .publishContainer .receviedPictures .singlePic label {
@@ -1578,7 +1578,7 @@ Keyframes for border radius header image
         bottom: -45px;
         cursor: pointer;
         text-align: center;
-        background: #2e2f4b;
+        background: #74b7a5;
         height: 40px;
         padding: 10px 30px;
         /* temp solution, should achieve vertical align */
@@ -1609,7 +1609,7 @@ Keyframes for border radius header image
         text-align: center;
         height: 40px;
         padding: 10px 30px;
-        border: 2px solid #2e2f4b;
+        border: 2px solid #74b7a5;
         border-radius: 25px;
         color: white;
         margin: auto;
@@ -1631,7 +1631,7 @@ Keyframes for border radius header image
         bottom: -22px;
         cursor: pointer;
         text-align: center;
-        background: #2e2f4b;
+        background: #74b7a5;
         height: 40px;
         padding: 10px 30px;
         /* temp solution, should achieve vertical align */
@@ -1675,6 +1675,8 @@ Keyframes for border radius header image
   #status .listOfDonations {
     margin-top: 20px;
     margin-bottom: 20px; }
+    #status .listOfDonations .donationsTableContainer p {
+      margin-top: 5px; }
     #status .listOfDonations .singleMember {
       padding: 10px 0;
       display: grid;
@@ -1690,11 +1692,11 @@ Keyframes for border radius header image
       #status .listOfDonations .singleMember #moneyDonation,
       #status .listOfDonations .singleMember #timeDonation,
       #status .listOfDonations .singleMember #stuffDonation {
-        background-color: #2e2f4b;
+        background-color: #b28973;
         color: white;
         height: 3px;
         width: 0;
-        color: #2e2f4b; }
+        color: #b28973; }
         #status .listOfDonations .singleMember #moneyDonation p,
         #status .listOfDonations .singleMember #timeDonation p,
         #status .listOfDonations .singleMember #stuffDonation p {
@@ -1735,7 +1737,8 @@ Keyframes for border radius header image
     #lastBox #frontpageForms #donationForm,
     #lastBox #frontpageForms #stuffDonationForm {
       margin: 45px;
-      padding: 30px; }
+      padding: 30px;
+      border-radius: 30px; }
       #signedInContent #sendToUsForms #messageForm h2,
       #signedInContent #sendToUsForms #signupForm h2,
       #signedInContent #sendToUsForms #imageForm h2,
@@ -1965,19 +1968,10 @@ Keyframes for border radius header image
     #frontpageForms #donationForm,
     #frontpageForms #stuffDonationForm {
       margin: 50px;
-      padding: 40px; }
-      #sendToUsForms #messageForm h2,
-      #sendToUsForms #imageForm h2,
-      #sendToUsForms #signupForm h2,
-      #sendToUsForms #donationForm h2,
-      #sendToUsForms #stuffDonationForm h2,
-      #frontpageForms #messageForm h2,
-      #frontpageForms #imageForm h2,
-      #frontpageForms #signupForm h2,
-      #frontpageForms #donationForm h2,
-      #frontpageForms #stuffDonationForm h2 {
-        font-size: 20px;
-        margin-top: 0px; }
+      padding: 40px;
+      border-radius: h2;
+        border-radius-font-size: 20px;
+        border-radius-margin-top: 0px; }
       #sendToUsForms #messageForm form button,
       #sendToUsForms #imageForm form button,
       #sendToUsForms #signupForm form button,
