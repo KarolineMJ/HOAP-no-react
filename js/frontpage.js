@@ -3,6 +3,12 @@
 /*-----------------------------------------
 Elements for HTML 
 ----------------------------------------*/
+const frontpageContent = document.querySelector("#frontpageContent");
+const signedInContent = document.querySelector("#signedInContent");
+const memberBtns = document.querySelector("#sidebarBtns");
+const signoutAdminBtn = document.querySelector("#signoutAdmin");
+const signOutButton = document.querySelector("#signOut");
+const footer = document.querySelector("#footer");
 const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
@@ -50,22 +56,18 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   newsFeedPanel.innerHTML = "";
-
+  //  userSettingPanel.innerHTML = "";
+  checkUser(); // display different content based on if and which user is logged in
+  signoutAdminBtn.addEventListener("click", signout);
+  signOutButton.addEventListener("click", signout);
   signinButton.addEventListener("click", signinUser);
   signupBtn.addEventListener("click", signupUser);
   alreadyMemberBtn.addEventListener("click", openSigninForm);
-
-  /*-------------------------------------------
-Display right content if user
+}
+/*-------------------------------------------
+Check if and which user is logged in and display related functions
 ------------------------------------------*/
-
-  const frontpageContent = document.querySelector("#frontpageContent");
-  const signedInContent = document.querySelector("#signedInContent");
-  const memberBtns = document.querySelector("#sidebarBtns");
-  const signoutAdminBtn = document.querySelector("#signoutAdmin");
-  const signOutButton = document.querySelector("#signOut");
-  const footer = document.querySelector("#footer");
-
+function checkUser() {
   // check if a user session already exist, if yes, show content that matches this user
   // use as medium to pass info with page reload, since there's no AuthStateChange, the current code using onAuthStateChanged won't fire with page reload and therefore will lose the current user info which affects the user setting panel and the notifications
   if (window.sessionStorage.getItem("userEmail")) {
@@ -109,95 +111,8 @@ Display right content if user
       footer.style.display = "grid";
     }
   });
-
-  signoutAdminBtn.addEventListener("click", signout);
-  signOutButton.addEventListener("click", signout);
-
-  /*-------------------------------------------
-Render tasks from database into website 
---------------------------------------------*/
-  let taskList = document.querySelector(".toDoListWrapper");
-
-  function renderTask(doc) {
-    let taskDiv = document.createElement("div");
-    let task = document.createElement("span");
-    let taskCheckbox = document.createElement("input");
-    taskCheckbox.type = "checkbox";
-
-    taskDiv.setAttribute("data-id", doc.id);
-    if (doc.data().writer !== "admin") {
-      task.textContent = "From " + doc.data().writer + ": ";
-      task.classList.add("userMessage");
-    }
-    task.textContent += doc.data().task;
-    taskDiv.appendChild(taskCheckbox);
-    taskDiv.appendChild(task);
-    taskList.appendChild(taskDiv);
-
-    //deleting/completing tasks
-
-    taskCheckbox.addEventListener("click", e => {
-      e.stopPropagation();
-      let id = e.target.parentElement.getAttribute("data-id");
-      db.collection("toDoList")
-        .doc(id)
-        .delete();
-    });
-  }
-
-  /*-------------------------------------------
-                Add to do task
-------------------------------------------*/
-
-  const toDoBtn = document.querySelector(".addToDoBtn");
-  const toDoInput = document.querySelector(".subsectionToDo input");
-
-  toDoBtn.addEventListener("click", e => {
-    e.preventDefault();
-    db.collection("toDoList").add({
-      task: toDoInput.value,
-      writer: "admin",
-      type: "To Do"
-    });
-    toDoInput.value = "";
-  });
-
-  /*-------------------------------------------
-               live updates
-------------------------------------------*/
-  db.collection("toDoList").onSnapshot(snapshot => {
-    let changes = snapshot.docChanges();
-    //console.log(changes);
-    changes.forEach(change => {
-      if (change.type == "added") {
-        renderTask(change.doc);
-      } else if (change.type == "removed") {
-        let taskDiv = taskList.querySelector(
-          "[data-id='" + change.doc.id + "']"
-        );
-        taskList.removeChild(taskDiv);
-      }
-    });
-  });
 }
 
-/*-------------------------------------------
-Post message from admin to notifications panel
-------------------------------------------*/
-
-const adminPostBtn = document.querySelector(".postBtn");
-const adminPostInput = document.querySelector(".writeNotification");
-const notificationForm = document.querySelector("#nofiticationAdmin");
-adminPostBtn.addEventListener("click", e => {
-  console.log("message posted");
-  e.preventDefault();
-  db.collection("notifications").add({
-    text: adminPostInput.value,
-    type: notificationForm.type.value,
-    image: ""
-  });
-  adminPostInput.value = "";
-});
 /*-------------------------------------------
 Display signin form
 ------------------------------------------*/
@@ -880,7 +795,7 @@ function showCats(userEmail) {
 }
 function showDogs(userEmail) {
   db.collection("animals")
-    .where("type", "==", "Dog")
+    .where("type", "==", "dog")
     .get()
     .then(res => {
       appendEachAnimal(res, userEmail);
@@ -1124,4 +1039,89 @@ function preferenceSetting(email) {
     sendPreferenceToDatabase();
     hideElement(prefModal);
   });
+
+  /*-------------------------------------------
+Render tasks from database into website 
+--------------------------------------------*/
+  let taskList = document.querySelector(".toDoListWrapper");
+
+  function renderTask(doc) {
+    let taskDiv = document.createElement("div");
+    let task = document.createElement("span");
+    let taskCheckbox = document.createElement("input");
+    taskCheckbox.type = "checkbox";
+
+    taskDiv.setAttribute("data-id", doc.id);
+    if (doc.data().writer !== "admin") {
+      task.textContent = "From " + doc.data().writer + ": ";
+      task.classList.add("userMessage");
+    }
+    task.textContent += doc.data().task;
+    taskDiv.appendChild(taskCheckbox);
+    taskDiv.appendChild(task);
+    taskList.appendChild(taskDiv);
+
+    //deleting/completing tasks
+
+    taskCheckbox.addEventListener("click", e => {
+      e.stopPropagation();
+      let id = e.target.parentElement.getAttribute("data-id");
+      db.collection("toDoList")
+        .doc(id)
+        .delete();
+    });
+  }
+
+  /*-------------------------------------------
+              Add to do task
+------------------------------------------*/
+
+  const toDoBtn = document.querySelector(".addToDoBtn");
+  const toDoInput = document.querySelector(".subsectionToDo input");
+
+  toDoBtn.addEventListener("click", e => {
+    e.preventDefault();
+    db.collection("toDoList").add({
+      task: toDoInput.value,
+      writer: "admin",
+      type: "To Do"
+    });
+    toDoInput.value = "";
+  });
+
+  /*-------------------------------------------
+             live updates
+------------------------------------------*/
+  db.collection("toDoList").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    //console.log(changes);
+    changes.forEach(change => {
+      if (change.type == "added") {
+        renderTask(change.doc);
+      } else if (change.type == "removed") {
+        let taskDiv = taskList.querySelector(
+          "[data-id='" + change.doc.id + "']"
+        );
+        taskList.removeChild(taskDiv);
+      }
+    });
+  });
 }
+
+/*-------------------------------------------
+Post message from admin to notifications panel
+------------------------------------------*/
+
+const adminPostBtn = document.querySelector(".postBtn");
+const adminPostInput = document.querySelector(".writeNotification");
+const notificationForm = document.querySelector("#nofiticationAdmin");
+adminPostBtn.addEventListener("click", e => {
+  console.log("message posted");
+  e.preventDefault();
+  db.collection("notifications").add({
+    text: adminPostInput.value,
+    type: notificationForm.type.value,
+    image: ""
+  });
+  adminPostInput.value = "";
+});
