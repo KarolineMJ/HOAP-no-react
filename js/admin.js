@@ -851,7 +851,13 @@ db.collection("animals")
             // title: "Pets montly situation",
             curveType: "function",
             legend: { position: "bottom" },
-            colors: ["#ead8a6", "#c18e63", "#74b7a5"]
+            colors: ["#ead8a6", "#c18e63", "#74b7a5"],
+            lineWidth: 3,
+            chartArea: {
+              left: 20,
+              top: 20,
+              width: "100%"
+            }
           };
 
           let chart = new google.visualization.LineChart(
