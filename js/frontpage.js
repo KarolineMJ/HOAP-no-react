@@ -276,6 +276,109 @@ function cloneAnimalInfo(data, animalID) {
   });
 }
 
+/*************************************
+ * user interaction
+ *************************************/
+cancelMembershipBtn.addEventListener("click", cancelMembership);
+messageForm.addEventListener("submit", sendMessage);
+oneTimeDonationForm.addEventListener("submit", onetimeDonation);
+subscribeForm.addEventListener("submit", subscribe);
+
+/*************************************
+ * functions that write(POST,UPDATE,DELETE) to database
+ *************************************/
+
+function sendPreferenceToDatabase(e) {
+  if (e) {
+    e.preventDefault();
+  }
+  // get current user email
+  let email = window.sessionStorage.getItem("userEmail");
+  // get values from preference form
+  const nickname = preferenceForm.nickname.value;
+  const catBol = preferenceForm.cat.checked ? true : false;
+  const dogBol = preferenceForm.dog.checked ? true : false;
+  const maleBol = preferenceForm.male.checked ? true : false;
+  const femaleBol = preferenceForm.female.checked ? true : false;
+  const smallBol = preferenceForm.small.checked ? true : false;
+  const mediumBol = preferenceForm.medium.checked ? true : false;
+  const largeBol = preferenceForm.large.checked ? true : false;
+  const pupBol = preferenceForm.pup.checked ? true : false;
+  const pregnantBol = preferenceForm.pregnant.checked ? true : false;
+  const errandBol = preferenceForm.errand.checked ? true : false;
+  const newcomingBol = preferenceForm.newComming.checked ? true : false;
+  const monthlyDonation = preferenceForm.monthlyDonation.value;
+
+  // add user to db with the values
+  db.collection("member")
+    .add({
+      email: email,
+      nickname: nickname,
+      permission: "none",
+      seeCat: catBol,
+      seeDog: dogBol,
+      seeMale: maleBol,
+      seeFemale: femaleBol,
+      seeSmall: smallBol,
+      seeMedium: mediumBol,
+      seeLarge: largeBol,
+      seePup: pupBol,
+      seePregnant: pregnantBol,
+      notifyErrand: errandBol,
+      notifyNewcoming: newcomingBol,
+      monthlyDonation: monthlyDonation,
+      following: []
+    })
+    .then(() => {
+      getUserSetting(email);
+      getUserNotifications(email);
+      getUserAnimals(email);
+      getUserDonationSofar(email);
+    });
+  // hide modal without waiting for db success
+  hideElement(prefModal);
+}
+
+function updatePreferenceToDatabase() {
+  console.log("update user preferences");
+}
+
+function cancelMembership() {
+  var currentUser = firebase.auth().currentUser;
+  currentUser
+    .delete()
+    .then(function() {
+      console.log("Thanks for being with us~ Hope we can see you again.");
+      signout();
+      db.collection("member")
+        .where("email", "==", currentUser.email)
+        .get()
+        .then(res =>
+          res.forEach(doc => {
+            doc.ref.delete();
+          })
+        );
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+
+function sendMessage(e) {
+  e.preventDefault();
+  const user = window.sessionStorage.getItem("userEmail");
+  const message = messageForm.message.value;
+  if (message) {
+    db.collection("toDoList")
+      .add({
+        task: message,
+        type: "user",
+        writer: user
+      })
+      .then(console.log("message sent"));
+  }
+}
+
 function donate(e) {
   e.preventDefault();
   const donationSubmitForm = document.querySelector("#donationFormLogginIn");
@@ -386,109 +489,6 @@ function donate(e) {
   }
 }
 
-/*************************************
- * user interaction
- *************************************/
-cancelMembershipBtn.addEventListener("click", cancelMembership);
-messageForm.addEventListener("submit", sendMessage);
-oneTimeDonationForm.addEventListener("submit", onetimeDonation);
-subscribeForm.addEventListener("submit", subscribe);
-
-/*************************************
- * functions that write(POST,UPDATE,DELETE) to database
- *************************************/
-
-function sendPreferenceToDatabase(e) {
-  if (e) {
-    e.preventDefault();
-  }
-  // get current user email
-  let email = window.sessionStorage.getItem("userEmail");
-  // get values from preference form
-  const nickname = preferenceForm.nickname.value;
-  const catBol = preferenceForm.cat.checked ? true : false;
-  const dogBol = preferenceForm.dog.checked ? true : false;
-  const maleBol = preferenceForm.male.checked ? true : false;
-  const femaleBol = preferenceForm.female.checked ? true : false;
-  const smallBol = preferenceForm.small.checked ? true : false;
-  const mediumBol = preferenceForm.medium.checked ? true : false;
-  const largeBol = preferenceForm.large.checked ? true : false;
-  const pupBol = preferenceForm.pup.checked ? true : false;
-  const pregnantBol = preferenceForm.pregnant.checked ? true : false;
-  const errandBol = preferenceForm.errand.checked ? true : false;
-  const newcomingBol = preferenceForm.newComming.checked ? true : false;
-  const monthlyDonation = preferenceForm.monthlyDonation.value;
-
-  // add user to db with the values
-  db.collection("member")
-    .add({
-      email: email,
-      nickname: nickname,
-      permission: "none",
-      seeCat: catBol,
-      seeDog: dogBol,
-      seeMale: maleBol,
-      seeFemale: femaleBol,
-      seeSmall: smallBol,
-      seeMedium: mediumBol,
-      seeLarge: largeBol,
-      seePup: pupBol,
-      seePregnant: pregnantBol,
-      notifyErrand: errandBol,
-      notifyNewcoming: newcomingBol,
-      monthlyDonation: monthlyDonation,
-      following: []
-    })
-    .then(() => {
-      getUserSetting(email);
-      getUserNotifications(email);
-      getUserAnimals(email);
-      getUserDonationSofar(email);
-    });
-  // hide modal without waiting for db success
-  hideElement(prefModal);
-}
-
-function updatePreferenceToDatabase() {
-  console.log("update user preferences");
-}
-
-function cancelMembership() {
-  var currentUser = firebase.auth().currentUser;
-  currentUser
-    .delete()
-    .then(function() {
-      console.log("Thanks for being with us~ Hope we can see you again.");
-      signout();
-      db.collection("member")
-        .where("email", "==", currentUser.email)
-        .get()
-        .then(res =>
-          res.forEach(doc => {
-            doc.ref.delete();
-          })
-        );
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-}
-
-function sendMessage(e) {
-  e.preventDefault();
-  const user = window.sessionStorage.getItem("userEmail");
-  const message = messageForm.message.value;
-  if (message) {
-    db.collection("toDoList")
-      .add({
-        task: message,
-        type: "user",
-        writer: user
-      })
-      .then(console.log("message sent"));
-  }
-}
-
 function onetimeDonation(e) {
   e.preventDefault();
   console.log("one time donation");
@@ -571,25 +571,40 @@ function getUserDonationSofar(userEmail) {
     .where("userEmail", "==", userEmail)
     .get()
     .then(res => {
-      res.forEach(doc => {
-        const timeSoFar = doc.data().time;
-        if (timeSoFar === "1") {
-          document.querySelector(".timeSofar").textContent =
-            timeSoFar + " hour";
-        } else {
-          document.querySelector(".timeSofar").textContent =
-            timeSoFar + " hours";
-        }
-      });
+      if (res.length > 0) {
+        res.forEach(doc => {
+          const timeSoFar = doc.data().time;
+          if (timeSoFar === "1") {
+            document.querySelector(".timeSofar").textContent =
+              timeSoFar + " hour";
+          } else if (Number(timeSoFar) > 1) {
+            document.querySelector(".timeSofar").textContent =
+              timeSoFar + " hours";
+          } else {
+            document.querySelector(".timeSofar").textContent = "0";
+          }
+        });
+      } else {
+        document.querySelector(".timeSofar").textContent = "0";
+      }
     });
   db.collection("moneyDonation")
     .where("userEmail", "==", userEmail)
     .get()
     .then(res => {
-      res.forEach(doc => {
-        const moneySoFar = doc.data().amount;
-        document.querySelector(".moneySofar").textContent = moneySoFar + " kr.";
-      });
+      if (res.length > 0) {
+        res.forEach(doc => {
+          const moneySoFar = doc.data().amount;
+          if (moneySoFar) {
+            document.querySelector(".moneySofar").textContent =
+              moneySoFar + " kr.";
+          } else {
+            document.querySelector(".moneySofar").textContent = "0";
+          }
+        });
+      } else {
+        document.querySelector(".moneySofar").textContent = "0";
+      }
     });
   db.collection("stuffDonation")
     .where("userEmail", "==", userEmail)
@@ -599,10 +614,12 @@ function getUserDonationSofar(userEmail) {
       res.forEach(doc => {
         piece += 1;
       });
-      if (piece === 1) {
+      if (Number(piece) === 1) {
         document.querySelector(".stuffSofar").textContent = piece + " piece";
-      } else {
+      } else if (Number(piece) > 1) {
         document.querySelector(".stuffSofar").textContent = piece + " pieces";
+      } else {
+        document.querySelector(".stuffSofar").textContent = "0";
       }
     });
 }
@@ -679,6 +696,7 @@ function getUserNotifications(userEmail) {
       });
     });
 }
+
 function getErrands() {
   db.collection("notifications")
     .where("type", "==", "errands")
@@ -692,6 +710,7 @@ function getErrands() {
       });
     });
 }
+
 function getNewcoming() {
   db.collection("notifications")
     .where("type", "==", "newComing")
@@ -705,6 +724,7 @@ function getNewcoming() {
       });
     });
 }
+
 function getUrgent() {
   db.collection("notifications")
     .where("type", "==", "urgent")
@@ -718,6 +738,7 @@ function getUrgent() {
       });
     });
 }
+
 function getOtherNotification() {
   db.collection("notifications")
     .where("type", "==", "other")
@@ -749,6 +770,7 @@ function getUserAnimals(userEmail) {
       });
     });
 }
+
 function showCats(userEmail) {
   db.collection("animals")
     .where("type", "==", "cat")
@@ -757,6 +779,7 @@ function showCats(userEmail) {
       appendEachAnimal(res, userEmail);
     });
 }
+
 function showDogs(userEmail) {
   db.collection("animals")
     .where("type", "==", "dog")
@@ -765,6 +788,7 @@ function showDogs(userEmail) {
       appendEachAnimal(res, userEmail);
     });
 }
+
 function showAllAnimal(userEmail) {
   db.collection("animals")
     .get()
@@ -772,6 +796,7 @@ function showAllAnimal(userEmail) {
       appendEachAnimal(res, userEmail);
     });
 }
+
 function appendEachAnimal(array, userEmail) {
   animalListOnLoggedIn.innerHTML = "";
   array.forEach(entry => {
@@ -958,10 +983,6 @@ function moveAnimals() {
 
   const moveAnimalList = document.querySelector("#animalList");
 
-  //const boundRect = moveAnimalList.getBoundingClientRect().width;
-
-  //console.log(boundRect);
-
   //circular buffer
   leftKey.addEventListener("click", () => {
     const last = document.querySelector("#animalList").lastElementChild;
@@ -970,9 +991,6 @@ function moveAnimals() {
     last.remove();
 
     document.querySelector("#animalList").insertBefore(last, first);
-
-    //  changeTimes += 1;
-    //  moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 
   rightKey.addEventListener("click", () => {
@@ -984,13 +1002,10 @@ function moveAnimals() {
 
     //insert as lastelement
     document.querySelector("#animalList").appendChild(first);
-
-    //changeTimes -= 1;
-    //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 }
 /*--------------------------------------
-Open preference modal
+preference modal
 -------------------------------------*/
 function preferenceSetting(email) {
   // sync donation value text when user adjust range bar
