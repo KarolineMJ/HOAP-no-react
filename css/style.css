@@ -1341,7 +1341,7 @@ Keyframes for border radius header image
             left: 20%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(11, auto);
+            grid-template-columns: repeat(30, auto);
             white-space: nowrap; }
             #admin main .section .subsection .tableWrapper .columns .column {
               border-right: 1px solid #cacaca;
