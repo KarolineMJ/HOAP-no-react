@@ -820,6 +820,7 @@ button:focus {
             > img:not(.heart) {
               width: 100%;
               height: 100%;
+              border-radius: 50%;
             }
             .heart {
               width: 15%;
@@ -885,18 +886,19 @@ button:focus {
             font-weight: normal;
           }
         }
-        .needs{
+        .needs {
           font-weight: normal;
         }
-      }.bigAnimalStory{
-        p{
+      }
+      .bigAnimalStory {
+        p {
           font-weight: bold;
         }
-      .animalStory{
-        line-height: 1.6;
-        font-weight: normal;
+        .animalStory {
+          line-height: 1.6;
+          font-weight: normal;
+        }
       }
-    }
     }
     .storyAndExtra {
     }

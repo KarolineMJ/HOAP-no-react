@@ -702,7 +702,8 @@ button:focus {
             bottom: -15%; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > img:not(.heart) {
             width: 100%;
-            height: 100%; }
+            height: 100%;
+            border-radius: 50%; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal .heart {
             width: 15%;
             left: 10%;
