@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="keywords" content="animals, pets, paw, paws, dog, cat, love, time, donations, money, stuff, shelter, Copenhagen, Denmark, help, volunteer, member, animals lover, training, help a paw, hoap, need, passion, support, animals’ home,  hope for animals, family, friends, non-profit organisation, dogs and cats,puppy, kitten, help out a paw, share love, share time, time donation, joy, baby animals, home for animals, care for animals, care, volunteering, training">
+    <meta name="description" content="Help Out a Paw is a non-profit organisation dedicated to rescuing in cats and dogs without a home, giving them a second chance.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>HOAP</title>
@@ -11,7 +13,7 @@
   </head>
   <body>
     <div class="navbar">
-      <img src="img/hoap-logo-01.svg" alt="">
+      <img src="img/hoap-logo-01.svg" alt="HOAP logo">
 
       <div class="darkBtn" id="alreadyMemberBtn">
         <a href="#">Already a member?</a>
@@ -20,8 +22,8 @@
       <div class="darkBtn" id="signoutAdmin"><a href="#">Sign out</a></div>
       <div id="sidebarBtns">
 
-        <img src="img/user.svg" alt="" id="settingBtn">
-        <img src="img/paw.svg" alt="" id="newsBtn">
+        <img src="img/user.svg" alt="user icon" id="settingBtn">
+        <img src="img/paw.svg" alt="news icon" id="newsBtn">
       </div>
     </div>
     <div id="loginForm">
@@ -421,15 +423,15 @@
 
       <div id="lastBox">
         <div id="animalImage">
-          <div><img src="img/animals/huntingcat.jpeg" alt="" /></div>
-          <div><img src="img/animals/butterflydog.jpeg" alt="" /></div>
-          <div><img src="img/animals/dog-cute-pet.jpg" alt="" /></div>
-          <div><img src="img/animals/broder.jpg" alt="" /></div>
-          <div><img src="img/animals/IMG_20170628_084213_1.jpg" alt="" /></div>
-          <div><img src="img/animals/IMG_20170711_101345.jpg" alt="" /></div>
-          <div><img src="img/animals/IMG_20170711_115511.jpg" alt="" /></div>
+          <div><img src="img/small-img/1.jpg" alt="animal no1" /></div>
+          <div><img src="img/small-img/2.jpg" alt="animal no2" /></div>
+          <div><img src="img/small-img/3.jpg" alt="animal no3" /></div>
+          <div><img src="img/small-img/4.jpg" alt="animal no4" /></div>
+          <div><img src="img/small-img/5.jpg" alt="animal no5" /></div>
+          <div><img src="img/small-img/6.jpg" alt="animal no6" /></div>
+          <div><img src="img/small-img/7.jpg" alt="animal no7" /></div>
           <div>
-            <img src="img/animals/IMG_20170802_095415-01.jpeg" alt="" />
+            <img src="img/small-img/8.jpg" alt="animal no8" />
           </div>
         </div>
         <div id="frontpageForms">
@@ -438,22 +440,22 @@
             <p>* You can pick one or both *</p>
             <form id="oneTimeDonation">
               <div class="formField">
-                <input type="text" placeholder="What" id="donateWhat" name="donateWhat" />
+                <label><input type="text" placeholder="What" id="donateWhat" name="donateWhat" /></label>
                 <label for="donateWhat">Thing you want to donate</label>
               </div>
               <label for="donateWhat"></label>
               <div class="pickUpBox">
-                <input type="checkbox" id="pickUp" aria-placeholder="Pick up"  name="pickup"/>
+                <label><input type="checkbox" id="pickUp" name="pickup"/></label>
                 <label for="pickUp">Want us to pick it up?</label>
-                <label><input type="number" placeholder="ZIP code" min="300" max="9999" name="postNr"></label>
+                <label><input type="number" placeholder="ZIP" min="300" max="9999" name="postNr"></label>
               </div>
               
               <div class="formField">
-                <input type="text" id="donateHowMuch" placeholder="How much" name="onetimeMoney" />
+                <label><input type="text" id="donateHowMuch" placeholder="How much" name="onetimeMoney" /></label>
                 <label for="donateHowMuch">How much</label>
               </div>
               <div class="formField">
-                <input type="text" id="donateWho" placeholder="In whose name" name="inWhoseName" />
+               <label><input type="text" id="donateWho" placeholder="In whose name" name="inWhoseName" /></label>
                 <label class="whoswName" for="donateWho">In whose name</label>
               </div>
 
@@ -464,16 +466,16 @@
             <h2>Sign up as member</h2>
             <form>
               <div class="formField">
-                <input type="email" id="signupEmail" placeholder="Your email" autocomplete="off"/>
+                <label><input type="email" id="signupEmail" placeholder="Your email" autocomplete="off"/></label>
                 <label for="signupEmail" class="formLabel">Your email</label>
               </div>
               <div class="formField">
-                <input
+               <label> <input
                   type="password"
                   id="signupPassword"
                   placeholder="Your password"
-                />
-                <label for="signupPassword" class="formLabel" autocomplete="off">Password</label>
+                /></label>
+                <label for="signupPassword" class="formLabel" >Password</label>
               </div>
               <button id="signupBtn" type="submit">Sign up</button>
             </form>
@@ -522,18 +524,18 @@
         <div id="userSettings">
           <div class="user">
             <p>Hi <span class="userName"></span></p>
-            <img src="img/john.jpeg" alt="person" />
+            <img src="img/john.jpg" alt="person" />
            
           </div>
       
           <div id="donationStatus">
             <h2>Your help so far:</h2>
             <hr>
-            <p> <img src="img/icons/clock.png" alt="">
+            <p> <img src="img/icons/clock.png" alt="clock icon">
               <span class="timeSofar"></span></p>
-            <p> <img src="img/icons/cost.png" alt="">
+            <p> <img src="img/icons/cost.png" alt="money icon">
               <span class="moneySofar"></span></p>
-            <p> <img src="img/icons/bone.png" alt="">
+            <p> <img src="img/icons/bone.png" alt="stuff icon">
               <span class="stuffSofar"></span></p>
 
             <button id="signOut">Sign out</button>
@@ -582,7 +584,7 @@
                 </div>
                 <h5>Change your monthly donation? </h5>
                 <div id="montlyDonationMember">
-                  <input type="range" min="0" max="" value="0" step="5" name="monthlyDonation" />
+                  <input type="range" min="0"  value="0" step="5" name="monthlyDonation" />
                 </div>
                 <p class="donationNr"></p>
                 <button type="submit" id="updatePrefBtn">Update Preferences</button>
@@ -615,11 +617,11 @@
           <h2>Donate some stuff</h2>
           <form>
               <div class="formField">
-                  <input type="text" placeholder="What" id="donateWhatLoggedIn" name="donateWhatLoggedIn" />
+                  <label><input type="text" placeholder="What" id="donateWhatLoggedIn" name="donateWhatLoggedIn" /></label>
                   <label for="donateWhatLoggedIn">Thing you want to donate</label>
                 </div>
                 <div class="pickUpBox">
-                  <input type="checkbox" id="pickupLoggedIn" aria-placeholder="Pick up"  name="pickupLoggedIn"/>
+                  <input type="checkbox" id="pickupLoggedIn" name="pickupLoggedIn"/>
                   <label for="pickupLoggedIn">Want us to pick it up?</label>
                 </div>  
                 <button type="submit">Donate</button>
@@ -636,7 +638,7 @@
             </div> -->
             <div class="sendImageUser">
               <!-- <progress value="0" max="100" id="uploader">0%</progress> -->
-              <input type="file" value="upload" id="fileButton">
+              <input type="file" id="fileButton">
               <label for="fileButton">Choose file...</label>
             </div>
             <button type="submit">Send</button>
@@ -764,7 +766,7 @@
             <br>
             <p class="date"></p> 
             <div class="subsectionHeader">
-                <p>Filters: Cat <img src="img/icons/catsilhouette.png" alt="">  | Dog <img src="img/icons/dogsilhouette.png" alt=""></p>
+                <p>Filters: Cat <img src="img/icons/catsilhouette.png" alt="cat silhouette img">  | Dog <img src="img/icons/dogsilhouette.png" alt="dog silhouette img"></p>
                 <span></span>
                 <span class="adminBtn addAnimalBtn">Add animal</span>
             </div>
@@ -772,11 +774,11 @@
             <div class="tableWrapper">
               <div class="firstColumn column">
                 <div class="row head"><b>Animals</b></div>
-                <div class="row"><img src="img/icons/sunrise.png" alt=""> morning</div>
-                <div class="row"><img src="img/icons/sun.png" alt="">afternoon</div>
-                <div class="row"><img src="img/icons/moon.png" alt="">evening</div>
-                <div class="row"><img src="img/icons/wistle.png" alt="">+ training</div>
-                <div class="row"><img src="img/icons/extra.png" alt="">++ extra</div>
+                <div class="row"><img src="img/icons/sunrise.png" alt="morning icon"> morning</div>
+                <div class="row"><img src="img/icons/sun.png" alt="afternoon icon">afternoon</div>
+                <div class="row"><img src="img/icons/moon.png" alt="evening icon">evening</div>
+                <div class="row"><img src="img/icons/wistle.png" alt="training icon">+ training</div>
+                <div class="row"><img src="img/icons/extra.png" alt="extra icon">++ extra</div>
               </div>
               <div class="columns"></div>
             </div>
@@ -788,11 +790,11 @@
                   <input
                     class="animalName"
                     type="text"
-                    value=""
+                   
                     name="name"
                   />
                   <ul>
-                    <li>Age: <input class="age" type="text" value="" name="age" /></li>
+                    <li>Age: <input class="age" type="text" name="age" /></li>
                     <li>
                       <label
                         ><input
@@ -809,7 +811,7 @@
                       >
                     </li>
                     <li>Breed: 
-                        <input class="breed" type="text" value="" name="breed" />
+                        <input class="breed" type="text" name="breed" />
                       </li>
                     <li>
                         <label
@@ -834,7 +836,7 @@
                       </li>
                       <li><label>young animal<input type="checkbox" name="young"></label></li>
                       <li><label>pregnant <input type="checkbox" name="pregnant"></label></li>          
-                      <li>Money: <input name="money" class="money" type="number" value="" /> Kr. per month</li>
+                      <li><label>Money: <input name="money" class="money" type="number" /></label> Kr. per month</li>
                     </ul>
                 </div>
                 <div class="needAndStory">
@@ -869,7 +871,7 @@
                   <p>Extra: </p> 
                   <p>
                     <label
-                      ><input class="extra" type="text" value="" placeholder="extra need" name="extra"
+                      ><input class="extra" type="text"  placeholder="extra need" name="extra"
                     /></label>
                   </p>
                   <h5>Story</h5>
@@ -893,7 +895,7 @@
                 <hr>
                 <p><input type="text" placeholder="Name of animal" name="animalName" required></p>
 
-                <p><input type="radio" id="chooseCat"name="type" value="cat"><label for="chooseCat">Cat</label>
+                <p><input type="radio" id="chooseCat" name="type" value="cat"><label for="chooseCat">Cat</label>
                   
                 <input type="radio" id="chooseDog" name="type" value="dog"><label for="chooseDog">Dog</label></p>
 
@@ -901,7 +903,7 @@
 
                 <p><input type="radio" id="chooseMale" name="gender" value="male"><label for="chooseMale">Male</label>
                   
-                  <input type="radio" name="gender" id="chooseFemale"value="female"><label for="chooseFemale">Female</label></p>
+                  <input type="radio" name="gender" id="chooseFemale" value="female"><label for="chooseFemale">Female</label></p>
 
 
                 <p><input type="text" placeholder="Breed" name="breed"></p>
@@ -931,7 +933,7 @@
                 <p><input type="checkbox" name="young"><label>Young animal</label></p>
                 <p><input type="checkbox" name="pregnant"><label>Pregnant </label></p>
                 <p><label><input type="text" placeholder="extra attention" name="extra"></label></p>
-                <div><input type="file" value="upload" id="uploadBtnAdmin">
+                <div><input type="file" id="uploadBtnAdmin">
                 <label for="uploadBtnAdmin"><input type="file" name="filename"></label></div>
                 <button type="submit" class="addAnimalToDB">Add Animal</button>
               </form>
@@ -960,7 +962,7 @@
               <div class="receviedPictures">
               </div>
               <template id="singlePicTemp">
-                  <div class="singlePic"><label for="">
+                  <div class="singlePic"><label for="checkbox">
                     <input type="checkbox" name="publish">
                   </label></div>
               </template>
@@ -969,11 +971,7 @@
             <div class="dragAndDropContainer">
               <p>Write a notification</p>
               <form id="nofiticationAdmin">
-                <textarea
-                  class="writeNotification"
-                  type="text"
-                  name="post"
-                  value=""></textarea>
+                <textarea class="writeNotification" name="post"></textarea>
                 
                 <p>Type of notification</p>
                 <p>
@@ -985,7 +983,7 @@
               </form>
               <!-- <div class="dragAndDrop"><p>Drag and Drop here</p></div> -->
               <div>
-                <input type="file" value="upload" id="uploadFileAdmin">
+                <input type="file" id="uploadFileAdmin">
                 <label for="uploadFileAdmin">Choose file...</label>
               </div>
               <button class="postBtn">Post</button>
@@ -1068,8 +1066,8 @@
           <p>Adress: flowerroad 32, 1000 fakecity</p>
         </div>
         <div class="soMeBtn">
-          <img src="img/facebook.svg" alt="">
-          <img src="img/instagram.svg" alt="">
+          <img src="img/facebook.svg" alt="facebook icon">
+          <img src="img/instagram.svg" alt="instagram icon">
         </div>
       </div>
       <div id="subscribeForm">
@@ -1148,11 +1146,11 @@
               </div>
               <h3>Do you want to make a monthly donation?</h3>
               <div>
-                <input type="range" min="0" max="" value="" step="5" name="monthlyDonation" />
+                <input type="range" min="0"  step="5" name="monthlyDonation" />
               </div>
               <p class="donationNr"></p>
               <h3><i>* These preferences can be changed anytime in the user panel. </i></h3>
-              <button type="" id="submitPrefBtn">Set Preferences</button>
+              <button id="submitPrefBtn">Set Preferences</button>
             </form>
   
         </div>
@@ -1162,11 +1160,11 @@
       <template id="eachAnimalTemp">
       <div class="eachAnimal">
       
-        <img src="" alt="" class="eachAnimalImage">
+        <img src="" alt="each animal picture" class="eachAnimalImage">
       
         <div class="animalHeart">
-          <img src="img/icons/emptyheart.png" alt="">
-          <img src="img/icons/filledheart.png" alt="">
+          <img src="img/icons/emptyheart.png" alt="empty heart icon">
+          <img src="img/icons/filledheart.png" alt="filled heart icon">
         </div>
         <div class="animalName">
         </div>
@@ -1177,7 +1175,7 @@
     <template id="detailedAnimalTemp">
       <div class="closeExpandBtn">x</div>
       <div class="bigAnimalImage">
-        <img src="" alt="">
+        <img src="" alt="animal image">
       </div>
       <div class="bigAnimalInfo">
         <div class="bigAnimalBasicInfo">
