@@ -1356,7 +1356,7 @@ Keyframes for border radius header image
               #admin main .section .subsection .tableWrapper .columns .column div:nth-child(1) {
                 background-color: #cacaca; }
               #admin main .section .subsection .tableWrapper .columns .column .animalImage {
-                padding: 10px;
+                padding: 10px 23px;
                 display: grid;
                 cursor: pointer; }
                 #admin main .section .subsection .tableWrapper .columns .column .animalImage img {
