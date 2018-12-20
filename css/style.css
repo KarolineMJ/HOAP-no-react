@@ -748,6 +748,7 @@ button:focus {
     width: 280px;
     height: 280px;
     border-radius: 50%;
+    overflow: hidden;
     background-color: #74b7a5; }
   #signedInContent #petExpand .bigAnimalInfo {
     grid-row: 1/3;

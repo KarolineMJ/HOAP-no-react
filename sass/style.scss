@@ -874,6 +874,7 @@ button:focus {
       width: 280px;
       height: 280px;
       border-radius: 50%;
+      overflow: hidden;
       background-color: $darkbtn;
     }
     .bigAnimalInfo {
