@@ -571,40 +571,30 @@ function getUserDonationSofar(userEmail) {
     .where("userEmail", "==", userEmail)
     .get()
     .then(res => {
-      if (res.length > 0) {
-        res.forEach(doc => {
-          const timeSoFar = doc.data().time;
-          if (timeSoFar === "1") {
-            document.querySelector(".timeSofar").textContent =
-              timeSoFar + " hour";
-          } else if (Number(timeSoFar) > 1) {
-            document.querySelector(".timeSofar").textContent =
-              timeSoFar + " hours";
-          } else {
-            document.querySelector(".timeSofar").textContent = "0";
-          }
-        });
-      } else {
-        document.querySelector(".timeSofar").textContent = "0";
-      }
+      res.forEach(doc => {
+        const timeSoFar = doc.data().time;
+        if (timeSoFar === "1") {
+          document.querySelector(".timeSofar").textContent =
+            timeSoFar + " hour";
+        } else {
+          document.querySelector(".timeSofar").textContent =
+            timeSoFar + " hours";
+        }
+      });
     });
   db.collection("moneyDonation")
     .where("userEmail", "==", userEmail)
     .get()
     .then(res => {
-      if (res.length > 0) {
-        res.forEach(doc => {
-          const moneySoFar = doc.data().amount;
-          if (moneySoFar) {
-            document.querySelector(".moneySofar").textContent =
-              moneySoFar + " kr.";
-          } else {
-            document.querySelector(".moneySofar").textContent = "0";
-          }
-        });
-      } else {
-        document.querySelector(".moneySofar").textContent = "0";
-      }
+      res.forEach(doc => {
+        const moneySoFar = doc.data().amount;
+        if (moneySoFar) {
+          document.querySelector(".moneySofar").textContent =
+            moneySoFar + " kr.";
+        } else {
+          document.querySelector(".moneySofar").textContent = "0";
+        }
+      });
     });
   db.collection("stuffDonation")
     .where("userEmail", "==", userEmail)
