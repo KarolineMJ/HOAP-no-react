@@ -89,7 +89,8 @@ button:focus {
   #loginForm form {
     width: 22vw; }
     #loginForm form .formField input {
-      border-bottom: 1px solid grey; }
+      border-bottom: 1px solid grey;
+      width: 100%; }
 
 #donationForm,
 #signupForm {
@@ -97,7 +98,8 @@ button:focus {
   color: white; }
   #donationForm form .formField input,
   #signupForm form .formField input {
-    border-bottom: 1px solid grey; }
+    border-bottom: 1px solid grey;
+    width: 100%; }
 
 #messageForm,
 #imageForm,
@@ -136,6 +138,7 @@ button:focus {
       #messageForm form .formField input,
       #imageForm form .formField input,
       #stuffDonationForm form .formField input {
+        width: 100%;
         background: none;
         font-size: 1em;
         border: 0;
@@ -246,6 +249,7 @@ button:focus {
       margin-bottom: 1em; }
       #donationForm form .formField input,
       #signupForm form .formField input {
+        width: 100%;
         background: none;
         font-size: 1em;
         border: 0;
@@ -319,6 +323,7 @@ button:focus {
     flex-flow: column-reverse;
     margin-bottom: 1.5em; }
     #subscribeForm form .formField input {
+      width: 100%;
       color: #ffffff;
       background-color: rgba(0, 0, 0, 0);
       font-size: 1em;
@@ -614,7 +619,8 @@ button:focus {
   #frontpageForms #donationForm div.formField input,
   #frontpageForms #donationForm div.formField #donateWhat {
     margin-bottom: 0px;
-    margin-top: 15px; }
+    margin-top: 15px;
+    width: 100%; }
   #frontpageForms #donationForm div.formField .whoswName {
     font-size: 14px; }
   #frontpageForms #donationForm div.formField form button {
@@ -976,6 +982,7 @@ Preferences
         border: 0;
         border-bottom: 1px solid grey;
         font-family: inherit;
+        width: 100%;
         -webkit-appearance: none;
         border-radius: 0;
         padding: 0;
@@ -1826,7 +1833,8 @@ Keyframes for border radius header image
         #lastBox #frontpageForms #donationForm .formField input,
         #lastBox #frontpageForms #stuffDonationForm .formField input {
           font-size: 0.8em;
-          margin: 19px 0px; }
+          margin: 19px 0px;
+          width: 100%; }
         #signedInContent #sendToUsForms #messageForm .formField label,
         #signedInContent #sendToUsForms #signupForm .formField label,
         #signedInContent #sendToUsForms #imageForm .formField label,
@@ -2007,7 +2015,8 @@ Keyframes for border radius header image
         #frontpageForms #donationForm .formField input,
         #frontpageForms #stuffDonationForm .formField input {
           font-size: 0.8em;
-          margin: 19px 0px; }
+          margin: 19px 0px;
+          width: 100%; }
         #sendToUsForms #messageForm .formField label,
         #sendToUsForms #imageForm .formField label,
         #sendToUsForms #signupForm .formField label,
@@ -2265,7 +2274,8 @@ Keyframes for border radius header image
         #frontpageForms #sendToUsForms #imageForm .formField input,
         #frontpageForms #sendToUsForms #donationForm .formField input {
           font-size: 0.7em;
-          margin: 19px 0px; }
+          margin: 19px 0px;
+          width: 100%; }
         #signedInContent #sendToUsForms #stuffDonationForm .formField label,
         #signedInContent #sendToUsForms #messageForm .formField label,
         #signedInContent #sendToUsForms #signupForm .formField label,

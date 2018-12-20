@@ -3,12 +3,6 @@
 /*-----------------------------------------
 Elements for HTML 
 ----------------------------------------*/
-const frontpageContent = document.querySelector("#frontpageContent");
-const signedInContent = document.querySelector("#signedInContent");
-const memberBtns = document.querySelector("#sidebarBtns");
-const signoutAdminBtn = document.querySelector("#signoutAdmin");
-const signOutButton = document.querySelector("#signOut");
-const footer = document.querySelector("#footer");
 const animalListOnLoggedIn = document.querySelector("#animalList");
 const eachAnimalTemp = document.querySelector("#eachAnimalTemp").content;
 const petExpand = document.querySelector("#petExpand");
@@ -56,18 +50,22 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   newsFeedPanel.innerHTML = "";
-  //  userSettingPanel.innerHTML = "";
-  checkUser(); // display different content based on if and which user is logged in
-  signoutAdminBtn.addEventListener("click", signout);
-  signOutButton.addEventListener("click", signout);
+
   signinButton.addEventListener("click", signinUser);
   signupBtn.addEventListener("click", signupUser);
   alreadyMemberBtn.addEventListener("click", openSigninForm);
-}
-/*-------------------------------------------
-Check if and which user is logged in and display related functions
+
+  /*-------------------------------------------
+Display right content if user
 ------------------------------------------*/
-function checkUser() {
+
+  const frontpageContent = document.querySelector("#frontpageContent");
+  const signedInContent = document.querySelector("#signedInContent");
+  const memberBtns = document.querySelector("#sidebarBtns");
+  const signoutAdminBtn = document.querySelector("#signoutAdmin");
+  const signOutButton = document.querySelector("#signOut");
+  const footer = document.querySelector("#footer");
+
   // check if a user session already exist, if yes, show content that matches this user
   // use as medium to pass info with page reload, since there's no AuthStateChange, the current code using onAuthStateChanged won't fire with page reload and therefore will lose the current user info which affects the user setting panel and the notifications
   if (window.sessionStorage.getItem("userEmail")) {
@@ -79,6 +77,7 @@ function checkUser() {
   // detect user state change and display different content based on what type of user is logged in
   firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.email === "admin@admin.com") {
+      displayAnimals();
       adminSection.style.display = "block";
       frontpageContent.style.display = "none";
       signedInContent.style.display = "none";
@@ -87,7 +86,6 @@ function checkUser() {
       memberBtns.style.display = "none";
       signoutAdminBtn.style.display = "block";
       footer.style.display = "none";
-      admin(); // only run admin functions if logged in as admin
     } else if (user) {
       adminSection.style.display = "none";
       frontpageContent.style.display = "none";
@@ -111,8 +109,95 @@ function checkUser() {
       footer.style.display = "grid";
     }
   });
+
+  signoutAdminBtn.addEventListener("click", signout);
+  signOutButton.addEventListener("click", signout);
+
+  /*-------------------------------------------
+Render tasks from database into website 
+--------------------------------------------*/
+  let taskList = document.querySelector(".toDoListWrapper");
+
+  function renderTask(doc) {
+    let taskDiv = document.createElement("div");
+    let task = document.createElement("span");
+    let taskCheckbox = document.createElement("input");
+    taskCheckbox.type = "checkbox";
+
+    taskDiv.setAttribute("data-id", doc.id);
+    if (doc.data().writer !== "admin") {
+      task.textContent = "From " + doc.data().writer + ": ";
+      task.classList.add("userMessage");
+    }
+    task.textContent += doc.data().task;
+    taskDiv.appendChild(taskCheckbox);
+    taskDiv.appendChild(task);
+    taskList.appendChild(taskDiv);
+
+    //deleting/completing tasks
+
+    taskCheckbox.addEventListener("click", e => {
+      e.stopPropagation();
+      let id = e.target.parentElement.getAttribute("data-id");
+      db.collection("toDoList")
+        .doc(id)
+        .delete();
+    });
+  }
+
+  /*-------------------------------------------
+                Add to do task
+------------------------------------------*/
+
+  const toDoBtn = document.querySelector(".addToDoBtn");
+  const toDoInput = document.querySelector(".subsectionToDo input");
+
+  toDoBtn.addEventListener("click", e => {
+    e.preventDefault();
+    db.collection("toDoList").add({
+      task: toDoInput.value,
+      writer: "admin",
+      type: "To Do"
+    });
+    toDoInput.value = "";
+  });
+
+  /*-------------------------------------------
+               live updates
+------------------------------------------*/
+  db.collection("toDoList").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    //console.log(changes);
+    changes.forEach(change => {
+      if (change.type == "added") {
+        renderTask(change.doc);
+      } else if (change.type == "removed") {
+        let taskDiv = taskList.querySelector(
+          "[data-id='" + change.doc.id + "']"
+        );
+        taskList.removeChild(taskDiv);
+      }
+    });
+  });
 }
 
+/*-------------------------------------------
+Post message from admin to notifications panel
+------------------------------------------*/
+
+const adminPostBtn = document.querySelector(".postBtn");
+const adminPostInput = document.querySelector(".writeNotification");
+const notificationForm = document.querySelector("#nofiticationAdmin");
+adminPostBtn.addEventListener("click", e => {
+  console.log("message posted");
+  e.preventDefault();
+  db.collection("notifications").add({
+    text: adminPostInput.value,
+    type: notificationForm.type.value,
+    image: ""
+  });
+  adminPostInput.value = "";
+});
 /*-------------------------------------------
 Display signin form
 ------------------------------------------*/
@@ -205,6 +290,42 @@ function signout() {
     });
 }
 
+/*-------------------------------------------
+Upload an image to database
+------------------------------------------*/
+
+//get elements
+const uploader = document.querySelector("#uploader");
+const fileButton = document.querySelector("#fileButton");
+
+//listen for file selection
+
+fileButton.addEventListener("change", function(e) {
+  //get file
+  let file = e.target.files[0];
+
+  // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
+  //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
+
+  //create a storage ret
+  let storageRef = firebase.storage().ref("member/" + file.name);
+
+  //upload file
+  let task = storageRef.put(file);
+
+  // update progress bar
+  task.on(
+    "state_changed",
+    function progress(snapshot) {
+      let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    },
+    function error(err) {},
+    function complete() {
+      console.log("picture is uploaded");
+    }
+  );
+});
+
 /*--------------------------------------
 Add data to expand & open expands
 -------------------------------------*/
@@ -274,109 +395,6 @@ function cloneAnimalInfo(data, animalID) {
     petExpand.style.display = "none";
     hideArrayElements(triangleUp);
   });
-}
-
-/*************************************
- * user interaction
- *************************************/
-cancelMembershipBtn.addEventListener("click", cancelMembership);
-messageForm.addEventListener("submit", sendMessage);
-oneTimeDonationForm.addEventListener("submit", onetimeDonation);
-subscribeForm.addEventListener("submit", subscribe);
-
-/*************************************
- * functions that write(POST,UPDATE,DELETE) to database
- *************************************/
-
-function sendPreferenceToDatabase(e) {
-  if (e) {
-    e.preventDefault();
-  }
-  // get current user email
-  let email = window.sessionStorage.getItem("userEmail");
-  // get values from preference form
-  const nickname = preferenceForm.nickname.value;
-  const catBol = preferenceForm.cat.checked ? true : false;
-  const dogBol = preferenceForm.dog.checked ? true : false;
-  const maleBol = preferenceForm.male.checked ? true : false;
-  const femaleBol = preferenceForm.female.checked ? true : false;
-  const smallBol = preferenceForm.small.checked ? true : false;
-  const mediumBol = preferenceForm.medium.checked ? true : false;
-  const largeBol = preferenceForm.large.checked ? true : false;
-  const pupBol = preferenceForm.pup.checked ? true : false;
-  const pregnantBol = preferenceForm.pregnant.checked ? true : false;
-  const errandBol = preferenceForm.errand.checked ? true : false;
-  const newcomingBol = preferenceForm.newComming.checked ? true : false;
-  const monthlyDonation = preferenceForm.monthlyDonation.value;
-
-  // add user to db with the values
-  db.collection("member")
-    .add({
-      email: email,
-      nickname: nickname,
-      permission: "none",
-      seeCat: catBol,
-      seeDog: dogBol,
-      seeMale: maleBol,
-      seeFemale: femaleBol,
-      seeSmall: smallBol,
-      seeMedium: mediumBol,
-      seeLarge: largeBol,
-      seePup: pupBol,
-      seePregnant: pregnantBol,
-      notifyErrand: errandBol,
-      notifyNewcoming: newcomingBol,
-      monthlyDonation: monthlyDonation,
-      following: []
-    })
-    .then(() => {
-      getUserSetting(email);
-      getUserNotifications(email);
-      getUserAnimals(email);
-      getUserDonationSofar(email);
-    });
-  // hide modal without waiting for db success
-  hideElement(prefModal);
-}
-
-function updatePreferenceToDatabase() {
-  console.log("update user preferences");
-}
-
-function cancelMembership() {
-  var currentUser = firebase.auth().currentUser;
-  currentUser
-    .delete()
-    .then(function() {
-      console.log("Thanks for being with us~ Hope we can see you again.");
-      signout();
-      db.collection("member")
-        .where("email", "==", currentUser.email)
-        .get()
-        .then(res =>
-          res.forEach(doc => {
-            doc.ref.delete();
-          })
-        );
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-}
-
-function sendMessage(e) {
-  e.preventDefault();
-  const user = window.sessionStorage.getItem("userEmail");
-  const message = messageForm.message.value;
-  if (message) {
-    db.collection("toDoList")
-      .add({
-        task: message,
-        type: "user",
-        writer: user
-      })
-      .then(console.log("message sent"));
-  }
 }
 
 function donate(e) {
@@ -489,6 +507,109 @@ function donate(e) {
   }
 }
 
+/*************************************
+ * user interaction
+ *************************************/
+cancelMembershipBtn.addEventListener("click", cancelMembership);
+messageForm.addEventListener("submit", sendMessage);
+oneTimeDonationForm.addEventListener("submit", onetimeDonation);
+subscribeForm.addEventListener("submit", subscribe);
+
+/*************************************
+ * functions that write(POST,UPDATE,DELETE) to database
+ *************************************/
+
+function sendPreferenceToDatabase(e) {
+  if (e) {
+    e.preventDefault();
+  }
+  // get current user email
+  let email = window.sessionStorage.getItem("userEmail");
+  // get values from preference form
+  const nickname = preferenceForm.nickname.value;
+  const catBol = preferenceForm.cat.checked ? true : false;
+  const dogBol = preferenceForm.dog.checked ? true : false;
+  const maleBol = preferenceForm.male.checked ? true : false;
+  const femaleBol = preferenceForm.female.checked ? true : false;
+  const smallBol = preferenceForm.small.checked ? true : false;
+  const mediumBol = preferenceForm.medium.checked ? true : false;
+  const largeBol = preferenceForm.large.checked ? true : false;
+  const pupBol = preferenceForm.pup.checked ? true : false;
+  const pregnantBol = preferenceForm.pregnant.checked ? true : false;
+  const errandBol = preferenceForm.errand.checked ? true : false;
+  const newcomingBol = preferenceForm.newComming.checked ? true : false;
+  const monthlyDonation = preferenceForm.monthlyDonation.value;
+
+  // add user to db with the values
+  db.collection("member")
+    .add({
+      email: email,
+      nickname: nickname,
+      permission: "none",
+      seeCat: catBol,
+      seeDog: dogBol,
+      seeMale: maleBol,
+      seeFemale: femaleBol,
+      seeSmall: smallBol,
+      seeMedium: mediumBol,
+      seeLarge: largeBol,
+      seePup: pupBol,
+      seePregnant: pregnantBol,
+      notifyErrand: errandBol,
+      notifyNewcoming: newcomingBol,
+      monthlyDonation: monthlyDonation,
+      following: []
+    })
+    .then(() => {
+      getUserSetting(email);
+      getUserNotifications(email);
+      getUserAnimals(email);
+      getUserDonationSofar(email);
+    });
+  // hide modal without waiting for db success
+  hideElement(prefModal);
+}
+
+function updatePreferenceToDatabase() {
+  console.log("update user preferences");
+}
+
+function cancelMembership() {
+  var currentUser = firebase.auth().currentUser;
+  currentUser
+    .delete()
+    .then(function() {
+      console.log("Thanks for being with us~ Hope we can see you again.");
+      signout();
+      db.collection("member")
+        .where("email", "==", currentUser.email)
+        .get()
+        .then(res =>
+          res.forEach(doc => {
+            doc.ref.delete();
+          })
+        );
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+
+function sendMessage(e) {
+  e.preventDefault();
+  const user = window.sessionStorage.getItem("userEmail");
+  const message = messageForm.message.value;
+  if (message) {
+    db.collection("toDoList")
+      .add({
+        task: message,
+        type: "user",
+        writer: user
+      })
+      .then(console.log("message sent"));
+  }
+}
+
 function onetimeDonation(e) {
   e.preventDefault();
   console.log("one time donation");
@@ -588,12 +709,7 @@ function getUserDonationSofar(userEmail) {
     .then(res => {
       res.forEach(doc => {
         const moneySoFar = doc.data().amount;
-        if (moneySoFar) {
-          document.querySelector(".moneySofar").textContent =
-            moneySoFar + " kr.";
-        } else {
-          document.querySelector(".moneySofar").textContent = "0";
-        }
+        document.querySelector(".moneySofar").textContent = moneySoFar + " kr.";
       });
     });
   db.collection("stuffDonation")
@@ -604,12 +720,10 @@ function getUserDonationSofar(userEmail) {
       res.forEach(doc => {
         piece += 1;
       });
-      if (Number(piece) === 1) {
+      if (piece === 1) {
         document.querySelector(".stuffSofar").textContent = piece + " piece";
-      } else if (Number(piece) > 1) {
-        document.querySelector(".stuffSofar").textContent = piece + " pieces";
       } else {
-        document.querySelector(".stuffSofar").textContent = "0";
+        document.querySelector(".stuffSofar").textContent = piece + " pieces";
       }
     });
 }
@@ -686,7 +800,6 @@ function getUserNotifications(userEmail) {
       });
     });
 }
-
 function getErrands() {
   db.collection("notifications")
     .where("type", "==", "errands")
@@ -700,7 +813,6 @@ function getErrands() {
       });
     });
 }
-
 function getNewcoming() {
   db.collection("notifications")
     .where("type", "==", "newComing")
@@ -714,7 +826,6 @@ function getNewcoming() {
       });
     });
 }
-
 function getUrgent() {
   db.collection("notifications")
     .where("type", "==", "urgent")
@@ -728,7 +839,6 @@ function getUrgent() {
       });
     });
 }
-
 function getOtherNotification() {
   db.collection("notifications")
     .where("type", "==", "other")
@@ -760,7 +870,6 @@ function getUserAnimals(userEmail) {
       });
     });
 }
-
 function showCats(userEmail) {
   db.collection("animals")
     .where("type", "==", "cat")
@@ -769,16 +878,14 @@ function showCats(userEmail) {
       appendEachAnimal(res, userEmail);
     });
 }
-
 function showDogs(userEmail) {
   db.collection("animals")
-    .where("type", "==", "dog")
+    .where("type", "==", "Dog")
     .get()
     .then(res => {
       appendEachAnimal(res, userEmail);
     });
 }
-
 function showAllAnimal(userEmail) {
   db.collection("animals")
     .get()
@@ -786,7 +893,6 @@ function showAllAnimal(userEmail) {
       appendEachAnimal(res, userEmail);
     });
 }
-
 function appendEachAnimal(array, userEmail) {
   animalListOnLoggedIn.innerHTML = "";
   array.forEach(entry => {
@@ -973,6 +1079,10 @@ function moveAnimals() {
 
   const moveAnimalList = document.querySelector("#animalList");
 
+  //const boundRect = moveAnimalList.getBoundingClientRect().width;
+
+  //console.log(boundRect);
+
   //circular buffer
   leftKey.addEventListener("click", () => {
     const last = document.querySelector("#animalList").lastElementChild;
@@ -981,6 +1091,9 @@ function moveAnimals() {
     last.remove();
 
     document.querySelector("#animalList").insertBefore(last, first);
+
+    //  changeTimes += 1;
+    //  moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 
   rightKey.addEventListener("click", () => {
@@ -992,10 +1105,13 @@ function moveAnimals() {
 
     //insert as lastelement
     document.querySelector("#animalList").appendChild(first);
+
+    //changeTimes -= 1;
+    //moveAnimalList.style.left = 174 * changeTimes + "px";
   });
 }
 /*--------------------------------------
-preference modal
+Open preference modal
 -------------------------------------*/
 function preferenceSetting(email) {
   // sync donation value text when user adjust range bar
@@ -1008,129 +1124,4 @@ function preferenceSetting(email) {
     sendPreferenceToDatabase();
     hideElement(prefModal);
   });
-
-  /*-------------------------------------------
-Render tasks from database into website 
---------------------------------------------*/
-  let taskList = document.querySelector(".toDoListWrapper");
-
-  function renderTask(doc) {
-    let taskDiv = document.createElement("div");
-    let task = document.createElement("span");
-    let taskCheckbox = document.createElement("input");
-    taskCheckbox.type = "checkbox";
-
-    taskDiv.setAttribute("data-id", doc.id);
-    if (doc.data().writer !== "admin") {
-      task.textContent = "From " + doc.data().writer + ": ";
-      task.classList.add("userMessage");
-    }
-    task.textContent += doc.data().task;
-    taskDiv.appendChild(taskCheckbox);
-    taskDiv.appendChild(task);
-    taskList.appendChild(taskDiv);
-
-    //deleting/completing tasks
-
-    taskCheckbox.addEventListener("click", e => {
-      e.stopPropagation();
-      let id = e.target.parentElement.getAttribute("data-id");
-      db.collection("toDoList")
-        .doc(id)
-        .delete();
-    });
-  }
-
-  /*-------------------------------------------
-              Add to do task
-------------------------------------------*/
-
-  const toDoBtn = document.querySelector(".addToDoBtn");
-  const toDoInput = document.querySelector(".subsectionToDo input");
-
-  toDoBtn.addEventListener("click", e => {
-    e.preventDefault();
-    db.collection("toDoList").add({
-      task: toDoInput.value,
-      writer: "admin",
-      type: "To Do"
-    });
-    toDoInput.value = "";
-  });
-
-  /*-------------------------------------------
-             live updates
-------------------------------------------*/
-  db.collection("toDoList").onSnapshot(snapshot => {
-    let changes = snapshot.docChanges();
-    //console.log(changes);
-    changes.forEach(change => {
-      if (change.type == "added") {
-        renderTask(change.doc);
-      } else if (change.type == "removed") {
-        let taskDiv = taskList.querySelector(
-          "[data-id='" + change.doc.id + "']"
-        );
-        taskList.removeChild(taskDiv);
-      }
-    });
-  });
 }
-
-/*-------------------------------------------
-Post message from admin to notifications panel
-------------------------------------------*/
-
-const adminPostBtn = document.querySelector(".postBtn");
-const adminPostInput = document.querySelector(".writeNotification");
-const notificationForm = document.querySelector("#nofiticationAdmin");
-adminPostBtn.addEventListener("click", e => {
-  console.log("message posted");
-  e.preventDefault();
-  db.collection("notifications").add({
-    text: adminPostInput.value,
-    type: notificationForm.type.value,
-    image: ""
-  });
-  adminPostInput.value = "";
-});
-
-////////////////////////////////////////////////////////////////////////////////
-// functions that we don't use anymore due to Firebase storage quota limitation
-////////////////////////////////////////////////////////////////////////////////
-
-/*-------------------------------------------
-Upload an image to database
-------------------------------------------*/
-
-//get elements
-const uploader = document.querySelector("#uploader");
-const fileButton = document.querySelector("#fileButton");
-
-//listen for file selection
-
-fileButton.addEventListener("change", function(e) {
-  //get file
-  let file = e.target.files[0];
-
-  // document.querySelector('input[type="file"]').value.split(/(\\|\/)/g).pop();
-  //https://forums.asp.net/t/2027451.aspx?How%20to%20get%20file%20name%20selected%20in%20input%20type%20file%20&fbclid=IwAR1q1NmUJszE3bNt4Pn9tbY068Q9x4A2Ar2sWA39Tep5CUrpY2FdiTh5DA8
-
-  //create a storage ret
-  let storageRef = firebase.storage().ref("member/" + file.name);
-
-  //upload file
-  let task = storageRef.put(file);
-
-  // update progress bar
-  task.on(
-    "state_changed",
-    function progress(snapshot) {
-      let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    },
-    function error(err) {},
-    function complete() {
-      console.log("picture is uploaded");
-    }
-  );
-});
