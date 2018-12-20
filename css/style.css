@@ -95,6 +95,7 @@ button:focus {
 #donationForm,
 #signupForm {
   background-color: #ded2c3;
+  border-radius: 30px;
   color: white; }
   #donationForm form .formField input,
   #signupForm form .formField input {
@@ -589,6 +590,7 @@ button:focus {
   #sendToUsForms #messageForm,
   #sendToUsForms #imageForm,
   #sendToUsForms #stuffDonationForm {
+    border-radius: 30px;
     display: grid;
     margin: 5vw 0 10vw 0;
     padding: 40px; }

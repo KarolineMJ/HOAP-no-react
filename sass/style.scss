@@ -132,6 +132,7 @@ button:focus {
 #donationForm,
 #signupForm {
   background-color: #ded2c3;
+  border-radius: 30px;
   color: white;
   form {
     .formField {
@@ -676,6 +677,7 @@ button:focus {
   #messageForm,
   #imageForm,
   #stuffDonationForm {
+    border-radius: 30px;
     display: grid;
     margin: 5vw 0 10vw 0;
     padding: 40px;
