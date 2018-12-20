@@ -508,7 +508,6 @@ button:focus {
       left: -7vw;
       img {
         width: 23vw;
-        animation: kittyJiggle 2s infinite;
       }
     }
 
@@ -557,11 +556,11 @@ button:focus {
     display: grid;
     margin: 20px auto;
 
-    #eyes {
+    #dogEyes {
       animation: eyeBlink 5s infinite;
       transform-origin: 50% 40%;
     }
-    #tail {
+    #dogTail {
       animation: moveTail 2s infinite;
       transform-origin: bottom left;
     }
@@ -600,14 +599,14 @@ button:focus {
   }
 
   #coinCat {
-    #head {
+    #catHead {
       animation: moveHead 2s 0.5s infinite;
       transform-origin: 50%;
     }
     #coin {
       animation: coinFall 2s ease-in-out infinite;
     }
-    #eyes {
+    #catEyes {
       animation: moveHead 2s 0.5s infinite;
       transform-origin: 50%;
     }
