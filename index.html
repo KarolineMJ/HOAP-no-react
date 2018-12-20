@@ -1190,31 +1190,35 @@
           <p class="animalPup">* this is a baby</p>
           <p class="needs"><span class="name">Animal name</span> needs <span class="money"> money </span> kr. every month</p>
         </div>
-      </div>
-      <div class="storyAndExtra">
+      <div class="bigAnimalStory">  
         <p>Story:</p>
-          <p class="animalStory">Story: <span></span></p>
+        <p class="animalStory">Story: <span></span></p>
       </div>
+      </div>
+
     </template>
     
     <template id="memberDonation">
       <div class="memberDonation">
         <form id="donationFormLogginIn">
           <h3>Help this little guy by donating time or money</h3>
-          <p>
+          <div>
+            <p>
             <label>I'd like to donate 
             <input type="number" name="moneyAmount"  min="0"> kr,-</label>
           </p>
           <hr>
+        </div>
           <div class="timeSlots">
               <p>Pick a time you'd like to spend with this furry monster:</p>
               <p><input type="date" name="date"></p>
-              <p><label class="morning"><input type="checkbox" name="morning" value="morning">Morning</label>
-            <label class="afternoon"><input type="checkbox" name="afternoon" value="afternoon">Afternoon</label>
-            <label class="evening"><input type="checkbox" name="evening" value="evening">Evening</label>
-            <label class="training"><input type="checkbox" name="traning" value="traning">Training</label></p>
+              <p><label class="morning"><input type="checkbox" name="morning" value="morning">Morning</label></p>
+              <p>
+            <label class="afternoon"><input type="checkbox" name="afternoon" value="afternoon">Afternoon</label></p>
+            <p><label class="evening"><input type="checkbox" name="evening" value="evening">Evening</label></p>
+            <p><label class="training"><input type="checkbox" name="traning" value="traning">Training</label></p>
+            <hr>
           </div>
-          <hr>
           <input type="submit" value="I'm in" id="donationBtn" />
         </form>
       </div>

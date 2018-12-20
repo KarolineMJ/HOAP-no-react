@@ -702,8 +702,7 @@ button:focus {
             bottom: -15%; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal > img:not(.heart) {
             width: 100%;
-            height: 100%;
-            border-radius: 50%; }
+            height: 100%; }
           #signedInContent #yourPets #animalBox #animalViewBox #animalList .eachAnimal .heart {
             width: 15%;
             left: 10%;
@@ -731,6 +730,7 @@ button:focus {
   border-bottom: 20px solid white; }
 
 #signedInContent #petExpand {
+  color: #716f6f;
   width: 100%;
   height: auto;
   padding: 60px 50px;
@@ -738,56 +738,60 @@ button:focus {
   grid-column: 1/-1;
   z-index: 2;
   display: none;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1.2fr 1.2fr;
   grid-template-rows: auto auto;
-  grid-gap: 20px;
+  grid-column-gap: 35px;
   position: relative; }
   #signedInContent #petExpand .bigAnimalImage {
-    grid-row: 1/3;
-    grid-column-start: 1;
     width: 280px;
     height: 280px;
     border-radius: 50%;
     background-color: #74b7a5; }
-  #signedInContent #petExpand .bigAnimalInfo {
-    grid-row: 1/3;
-    grid-column-start: 2; }
-  #signedInContent #petExpand .storyAndExtra {
-    grid-row-start: 1;
-    grid-column-start: 3; }
-  #signedInContent #petExpand .memberDonation {
-    grid-row-start: 2;
-    grid-column-start: 3; }
-    #signedInContent #petExpand .memberDonation *.crossout {
-      text-decoration: line-through; }
-    #signedInContent #petExpand .memberDonation #donationFormLogginIn {
-      display: grid; }
-      #signedInContent #petExpand .memberDonation #donationFormLogginIn h3 {
-        padding: 10px; }
-      #signedInContent #petExpand .memberDonation #donationFormLogginIn #donationBtn {
-        font-size: 13px;
-        font-family: "Raleway", sans-serif;
-        height: 40px;
-        justify-self: end;
-        padding: 7px;
-        margin: 11px 0;
-        width: 150px;
-        background-color: #74b7a5;
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 40px;
-        cursor: pointer;
-        align-self: end; }
-        #signedInContent #petExpand .memberDonation #donationFormLogginIn #donationBtn:hover {
-          background-color: #599686; }
+  #signedInContent #petExpand .bigAnimalInfo .bigAnimalBasicInfo {
+    padding-bottom: 16px; }
+    #signedInContent #petExpand .bigAnimalInfo .bigAnimalBasicInfo p {
+      padding-bottom: 0;
+      font-weight: bold; }
+      #signedInContent #petExpand .bigAnimalInfo .bigAnimalBasicInfo p span {
+        font-weight: normal; }
+    #signedInContent #petExpand .bigAnimalInfo .bigAnimalBasicInfo .needs {
+      font-weight: normal; }
+  #signedInContent #petExpand .bigAnimalInfo .bigAnimalStory p {
+    font-weight: bold; }
+  #signedInContent #petExpand .bigAnimalInfo .bigAnimalStory .animalStory {
+    line-height: 1.6;
+    font-weight: normal; }
+  #signedInContent #petExpand .memberDonation *.crossout {
+    text-decoration: line-through; }
+  #signedInContent #petExpand .memberDonation #donationFormLogginIn {
+    display: grid;
+    height: 100%; }
+    #signedInContent #petExpand .memberDonation #donationFormLogginIn h3 {
+      padding: 10px; }
+    #signedInContent #petExpand .memberDonation #donationFormLogginIn #donationBtn {
+      font-size: 13px;
+      font-family: "Raleway", sans-serif;
+      height: 40px;
+      justify-self: end;
+      padding: 7px;
+      margin: 11px 0;
+      width: 150px;
+      background-color: #74b7a5;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 40px;
+      cursor: pointer;
+      align-self: end; }
+      #signedInContent #petExpand .memberDonation #donationFormLogginIn #donationBtn:hover {
+        background-color: #599686; }
   #signedInContent #petExpand .closeExpandBtn {
     cursor: pointer;
     position: absolute;
     font-size: 40px;
-    right: 50px;
-    top: 50px;
+    right: 30px;
+    top: 20px;
     font-size: 40px; }
   #signedInContent #petExpand .donateBtn {
     cursor: pointer;
@@ -806,8 +810,7 @@ button:focus {
       text-align: left; }
   #signedInContent #petExpand p {
     text-align: left;
-    padding: 10px;
-    padding-right: 70px; }
+    padding: 10px; }
   #signedInContent #petExpand .expandImg {
     width: 20vw;
     align-self: center; }
@@ -1336,8 +1339,7 @@ Keyframes for border radius header image
             left: 20%;
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(20, auto);
-            /* temp solution, should be dynamic value based on how many animals there are */
+            grid-template-columns: repeat(11, auto);
             white-space: nowrap; }
             #admin main .section .subsection .tableWrapper .columns .column {
               border-right: 1px solid #cacaca;

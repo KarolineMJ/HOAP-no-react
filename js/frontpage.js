@@ -381,8 +381,8 @@ function cloneAnimalInfo(data, animalID) {
     });
   donationForm.addEventListener("submit", donate);
 
-  petExpand.appendChild(donationClone);
   petExpand.appendChild(clone);
+  petExpand.appendChild(donationClone);
   const closeExpandBtn = document.querySelector(".closeExpandBtn");
 
   const triangleUp = document.querySelectorAll(".triangleUp");
