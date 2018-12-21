@@ -2167,6 +2167,8 @@ Keyframes for border radius header image
   /* ----------------------
         Signed in page
 -----------------------*/
+  #loginForm {
+    width: 62vw; }
   #signedInContent #userSettings,
   #signedInContent #newsFeed {
     width: 100vw;
