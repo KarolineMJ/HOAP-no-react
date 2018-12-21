@@ -39,4 +39,3 @@ The main idea was to create a website for an animal shelter, where volunteers an
 ## Build with
 
 - [Firebase](https://firebase.google.com) - used for database and user authentication
-- [React](https://reactjs.org/) - used for creating login page
